@@ -1,0 +1,43 @@
+table, th, tr, td {
+	border: 5px solid black;
+	border-style: outset;
+	border-radius: 5px;
+}
+
+#check_PPms {
+	margin-left: 40%;
+	margin-top: 5%;
+}
+
+#familia, #modelos {
+	height: 445px;
+	overflow: auto;
+	border: 5px solid black;
+	border-style: inset;
+}
+
+#formulario {
+	margin-left: 15%;
+}
+
+#modelos {
+	margin-left: 35%;
+	width: 100%;
+}
+
+#divBtnsModelos {
+	margin-left: 125px;
+}
+
+#divBtnsFamilias {
+	margin-left: 1px;
+}
+
+#btnGuardaOp, #btnEliminaOp, #btnCopiarOp {
+	width: 15%;
+	display: inline-block;
+}
+
+#pop_btnAgregaModelo {
+	width: 100%;
+}
