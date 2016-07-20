@@ -22,7 +22,129 @@
 			<h1>SIC Ultimate - Familias y Modelos</h1>
 		</div><br>
 		<form action="">
-			
+			<div class="ui-grid-d" id="formulario">
+				<div class="ui-block-a">
+					<center><label for="familia" data-theme="c"><b>Familias</b></label></center>
+					<div id="familia">
+						<ul data-role="listview">
+							<li data-icon="false"><a href="">11E79</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-block-b" id="divBtnsFamilias">
+					<br><br><br><br><br><br><br><br><br>
+					<!-- PopUp Agregar Familia-->
+					<div data-role="main" class="ui-content">
+    					<a href="#popupAgregarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
+    					<div data-role="popup" id="popupAgregarFamilia" class="ui-content">
+      						<h3>Agregar Familia</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<input type="text" id="pop_btnAgregaFamilia" placeholder="Familia..." required>
+      						<center>
+								<a id="agregarFamilia" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+							</center>
+    					</div>
+  					</div>
+
+  					<!-- PopUp Elimnar Familia-->
+  					<div data-role="main" class="ui-content">
+    					<a href="#popupEliminarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
+    					<div data-role="popup" id="popupEliminarFamilia" class="ui-content">
+      						<h3>Eliminar Familia</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<p>Estas seguro de eliminar esta <b>Familia</b>???<br>
+      							Esta familia contiene modelos.</p>
+      						<center>
+								<a id="eliminarFamilia" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+							</center>
+    					</div>
+  					</div>
+				</div>
+				<div class="ui-block-c">
+					<center><label for="modelos" data-theme="c"><b>Modelos</b></label></center>
+					<div id="modelos">
+						<ul data-role="listview">
+							<li data-icon="false"><a href="">11E79 101B1</a></li>
+							<li data-icon="false"><a href="">11E79 301B1</a></li>
+							<li data-icon="false"><a href="">11E79 400B1</a></li>
+							<li data-icon="false"><a href="">11E79-901</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-block-d" id="divBtnsModelos">
+					<br><br><br><br><br><br><br><br><br>
+
+					<!-- PopUp Agregar Modelo-->
+					<div data-role="main" class="ui-content">
+    					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
+    					<div data-role="popup" id="popupAgregarModelo" class="ui-content">
+      						<h3>Agregar Modelo</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<input type="text" id="pop_btnAgregaModelo" placeholder="Modelo..." required>
+      						<center>
+								<a id="agregarMod" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+							</center>
+    					</div>
+  					</div>
+
+  					<!-- PopUp Elimnar Modelo-->
+  					<div data-role="main" class="ui-content">
+    					<a href="#popupEliminarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
+    					<div data-role="popup" id="popupEliminarModelo" class="ui-content">
+      						<h3>Eliminar Modelo</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<p>Estas seguro de eliminar este <b>Modelo</b>???</p>
+      						<center>
+								<a id="eliminarModelo" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+							</center>
+    					</div>
+  					</div>
+				</div>
+			</div><br><br>
+			<div id="divBtnsOp">
+				<center>
+					<!-- PopUp Guardar Operacion Pendiente-->
+					<a href="" id="btnGuardaOp" data-role="button"  class="ui-btn ui-icon-check ui-btn-icon-left">Guardar Operacion</a>
+
+					<!-- PopUp Eliminar Operacion Pendiente-->
+					<a href="" id="btnEliminaOp" data-role="button" class="ui-btn ui-icon-delete ui-btn-icon-left">Eliminar Operacion</a>
+
+
+					<!-- PopUp Copiar Operacion-->
+					<div data-role="main" class="ui-content">
+    					<a href="#popupCopiarOperacion" id="btnCopiaOp" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Copiar Operacion</a>
+    					<div data-role="popup" id="popupCopiarOperacion" class="ui-content">
+      						<h3>Copiar Operaciones</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+
+							<div data-role="fieldcontain" id="">
+								<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
+								<select name="mod_origen" id="mod_origen">
+									<option value="">0016 496900</option>
+									<option value="">0059 419100</option>
+									<option value="">50C70 495</option>
+								</select>
+							</div>
+							<div data-role="fieldcontain" id="">
+								<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
+								<select name="mod_destino" id="mod_destino">
+									<option value="">50M61 843</option>
+									<option value="">F59-478100</option>
+									<option value="">50A51 235B1</option>
+								</select>
+							</div>
+      						<center>
+								<a id="copiarOperacion" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+							</center>
+    					</div>
+  					</div>
+				</center>
+			</div>
 		</form>
 	</div>
 </body>
