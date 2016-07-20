@@ -20,6 +20,27 @@
 			</center>
 			<h1>SIC Ultimate Login</h1>
 		</div>
+		<form action="">
+			<div data-role="content" id="content">
+				<input type="text" id="user" placeholder="Usuario" required>
+				<input type="password" id="password" placeholder="Password">
+				<div data-role="fieldcontain" id="combo_area">
+					<center><label for="selection_area"><b>Area</b></label></center>
+					<select name="area" id="area">
+						<option value="electronica">Electronica</option>
+						<option value="electromecanicos">Electromecanicos</option>
+						<option value="valvulas">Valvulas</option>
+						<option value="cpi">CPI</option>
+					</select>
+				</div>
+				<div id="divBtnsCampos">
+					<center>
+						<a id="btnAceptar" href="index.html" data-role="button" data-icon="check" data-inline="true">Aceptar</a>
+						<a id="btnCancelar" href="#" data-role="button" onclick="window.close();" data-icon="delete" data-inline="true">Cancelar</a>
+					</center>
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
