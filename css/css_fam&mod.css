@@ -41,3 +41,7 @@ table, th, tr, td {
 #pop_btnAgregaModelo {
 	width: 100%;
 }
+
+.ui-content {
+	display: inline-block;
+}
