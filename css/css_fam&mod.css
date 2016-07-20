@@ -45,3 +45,7 @@ table, th, tr, td {
 .ui-content {
 	display: inline-block;
 }
+
+fieldset {
+	width: 100%;
+}
