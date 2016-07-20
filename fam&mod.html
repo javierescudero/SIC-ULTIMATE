@@ -33,6 +33,7 @@
 				</div>
 				<div class="ui-block-b" id="divBtnsFamilias">
 					<br><br><br><br><br><br><br><br><br>
+
 					<!-- PopUp Agregar Familia-->
 					<div data-role="main" class="ui-content">
     					<a href="#popupAgregarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
@@ -107,12 +108,33 @@
 			</div><br><br>
 			<div id="divBtnsOp">
 				<center>
-					<!-- PopUp Guardar Operacion Pendiente-->
-					<a href="" id="btnGuardaOp" data-role="button"  class="ui-btn ui-icon-check ui-btn-icon-left">Guardar Operacion</a>
-
-					<!-- PopUp Eliminar Operacion Pendiente-->
-					<a href="" id="btnEliminaOp" data-role="button" class="ui-btn ui-icon-delete ui-btn-icon-left">Eliminar Operacion</a>
-
+					<!-- PopUp Guardar Operacion -->
+  					<div data-role="main" class="ui-content">
+    					<a href="#popupGuardarOperacion" id="btnGuardarOpe" data-rel="popup" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner">Guardar Operacion</a>
+    					<div data-role="popup" id="popupGuardarOperacion" class="ui-content">
+      						<h3>Guardar Operacion</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<p>Confirmacion para guardar la <b>Operacion</b></p>
+      						<center>
+								<a id="eliminarOperacion" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+							</center>
+    					</div>
+  					</div>
+					
+					<!-- PopUp Eliminar Operacion -->
+  					<div data-role="main" class="ui-content">
+    					<a href="#popupEliminarOperacion" id="btnEliminarOpe" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar Operacion</a>
+    					<div data-role="popup" id="popupEliminarOperacion" class="ui-content">
+      						<h3>Eliminar Operacion</h3>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<p>Estas seguro de eliminar esta <b>Operacion</b>???</p>
+      						<center>
+								<a id="eliminarOperacion" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+							</center>
+    					</div>
+  					</div>
 
 					<!-- PopUp Copiar Operacion-->
 					<div data-role="main" class="ui-content">
