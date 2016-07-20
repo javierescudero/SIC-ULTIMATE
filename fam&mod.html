@@ -108,11 +108,39 @@
 			</div><br><br>
 			<div id="divBtnsOp">
 				<center>
+					<!-- PopUp Agregar Operacion -->
+  					<div data-role="main" class="ui-content">
+    					<a href="#popupAgregarOperacion" id="btnAgregarOpe" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar Operacion</a>
+    					<div data-role="popup" id="popupAgregarOperacion" class="ui-content">
+      						<h3>Agregar Operacion</h3><hr>
+      						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
+      						<label for="operacion">Operacion</label>
+      						<input type="text" id="operacionAgrega">
+      						<label for="descripcion">Descripcion</label>
+      						<input type="text" id="descripcionAgrega">
+
+      						<fieldset data-iconpos="right">
+      							<input name="checkbox" id="checkbox-h-6a" type="checkbox">
+        						<label for="checkbox-h-6a">Usar en PPms?</label>
+      						</fieldset>
+
+      						<label for="grupo">Grupo</label>
+      						<select name="grupoAgrega" id="grupoAgrega">
+								<option value="default">- - - - - - -</option>
+								<option value="final_test">Final Test</option>
+								<option value="qc_audit">QC Audit</option>
+								<option value="process">Process</option>
+							</select>
+							<a id="confirmarAgregado" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
+							<a id="cancelarAgregado" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+    					</div>
+  					</div>
+
 					<!-- PopUp Guardar Operacion -->
   					<div data-role="main" class="ui-content">
     					<a href="#popupGuardarOperacion" id="btnGuardarOpe" data-rel="popup" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner">Guardar Operacion</a>
     					<div data-role="popup" id="popupGuardarOperacion" class="ui-content">
-      						<h3>Guardar Operacion</h3>
+      						<h3>Guardar Operacion</h3><hr>
       						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
       						<p>Confirmacion para guardar la <b>Operacion</b></p>
       						<center>
@@ -126,7 +154,7 @@
   					<div data-role="main" class="ui-content">
     					<a href="#popupEliminarOperacion" id="btnEliminarOpe" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar Operacion</a>
     					<div data-role="popup" id="popupEliminarOperacion" class="ui-content">
-      						<h3>Eliminar Operacion</h3>
+      						<h3>Eliminar Operacion</h3><hr>
       						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
       						<p>Estas seguro de eliminar esta <b>Operacion</b>???</p>
       						<center>
@@ -140,7 +168,7 @@
 					<div data-role="main" class="ui-content">
     					<a href="#popupCopiarOperacion" id="btnCopiaOp" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Copiar Operacion</a>
     					<div data-role="popup" id="popupCopiarOperacion" class="ui-content">
-      						<h3>Copiar Operaciones</h3>
+      						<h3>Copiar Operaciones</h3><hr>
       						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Cerrar</a>
 
 							<div data-role="fieldcontain" id="">
@@ -191,9 +219,9 @@
 						<td>
 							<select name="area" id="area">
 								<option value="default">- - - - - - -</option>
-								<option value="electronica">Final Test</option>
-								<option value="electromecanicos">QC Audit</option>
-								<option value="valvulas">Process</option>
+								<option value="final_test">Final Test</option>
+								<option value="qc_audit">QC Audit</option>
+								<option value="process">Process</option>
 							</select>
 						</td>
 					</tr>
