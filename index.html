@@ -10,45 +10,52 @@
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/css_index.css">
 </head>
 <body>
-	<div data-role="page" data-theme="b">
-		<div data-role="header">
-			<center>
-				<img src="public\images\Sicicon.ico">
-				<h1>SIC Ultimate</h1>
-			</center>
+	<div data-role="page" data-theme="b" class="ui-responsive-panel">
+		<div data-role="header" id="header">
+			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
+			<h1>SIC Ultimate</h1>
 		</div>
-		<form action="">
-			<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
-				<h3><center>Captura</center></h3>
-				<a href="fam&mod.html" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
-				<a href="operaciones.html" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
-			</div> 
-			<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
+
+
+		<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
+			<ul id="ul_menu" class="nav-search" data-role="listview" data-theme="b" data-divider-theme="a">
+				<li data-icon="false" ><a href="#captura" id="menu_principal">Menu Principal</a></li>
+				<br>
+			</ul>
+			<div id="divMenuPrincipal">
+				<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
+					<h3><center>Captura</center></h3>
+					<a href="fam&mod.html" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
+					<a href="operaciones.html" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
+				</div> 
+				<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
 				<h3><center>Reportes</center></h3>
-				<a href="#" data-role="button" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
+				<a href="#" data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
+				<a href="#" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
 				<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
-			</div>
-			<div id="usuarios" data-role="collapsible" data-collapsed-icon="user" data-expanded-icon="carat-u">
+				<a href="#" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
+				</div>
+				<div id="usuarios" data-role="collapsible" data-collapsed-icon="user" data-expanded-icon="carat-u">
 				<h3><center>Usuarios</center></h3>
 				<a href="#" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
-			</div>
+				</div>
 
-			<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
-				<h3><center>Cambiar Area</center></h3>
-				<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">CPI</a>
-			</div><br>
-			<a href="login.html" id="" class="ui-btn ui-icon-action ui-btn-icon-left" onclick="window.close();">Salir</a>
-		</form>
+				<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
+					<h3><center>Cambiar Area</center></h3>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">CPI</a>
+				</div><br><br><br><br><br>
+				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
