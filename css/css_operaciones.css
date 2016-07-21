@@ -1,3 +1,11 @@
 #btnAgregar, #btnModificar {
 	display: inline-block;
 }
+
+#divPage {
+	display: inline-block;
+}
+
+#menu_principal {
+	background-color: #111;
+}

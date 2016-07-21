@@ -49,3 +49,11 @@ table, th, tr, td {
 fieldset {
 	width: 100%;
 }
+
+#menu_principal {
+	background-color: #111;
+}
+
+#divPage {
+	display: inline-block;
+}
