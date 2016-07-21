@@ -11,6 +11,7 @@
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/css_operaciones.css">
+	<link rel="stylesheet" href="css/css_fam_mod.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
@@ -56,8 +57,8 @@
 			</div>
 		</div>
 		<div id="divFormulario">
-					<form action="">
-			<div data-role="fieldcontain" id="">
+			<form action="">
+				<div data-role="fieldcontain" id="">
 				<center>
 					<label for="modelo"><b>Modelo</b></label>
 				</center>
@@ -73,35 +74,35 @@
 					<option value="">50M61 843</option>
 					<option value="">0059 474000</option>
 				</select>
-			</div>
-			<center>
-				<div id="divBotonesOperaciones">
+				</div>
+				<center>
+					<div id="divBotonesOperaciones">
 					<!-- PopUp Agregar Operacion -->
-  					<div data-role="main" class="ui-content">
-    					<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar Operacion</a>
-    					<div data-role="popup" id="popupAgregar" class="ui-content">
-      						<label for="operacion">Operacion</label>
-      						<input type="text" id="agregarOperacion">
-      						<label for="descripcion">Descripcion</label>
-      						<input type="text" id="agregarDescripcion">
-      						<fieldset data-iconpos="right">
-      							<input name="checkbox" id="checkbox-h-6c" type="checkbox">
-        						<label for="checkbox-h-6c">Usar en PPms?</label>
-      						</fieldset>
-      						<label for="grupo">Grupo</label>
-      						<select name="agregarGrupo" id="agregarGrupo">
-								<option value="default">- - - - - - -</option>
-								<option value="final_test">Final Test</option>
-								<option value="qc_audit">QC Audit</option>
-								<option value="process">Process</option>
-							</select>
-							<a id="agregarOperacionConfirmacion" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
-							<a id="cancelar" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
-    					</div>
-  					</div>
+  						<div data-role="main" class="ui-content">
+    						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar Operacion</a>
+    						<div data-role="popup" id="popupAgregar" class="ui-content">
+      							<label for="operacion">Operacion</label>
+      							<input type="text" id="agregarOperacion">
+      							<label for="descripcion">Descripcion</label>
+      							<input type="text" id="agregarDescripcion">
+      							<fieldset data-iconpos="right">
+      								<input name="checkbox" id="checkbox-h-6c" type="checkbox">
+        							<label for="checkbox-h-6c">Usar en PPms?</label>
+      							</fieldset>
+      							<label for="grupo">Grupo</label>
+      							<select name="agregarGrupo" id="agregarGrupo">
+									<option value="default">- - - - - - -</option>
+									<option value="final_test">Final Test</option>
+									<option value="qc_audit">QC Audit</option>
+									<option value="process">Process</option>
+								</select>
+								<a id="agregarOperacionConfirmacion" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
+								<a id="cancelar" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+    						</div>
+  						</div>
 
-  					<!-- PopUp Modificar Operacion -->
-  					<div data-role="main" class="ui-content">
+  						<!-- PopUp Modificar Operacion -->
+  						<div data-role="main" class="ui-content">
     					<a href="#popupModificar" id="btnModificar" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Modificar Operacion</a>
     					<div data-role="popup" id="popupModificar" class="ui-content">
       						<label for="operacion">Operacion</label>
@@ -122,10 +123,10 @@
 							<a id="guardarModificacion" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
 							<a id="cancelarAgregado" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
     					</div>
-  					</div>
-				</div>
-			</center>
-		</form>
+  						</div>
+					</div>
+				</center>
+			</form>
 		</div>
 	</div>
 </body>

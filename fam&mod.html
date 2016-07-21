@@ -5,15 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
 	<title>SIC Ultimate</title>
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
 
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 	
-	
-	
-
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/css_fam_mod.css">
+	<link rel="stylesheet" href="css/css_operaciones.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
@@ -37,15 +35,15 @@
 					<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
 				</div> 
 				<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
-				<h3><center>Reportes</center></h3>
-				<a href="#" data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
-				<a href="#" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
-				<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
-				<a href="#" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
+					<h3><center>Reportes</center></h3>
+					<a href="#" data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
+					<a href="#" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
+					<a href="#" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
 				</div>
 				<div id="usuarios" data-role="collapsible" data-collapsed-icon="user" data-expanded-icon="carat-u">
-				<h3><center>Usuarios</center></h3>
-				<a href="#" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
+					<h3><center>Usuarios</center></h3>
+					<a href="#" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
 				</div>
 
 				<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
@@ -55,10 +53,12 @@
 					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
 					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">CPI</a>
 				</div><br><hr><br>
+
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
 		</div>
-		<form action="">
+		<div id="divForm">
+			<form action="">
 			<div class="ui-grid-d" id="formulario">
 				<div class="ui-block-a">
 					<center><label for="familia" data-theme="c"><b>Familias</b></label></center>
@@ -258,7 +258,8 @@
 					<!-- SEGUNDO DATO-->
 				</tbody>
 			</table>
-		</form>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

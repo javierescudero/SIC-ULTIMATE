@@ -9,3 +9,16 @@
 #menu_principal {
 	background-color: #111;
 }
+
+#divFormulario {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.ui-panel-wrapper {
+    position: static;
+    min-height: 100px;
+    border: 0;
+    overflow-x: hidden;
+    z-index: 999;
+}
