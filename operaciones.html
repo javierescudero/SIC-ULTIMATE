@@ -9,16 +9,19 @@
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 	
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css" />
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/css_index.css">
 	<link rel="stylesheet" href="css/css_fam_mod.css">
 	<link rel="stylesheet" href="css/css_operaciones.css">
+	<link rel="stylesheet" href="css/css_componentes.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>SIC Ultimate</h1>
+			<h1>Captura<br> 
+				<b>Operaciones</b>
+			</h1>
 		</div>
 
 		<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
@@ -31,7 +34,7 @@
 					<h3><center>Captura</center></h3>
 					<a href="fam&mod.html" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
 					<a href="operaciones.html" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
-					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
+					<a href="componentes.html" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
 					<a href="#" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
 					<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
 				</div> 
@@ -59,23 +62,25 @@
 		</div>
 		<div id="divFormulario">
 			<form action="">
-				<div data-role="fieldcontain" id="">
 				<center>
-					<label for="modelo"><b>Modelo</b></label>
+					<div data-role="fieldcontain" id="divFieldcontain">
+						<center>
+							<label for="modelo"><b>Modelo</b></label>
+						</center>
+						<select name="modelo" id="modelo">
+							<option value="">50M61 843</option>
+							<option value="">F59-478100</option>
+							<option value="">50M61 843</option>
+							<option value="">0059 474000</option>
+							<option value="">0059 478300</option>
+							<option value="">1F83C-11NPB1</option>
+							<option value="">50M61 843</option>
+							<option value="">F59-478100</option>
+							<option value="">50M61 843</option>
+							<option value="">0059 474000</option>
+						</select>
+						</div>
 				</center>
-				<select name="modelo" id="modelo">
-					<option value="">50M61 843</option>
-					<option value="">F59-478100</option>
-					<option value="">50M61 843</option>
-					<option value="">0059 474000</option>
-					<option value="">0059 478300</option>
-					<option value="">1F83C-11NPB1</option>
-					<option value="">50M61 843</option>
-					<option value="">F59-478100</option>
-					<option value="">50M61 843</option>
-					<option value="">0059 474000</option>
-				</select>
-				</div>
 				<center>
 					<div id="divBotonesOperaciones">
 						<!-- PopUp Agregar Operacion -->

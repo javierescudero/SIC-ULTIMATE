@@ -29,3 +29,7 @@ table, th, tr, td {
 	border-style: outset;
 	border-radius: 5px;
 }
+
+#divFieldcontain {
+	width: 15%;
+}
