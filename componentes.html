@@ -81,6 +81,32 @@
 					</select>
 					</div>
 				</center>
+
+				<!--Select de los componentes-->
+				<center>
+					<center><label for="componente" data-theme="c"><b>Componente</b></label></center>
+					<div id="divListComponente">
+						<ul data-role="listview">
+							<li data-icon="false"><a href="">C1</a></li>
+							<li data-icon="false"><a href="">C2</a></li>
+							<li data-icon="false"><a href="">C3</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+							<li data-icon="false"><a href="">C11</a></li>
+						</ul>
+					</div>
+				</center>
+
 				<center>
 					<div id="divBotonesComponentes">
 						<!-- PopUp Agregar Componente -->
@@ -109,7 +135,7 @@
 
   						<!-- PopUp Copiar Componente-->
 						<div data-role="main" class="ui-content">
-    						<a href="#popupCopiar" id="btnCopia" data-rel="popup" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-corner">Copiar</a>
+    						<a href="#popupCopiar" id="btnCopia" data-rel="popup" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-corner">Copiar de . . .</a>
     						<div data-role="popup" id="popupCopiar" class="ui-content">
       							<h3>Copiar Componentes</h3><hr>
 								<div data-role="fieldcontain" id="">
@@ -132,6 +158,38 @@
 									<a id="copiar" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
 									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 								</center>
+    						</div>
+  						</div>
+
+  						<!-- PopUp Importar Componentes-->
+						<div data-role="main" class="ui-content">
+    						<a href="#popupImportar" id="btnImporta" data-rel="popup" class="ui-btn ui-icon-action ui-btn-icon-left ui-btn-inline ui-corner">Importar</a>
+    						<div data-role="popup" id="popupImportar" class="ui-content">
+      							<h3>Importar Componentes</h3><hr>
+								<div id="divModelo">
+									<label for="modelo">Modelo</label>
+									<input type="text">
+								</div>
+								<div id="divSelectHojas">
+									<center><label for="hoja" data-theme="c"><b>Seleccione una hoja</b></label></center><br>
+									<div id="listViewHojas">
+										<ul data-role="listview">
+											<li data-icon="false"><a href="">Aqui se cargan los archivos</li>
+										</ul><hr>
+									</div>
+								</div><br>
+      							<center>
+									<a id="abrirDoc" href="#" data-role="button" data-icon="bullets" data-inline="true">Abrir Documento</a>
+									<a id="importar" href="#" data-role="button" data-icon="action" data-inline="true">Importar</a>
+								</center><br>
+								<div id="divSelecAdvertencias">
+									<center><label for="advertencia" data-theme="c"><b>Advertencias</b></label></center><br>
+									<div id="listViewAdvertencias">
+										<ul data-role="listview">
+											<li data-icon="false"><a href="">Aqui aparecen las advertencias</li>
+										</ul>
+									</div>
+								</div>
     						</div>
   						</div>
 					</div>
