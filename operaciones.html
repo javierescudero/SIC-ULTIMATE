@@ -77,7 +77,7 @@
 				</div>
 				<center>
 					<div id="divBotonesOperaciones">
-					<!-- PopUp Agregar Operacion -->
+						<!-- PopUp Agregar Operacion -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar Operacion</a>
     						<div data-role="popup" id="popupAgregar" class="ui-content">
@@ -103,29 +103,106 @@
 
   						<!-- PopUp Modificar Operacion -->
   						<div data-role="main" class="ui-content">
-    					<a href="#popupModificar" id="btnModificar" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Modificar Operacion</a>
-    					<div data-role="popup" id="popupModificar" class="ui-content">
-      						<label for="operacion">Operacion</label>
-      						<input type="text" id="modificaOperacion">
-      						<label for="descripcion">Descripcion</label>
-      						<input type="text" id="modificaDescripcion">
-      						<fieldset data-iconpos="right">
-      							<input name="checkbox" id="checkbox-h-6a" type="checkbox">
-        						<label for="checkbox-h-6a">Usar en PPms?</label>
-      						</fieldset>
-      						<label for="grupo">Grupo</label>
-      						<select name="modificaGrupo" id="modificaGrupo">
-								<option value="default">- - - - - - -</option>
-								<option value="final_test">Final Test</option>
-								<option value="qc_audit">QC Audit</option>
-								<option value="process">Process</option>
-							</select>
-							<a id="guardarModificacion" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
-							<a id="cancelarAgregado" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
-    					</div>
+    						<a href="#popupModificar" id="btnModificar" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Modificar Operacion</a>
+    						<div data-role="popup" id="popupModificar" class="ui-content">
+      							<label for="operacion">Operacion</label>
+      							<input type="text" id="modificaOperacion">
+      							<label for="descripcion">Descripcion</label>
+      							<input type="text" id="modificaDescripcion">
+      							<fieldset data-iconpos="right">
+      								<input name="checkbox" id="checkbox-h-6a" type="checkbox">
+        							<label for="checkbox-h-6a">Usar en PPms?</label>
+      							</fieldset>
+      							<label for="grupo">Grupo</label>
+      							<select name="modificaGrupo" id="modificaGrupo">
+									<option value="default">- - - - - - -</option>
+									<option value="final_test">Final Test</option>
+									<option value="qc_audit">QC Audit</option>
+									<option value="process">Process</option>
+								</select>
+								<a id="guardarModificacion" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
+								<a id="cancelarAgregado" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+    						</div>
+  						</div>
+
+  						<!-- PopUp Eliminar Operacion -->
+  						<div data-role="main" class="ui-content">
+    						<a href="#popupEliminar" id="btnEliminar" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar Operacion</a>
+    						<div data-role="popup" id="popupEliminar" class="ui-content">
+      							<h3>Eliminar Operacion</h3><hr>
+      							<p>Estas seguro de eliminar esta <b>Operacion</b>???</p>
+      							<center>
+									<a id="eliminar" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+								</center>
+    						</div>
+  						</div>
+
+  						<!-- PopUp Copiar Operacion-->
+						<div data-role="main" class="ui-content">
+    						<a href="#popupCopiar" id="btnCopia" data-rel="popup" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-corner">Copiar Operacion</a>
+    						<div data-role="popup" id="popupCopiar" class="ui-content">
+      							<h3>Copiar Operaciones</h3><hr>
+								<div data-role="fieldcontain" id="">
+									<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
+									<select name="mod_origen" id="mod_origen">
+										<option value="">0016 496900</option>
+										<option value="">0059 419100</option>
+										<option value="">50C70 495</option>
+									</select>
+								</div>
+								<div data-role="fieldcontain" id="">
+									<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
+									<select name="mod_destino" id="mod_destino">
+										<option value="">50M61 843</option>
+										<option value="">F59-478100</option>
+										<option value="">50A51 235B1</option>
+									</select>
+								</div>
+      							<center>
+									<a id="copiar" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
+									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+								</center>
+    						</div>
   						</div>
 					</div>
 				</center>
+				<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+					<thead>
+						<tr>
+							<th>Operacion</th>
+							<th>Descripcion</th>
+							<th>PPms</th>
+							<th>Grupo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- PRIMER DATO-->
+						<tr>
+							<td>
+								<input type="text" value="Acalidad" disabled>
+							</td>
+							<td>
+								<input type="text" value="Auditoria de calidad" disabled>
+							</td>
+							<td>
+								<fieldset data-iconpos="right">
+									<label for="checkbox-h-6b">Usar</label>
+									<input id="checkbox-h-6b" name="checkbox-h-6b" type="checkbox">
+      							</fieldset>
+							</td>
+							<td>
+								<select name="area" id="area">
+									<option value="default">- - - - - - -</option>
+									<option value="final_test">Final Test</option>
+									<option value="qc_audit">QC Audit</option>
+									<option value="process">Process</option>
+								</select>
+							</td>
+						</tr>
+						<!-- SEGUNDO DATO-->
+					</tbody>
+				</table>
 			</form>
 		</div>
 	</div>
