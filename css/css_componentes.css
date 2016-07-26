@@ -36,4 +36,8 @@ table, th, tr, td {
 
 #divListComponente {
 	width: 25%;
+	height: 445px;
+	overflow: auto;
+	border: 5px solid black;
+	border-style: inset;
 }
