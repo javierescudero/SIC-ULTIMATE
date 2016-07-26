@@ -21,7 +21,7 @@
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>Captura<br> 
-				<b>Componentes</b>
+				<b>Codigos de falla</b>
 			</h1>
 		</div>
 
@@ -69,65 +69,58 @@
 						<center>
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
-					<select name="modelo" id="modelo">
-						<option value="">50M61 843</option>
-						<option value="">F59-478100</option>
-						<option value="">50M61 843</option>
-						<option value="">0059 474000</option>
-						<option value="">0059 478300</option>
-						<option value="">1F83C-11NPB1</option>
-						<option value="">50M61 843</option>
-						<option value="">F59-478100</option>
-						<option value="">50M61 843</option>
-						<option value="">0059 474000</option>
-					</select>
-					</div>
+						<select name="modelo" id="modelo">
+							<option value="">50M61 843</option>
+							<option value="">F59-478100</option>
+							<option value="">50M61 843</option>
+							<option value="">0059 474000</option>
+							<option value="">0059 478300</option>
+							<option value="">1F83C-11NPB1</option>
+							<option value="">50M61 843</option>
+							<option value="">F59-478100</option>
+							<option value="">50M61 843</option>
+							<option value="">0059 474000</option>
+						</select>
+						</div>
 				</center>
-
-				<!--Select de los componentes-->
 				<center>
-					<center><label for="componente" data-theme="c"><b>Componente</b></label></center>
-					<div id="divListComponente">
-						<ul data-role="listview">
-							<li data-icon="false"><a href="">C1</a></li>
-							<li data-icon="false"><a href="">C2</a></li>
-							<li data-icon="false"><a href="">C3</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-						</ul>
-					</div>
-				</center>
-
-				<center>
-					<div id="divBotonesComponentes">
-						<!-- PopUp Agregar Componente -->
+					<div id="divBotonesCodigos">
+						<!-- PopUp Agregar Codigos -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
     						<div data-role="popup" id="popupAgregar" class="ui-content">
-      							<h3>Agregar Componente</h3><hr>
-      							<input type="text" id="agregarComponente">
-								<a id="agregarComponenteConfirmacion" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
+      							<label for="codigo">Codigo</label>
+      							<input type="text" id="agregarCodigo">
+      							<label for="registrar">Registrar como</label>
+      							<input type="text" id="registrarComo">
+      							<label for="descripcion">Descripcion</label>
+      							<input type="text" id="agregarDescripcion">
+								<a id="agregarCodigoConfirmacion" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 								<a id="cancelar" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
     						</div>
   						</div>
 
-  						<!-- PopUp Eliminar Componente -->
+  						<!-- PopUp Modificar Codigos -->
+  						<div data-role="main" class="ui-content">
+    						<a href="#popupModificar" id="btnModificar" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Modificar</a>
+    						<div data-role="popup" id="popupModificar" class="ui-content">
+      							<label for="operacion">Codigo</label>
+      							<input type="text" id="modificaCodigo">
+      							<label for="descripcion">Registrar como</label>
+      							<input type="text" id="modificaRegistrarComo">
+      							<label for="descripcion">Descripcion</label>
+      							<input type="text" id="modificaDescripcion">
+								<a id="guardarModificacion" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
+								<a id="cancelarModificacion" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+    						</div>
+  						</div>
+
+  						<!-- PopUp Eliminar Codigos -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupEliminar" id="btnEliminar" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
     						<div data-role="popup" id="popupEliminar" class="ui-content">
-      							<h3>Eliminar Componente</h3><hr>
-      							<p>Estas seguro de eliminar este <b>Componente</b>???</p>
+      							<h3>Eliminar Codigo</h3><hr>
+      							<p>Estas seguro de eliminar este <b>Codigo</b>???</p>
       							<center>
 									<a id="eliminar" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
 									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
@@ -135,11 +128,11 @@
     						</div>
   						</div>
 
-  						<!-- PopUp Copiar Componente-->
+  						<!-- PopUp Copiar Codigos-->
 						<div data-role="main" class="ui-content">
-    						<a href="#popupCopiar" id="btnCopia" data-rel="popup" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-corner">Copiar de . . .</a>
+    						<a href="#popupCopiar" id="btnCopia" data-rel="popup" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-corner">Copiar</a>
     						<div data-role="popup" id="popupCopiar" class="ui-content">
-      							<h3>Copiar Componentes</h3><hr>
+      							<h3>Copiar Codigos de Falla</h3><hr>
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
 									<select name="mod_origen" id="mod_origen">
@@ -163,11 +156,11 @@
     						</div>
   						</div>
 
-  						<!-- PopUp Importar Componentes-->
+  						<!-- PopUp Importar Codigos-->
 						<div data-role="main" class="ui-content">
     						<a href="#popupImportar" id="btnImporta" data-rel="popup" class="ui-btn ui-icon-action ui-btn-icon-left ui-btn-inline ui-corner">Importar</a>
     						<div data-role="popup" id="popupImportar" class="ui-content">
-      							<h3>Importar Componentes</h3><hr>
+      							<h3>Importar Codigos de Falla</h3><hr>
 								<div id="divModelo">
 									<label for="modelo">Modelo</label>
 									<input type="text">
@@ -176,7 +169,7 @@
 									<center><label for="hoja" data-theme="c"><b>Seleccione una hoja</b></label></center><br>
 									<div id="listViewHojas">
 										<ul data-role="listview">
-											<li data-icon="false"><a href="">Aqui se cargan los archivos</li>
+											<li data-icon="false"><a href="">Aqui se cargan los archivos</a></li>
 										</ul><hr>
 									</div>
 								</div><br>
@@ -188,7 +181,7 @@
 									<center><label for="advertencia" data-theme="c"><b>Advertencias</b></label></center><br>
 									<div id="listViewAdvertencias">
 										<ul data-role="listview">
-											<li data-icon="false"><a href="">Aqui aparecen las advertencias</li>
+											<li data-icon="false"><a href="">Aqui aparecen las advertencias</a></li>
 										</ul>
 									</div>
 								</div>
@@ -196,6 +189,20 @@
   						</div>
 					</div>
 				</center>
+				<div id="divTable">
+					<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+						<thead>
+							<th>Codigo</th>
+							<th>Registrar Como</th>
+							<th>Descripcion</th>
+						</thead>
+						<tbody>
+							<td><input type="text" value="10" disabled></td>
+							<td><input type="text" value="10" disabled></td>
+							<td><input type="text" value="Dato invalido encontrado en serie de datos o no deteccion de flama"  title="Dato invalido encontrado en serie de datos o no deteccion de flama" disabled></td>
+						</tbody>
+					</table>
+				</div>
 			</form>
 		</div>
 	</div>
