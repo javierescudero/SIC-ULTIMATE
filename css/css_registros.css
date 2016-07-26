@@ -1,0 +1,15 @@
+#divForm {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.ui-block-b {
+
+}
+#divFecha, #divTurno, #divLinea, #divEmpleado  {
+	width: 70%;
+}
+
+#divFamilia, #divModelo, #divOperacion {
+	width: 60%;
+}
