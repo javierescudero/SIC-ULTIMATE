@@ -1,0 +1,18 @@
+#divFormDesempeno {
+	width: 50%;
+	margin-left: 30%;
+}
+
+#selectFamilia, #selectModelo {
+	width: 70%;
+}
+
+#fieldsetBotones {
+	margin-left: -70px;
+}
+
+table, th, tr, td {
+	border: 5px solid black;
+	border-style: outset;
+	border-radius: 5px;
+}

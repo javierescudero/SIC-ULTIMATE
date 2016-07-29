@@ -8,8 +8,12 @@
 
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
+	<script src="js/jqm-datebox-1.4.5.core.min.js"></script>
+	<script src="js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
+	<script src="js/jqm-datebox.lang.utf8.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/jqm-datebox-1.4.5.min.css">
 	<link rel="stylesheet" href="css/css_index.css">
 	<link rel="stylesheet" href="css/css_fam_mod.css">
 	<link rel="stylesheet" href="css/css_operaciones.css">
@@ -24,7 +28,7 @@
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>SIC Ultimate<br> 
-				<b>Inicio</b>
+				<b>Desempeño</b>
 			</h1>
 		</div>
 
@@ -64,6 +68,91 @@
 				</div><br><hr><br>
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
+		</div>
+
+		<!-- Formulario -->
+		<div id="divFormDesempeno">
+			<form action="">
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<label for="fecha"><b>Fecha Inicial</b></label>
+						<div class="ui-field-contain" id="divFecha" title="Fecha Inicial">
+            				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          				</div>
+          				<div id="selectFamilia">
+          					<label for="familia"><b>Familia</b></label>
+          					<select name="familia" id="familia">
+								<option value="">--- Todas ---</option>
+								<option value="">11E79</option>
+								<option value="">36F</option>
+								<option value="">48C21</option>
+								<option value="">ATHENA</option>
+							</select>
+          				</div>
+					</div>
+				<div class="ui-block-b">
+					<label for="fecha"><b>Fecha Final</b></label>
+					<div class="ui-field-contain" id="divFecha" title="Fecha Final">
+            			<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          			</div>
+          			<div id="selectModelo">
+          				<label for="modelo"><b>Modelo</b></label>
+          				<select name="modelo" id="modelo">
+							<option value="">--- Todos ---</option>
+							<option value="">11E79 101B1</option>
+							<option value="">11E79 301B1</option>
+							<option value="">11E79 400B1</option>
+							<option value="">11E79-901</option>
+						</select>
+          			</div>
+				</div>
+			</div><br>
+			<fieldset data-role="controlgroup" id="fieldsetBotones">
+				<center>
+					<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
+					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+				</center>
+			</fieldset><br><br><br>
+			<div class="ui-grid-b">
+					<div class="ui-block-a">
+						<label for="producidas"><b>Piezas Producidas</b></label>
+						<input name="producidas" id="producidas" type="text" disabled/>
+						<label for="rechazadas"><b>Piezas Rechazadas</b></label>
+						<input name="rechazadas" id="rechazadas" type="text" disabled/>
+					</div>
+					<div class="ui-block-b">
+						<label for="ppms"><b>PPMs</b></label>
+						<input name="ppms" id="ppms" type="text" disabled/>
+						<label for="rty"><b>RTY</b></label>
+						<input name="rty" id="rty	" type="text" disabled/>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role="button" id="btnExcel" data-icon="grid" data-inline="true">Excel</a>
+					</div>
+				</div>
+			</form>
+			<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+				<thead>
+					<tr>
+						<th>Operacion</th>
+						<th>Produccion</th>
+						<th>Rechazos</th>
+						<th>% Rechazos</th>
+						<th>PPMs</th>
+						<th>FTY</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" value="Acalidad" disabled></td>
+						<td><input type="text" value="30" disabled></td>
+						<td><input type="text" value="0" disabled></td>
+						<td><input type="text" value="0 %" disabled></td>
+						<td><input type="text" value="0" disabled></td>
+						<td><input type="text" value="100 %" disabled></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>
