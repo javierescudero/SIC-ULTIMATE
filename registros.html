@@ -70,34 +70,38 @@
 
 		<div id="divForm">
 			<form action="">
-				<div class="ui-grid-a">
-					<div class="ui-block-c">
+				<div class="ui-grid-b">
+					<div class="ui-block-a">
+						<label for="fecha"><b>Fecha</b></label>
 						<div class="ui-field-contain" id="divFecha" title="Fecha">
-            				<input name="fecha" id="fecha" type="text" data-role="datebox" data-options='{"mode":"calbox"}' placeholder="Fecha"/>
+            				<input name="fecha" id="fecha" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           				</div>
           				<div style="display:none">
             				<input name="langpicker" type="text" data-role="datebox" data-datebox-close-callback="changeLang" data-datebox-custom-data="langs" data-datebox-custom-head="Language" data-datebox-popup-position="window" data-datebox-override-custom-set="Choose" data-datebox-mode="customflip" id="langpicker" />
           				</div>
+          				<label for="turno"><b>Turno</b></label>
           				<div class="ui-field-contain" id="divTurno" title="Turno">
-            				<input name="turno" id="turno" type="number" placeholder="Turno"/>
+            				<input name="turno" id="turno" type="number"/>
           				</div>
+          				<label for="linea"><b>Linea</b></label>
           				<div class="ui-field-contain" id="divLinea" title="Linea">
-            				<input name="linea" id="linea" type="text" placeholder="Linea"/>
-          				</div>
-          				<div class="ui-field-contain" id="divEmpleado" title="Numero de Empleado">
-            				<input name="empleado" id="empleado" type="number" placeholder="# Empleado"/>
+            				<input name="linea" id="linea" type="text"/>
           				</div>
 					</div>
 					<div class="ui-block-b">
+          				<label for="empleado"><b># de Empleado</b></label>
+          				<div class="ui-field-contain" id="divEmpleado" title="Numero de Empleado">
+            				<input name="empleado" id="empleado" type="number"/>
+          				</div>
+          				<label for="familia"><b>Familia</b></label>
 						<div class="ui-field-contain" id="divFamilia" title="Familias">
             				<select name="familia" id="familia">
-								<option value="">Familia</option>
 								<option value="">11E79</option>
 							</select>
           				</div>
+          				<label for="familia"><b>Modelos</b></label>
 						<div class="ui-field-contain" id="divModelo" title="Modelos">
             				<select name="modelo" id="modelo">
-								<option value="">Modelo</option>
 								<option value="">11E79</option>
 								<option value="">36E</option>
 								<option value="">36G - TWO STAGE</option>
@@ -105,26 +109,37 @@
 								<option value="">50C51</option>
 								<option value="">INTELLIVENT</option>
 								<option value="">PANEL ASSY</option>
-								<option value="">11E79</option>
-								<option value="">36E</option>
-								<option value="">36G - TWO STAGE</option>
-								<option value="">36H</option>
-
 							</select>
           				</div>
+					</div>
+					<div class="ui-block-c">
+						<label for="operacion"><b>Operacion</b></label>
           				<div class="ui-field-contain" id="divOperacion" title="Operaciones">
             				<select name="operacion" id="operacion">
-								<option value="">Operacion</option>
 								<option value="">CZ140</option>
-								<option value="">CZ210</option>
 								<option value="">Rfinal</option>
 								<option value="">CZ020</option>
 								<option value="">Acalidad</option>
 								<option value="">RZenthel</option>
 							</select>
           				</div>
+          				<label for="produccion"><b>Produccion</b></label>
+          				<div class="ui-field-contain" id="divTurno" title="Produccion">
+            				<input name="produccion" id="produccion"/>
+          				</div>
+          				<label for="piezas"><b>Piezas Rechazadas</b></label>
+          				<div class="ui-field-contain" id="divTurno" title="Piezas rechazadas">
+            				<input name="piezas" id="piezas" type="number"/>
+          				</div> 
 					</div>
 				</div>
+				<center>
+					<a href="" id="btnAgregaModelo" data-role="button" data-inline="true" onclick="window.open('fam&mod.html');">Agregar Modelos / Familia</a>
+          			<a href="" id="btnAgregaComponente" data-role="button" data-inline="true" onclick="window.open('componentes.html');">Agregar Componentes</a>
+          			<a href="" id="btnAgregaCodigo" data-role="button" data-inline="true" onclick="window.open('codigos_de_falla.html');">Agregar Codigos De Falla</a>
+				</center>
+				
+				<!-- Tabla -->
 				<div id="divTable">
 					<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
 						<thead>
@@ -165,6 +180,10 @@
 						</tbody>
 					</table>
 				</div>
+				<center>
+					<a href="" data-role="button" id="guardar" data-icon="check" data-inline="true">Guardar</a>
+					<a href="" data-role="button" id="limpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+				</center>
 			</form>
 		</div>
 	</div>
