@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<title>SIC Ultimate</title>
+
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.js"></script>
+	<script src="js/jqm-datebox-1.4.5.core.min.js"></script>
+	<script src="js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
+	<script src="js/jqm-datebox.lang.utf8.js"></script>
+	
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/jqm-datebox-1.4.5.min.css">
+	<link rel="stylesheet" href="css/css_index.css">
+	<link rel="stylesheet" href="css/css_fam_mod.css">
+	<link rel="stylesheet" href="css/css_operaciones.css">
+	<link rel="stylesheet" href="css/css_componentes.css">
+	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
+	<link rel="stylesheet" href="css/css_registros.css">
+	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_desempeno.css">
+	<link rel="stylesheet" href="css/css_tendencia.css">
+</head>
+<body>
+	<div data-role="page" data-theme="b" class="ui-responsive-panel">
+		<div data-role="header" id="header">
+			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
+			<h1>SIC Ultimate<br> 
+				<b>Graficas de Tendencia</b>
+			</h1>
+		</div>
+
+		<!-- Menu -->
+		<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
+			<ul id="ul_menu" class="nav-search" data-role="listview" data-theme="b" data-divider-theme="a">
+				<li data-icon="false" ><a href="#" id="menu_principal">Menu Principal</a></li>
+				<br>
+			</ul>
+			<div id="divMenuPrincipal">
+				<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
+					<h3><center>Captura</center></h3>
+					<a href="fam&mod.html" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
+					<a href="operaciones.html" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
+					<a href="componentes.html" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
+					<a href="codigos_de_falla.html" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
+					<a href="registros.html" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
+				</div> 
+				<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
+					<h3><center>Reportes</center></h3>
+					<a href="desempeno.html" data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
+					<a href="tendencia.html" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
+					<a href="#" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
+				</div>
+				<div id="usuarios" data-role="collapsible" data-collapsed-icon="user" data-expanded-icon="carat-u">
+					<h3><center>Usuarios</center></h3>
+					<a href="permisos.html" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
+				</div>
+
+				<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
+					<h3><center>Cambiar Area</center></h3>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">CPI</a>
+				</div><br><hr><br>
+				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
+			</div>
+		</div>
+
+		<!-- Formulario -->
+		<div id="divFormDesempeno">
+			<form action="">
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<label for="fecha"><b>Fecha Inicial</b></label>
+						<div class="ui-field-contain" id="divFecha" title="Fecha Inicial">
+            				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          				</div>
+          				<div id="selectFamilia">
+          					<label for="familia"><b>Familia</b></label>
+          					<select name="familia" id="familia">
+								<option value="">--- Todas ---</option>
+								<option value="">11E79</option>
+								<option value="">36F</option>
+								<option value="">48C21</option>
+								<option value="">ATHENA</option>
+							</select>
+          				</div>
+					</div>
+				<div class="ui-block-b">
+					<label for="fecha"><b>Fecha Final</b></label>
+					<div class="ui-field-contain" id="divFecha" title="Fecha Final">
+            			<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          			</div>
+          			<div id="selectModelo">
+          				<label for="modelo"><b>Modelo</b></label>
+          				<select name="modelo" id="modelo">
+							<option value="">--- Todos ---</option>
+							<option value="">11E79 101B1</option>
+							<option value="">11E79 301B1</option>
+							<option value="">11E79 400B1</option>
+							<option value="">11E79-901</option>
+						</select>
+          			</div>
+				</div>
+			</div><br>
+			<div class="containing-element" id="flipDivDatos">
+				<center>
+					<label for="flipDatos" id="lblMostrar"><b>Mostrar Datos</b></label>
+					<select name="flipDatos" id="flipDatos" data-role="slider">
+						<option value="0">Acumulados</option>
+						<option value="1">Diarios</option>
+					</select>
+				</center>
+			</div>
+			<fieldset data-role="controlgroup" id="fieldsetBotones">
+				<center>
+					<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
+					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+				</center>
+			</fieldset><br><br><br>
+			</form>
+			<table id="tableTendencia" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Operacion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="colSeleccion"><fieldset data-iconpos="right" id="fieldSeleccion">
+								<label for="seleccion">Sel.</label>
+								<input id="seleccion" name="seleccion" type="checkbox">
+      						</fieldset></td>
+						<td id="colOperacion"><input type="text" value="Acalidad" disabled></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
