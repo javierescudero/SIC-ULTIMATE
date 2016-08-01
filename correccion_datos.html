@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<title>SIC Ultimate</title>
+
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.js"></script>
+	<script src="js/jqm-datebox-1.4.5.core.min.js"></script>
+	<script src="js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
+	<script src="js/jqm-datebox.lang.utf8.js"></script>
+	
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="css/jqm-datebox-1.4.5.min.css">
+	<link rel="stylesheet" href="css/css_index.css">
+	<link rel="stylesheet" href="css/css_fam_mod.css">
+	<link rel="stylesheet" href="css/css_operaciones.css">
+	<link rel="stylesheet" href="css/css_componentes.css">
+	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
+	<link rel="stylesheet" href="css/css_registros.css">
+	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_desempeno.css">
+	<link rel="stylesheet" href="css/css_tendencia.css">
+	<link rel="stylesheet" href="css/css_contribuyentes.css">
+	<link rel="stylesheet" href="css/css_correccion_datos.css">
+</head>
+<body>
+	<div data-role="page" data-theme="b" class="ui-responsive-panel">
+		<div data-role="header" id="header">
+			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
+			<h1>SIC Ultimate<br> 
+				<b>Correccion de Datos</b>
+			</h1>
+		</div>
+
+		<!-- Menu -->
+		<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
+			<ul id="ul_menu" class="nav-search" data-role="listview" data-theme="b" data-divider-theme="a">
+				<li data-icon="false" ><a href="#" id="menu_principal">Menu Principal</a></li>
+				<br>
+			</ul>
+			<div id="divMenuPrincipal">
+				<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
+					<h3><center>Captura</center></h3>
+					<a href="fam&mod.html" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
+					<a href="operaciones.html" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
+					<a href="componentes.html" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
+					<a href="codigos_de_falla.html" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
+					<a href="registros.html" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
+				</div> 
+				<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
+					<h3><center>Reportes</center></h3>
+					<a href="desempeno.html" data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
+					<a href="tendencia.html" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
+					<a href="contribuyentes.html" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
+					<a href="correccion_datos.html" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
+				</div>
+				<div id="usuarios" data-role="collapsible" data-collapsed-icon="user" data-expanded-icon="carat-u">
+					<h3><center>Usuarios</center></h3>
+					<a href="permisos.html" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
+				</div>
+
+				<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
+					<h3><center>Cambiar Area</center></h3>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
+					<a href="#" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">CPI</a>
+				</div><br><hr><br>
+				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
+			</div>
+		</div>
+
+		<!-- Formulario -->
+		<div id="divFormDesempeno">
+			<form action="">
+				<div class="ui-grid-b">
+					<div class="ui-block-a">
+						<label for="fecha"><b>Fecha Inicial</b></label>
+						<div class="ui-field-contain" id="divFechaInicial" title="Fecha Inicial">
+            				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          				</div>
+          				<label for="familia"><b>Familia</b></label>
+          				<div class="ui-field-contain" id="divFamiliaCDD">
+          					<select name="familia" id="familia">
+								<option value="">--- Todas ---</option>
+								<option value="">11E79</option>
+								<option value="">36F</option>
+								<option value="">48C21</option>
+								<option value="">ATHENA</option>
+							</select>
+          				</div>
+          				<label for="componente"><b>Componente</b></label>
+          				<div class="ui-field-contain" id="divComponenteCDD">
+          					<select name="componente" id="componente">
+								<option value="">--- Todos ---</option>
+								<option value="">01</option>
+								<option value="">03</option>
+								<option value="">06</option>
+							</select>
+          				</div>
+					</div>
+					<div class="ui-block-b">
+						<label for="fecha"><b>Fecha Final</b></label>
+						<div class="ui-field-contain" id="divFechaFinal" title="Fecha Final">
+            				<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          				</div>
+          				<label for="modelo"><b>Modelo</b></label>
+          				<div class="ui-field-contain" id="divModeloCDD">
+          					<select name="modelo" id="modelo">	
+								<option value="">--- Todos ---</option>
+								<option value="">11E79 101B1</option>
+								<option value="">11E79 301B1</option>
+								<option value="">11E79 400B1</option>
+								<option value="">11E79-901</option>
+							</select>
+          				</div>
+          				<label for="operaciones"><b>Operaciones</b></label>
+          				<div class="ui-field-contain" id="divOperacionesCDD">
+          					<select name="operaciones" id="operaciones">
+								<option value="">--- Todas ---</option>
+								<option value="">Acalidad</option>
+								<option value="">CY140</option>
+								<option value="">CY999</option>
+							</select>
+          				</div>
+					</div>
+					<div class="ui-block-c">
+						<label for="codigo"><b>Codigo</b></label>
+						<div class="ui-field-contain" id="divCodigosCDD">
+          					<select name="codigo" id="codigo">
+								<option value="">--- Todos ---</option>
+								<option value="">10</option>
+								<option value="">100</option>
+								<option value="">1000</option>
+							</select>
+          				</div>
+          				<label for="linea"><b>Linea</b></label>
+          				<div class="ui-field-contain" id="divSelectLinea">
+          					<select name="linea" id="Linea">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+          				</div>
+          				<label for=""><b>Turno</b></label>
+          				<div class="ui-field-contain">
+          					<select name="turno" id="turno " data-role="slider" data-theme="b" data-track-theme="b">
+                				<option value="1">1</option>
+                				<option value="3">3</option>
+        					</select>
+          				</div>
+					</div>
+				</div>
+				<div class="ui-field-contain">
+					<center>
+						<a href="" id="btnMostrar" data-role="button" data-inline="true">Mostar</a>
+						<a href="" id="btnActualizar" data-role="button" data-inline="true">Actualizar</a>
+						<a href="" id="btnLimpiar" data-role="button" data-inline="true">Limpiar</a>
+					</center>
+				</div>
+			</form>
+			<div id="tablaCorreccion">
+				<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+					<thead>
+						<tr>
+							<th width="5%;">Fecha</th>
+							<th width="3%;">Turno</th>
+							<th width="3%;">Linea</th>
+							<th width="5%;">Empleado</th>
+							<th width="8%;">Modelo</th>
+							<th width="8%;">Operacion</th>
+							<th width="3%;">Cantidad</th>
+							<th width="8%;">Codigo</th>
+							<th width="5%;">Componente</th>
+							<th width="5%;">Produccion</th>
+							<th width="8%;">Familia</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td id=""><input type="text" value="8/01/2016"></td>
+							<td id=""><input type="text" value="1"></td>
+							<td id=""><input type="text" value="5"></td>
+							<td id=""><input type="text" value="51168"></td>
+							<td id=""><input type="text" value="11E79 101B1"></td>
+							<td id=""><input type="text" value="Acalidad"></td>
+							<td id=""><input type="text" value="7"></td>
+							<td id=""><input type="text" value="1000"></td>
+							<td id=""><input type="text" value="06"></td>
+							<td id=""><input type="text" value="54"></td>
+							<td id=""><input type="text" value="11E79"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
