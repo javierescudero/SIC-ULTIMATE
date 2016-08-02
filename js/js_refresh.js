@@ -48,4 +48,9 @@ $(document).ready(function() {
 		location.href = "permisos.html";
 		setInterval(100);
 	});
+
+	$('#inicio').click(function(){
+		location.href = "index.html";
+		setInterval(100);
+	});
 });
