@@ -87,18 +87,38 @@
             				<input name="langpicker" type="text" data-role="datebox" data-datebox-close-callback="changeLang" data-datebox-custom-data="langs" data-datebox-custom-head="Language" data-datebox-popup-position="window" data-datebox-override-custom-set="Choose" data-datebox-mode="customflip" id="langpicker" />
           				</div>
           				<label for="turno"><b>Turno</b></label>
-          				<div class="ui-field-contain" id="divTurno" title="Turno">
-            				<input name="turno" id="turno" type="number"/>
+          				<div class="ui-field-contain">
+          					<select name="turno" id="turno" data-role="slider" data-theme="b" data-track-theme="b">
+                				<option value="1">1</option>
+                				<option value="3">3</option>
+        					</select>
           				</div>
           				<label for="linea"><b>Linea</b></label>
-          				<div class="ui-field-contain" id="divLinea" title="Linea">
-            				<input name="linea" id="linea" type="text"/>
+          				<div class="ui-field-contain" id="divNumLinea">
+          					<select name="linea" id="Linea">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
           				</div>
 					</div>
 					<div class="ui-block-b">
-          				<label for="empleado"><b># de Empleado</b></label>
-          				<div class="ui-field-contain" id="divEmpleado" title="Numero de Empleado">
-            				<input name="empleado" id="empleado" type="number"/>
+          				<label for="operacion"><b>Operacion</b></label>
+          				<div class="ui-field-contain" id="divOperacion" title="Operaciones">
+            				<select name="operacion" id="operacion">
+								<option value="">CZ140</option>
+								<option value="">Rfinal</option>
+								<option value="">CZ020</option>
+								<option value="">Acalidad</option>
+								<option value="">RZenthel</option>
+							</select>
           				</div>
           				<label for="familia"><b>Familia</b></label>
 						<div class="ui-field-contain" id="divFamilia" title="Familias">
@@ -120,22 +140,16 @@
           				</div>
 					</div>
 					<div class="ui-block-c">
-						<label for="operacion"><b>Operacion</b></label>
-          				<div class="ui-field-contain" id="divOperacion" title="Operaciones">
-            				<select name="operacion" id="operacion">
-								<option value="">CZ140</option>
-								<option value="">Rfinal</option>
-								<option value="">CZ020</option>
-								<option value="">Acalidad</option>
-								<option value="">RZenthel</option>
-							</select>
+						<label for="empleado"><b># de Empleado</b></label>
+          				<div class="ui-field-contain" id="divEmpleado" title="Numero de Empleado">
+            				<input name="empleado" id="empleado" type="number"/>
           				</div>
           				<label for="produccion"><b>Produccion</b></label>
-          				<div class="ui-field-contain" id="divTurno" title="Produccion">
+          				<div class="ui-field-contain" id="divProduccion" title="Produccion">
             				<input name="produccion" id="produccion"/>
           				</div>
           				<label for="piezas"><b>Piezas Rechazadas</b></label>
-          				<div class="ui-field-contain" id="divTurno" title="Piezas rechazadas">
+          				<div class="ui-field-contain" id="divPzRechazadas" title="Piezas rechazadas">
             				<input name="piezas" id="piezas" type="number"/>
           				</div> 
 					</div>

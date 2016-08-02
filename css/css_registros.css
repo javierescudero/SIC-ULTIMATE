@@ -3,11 +3,7 @@
 	margin-left: 25%;
 }
 
-#divFecha, #divTurno, #divLinea, #divEmpleado  {
-	width: 70%;
-}
-
-#divFamilia, #divModelo, #divOperacion, #divCodigo, #divComponente {
+#divCodigo, #divComponente {
 	width: 50%;
 }
 
@@ -17,4 +13,16 @@
 
 #colCodigo, #colComponente, #colCantidad {
 	width: 33%;
+}
+
+#divPzRechazadas, #divEmpleado, #divProduccion {
+	width: 30%;
+}
+
+#divFecha, #divNumLinea {
+	width: 40%;
+}
+
+#divFamilia, #divModelo, #divOperacion {
+	width: 70%;
 }
