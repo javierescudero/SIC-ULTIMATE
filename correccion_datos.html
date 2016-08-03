@@ -15,17 +15,7 @@
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/jqm-datebox-1.4.5.min.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
@@ -76,16 +66,16 @@
 		</div>
 
 		<!-- Formulario -->
-		<div id="divFormDesempeno">
+		<div id="divForm_CDD">
 			<form action="">
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
 						<label for="fecha"><b>Fecha Inicial</b></label>
-						<div class="ui-field-contain" id="divFechaInicial" title="Fecha Inicial">
+						<div class="ui-field-contain" id="divFechaInicial_CDD" title="Fecha Inicial">
             				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           				</div>
           				<label for="familia"><b>Familia</b></label>
-          				<div class="ui-field-contain" id="divFamiliaCDD">
+          				<div class="ui-field-contain" id="divFamilia_CDD">
           					<select name="familia" id="familia">
 								<option value="">--- Todas ---</option>
 								<option value="">11E79</option>
@@ -95,7 +85,7 @@
 							</select>
           				</div>
           				<label for="componente"><b>Componente</b></label>
-          				<div class="ui-field-contain" id="divComponenteCDD">
+          				<div class="ui-field-contain" id="divComponente_CDD">
           					<select name="componente" id="componente">
 								<option value="">--- Todos ---</option>
 								<option value="">01</option>
@@ -106,11 +96,11 @@
 					</div>
 					<div class="ui-block-b">
 						<label for="fecha"><b>Fecha Final</b></label>
-						<div class="ui-field-contain" id="divFechaFinal" title="Fecha Final">
+						<div class="ui-field-contain" id="divFechaFinal_CDD" title="Fecha Final">
             				<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           				</div>
           				<label for="modelo"><b>Modelo</b></label>
-          				<div class="ui-field-contain" id="divModeloCDD">
+          				<div class="ui-field-contain" id="divModelo_CDD">
           					<select name="modelo" id="modelo">	
 								<option value="">--- Todos ---</option>
 								<option value="">11E79 101B1</option>
@@ -120,7 +110,7 @@
 							</select>
           				</div>
           				<label for="operaciones"><b>Operaciones</b></label>
-          				<div class="ui-field-contain" id="divOperacionesCDD">
+          				<div class="ui-field-contain" id="divOperaciones_CDD">
           					<select name="operaciones" id="operaciones">
 								<option value="">--- Todas ---</option>
 								<option value="">Acalidad</option>
@@ -131,7 +121,7 @@
 					</div>
 					<div class="ui-block-c">
 						<label for="codigo"><b>Codigo</b></label>
-						<div class="ui-field-contain" id="divCodigosCDD">
+						<div class="ui-field-contain" id="divCodigos_CDD">
           					<select name="codigo" id="codigo">
 								<option value="">--- Todos ---</option>
 								<option value="">10</option>
@@ -140,7 +130,7 @@
 							</select>
           				</div>
           				<label for="linea"><b>Linea</b></label>
-          				<div class="ui-field-contain" id="divSelectLinea">
+          				<div class="ui-field-contain" id="divSelectLinea_CDD">
           					<select name="linea" id="Linea">
 								<option value="1">1</option>
 								<option value="2">2</option>

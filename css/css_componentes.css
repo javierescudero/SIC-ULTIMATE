@@ -1,43 +1,6 @@
-#divPage {
-	display: inline-block;
-}
 
-#menu_principal {
-	background-color: #111;
-}
 
-#divFormulario {
-	width: 70%;
-	margin-left: 15%;
-}
 
-.ui-panel-wrapper {
-    position: static;
-    min-height: 100px;
-    border: 0;
-    overflow-x: hidden;
-    z-index: 999;
-}
 
-#divBotonesComponentes {
-	width: 100%;
-	display: inline-block;
-}
 
-table, th, tr, td {
-	border: 5px solid black;
-	border-style: outset;
-	border-radius: 5px;
-}
 
-#divFieldcontain {
-	width: 25%;
-}
-
-#divListComponente {
-	width: 25%;
-	height: 445px;
-	overflow: auto;
-	border: 5px solid black;
-	border-style: inset;
-}

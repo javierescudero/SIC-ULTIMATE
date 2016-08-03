@@ -11,17 +11,7 @@
 	<script src="js/js_refresh.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
@@ -70,32 +60,32 @@
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
 		</div>
-		<div id="divFormulario">
+		<div id="divFormComp">
 			<form action="">
 				<center>
-					<div data-role="fieldcontain" id="divFieldcontain">
+					<div data-role="fieldcontain" id="divContentModelo_Comp">
 						<center>
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
-					<select name="modelo" id="modelo">
-						<option value="">50M61 843</option>
-						<option value="">F59-478100</option>
-						<option value="">50M61 843</option>
-						<option value="">0059 474000</option>
-						<option value="">0059 478300</option>
-						<option value="">1F83C-11NPB1</option>
-						<option value="">50M61 843</option>
-						<option value="">F59-478100</option>
-						<option value="">50M61 843</option>
-						<option value="">0059 474000</option>
-					</select>
+						<select name="modelo" id="modelo">
+							<option value="">50M61 843</option>
+							<option value="">F59-478100</option>
+							<option value="">50M61 843</option>
+							<option value="">0059 474000</option>
+							<option value="">0059 478300</option>
+							<option value="">1F83C-11NPB1</option>
+							<option value="">50M61 843</option>
+							<option value="">F59-478100</option>
+							<option value="">50M61 843</option>
+							<option value="">0059 474000</option>
+						</select>
 					</div>
 				</center>
 
 				<!--Select de los componentes-->
 				<center>
 					<center><label for="componente" data-theme="c"><b>Componente</b></label></center>
-					<div id="divListComponente">
+					<div id="divLvwComponentes_Comp">
 						<ul data-role="listview">
 							<li data-icon="false"><a href="">C1</a></li>
 							<li data-icon="false"><a href="">C2</a></li>
@@ -118,7 +108,7 @@
 				</center>
 
 				<center>
-					<div id="divBotonesComponentes">
+					<div id="divBtnsComponentes_Comp">
 						<!-- PopUp Agregar Componente -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>

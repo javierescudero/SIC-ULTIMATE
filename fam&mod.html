@@ -11,17 +11,7 @@
 	<script src="js/js_refresh.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
@@ -70,18 +60,18 @@
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
 		</div>
-		<div id="divForm">
+		<div id="divForm_FM">
 			<form action="">
-			<div class="ui-grid-d" id="formulario">
+			<div class="ui-grid-d" id="">
 				<div class="ui-block-a">
 					<center><label for="familia" data-theme="c"><b>Familias</b></label></center>
-					<div id="familia">
+					<div id="divFamilia_FM">
 						<ul data-role="listview">
 							<li data-icon="false"><a href="">11E79</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="ui-block-b" id="divBtnsFamilias">
+				<div class="ui-block-b" id="divBtnsFamilias_FM">
 					<br><br><br><br><br><br><br><br><br>
 
 					<!-- PopUp Agregar Familia-->
@@ -89,7 +79,7 @@
     					<a href="#popupAgregarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
     					<div data-role="popup" id="popupAgregarFamilia" class="ui-content">
       						<h3>Agregar Familia</h3>
-      						<input type="text" id="pop_btnAgregaFamilia" placeholder="Familia..." required>
+      						<input type="text" id="pop_btnAgregaFamilia" placeholder="Familia...">
       						<center>
 								<a id="agregarFamilia" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
@@ -112,8 +102,8 @@
   					</div>
 				</div>
 				<div class="ui-block-c">
-					<center><label for="modelos" data-theme="c"><b>Modelos</b></label></center>
-					<div id="modelos">
+					<center><label for="divModelos_FM" id="lblModelos" data-theme="c"><b>Modelos</b></label></center>
+					<div id="divModelos_FM">
 						<ul data-role="listview">
 							<li data-icon="false"><a href="">11E79 101B1</a></li>
 							<li data-icon="false"><a href="">11E79 301B1</a></li>
@@ -122,7 +112,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="ui-block-d" id="divBtnsModelos">
+				<div class="ui-block-d" id="divBtnsModelos_FM">
 					<br><br><br><br><br><br><br><br><br>
 
 					<!-- PopUp Agregar Modelo-->
@@ -130,7 +120,7 @@
     					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
     					<div data-role="popup" id="popupAgregarModelo" class="ui-content">
       						<h3>Agregar Modelo</h3>
-      						<input type="text" id="pop_btnAgregaModelo" placeholder="Modelo..." required>
+      						<input type="text" id="pop_btnAgregaModelo_FM" placeholder="Modelo...">
       						<center>
 								<a id="agregarMod" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
@@ -152,10 +142,10 @@
   					</div>
 				</div>
 			</div><br><br>
-			<div id="divBtnsOp">
+			<div id="divBtnsOp_FM">
 				<center>
 					<!-- PopUp Agregar Operacion -->
-  					<div data-role="main" class="ui-content">
+  					<div data-role="main" class="ui-content" id="btnAgregarOpe_FM">
     					<a href="#popupAgregarOperacion" id="btnAgregarOpe" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar Operacion</a>
     					<div data-role="popup" id="popupAgregarOperacion" class="ui-content">
       						<label for="operacion">Operacion</label>
@@ -182,7 +172,7 @@
 
 					<!-- PopUp Guardar Operacion -->
   					<div data-role="main" class="ui-content">
-    					<a href="#popupGuardarOperacion" id="btnGuardarOpe" data-rel="popup" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner">Guardar Operacion</a>
+    					<a href="#popupGuardarOperacion" id="btnGuardarOpe_FM" data-rel="popup" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner">Guardar Operacion</a>
     					<div data-role="popup" id="popupGuardarOperacion" class="ui-content">
       						<h3>Guardar Operacion</h3><hr>
       						<p>Confirmacion para guardar la <b>Operacion</b></p>
@@ -194,7 +184,7 @@
   					</div>
 					
 					<!-- PopUp Eliminar Operacion -->
-  					<div data-role="main" class="ui-content">
+  					<div data-role="main" class="ui-content" id="divElimarOp_FM">
     					<a href="#popupEliminarOperacion" id="btnEliminarOpe" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar Operacion</a>
     					<div data-role="popup" id="popupEliminarOperacion" class="ui-content">
       						<h3>Eliminar Operacion</h3><hr>
@@ -207,7 +197,7 @@
   					</div>
 
 					<!-- PopUp Copiar Operacion-->
-					<div data-role="main" class="ui-content">
+					<div data-role="main" class="ui-content" id="divCopiarOp_FM">
     					<a href="#popupCopiarOperacion" id="btnCopiaOp" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Copiar Operacion</a>
     					<div data-role="popup" id="popupCopiarOperacion" class="ui-content">
       						<h3>Copiar Operaciones</h3><hr>

@@ -15,17 +15,7 @@
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/jqm-datebox-1.4.5.min.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
@@ -75,7 +65,7 @@
 			</div>
 		</div>
 
-		<div id="divForm">
+		<div id="divForm_Reg">
 			<form action="">
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
@@ -87,14 +77,14 @@
             				<input name="langpicker" type="text" data-role="datebox" data-datebox-close-callback="changeLang" data-datebox-custom-data="langs" data-datebox-custom-head="Language" data-datebox-popup-position="window" data-datebox-override-custom-set="Choose" data-datebox-mode="customflip" id="langpicker" />
           				</div>
           				<label for="turno"><b>Turno</b></label>
-          				<div class="ui-field-contain">
+          				<div class="ui-field-contain" id="divTurno_Reg">
           					<select name="turno" id="turno" data-role="slider" data-theme="b" data-track-theme="b">
                 				<option value="1">1</option>
                 				<option value="3">3</option>
         					</select>
           				</div>
           				<label for="linea"><b>Linea</b></label>
-          				<div class="ui-field-contain" id="divNumLinea">
+          				<div class="ui-field-contain" id="divNumLinea_Reg">
           					<select name="linea" id="Linea">
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -111,7 +101,7 @@
 					</div>
 					<div class="ui-block-b">
           				<label for="operacion"><b>Operacion</b></label>
-          				<div class="ui-field-contain" id="divOperacion" title="Operaciones">
+          				<div class="ui-field-contain" id="divOperacion_Reg" title="Operaciones">
             				<select name="operacion" id="operacion">
 								<option value="">CZ140</option>
 								<option value="">Rfinal</option>
@@ -121,13 +111,13 @@
 							</select>
           				</div>
           				<label for="familia"><b>Familia</b></label>
-						<div class="ui-field-contain" id="divFamilia" title="Familias">
+						<div class="ui-field-contain" id="divFamilia_Reg" title="Familias">
             				<select name="familia" id="familia">
 								<option value="">11E79</option>
 							</select>
           				</div>
           				<label for="familia"><b>Modelos</b></label>
-						<div class="ui-field-contain" id="divModelo" title="Modelos">
+						<div class="ui-field-contain" id="divModelo_Reg" title="Modelos">
             				<select name="modelo" id="modelo">
 								<option value="">11E79</option>
 								<option value="">36E</option>
@@ -141,15 +131,15 @@
 					</div>
 					<div class="ui-block-c">
 						<label for="empleado"><b># de Empleado</b></label>
-          				<div class="ui-field-contain" id="divEmpleado" title="Numero de Empleado">
+          				<div class="ui-field-contain" id="divEmpleado_Reg" title="Numero de Empleado">
             				<input name="empleado" id="empleado" type="number"/>
           				</div>
           				<label for="produccion"><b>Produccion</b></label>
-          				<div class="ui-field-contain" id="divProduccion" title="Produccion">
+          				<div class="ui-field-contain" id="divProduccion_Reg" title="Produccion">
             				<input name="produccion" id="produccion"/>
           				</div>
           				<label for="piezas"><b>Piezas Rechazadas</b></label>
-          				<div class="ui-field-contain" id="divPzRechazadas" title="Piezas rechazadas">
+          				<div class="ui-field-contain" id="divPzRechazadas_Reg" title="Piezas rechazadas">
             				<input name="piezas" id="piezas" type="number"/>
           				</div> 
 					</div>
@@ -161,17 +151,17 @@
 				</center>
 				
 				<!-- Tabla -->
-				<div id="divTable">
+				<div id="divTabla_Reg">
 					<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
 						<thead>
-							<th id="colCodigo"><center>Codigo</center></th>
-							<th id="colComponente"><center>Componente</center></th>
-							<th id="colCantidad"><center>Cantidad</center></th>
+							<th id="colCodigo_Reg"><center>Codigo</center></th>
+							<th id="colComponente_Reg"><center>Componente</center></th>
+							<th id="colCantidad_Reg"><center>Cantidad</center></th>
 						</thead>
 						<tbody>
 							<td>
 								<center>
-									<div data-role="fieldcontain" id="divCodigo">
+									<div data-role="fieldcontain" id="divCodigo_Reg">
 										<select name="codigo" id="codigo">
 											<option value="">ABAU</option>
 											<option value="">ABBX</option>
@@ -182,7 +172,7 @@
 							</td>
 							<td>
 								<center>
-									<div data-role="fieldcontain" id="divComponente">
+									<div data-role="fieldcontain" id="divComponente_Reg">
 										<select name="componente" id="componente">
 											<option value="">CR1</option>
 											<option value="">E1</option>
@@ -193,7 +183,7 @@
 							</td>
 							<td>
 								<center>
-									<div class="ui-field-contain" id="divCantidad">
+									<div class="ui-field-contain" id="divCantidad_Reg">
             							<input name="cantidad" id="cantidad" type="number"/>
           							</div>
 								</center>

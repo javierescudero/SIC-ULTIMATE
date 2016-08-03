@@ -15,17 +15,7 @@
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/jqm-datebox-1.4.5.min.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
@@ -114,7 +104,7 @@
 			</div><br>
 			<div class="containing-element" id="flipDivDatos">
 				<center>
-					<label for="flipDatos" id="lblMostrar"><b>Mostrar Datos</b></label>
+					<label for="flipDatos" id="lblMostrar_Tend"><b>Mostrar Datos</b></label>
 					<select name="flipDatos" id="flipDatos" data-role="slider">
 						<option value="0">Acumulados</option>
 						<option value="1">Diarios</option>
@@ -128,7 +118,7 @@
 				</center>
 			</fieldset><br><br><br>
 			</form>
-			<table id="tableTendencia" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+			<table id="tablaTendencia" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
 				<thead>
 					<tr>
 						<th></th>
@@ -137,7 +127,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td id="colSeleccion"><fieldset data-iconpos="right" id="fieldSeleccion">
+						<td id="colSeleccion_Tend"><fieldset data-iconpos="right" id="fieldSeleccion">
 								<label for="seleccion">Sel.</label>
 								<input id="seleccion" name="seleccion" type="checkbox">
       						</fieldset></td>

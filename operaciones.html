@@ -11,20 +11,10 @@
 	<script src="js/js_refresh.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
-	<div data-role="page" data-theme="b" id="divPage">
+	<div data-role="page" data-theme="b" id="">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>Captura<br> 
@@ -70,10 +60,10 @@
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
 		</div>
-		<div id="divFormulario">
+		<div id="divForm_Op">
 			<form action="">
 				<center>
-					<div data-role="fieldcontain" id="divFieldcontain">
+					<div data-role="fieldcontain" id="divContentModelo_Op">
 						<center>
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
@@ -89,10 +79,10 @@
 							<option value="">50M61 843</option>
 							<option value="">0059 474000</option>
 						</select>
-						</div>
+					</div>
 				</center>
 				<center>
-					<div id="divBotonesOperaciones">
+					<div id="divBtnsOperaciones_Op">
 						<!-- PopUp Agregar Operacion -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>

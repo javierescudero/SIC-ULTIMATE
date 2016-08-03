@@ -11,17 +11,7 @@
 	<script src="js/js_refresh.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_index.css">
-	<link rel="stylesheet" href="css/css_fam_mod.css">
-	<link rel="stylesheet" href="css/css_operaciones.css">
-	<link rel="stylesheet" href="css/css_componentes.css">
-	<link rel="stylesheet" href="css/css_codigos_de_falla.css">
-	<link rel="stylesheet" href="css/css_registros.css">
-	<link rel="stylesheet" href="css/css_desempeno.css">
-	<link rel="stylesheet" href="css/css_tendencia.css">
-	<link rel="stylesheet" href="css/css_contribuyentes.css">
-	<link rel="stylesheet" href="css/css_correccion_datos.css">
-	<link rel="stylesheet" href="css/css_permisos.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
@@ -70,14 +60,14 @@
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
 		</div>
-		<div id="divFormulario">
+		<div id="divForm_CDF">
 			<form action="">
 				<center>
-					<div data-role="fieldcontain" id="divFieldcontain">
+					<div data-role="fieldcontain" id="divContentModelo_CDF">
 						<center>
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
-						<select name="modelo" id="modelo">
+						<select name="modelo" id="selectModelo_CDF">
 							<option value="">50M61 843</option>
 							<option value="">F59-478100</option>
 							<option value="">50M61 843</option>
@@ -89,7 +79,7 @@
 							<option value="">50M61 843</option>
 							<option value="">0059 474000</option>
 						</select>
-						</div>
+					</div>
 				</center>
 				<center>
 					<div id="divBotonesCodigos">
@@ -197,7 +187,7 @@
   						</div>
 					</div>
 				</center>
-				<div id="divTable">
+				<div id="divTabla_CDF">
 					<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
 						<thead>
 							<th>Codigo</th>
