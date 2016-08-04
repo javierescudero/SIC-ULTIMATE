@@ -42,13 +42,18 @@ table, th, tr, td {
 }
 
 #divModelos_FM, #lblModelos {
-	margin-left: 35%;
+	margin-left: 90%;
 	width: 100%;
 }
 
-#divBtnsModelos_FM { margin-left: 125px; }
+#divFamilia_FM, #lblFamilia {
+	margin-left: 90%;
+	width: 100%;
+}
 
-#divBtnsFamilias_FM { margin-left: 1px; }
+#divBtnsFamilias_FM { margin-left: -185px; }
+
+#divBtnsModelos_FM { margin-left: 260px; }
 
 #pop_btnAgregaModelo_FM { width: 100%; }
 
@@ -125,6 +130,19 @@ table, th, tr, td {
 #fieldSetGrpBtns_Des { margin-left: -70px; }
 
 /*Estilo de tendencia.html*/
+#divForm_Tend {
+	width: 80%;
+	margin-left: 20%;
+}
+
+#selectFamilia_Tend, #selectModelo_Tend { width: 40%; }
+
+#fieldSetBtns_Tend { margin-left: 440px; }
+
+#divFlipDatos_Tend {
+	margin-left: 625px;
+}
+
 #tablaTendencia {
 	width: 80%;
 }
@@ -133,7 +151,7 @@ table, th, tr, td {
 	width: 10%;
 }
 
-/*Ajuste del toggle*/
+/*Ajuste del flip*/
 .containing-element .ui-slider-switch { 
 	width: 9em;
 	margin-left: -140px;
@@ -152,6 +170,22 @@ table, th, tr, td {
 }
 
 /*Estilo de contribuyentes.html*/
+#divForm_Cont {
+	width: 80%;
+	margin-left: 10%;
+}
+
+#tableContribuyentes {
+	width: 80%;
+}
+
+#selectModelo_Cont, #selectFamilia_Cont {
+	width: 40%;
+}
+
+#colSeleccion_Cont {
+	width: 10%;
+}
 
 /*Estilo de correccion_de_datos.html*/
 #divForm_CDD {

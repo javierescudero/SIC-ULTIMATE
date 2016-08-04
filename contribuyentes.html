@@ -68,13 +68,14 @@
 		<!-- Formulario -->
 		<div id="divForm_Cont">
 			<form action="">
-				<div class="ui-grid-a">
+				<center>
+					<div class="ui-grid-a">
 					<div class="ui-block-a">
 						<label for="fecha"><b>Fecha Inicial</b></label>
 						<div class="ui-field-contain" id="divFecha" title="Fecha Inicial">
             				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           				</div>
-          				<div id="selectFamilia">
+          				<div id="selectFamilia_Cont">
           					<label for="familia"><b>Familia</b></label>
           					<select name="familia" id="familia">
 								<option value="">--- Todas ---</option>
@@ -83,41 +84,43 @@
 								<option value="">48C21</option>
 								<option value="">ATHENA</option>
 							</select>
-          				</div>
+          				</div><br>
           				<label for="mostrar"><b>Mostrar top codigos</b></label>
           				<div class="ui-field-contain" id="divCodigos_Tend">
           					<input type="number" id="codigos">
           				</div>
 					</div>
-				<div class="ui-block-b">
-					<label for="fecha"><b>Fecha Final</b></label>
-					<div class="ui-field-contain" id="divFecha" title="Fecha Final">
-            			<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
-          			</div>
-          			<div id="selectModelo">
-          				<label for="modelo"><b>Modelo</b></label>
-          				<select name="modelo" id="modelo">
-							<option value="">--- Todos ---</option>
-							<option value="">11E79 101B1</option>
-							<option value="">11E79 301B1</option>
-							<option value="">11E79 400B1</option>
-							<option value="">11E79-901</option>
-						</select>
-          			</div>
-          			<label for="cantidad"><b>Componentes</b></label>
-          			<div class="ui-field-contain" id="divComponentes_Tend" data-role"inline">
-          				<input type="number" id="cantComponentes_Tend" min="0">
-          			</div>
+					<div class="ui-block-b">
+						<label for="fecha"><b>Fecha Final</b></label>
+						<div class="ui-field-contain" id="divFecha" title="Fecha Final">
+            				<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          				</div>
+          				<div id="selectModelo_Cont">
+          					<label for="modelo"><b>Modelo</b></label>
+          					<select name="modelo" id="modelo">
+								<option value="">--- Todos ---</option>
+								<option value="">11E79 101B1</option>
+								<option value="">11E79 301B1</option>
+								<option value="">11E79 400B1</option>
+								<option value="">11E79-901</option>
+							</select>
+          				</div><br>
+          				<label for="cantidad"><b>Componentes</b></label>
+          				<div class="ui-field-contain" id="divComponentes_Tend" data-role"inline">
+          					<input type="number" id="cantComponentes_Tend" min="0">
+          				</div>
+					</div>
 				</div>
-			</div><br>
-			<fieldset data-role="controlgroup" id="fieldsetBotones">
+				</center>
+				
+			<fieldset data-role="controlgroup" id="fieldSetBtns_Cont">
 				<center>
 					<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
 					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
 				</center>
 			</fieldset><br><br><br>
-			</form>
-			<table id="tableTendencia" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+			<center>
+				<table id="tableContribuyentes" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
 				<thead>
 					<tr>
 						<th></th>
@@ -126,7 +129,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td id="colSeleccion"><fieldset data-iconpos="right" id="fieldSeleccion">
+						<td id="colSeleccion_Cont"><fieldset data-iconpos="right" id="fieldSeleccion">
 								<label for="seleccion">Sel.</label>
 								<input id="seleccion" name="seleccion" type="checkbox">
       						</fieldset></td>
@@ -134,6 +137,8 @@
 					</tr>
 				</tbody>
 			</table>
+			</center>
+			</form>
 		</div>
 	</div>
 </body>

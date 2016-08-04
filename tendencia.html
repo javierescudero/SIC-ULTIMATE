@@ -66,7 +66,7 @@
 		</div>
 
 		<!-- Formulario -->
-		<div id="divFormDesempeno">
+		<div id="divForm_Tend">
 			<form action="">
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
@@ -74,7 +74,7 @@
 						<div class="ui-field-contain" id="divFecha" title="Fecha Inicial">
             				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           				</div>
-          				<div id="selectFamilia">
+          				<div id="selectFamilia_Tend">
           					<label for="familia"><b>Familia</b></label>
           					<select name="familia" id="familia">
 								<option value="">--- Todas ---</option>
@@ -90,7 +90,7 @@
 					<div class="ui-field-contain" id="divFecha" title="Fecha Final">
             			<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           			</div>
-          			<div id="selectModelo">
+          			<div id="selectModelo_Tend">
           				<label for="modelo"><b>Modelo</b></label>
           				<select name="modelo" id="modelo">
 							<option value="">--- Todos ---</option>
@@ -102,20 +102,16 @@
           			</div>
 				</div>
 			</div><br>
-			<div class="containing-element" id="flipDivDatos">
-				<center>
-					<label for="flipDatos" id="lblMostrar_Tend"><b>Mostrar Datos</b></label>
-					<select name="flipDatos" id="flipDatos" data-role="slider">
+			<div class="containing-element" id="divFlipDatos_Tend">
+					<label for="flipDatos_Tend" id="lblMostrar_Tend"><b>Mostrar Datos</b></label>
+					<select name="flipDatos_Tend" id="flipDatos_Tend" data-role="slider">
 						<option value="0">Acumulados</option>
 						<option value="1">Diarios</option>
 					</select>
-				</center>
 			</div>
-			<fieldset data-role="controlgroup" id="fieldsetBotones">
-				<center>
-					<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
-					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
-				</center>
+			<fieldset data-role="controlgroup" id="fieldSetBtns_Tend">
+				<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
+				<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
 			</fieldset><br><br><br>
 			</form>
 			<table id="tablaTendencia" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
