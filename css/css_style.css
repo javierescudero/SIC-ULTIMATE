@@ -42,18 +42,13 @@ table, th, tr, td {
 }
 
 #divModelos_FM, #lblModelos {
-	margin-left: 90%;
+	margin-left: 35%;
 	width: 100%;
 }
 
-#divFamilia_FM, #lblFamilia {
-	margin-left: 90%;
-	width: 100%;
-}
+#divBtnsModelos_FM { margin-left: 125px; }
 
-#divBtnsFamilias_FM { margin-left: -185px; }
-
-#divBtnsModelos_FM { margin-left: 260px; }
+#divBtnsFamilias_FM { margin-left: 1px; }
 
 #pop_btnAgregaModelo_FM { width: 100%; }
 
