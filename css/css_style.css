@@ -12,9 +12,9 @@
 
 /*Estilo de las tablas*/
 table, th, tr, td {
-	border: 5px solid black;
+	border: 1px solid black;
 	border-style: outset;
-	border-radius: 5px;
+	border-radius: 1px;
 }
 
 /*Reduce el espacio del form de la parte de arriba*/

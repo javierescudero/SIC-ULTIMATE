@@ -9,15 +9,18 @@
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 	<script src="js/js_refresh.js"></script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/jquery.js"></script>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_style.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.css">
+	<link rel="stylesheet" href="css/css_style.css" media="screen">
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Captura<br> 
+			<h1>Captura<br>
 				<b>Familias / Modelos</b>
 			</h1>
 		</div>
@@ -225,38 +228,57 @@
   					</div>
 				</center>
 			</div>
-			<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+
+			<center>
+				<table id="Jtabla" cellpadding="0" cellspacing="0" border="0" class="display" >
 				<thead>
 					<tr>
-						<th>Operacion</th>
-						<th>Descripcion</th>
-						<th>PPms</th>
-						<th>Grupo</th>
+						<th width="60" align="left">Operacion</th>
+						<th width="280" align="left">Descripcion</th>
+						<th width="130" align="left">Usar en PPms?</th>
+						<th width="120" align="left">Grupo</th>
 					</tr>
 				</thead>
 				<tbody>
-					<!-- PRIMER DATO-->
 					<tr>
-						<td><input type="text" value="Acalidad" disabled></td>
-						<td><input type="text" value="Auditoria de calidad" disabled></td>
-						<td><fieldset data-iconpos="right">
-								<label for="checkbox-h-6b">Usar</label>
-								<input id="checkbox-h-6b" name="checkbox-h-6b" type="checkbox">
+						<td>Acalidad</td>
+						<td>Auditoria de Calidad</td>
+						<td>
+							<fieldset data-iconpos="left">
+      							<input name="checkbox" id="checkbox-h-6c" type="checkbox" >
+        						<label for="checkbox-h-6c"></label>
       						</fieldset>
 						</td>
-						<td><select name="grupo" id="grupo">
-								<option value="default">- - - - - - -</option>
-								<option value="final_test">Final Test</option>
-								<option value="qc_audit">QC Audit</option>
-								<option value="process">Process</option>
-							</select>
-						</td>
+						<td></td>
 					</tr>
-					<!-- SEGUNDO DATO-->
-				</tbody>
+					<tr class="gradeC">
+						<td>CR30</td>
+						<td>Radial</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="gradeA">
+						<td>CR80</td>
+						<td>Inspeccion de reflujo</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="gradeA">
+						<td>CR140</td>
+						<td>Inspeccion y retoque</td>
+						<td></td>
+						<td></td>
+					</tr>
 			</table>
+			</center>
+
 			</form>
 		</div>
 	</div>
+	<script>
+		$(document).ready(function(){
+    		$('#Jtabla').dataTable();
+		});
+</script>
 </body>
 </html>
