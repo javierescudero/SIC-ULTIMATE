@@ -35,22 +35,22 @@
 			<div id="divMenuPrincipal">
 				<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
 					<h3><center>Captura</center></h3>
-					<a href="#" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
-					<a href="#" id="operaciones" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
-					<a href="#" id="componentes" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
-					<a href="#" id="codigos_de_falla" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
-					<a href="#" id="registros" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
+					<a href="fam&mod.html" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left">Familias / Modelos</a>
+					<a href="operaciones.html" id="operaciones" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left">Operaciones</a>
+					<a href="componentes.html" id="componentes" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left">Componentes</a>
+					<a href="codigos_de_falla.html" id="codigos_de_falla" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left">Codigos de Falla</a>
+					<a href="registros.html" id="registros" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Registros</a>
 				</div> 
 				<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
 					<h3><center>Reportes</center></h3>
-					<a href="#" id="desempeno"  data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
-					<a href="#" id="tendencia" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
-					<a href="#" id="contribuyentes" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
-					<a href="#" id="correccion_datos" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
+					<a href="desempeno.html" id="desempeno"  data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left">Desempeño del Producto</a>
+					<a href="tendencia.html" id="tendencia" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left">Graficas de Tendencia</a>
+					<a href="contribuyentes.html" id="contribuyentes" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left">Contribuyentes</a>
+					<a href="correccion_datos.html" id="correccion_datos" data-role="button" title="Correccion de Datos" class="ui-btn ui-icon-edit ui-btn-icon-left">Correccion de Datos</a>
 				</div>
 				<div id="usuarios" data-role="collapsible" data-collapsed-icon="user" data-expanded-icon="carat-u">
 				<h3><center>Usuarios</center></h3>
-				<a href="#" id="permisos" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
+				<a href="permisos.html" id="permisos" data-role="button"  class="ui-btn ui-icon-eye ui-btn-icon-left">Permisos</a>
 				</div>
 
 				<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
@@ -148,49 +148,38 @@
 					<a href="" id="btnAgregaModelo" data-role="button" data-inline="true" onclick="window.open('fam&mod.html');">Agregar Modelos / Familia</a>
           			<a href="" id="btnAgregaComponente" data-role="button" data-inline="true" onclick="window.open('componentes.html');">Agregar Componentes</a>
           			<a href="" id="btnAgregaCodigo" data-role="button" data-inline="true" onclick="window.open('codigos_de_falla.html');">Agregar Codigos De Falla</a>
-				</center>
+				</center><hr>
 				
 				<!-- Tabla -->
+				<center>
 				<div id="divTabla_Reg">
-					<table data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+						<table id="tabla_Reg" cellpadding="0" cellspacing="0" border="0" class="display">
 						<thead>
-							<th id="colCodigo_Reg"><center>Codigo</center></th>
-							<th id="colComponente_Reg"><center>Componente</center></th>
-							<th id="colCantidad_Reg"><center>Cantidad</center></th>
+							<tr>
+								<th width="60" align="left">Codigo</th>
+								<th width="280" align="left">Componente</th>
+								<th width="130" align="left">Cantidad</th>
+							</tr>
 						</thead>
 						<tbody>
-							<td>
-								<center>
-									<div data-role="fieldcontain" id="divCodigo_Reg">
-										<select name="codigo" id="codigo">
-											<option value="">ABAU</option>
-											<option value="">ABBX</option>
-											<option value="">ABEX</option>
-										</select>
-									</div>
-								</center>
-							</td>
-							<td>
-								<center>
-									<div data-role="fieldcontain" id="divComponente_Reg">
-										<select name="componente" id="componente">
+							<!--Primer Dato (Para el 2do hay que cambiar el id y el for)-->
+							<tr>
+								<td>
+									<select name="codigo" id="codigo">
+										<option value=""></option>
+									</select>
+								</td>
+								<td>
+									<select name="componente" id="componente">
 											<option value="">CR1</option>
 											<option value="">E1</option>
 											<option value="">E3</option>
 										</select>
-									</div>
-								</center>
-							</td>
-							<td>
-								<center>
-									<div class="ui-field-contain" id="divCantidad_Reg">
-            							<input name="cantidad" id="cantidad" type="number"/>
-          							</div>
-								</center>
-							</td>
-						</tbody>
-					</table>
+								</td>
+								<td></td>
+							</tr>
 				</div>
+			</center>
 				<center>
 					<a href="" data-role="button" id="guardar" data-icon="check" data-inline="true">Guardar</a>
 					<a href="" data-role="button" id="limpiar" data-icon="refresh" data-inline="true">Limpiar</a>

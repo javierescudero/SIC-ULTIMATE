@@ -1,45 +1,45 @@
 $(document).ready(function() {
 	$('#fam_mod').click(function(){
-		location.href = "fam&mod.html";
+		window.location.href = "fam&mod.html";
 	});
 
 	$('#operaciones').click(function(){
-		location.href = "operaciones.html";
+		window.location.href = "operaciones.html";
 	});
 
 	$('#componentes').click(function(){
-		location.href = "componentes.html";
+		window.location.href = "componentes.html";
 	});
 
 	$('#codigos_de_falla').click(function(){
-		location.href = "codigos_de_falla.html";
+		window.location.href = "codigos_de_falla.html";
 	});
 
 	$('#registros').click(function(){
-		location.href = "registros.html";
+		window.location.href = "registros.html";
 	});
 
 	$('#desempeno').click(function(){
-		location.href = "desempeno.html";
+		window.location.href = "desempeno.html";
 	});
 
 	$('#tendencia').click(function(){
-		location.href = "tendencia.html";
+		window.location.href = "tendencia.html";
 	});
 
 	$('#contribuyentes').click(function(){
-		location.href = "contribuyentes.html";
+		window.location.href = "contribuyentes.html";
 	});
 
 	$('#correccion_datos').click(function(){
-		location.href = "correccion_datos.html";
+		window.location.href = "correccion_datos.html";
 	});
 
 	$('#permisos').click(function(){
-		location.href = "permisos.html";
+		window.location.href = "permisos.html";
 	});
 
 	$('#inicio').click(function(){
-		location.href = "index.html";
+		window.location.href = "index.html";
 	});
 });
