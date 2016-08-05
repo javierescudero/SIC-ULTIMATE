@@ -40,8 +40,6 @@ table, th, tr, td {
 	width: 46%;
 	height: 400px;
 	overflow: auto;
-	border: 3px solid black;
-	border-style: inset;
 }
 
 #divForm_FM {
@@ -76,8 +74,6 @@ table, th, tr, td {
 	width: 46%;
 	height: 400px;
 	overflow: auto;
-	border: 3px solid black;
-	border-style: inset;
 }
 
 /*Estilo de componentes.html*/
@@ -101,8 +97,6 @@ table, th, tr, td {
 	width: 60%;
 	height: 400px;
 	overflow: auto;
-	border: 3px solid black;
-	border-style: inset;
 }
 
 #divForm_CDF {
@@ -116,6 +110,12 @@ table, th, tr, td {
 #divForm_Reg {
 	width: 50%;
 	margin-left: 25%;
+}
+
+#divTabla_Reg {
+	width: 60%;
+	height: 400px;
+	overflow: auto;
 }
 
 #divCodigo_Reg, #divComponente_Reg { width: 50%; }
@@ -133,7 +133,13 @@ table, th, tr, td {
 /*Estilo de desempeno.html*/
 #divForm_Des {
 	width: 50%;
-	margin-left: 30%;
+	margin-left: 25%;
+}
+
+#divTabla_Des {
+	width: 80%;
+	height: 400px;
+	overflow: auto;
 }
 
 #selectFamilia_Des, #selectModelo_Des { width: 40%; }
