@@ -17,6 +17,11 @@ table, th, tr, td {
 	border-radius: 1px;
 }
 
+/*Estilo de filas al pasar el mouse*/
+tr:hover td {
+	background-color: #333333;
+}
+
 /*Reduce el espacio del form de la parte de arriba*/
 .ui-panel-wrapper {
     position: static;

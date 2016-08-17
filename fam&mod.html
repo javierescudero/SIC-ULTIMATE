@@ -9,16 +9,16 @@
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 	<script src="js/js_refresh.js"></script>
-	<script src="js/jquery.dataTables.js"></script>
+	<!--<script src="js/jquery.dataTables.js"></script>-->
 	<script src="js/jquery.js"></script>
-	<script>
+	<!--<script class="init">
 		$(document).ready(function(){
     		$('#tabla_FM').dataTable();
 		});
-	</script>
+	</script>-->
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/jquery.dataTables.css">
+	<!--<link rel="stylesheet" href="css/jquery.dataTables.css">-->
 	<link rel="stylesheet" href="css/css_style.css" media="screen">
 </head>
 <body>
@@ -236,7 +236,7 @@
 			</div>
 			<center>
 				<div id="divTabla_FM">
-						<table id="tabla_FM" cellpadding="0" cellspacing="0" border="0" class="display">
+						<table id="tabla_FM" cellpadding="0" cellspacing="0" border="0" class="hover">
 						<thead>
 							<tr>
 								<th width="60" align="left">Operacion</th>
@@ -254,6 +254,24 @@
 									<fieldset data-iconpos="left">
       									<input name="ppms" id="ppms" type="checkbox" >
         								<label for="ppms">Usar?</label>
+      								</fieldset>
+								</td>
+								<td>
+									<select name="grupoAgrega" id="grupoAgrega">
+										<option value="default">- - - - - - -</option>
+										<option value="final_test">Final Test</option>
+										<option value="qc_audit">QC Audit</option>
+										<option value="process">Process</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Acalidad</td>
+								<td>Auditoria de Calidad</td>
+								<td>
+									<fieldset data-iconpos="left">
+      									<input name="ppms" id="ppms1" type="checkbox" >
+        								<label for="ppms1">Usar?</label>
       								</fieldset>
 								</td>
 								<td>
