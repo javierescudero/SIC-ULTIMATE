@@ -67,6 +67,7 @@
 
 		<!-- Formulario -->
 		<div id="divForm_Tend">
+
 			<form action="">
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
@@ -85,56 +86,58 @@
 							</select>
           				</div>
 					</div>
-				<div class="ui-block-b">
-					<label for="fecha"><b>Fecha Final</b></label>
-					<div class="ui-field-contain" id="divFecha" title="Fecha Final">
-            			<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
-          			</div>
-          			<div id="selectModelo_Tend">
-          				<label for="modelo"><b>Modelo</b></label>
-          				<select name="modelo" id="modelo">
-							<option value="">--- Todos ---</option>
-							<option value="">11E79 101B1</option>
-							<option value="">11E79 301B1</option>
-							<option value="">11E79 400B1</option>
-							<option value="">11E79-901</option>
-						</select>
-          			</div>
-				</div>
-			</div><br>
-			<div class="containing-element" id="divFlipDatos_Tend">
+					<div class="ui-block-b">
+						<label for="fecha"><b>Fecha Final</b></label>
+						<div class="ui-field-contain" id="divFecha" title="Fecha Final">
+            				<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+          				</div>
+          				<div id="selectModelo_Tend">
+          					<label for="modelo"><b>Modelo</b></label>
+          					<select name="modelo" id="modelo">
+								<option value="">--- Todos ---</option>
+								<option value="">11E79 101B1</option>
+								<option value="">11E79 301B1</option>
+								<option value="">11E79 400B1</option>
+								<option value="">11E79-901</option>
+							</select>
+          				</div>
+					</div>
+				</div><br>
+				<div class="containing-element" id="divFlipDatos_Tend">
 					<label for="flipDatos_Tend" id="lblMostrar_Tend"><b>Mostrar Datos</b></label>
 					<select name="flipDatos_Tend" id="flipDatos_Tend" data-role="slider">
 						<option value="0">Acumulados</option>
 						<option value="1">Diarios</option>
 					</select>
-			</div>
-			<fieldset data-role="controlgroup" id="fieldSetBtns_Tend">
-				<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
-				<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
-			</fieldset><br><br><br>
-
-
-			
+				</div>
+				<fieldset data-role="controlgroup" id="fieldSetBtns_Tend">
+					<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
+					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+				</fieldset><br><br><br>
+				
+					<div id="divTabla_Tend"></div>
+						<table id="tabla_Tend" cellpadding="0" cellspacing="0" border="0" class="display">
+							<thead>
+								<tr>
+									<th width="110">Selec</th>
+									<th width="500">Operacion</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="colSeleccion_Tend">
+										<fieldset data-iconpos="right" id="fieldSeleccion">
+											<label for="seleccion">Sel.</label>
+											<input id="seleccion" name="seleccion" type="checkbox">
+      									</fieldset></td>
+									<td id="colOperacion">Acalidad</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>	
+				
 			</form>
-			<table id="tablaTendencia" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
-				<thead>
-					<tr>
-						<th></th>
-						<th>Operacion</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td id="colSeleccion_Tend"><fieldset data-iconpos="right" id="fieldSeleccion">
-								<label for="seleccion">Sel.</label>
-								<input id="seleccion" name="seleccion" type="checkbox">
-      						</fieldset></td>
-						<td id="colOperacion"><input type="text" value="Acalidad" disabled></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+			
 	</div>
 </body>
 </html>

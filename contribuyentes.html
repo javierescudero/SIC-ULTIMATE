@@ -119,12 +119,13 @@
 					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
 				</center>
 			</fieldset><br><br><br>
-			<center>
-				<table id="tableContribuyentes" data-role="table" class="ui-responsive" cellspacing="1" cellpadding="1">
+			<div id="divTablaCont">
+				<center>
+				<table id="tabla_Cont" cellpadding="0" cellspacing="0" border="0" class="display">
 				<thead>
 					<tr>
-						<th></th>
-						<th>Operacion</th>
+						<th width="110">Selec</th>
+						<th width="500">Operacion</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -133,11 +134,12 @@
 								<label for="seleccion">Sel.</label>
 								<input id="seleccion" name="seleccion" type="checkbox">
       						</fieldset></td>
-						<td id="colOperacion"><input type="text" value="Acalidad" disabled></td>
+						<td id="colOperacion">Acalidad</td>
 					</tr>
 				</tbody>
 			</table>
 			</center>
+			</div>
 			</form>
 		</div>
 	</div>
