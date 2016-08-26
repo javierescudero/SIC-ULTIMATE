@@ -11,7 +11,7 @@
 #divMenuPrincipal { width: 100%; }
 
 /*Estilo de las tablas*/
-table, th, tr, td {
+table, th, tr {
 	border: 1px solid black;
 	border-style: outset;
 	border-radius: 1px;
@@ -21,8 +21,9 @@ table, th, tr, td {
 tr:hover td {
 	background-color: #333333;
 	cursor: pointer;
-	border: 3px groove #262626;
+	border: 3px outside #262626;
 }
+
 
 /*Reduce el espacio del form de la parte de arriba*/
 .ui-panel-wrapper {
