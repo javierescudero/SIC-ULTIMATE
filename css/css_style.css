@@ -8,6 +8,11 @@
 /*Estilo del menu principal*/
 #menu_principal { background-color: #111; }
 
+/*Estilo de celdas*/
+span {
+	text-align: center;
+}
+
 #divMenuPrincipal { width: 100%; }
 
 /*Estilo de las tablas*/
@@ -63,7 +68,7 @@ tr:hover td {
 
 #divBtnsFamilias_FM { margin-left: 1px; }
 
-#pop_btnAgregaModelo_FM { width: 100%; }
+#pop_inputAgregaModelo_FM { width: 100%; }
 
 .ui-content { display: inline-block; }
 

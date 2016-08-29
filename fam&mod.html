@@ -60,14 +60,16 @@
 				<a href="login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
 		</div>
-
+		
 		<div id="divForm_FM">
 			<form action="">
-			<div class="ui-grid-d" id="">
+			<div class="ui-grid-d">
+				
+				<!-- Familias -->
 				<div class="ui-block-a">
 					<center><label for="divFamilia_FM" id="lblFamilia" data-theme="c"><b>Familias</b></label></center>
 					<div id="divFamilia_FM">
-						<ul data-role="listview">
+						<ul data-role="listview" id="listFamilia">
 							<li data-icon="false"><a href="">11E79</a></li>
 						</ul>
 					</div>
@@ -80,10 +82,10 @@
     					<a href="#popupAgregarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
     					<div data-role="popup" id="popupAgregarFamilia" class="ui-content">
       						<h3>Agregar Familia</h3>
-      						<input type="text" id="pop_btnAgregaFamilia" placeholder="Familia...">
+      						<input type="text" id="pop_inputAgregaFamilia" placeholder="Familia...">
       						<center>
 								<a id="agregarFamilia" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
-								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+								<a id="cancelarAgregarFamilia" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 							</center>
     					</div>
   					</div>
@@ -97,7 +99,7 @@
       							Esta familia contiene modelos.</p>
       						<center>
 								<a id="eliminarFamilia" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
-								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+								<a id="salir" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
 							</center>
     					</div>
   					</div>
@@ -105,11 +107,8 @@
 				<div class="ui-block-c">
 					<center><label for="divModelos_FM" id="lblModelos" data-theme="c"><b>Modelos</b></label></center>
 					<div id="divModelos_FM">
-						<ul data-role="listview">
+						<ul data-role="listview" id="listModelos">
 							<li data-icon="false"><a href="">11E79 101B1</a></li>
-							<li data-icon="false"><a href="">11E79 301B1</a></li>
-							<li data-icon="false"><a href="">11E79 400B1</a></li>
-							<li data-icon="false"><a href="">11E79-901</a></li>
 						</ul>
 					</div>
 				</div>
@@ -121,10 +120,10 @@
     					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
     					<div data-role="popup" id="popupAgregarModelo" class="ui-content">
       						<h3>Agregar Modelo</h3>
-      						<input type="text" id="pop_btnAgregaModelo_FM" placeholder="Modelo...">
+      						<input type="text" id="pop_inputAgregaModelo_FM" placeholder="Modelo...">
       						<center>
 								<a id="agregarMod" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
-								<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+								<a id="cancelarAgregarModelo" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 							</center>
     					</div>
   					</div>
@@ -282,5 +281,6 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="js/js_tables.js"></script>
+	<script type="text/javascript" src="js/js_agregar_familia.js"></script>
 </body>
 </html>
