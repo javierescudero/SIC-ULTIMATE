@@ -1,6 +1,6 @@
-$(document).on('ready',principal);
+$(document).on('ready', principal);
 function principal() {
-  $('span').bind('mouseenter',function(e) {
+  $('span').bind('mouseenter', function(e) {
     $(this).attr('contenteditable','true');
   });
 }
