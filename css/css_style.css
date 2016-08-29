@@ -44,7 +44,7 @@ tr:hover td {
 }
 
 #divTabla_FM {
-	width: 46%;
+	width: 100%;
 	height: 400px;
 	overflow: auto;
 }
@@ -225,7 +225,7 @@ tr:hover td {
 }
 
 #tabla_CDD {
-	width: 80%;
+	width: 100%;
 }
 
 #divTabla_CDD {
