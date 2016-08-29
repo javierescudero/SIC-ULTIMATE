@@ -20,7 +20,6 @@ table, th, tr {
 /*Estilo de filas al pasar el mouse*/
 tr:hover td {
 	background-color: #333333;
-	cursor: pointer;
 	border: 3px outside #262626;
 }
 
