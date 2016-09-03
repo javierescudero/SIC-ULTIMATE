@@ -23,7 +23,7 @@
 				<b>Login</b>
 			</h1>
 		</div>
-		<form action="index.html" name="forma_login" method="post">
+		<form data-ajax="false">
 			<div data-role="content" id="content_login">
 				<input type="text" id="user" placeholder="Usuario" required>
 				<input type="password" id="password" placeholder="Password">
@@ -37,7 +37,7 @@
 				</div>
 				<div id="divBtnsCampos">
 					<center>
-						<a id="btnAceptar" href="index.html" data-role="button" data-icon="check" data-inline="true" data-transition="pop">Aceptar</a>
+						<a id="btnAceptar" href="#" data-role="button" data-icon="check" data-inline="true" data-transition="pop">Aceptar</a>
 						<a id="btnCancelar" href="#" data-role="button" onclick="window.close();" data-icon="delete" data-inline="true">Cancelar</a>
 					</center>
 				</div>
