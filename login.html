@@ -23,22 +23,22 @@
 				<b>Login</b>
 			</h1>
 		</div>
-		<form data-ajax="false">
+		<form method="post" action="php/index.php">
 			<div data-role="content" id="content_login">
-				<input type="text" id="user" placeholder="Usuario" required>
-				<input type="password" id="password" placeholder="Password">
+				<input type="text" id="user" name="user" placeholder="Usuario" required>
+				<input type="password" id="password" name="password" placeholder="Password" required>
 				<div data-role="fieldcontain" id="combo_area">
 					<center><label for="selection_area"><b>Area</b></label></center>
 					<select name="area" id="area">
-						<option value="electronica">Electronica</option>
-						<option value="electromecanicos">Electromecanicos</option>
-						<option value="valvulas">Valvulas</option>
+						<option value="ELECTRONICA">Electronica</option>
+						<option value="ELECTROMECANICOS">Electromecanicos</option>
+						<option value="VALVULAS">Valvulas</option>
 					</select>
 				</div>
 				<div id="divBtnsCampos">
 					<center>
-						<a id="btnAceptar" href="#" data-role="button" data-icon="check" data-inline="true" data-transition="pop">Aceptar</a>
-						<a id="btnCancelar" href="#" data-role="button" onclick="window.close();" data-icon="delete" data-inline="true">Cancelar</a>
+						<input type="submit" data-role="button" data-icon="check" data-inline="true" data-transition="pop" value="Aceptar">
+						<input type="button" id="btnCancelar" data-role="button" onclick="window.close();" data-icon="delete" data-inline="true" value="Cancelar">
 					</center>
 				</div>
 			</div>
