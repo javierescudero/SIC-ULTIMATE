@@ -5,12 +5,12 @@ $(document).ready(function() {
 
 		if (user == '' || password == '') {
 			alert('Campos Vacios');
-			window.location = 'login.html';
+			window.location = '../index.html';
 		} else if (user == 'admin' && password == '1234') {
 			window.location = '..php/index.php';
 		} else {
 			alert('Usuario o Password Incorrectos');
-			window.location = 'login.html';
+			window.location = '../index.html';
 		};
 	});
 });
