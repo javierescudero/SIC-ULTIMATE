@@ -7,7 +7,7 @@ $(document).ready(function() {
 			alert('Campos Vacios');
 			window.location = 'login.html';
 		} else if (user == 'admin' && password == '1234') {
-			window.location = 'index.html';
+			window.location = '..php/index.php';
 		} else {
 			alert('Usuario o Password Incorrectos');
 			window.location = 'login.html';
