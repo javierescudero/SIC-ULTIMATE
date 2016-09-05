@@ -18,13 +18,6 @@
 </head>
 <body>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
-		<div data-role="header" id="header">
-			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>SIC Ultimate<br> 
-				<b>Desempeño</b>
-			</h1>
-		</div>
-
 		<?php
 			include("menu.php");
 		?>

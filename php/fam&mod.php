@@ -16,13 +16,6 @@
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
-		<div data-role="header" id="header">
-			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Captura<br>
-				<b>Familias / Modelos</b>
-			</h1>
-		</div>
-		
 		<?php
 			include("menu.php");
 		?>

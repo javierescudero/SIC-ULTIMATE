@@ -26,16 +26,7 @@
 			echo "PROBANDO CONEXIONES BASE DE DATOS";
 		}
 	?>
-	<div data-role="page" data-theme="b" >
-		<div data-role="header" id="header">
-			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>SIC Ultimate<br>
-				<?php
-					echo "<b>Inicio - " . $area . "</>" 
-				?>
-			</h1>
-		</div>
-		
+	<div data-role="page" data-theme="b">
 		<?php
 			include("menu.php");
 		?>

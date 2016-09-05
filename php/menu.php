@@ -1,5 +1,14 @@
+<!--Header-->
+<div data-role="header" id="header">
+	<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
+	<center>
+		<img src="../public/images/Sicicon.ico">
+	</center>
+	<h1>SIC Ultimate<br>
+	</h1>
+</div>
 <!-- Menu -->
-		<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
+<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
 			<ul id="ul_menu" class="nav-search" data-role="listview" data-theme="b" data-divider-theme="a">
 				<li data-icon="false" ><a href="#" id="menu_principal">Menu Principal</a></li>
 				<br>
@@ -34,4 +43,4 @@
 				<a href="index.php" data-role="button" id="inicio" class="ui-btn ui-icon-home ui-btn-icon-left" data-transition="flip">Inicio</a><br><hr><br>
 				<a href="../login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>
 			</div>
-		</div>
+</div>
