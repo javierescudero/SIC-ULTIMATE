@@ -15,6 +15,15 @@
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
+		<!--Header-->
+		<div data-role="header" id="header">
+			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
+			<h1>SIC Ultimate<br>
+			<center>
+				<img src="../public/images/Sicicon.ico">
+			</center>
+			</h1>
+		</div>
 		<?php 
 			include("menu.php");
 		?>
@@ -48,18 +57,6 @@
 							<li data-icon="false"><a href="">C1</a></li>
 							<li data-icon="false"><a href="">C2</a></li>
 							<li data-icon="false"><a href="">C3</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C1</a></li>
-							<li data-icon="false"><a href="">C2</a></li>
-							<li data-icon="false"><a href="">C3</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C1</a></li>
-							<li data-icon="false"><a href="">C2</a></li>
-							<li data-icon="false"><a href="">C3</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
-							<li data-icon="false"><a href="">C11</a></li>
 						</ul>
 					</div>
 				</center>

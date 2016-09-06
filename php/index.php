@@ -15,16 +15,7 @@
 </head>
 <body>
 	<?php
-		include("conexion.php");
-		$usuario = $_POST['user'];
-		$password = $_POST['password'];
-		$area = $_POST['area'];
-
-		if ($area == "ELECTRONICA") {
-			$con = mysqli_connect(SERVER, USER, PASSWORD, DB) or die ("Error de conexion a la base de datos ELECTRONICA" . mysqli_error());
-		} else {
-			echo "PROBANDO CONEXIONES BASE DE DATOS";
-		}
+	
 	?>
 	<div data-role="page" data-theme="b">
 		<!--Header-->
