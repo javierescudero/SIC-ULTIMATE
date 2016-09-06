@@ -8,7 +8,6 @@
 	
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
-	<!-- <script src="js/js_login.js"></script> -->
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/css_style.css">

@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if (isset($_POST['$usuario'])) {
+		$_SESSION['sesion_usuario'] = $_POST['$usuario'];
+	} else {
+		echo "<script>alert('USUARIO NO VALIDO');</script>";
+	}
+?>
 <html>
 <head>
 	<title>Validando Usuario</title>

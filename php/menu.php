@@ -32,6 +32,6 @@
 			<a href="valvulas.php" data-role="button" id="valvulas" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
 		</div><br><hr><br>
 		<a href="index.php" data-role="button" id="inicio" class="ui-btn ui-icon-home ui-btn-icon-left">Inicio</a>
-		<a href="../login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left">Salir</a>
+		<a href="login.php" id="" class="ui-btn ui-icon-power ui-btn-icon-left">Salir</a>
 	</div>
 </div>

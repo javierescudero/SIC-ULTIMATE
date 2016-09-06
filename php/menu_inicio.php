@@ -12,6 +12,6 @@
 			<a href="electromecanicos.php" data-role="button" id="electromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
 			<a href="valvulas.php" data-role="button" id="valvulas" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
 		</div><br><hr><br>
-		<a href="../login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left">Salir</a>
+		<a href="login.php" id="" class="ui-btn ui-icon-power ui-btn-icon-left">Salir</a>
 	</div>
 </div>
