@@ -14,9 +14,6 @@
 	<link rel="stylesheet" href="../css/css_style.css">
 </head>
 <body>
-	<?php
-	
-	?>
 	<div data-role="page" data-theme="b">
 		<!--Header-->
 		<div data-role="header" id="header">
@@ -29,7 +26,7 @@
 			</h1>
 		</div>
 		<?php
-			include("menu.php");
+			include("menu_inicio.php");
 		?>
 	</div>
 </body>
