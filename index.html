@@ -8,7 +8,7 @@
 	
 	<script src="js/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.js"></script>
-	<script src="js/js_login.js"></script>
+	<!-- <script src="js/js_login.js"></script> -->
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="css/css_style.css">
@@ -23,7 +23,7 @@
 				<b>Login</b>
 			</h1>
 		</div>
-		<form method="post" action="php/valida_user.php">
+		<form method="post" action="php/valida_user.php" data-ajax="true">
 			<div data-role="content" id="content_login">
 				<input type="text" id="user" name="user" placeholder="Usuario" required>
 				<input type="password" id="password" name="password" placeholder="Password" required>
