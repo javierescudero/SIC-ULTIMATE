@@ -34,7 +34,7 @@
 			<center>
 				<img src="../public/images/Sicicon.ico">
 			</center>
-			Inicio
+			Electronica
 			</h1>
 		</div>
 		<?php

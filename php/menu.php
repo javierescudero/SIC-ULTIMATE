@@ -1,13 +1,3 @@
-<!--Header-->
-<div data-role="header" id="header">
-	<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-	<h1>SIC Ultimate<br>
-	<center>
-		<img src="../public/images/Sicicon.ico">
-	</center>
-	
-	</h1>
-</div>
 <!-- Menu -->
 <div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
 			<ul id="ul_menu" class="nav-search" data-role="listview" data-theme="b" data-divider-theme="a">
@@ -37,9 +27,9 @@
 
 				<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
 					<h3><center>Cambiar Area</center></h3>
-					<a href="#" data-role="button" id="electronica" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>
-					<a href="#" data-role="button" id="electromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
-					<a href="#" data-role="button" id="valvulas" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
+					<a href="electronica.php" data-role="button" id="electronica" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>
+					<a href="electromecanicos.php" data-role="button" id="electromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left">Electromecanicos</a>
+					<a href="valvulas.php" data-role="button" id="valvulas" class="ui-btn ui-icon-gear ui-btn-icon-left">Valvulas</a>
 				</div><br><hr><br>
 				<a href="index.php" data-role="button" id="inicio" class="ui-btn ui-icon-home ui-btn-icon-left" data-transition="flip">Inicio</a><br><hr><br>
 				<a href="../login.html" id="" class="ui-btn ui-icon-power ui-btn-icon-left" onclick="window.close();">Salir</a>

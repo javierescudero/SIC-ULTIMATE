@@ -13,16 +13,15 @@
 			echo 	"alert('Acceso Correcto');";
 			echo 	"window.location.href='php/index.php';";
 			echo "</script>";
-		}
-		if ($usuario == '' || $password == '') {
+		} else if ($usuario == '' || $password == '') {
 			echo "<script type='text/javascript'>";
 			echo 	"alert('Campos Vacios');";
-			echo 	"window.location.href='index.html';";
+			echo 	"window.location.href='index.html';"; // ../index.html en firefox
 			echo "</script>";
 		} else {
 			echo "<script type='text/javascript'>";
 			echo 	"alert('Datos Incorrectos');";
-			echo 	"window.location.href='index.html';";
+			echo 	"window.location.href='index.html';"; // ../index.html en firefox
 			echo "</script>";
 		}
 	?>
