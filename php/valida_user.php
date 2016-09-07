@@ -1,37 +1,56 @@
 <?php
 	session_start();
-	if (isset($_POST['$usuario'])) {
-		$_SESSION['sesion_usuario'] = $_POST['$usuario'];
-	} else {
-		echo "<script>alert('USUARIO NO VALIDO');</script>";
-	}
+	include("conexion.php");
 ?>
 <html>
-<head>
-	<title>Validando Usuario</title>
-	<script src="js/jquery-1.12.4.min.js"></script>
-</head>
 <body>
-	<?php
-		$usuario = $_POST['user'];
-		$password = $_POST['password'];
+<?php
+	$usuario = $_POST['user'];
+	$password = hash('md5', $_POST['password']);
+	
+	if (!empty($usuario) && !empty($password)) {	
+		$query = mysqli_query($con, "SELECT * FROM permissions WHERE usuario = '".$usuario."' AND password = '".$password."'");
+		$num_rows = mysqli_num_rows($query);
 
-		if ($usuario == 'admin' && $password == '1234') {
-			echo "<script type='text/javascript'>";
-			echo 	"alert('Acceso Correcto');";
-			echo 	"window.location.href='php/index.php';";
-			echo "</script>";
-		} else if ($usuario == '' || $password == '') {
-			echo "<script type='text/javascript'>";
-			echo 	"alert('Campos Vacios');";
-			echo 	"window.location.href='index.html';"; // ../index.html en firefox
-			echo "</script>";
+		if ($num_rows > 0) {
+			echo "Entro al if de numrows <br>";
+			while ($row = mysqli_fetch_assoc($query)) {
+				echo "Entro al while <br>";
+				$dbusuario = $row['Usuario'];
+				echo "Usuario: ".$dbusuario."<br>";
+                $dbpassword = $row['Password'];
+                echo "Usuario: ".$dbpassword."<br>";
+                $db_cap_modfam = $row['cap_modfam'];
+                $db_cap_oper = $row['cap_Oper'];
+                $db_cap_comp = $row['cap_comp'];
+                $db_cap_codes = $row['cap_codes'];
+                $db_cap_registros = $row['cap_Registros'];
+                $db_rep_desp = $row['rep_desp'];
+                $db_rep_graf = $row['rep_graf'];
+                $db_rep_contrib = $row['rep_contrib'];
+                $db_rep_correc = $row['rep_correc'];
+                $dbusr = $row['Usr'];
+                $dbarea = $row['Area'];
+                $dbcambpwd = $row['CambPwd'];
+                $dbtipo = $row['tipo'];
+                echo "Usuario: ".$dbtipo."<br>";
+			}
+			if ($usuario == $dbusuario && $dbpassword == $password) {
+				echo "Entro al if de user$pasword<br>";
+				switch ($dbtipo) {
+					case 'administrador':
+						$_SESSION['session_nombre_usuario'] = $dbusuario;
+						header('Location: ../index.html');
+						break;
+				} //Fin del switch
+				echo "NO entro al Switch<br>";
+			}
 		} else {
-			echo "<script type='text/javascript'>";
-			echo 	"alert('Datos Incorrectos');";
-			echo 	"window.location.href='index.html';"; // ../index.html en firefox
-			echo "</script>";
+			echo "numrows es < 0 <br>";
 		}
-	?>
+	} else {
+		echo "Campos vacios <br>";
+	}
+?>
 </body>
 </html>
