@@ -9,13 +9,11 @@
 	$password = hash('md5', $_POST['password']);
 	
 	if (!empty($usuario) && !empty($password)) {	
-		$query = mysqli_query($con, "SELECT * FROM permissions WHERE usuario = '".$usuario."' AND password = '".$password."'");
+		$query = mysqli_query($con, "SELECT * FROM permissions WHERE Usuario = '".$usuario."' AND Password = '".$password."'");
 		$num_rows = mysqli_num_rows($query);
 
 		if ($num_rows > 0) {
-			echo "Entro al if de numrows <br>";
 			while ($row = mysqli_fetch_assoc($query)) {
-				echo "Entro al while <br>";
 				$dbusuario = $row['Usuario'];
 				echo "Usuario: ".$dbusuario."<br>";
                 $dbpassword = $row['Password'];
@@ -36,20 +34,22 @@
                 echo "Usuario: ".$dbtipo."<br>";
 			}
 			if ($usuario == $dbusuario && $dbpassword == $password) {
-				echo "Entro al if de user$pasword<br>";
 				switch ($dbtipo) {
 					case 'administrador':
 						$_SESSION['session_nombre_usuario'] = $dbusuario;
-						header('Location: ../index.html');
+						header('Location: index.php');
+						break;
+					case 'capturista':
+						$_SESSION['session_nombre_usuario'] = $dbusuario;
+						header('Location: registros.php');
 						break;
 				} //Fin del switch
-				echo "NO entro al Switch<br>";
 			}
 		} else {
-			echo "numrows es < 0 <br>";
+			echo "Usuario o Password Incorrectos. ";
 		}
 	} else {
-		echo "Campos vacios <br>";
+		echo "Campos vacios. ";
 	}
 ?>
 </body>
