@@ -14,7 +14,7 @@ $(document).ready(function() {
         };
     });
 
-    //Evento para cancelar popup agregar familia
+    /*Evento para cancelar popup agregar familia
     $('#cancelarAgregarFamilia').click(function() {
         document.getElementById('pop_inputAgregaFamilia').value = '';
     });
@@ -23,7 +23,7 @@ $(document).ready(function() {
     /*$('li a').click(function() {
         var ida = $(this).attr('id');
         alert(ida)
-    });*/
+    });
 
     //Evento para agregar modelo
     $('#agregarMod').click(function() {
@@ -44,7 +44,5 @@ $(document).ready(function() {
     //Evento para cancelar popup agregar modelo
     $('#cancelarAgregarModelo').click(function() {
         document.getElementById('pop_inputAgregaModelo_FM').value = '';
-    });
-
-    //Evento para eliminar modelo
+    });*/
 });

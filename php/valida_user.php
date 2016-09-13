@@ -15,38 +15,26 @@
 		if ($num_rows > 0) {
 			while ($row = mysqli_fetch_assoc($query)) {
 				$dbusuario = $row['Usuario'];
-				echo "Usuario: ".$dbusuario."<br>";
+				//echo "Usuario: ".$dbusuario."<br>";
                 $dbpassword = $row['Password'];
-                echo "Usuario: ".$dbpassword."<br>";
-                $db_cap_modfam = $row['cap_modfam'];
-                $db_cap_oper = $row['cap_Oper'];
-                $db_cap_comp = $row['cap_comp'];
-                $db_cap_codes = $row['cap_codes'];
-                $db_cap_registros = $row['cap_Registros'];
-                $db_rep_desp = $row['rep_desp'];
-                $db_rep_graf = $row['rep_graf'];
-                $db_rep_contrib = $row['rep_contrib'];
-                $db_rep_correc = $row['rep_correc'];
-                $dbusr = $row['Usr'];
-                $dbarea = $row['Area'];
+                //echo "Usuario: ".$dbpassword."<br>";
                 $dbcambpwd = $row['CambPwd'];
                 $dbtipo = $row['tipo'];
-                echo "Usuario: ".$dbtipo."<br>";
+                //echo "Usuario: ".$dbtipo."<br>";
 			}
 			if ($usuario == $dbusuario && $dbpassword == $password) {
 				switch ($dbtipo) {
 					case 'administrador':
 						$_SESSION['session_nombre_usuario'] = $dbusuario;
-						header('Location: index.php');
-						break;
-					case 'capturista':
-						$_SESSION['session_nombre_usuario'] = $dbusuario;
-						header('Location: registros.php');
+						header("Location: ../index.php");
 						break;
 				} //Fin del switch
 			}
 		} else {
+			header('Location: ../index.html');
+			//echo "<script>alert('Usuario o Password Incorrectos.'); window.location.href='../index.html';</script>"
 			echo "Usuario o Password Incorrectos. ";
+			
 		}
 	} else {
 		echo "Campos vacios. ";
