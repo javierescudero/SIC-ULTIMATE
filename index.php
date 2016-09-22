@@ -25,33 +25,57 @@
 			$num_rows = mysqli_num_rows($query);
 
 			if ($num_rows != 0) {
-				echo "<script>alert('Entro a num_rows.');</script>";
+				//echo "<script>alert('Entro a num_rows.');</script>";
 				while ($row = mysqli_fetch_assoc($query)) {
-					echo "<script>alert('Entro al while.');</script>";
+					//echo "<script>alert('Entro al while.');</script>";
 					$dbusuario = strtolower($row['Usuario']);
 	                $dbpassword = $row['Password'];
 	                $dbcambpwd = $row['CambPwd'];
 	                $dbtipo = $row['tipo'];
 				}
 				if ($usuario == $dbusuario && $dbpassword == $password) {
-					echo "<script>alert('Entro a comparar user y password.');</script>";
+					//echo "<script>alert('Entro a comparar user y password.');</script>";
 					switch ($dbtipo) {
 						case 'administrador':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('Entro a usuario administrador.');</script>";
-							echo "<script>window.location.href='permisos.php'</script>";
+							echo "<script>window.location.href='modulos/administrador/php/index.php'</script>";
+							break;
+						case 'capturistaA':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
+							break;
+						case 'capturistaB':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
+							break;
+						case 'capturistaC':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
+							break;
+						case 'capturistaD':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
+							break;
+						case 'consultorA':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
+							break;
+						case 'consultorB':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
+							break;
+						case 'correctorA':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>window.location.href='../permisos.php'</script>";
 							break;
 					} //Fin del switch
 				}
 			} else {
-				//$mensaje = "Usuario o Password Incorrectos.";
 				echo "<script>alert('Usuario o Password Incorrectos.');</script>";
 			}
 		} else {
 			echo "<script>alert('Favor de llenar los campos.');</script>";
 		}
-	} else {
-		echo "<script>alert('Variable submit NO funciono');</script>";
 	}
 ?>
 <body>
