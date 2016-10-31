@@ -2,12 +2,11 @@
 	define("SERVER", "127.0.0.1");
 	define("USER", "root");
 	define("PASSWORD", "root");
-	define("DB_V", "ignitor");
+	define("DB", "electronica");
 
-	$con_V = mysqli_connect(SERVER, USER, PASSWORD, DB_V);
+	$con = mysqli_connect(SERVER, USER, PASSWORD, DB);
 
-	if (!$con_V) {
+	if (!$con) {
 		die("Conexion Fallida: " . mysqli_connect_error());
 	}
-	echo "Conexion Exitosa";
 ?>
