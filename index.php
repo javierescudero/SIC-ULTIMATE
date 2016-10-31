@@ -50,8 +50,6 @@
 		} else {
 			echo "<script>alert('Favor de llenar los campos.');</script>";
 		}
-	} else {
-		echo "<script>alert('Variable submit NO funciono');</script>";
 	}
 ?>
 <body>
