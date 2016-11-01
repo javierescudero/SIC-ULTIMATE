@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once("php/conexion.php");
+
 ?>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
 		$password = hash('md5', $_POST['password']);
 		if (!empty($usuario) && !empty($password)) {
 
-			$query = mysqli_query($con, "SELECT * FROM permissions WHERE Usuario = '".$usuario."' AND Password = '".$password."'");
+			$query = mysqli_query($con_user, "SELECT * FROM permissions WHERE Usuario = '".$usuario."' AND Password = '".$password."'");
 			$num_rows = mysqli_num_rows($query);
 
 			if ($num_rows != 0) {
@@ -101,14 +102,14 @@
 			<div data-role="content" id="content_login">
 				<input type="text" id="user" name="user" placeholder="Usuario" required>
 				<input type="password" id="password" name="password" placeholder="Password" required>
-				<div data-role="fieldcontain" id="combo_area">
+				<!--<div data-role="fieldcontain" id="combo_area">
 					<center><label for="selection_area"><b>Area</b></label></center>
 					<select name="area" id="area">
 						<option value="electronica">Electronica</option>
 						<option value="electromecanicos">Electromecanicos</option>
 						<option value="valvulas">Valvulas</option>
 					</select>
-				</div>
+				</div>-->
 				<div id="divBtnsCampos">
 					<center>
 						<input type="submit" id="btnAceptar" name="login" data-icon="check" data-inline="true" data-transition="pop" value="Aceptar">

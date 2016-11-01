@@ -4,9 +4,9 @@
 	define("PASSWORD", "root");
 	define("DB", "electronica");
 
-	$con = mysqli_connect(SERVER, USER, PASSWORD, DB);
+	$con_user = mysqli_connect(SERVER, USER, PASSWORD, DB);
 
-	if (!$con) {
-		die("Conexion Fallida: " . mysqli_connect_error());
+	if (!$con_user) {
+		die("Conexion a DB_ELECTRONICA Fallida: " . mysqli_connect_error());
 	}
 ?>
