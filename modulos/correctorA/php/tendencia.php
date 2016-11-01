@@ -6,16 +6,16 @@
 
 	<title>SIC Ultimate</title>
 
-	<script src="../js/jquery-1.12.4.min.js"></script>
-	<script src="../js/jquery.mobile-1.4.5.js"></script>
-	<script src="../js/jqm-datebox-1.4.5.core.min.js"></script>
-	<script src="../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
-	<script src="../js/jqm-datebox.lang.utf8.js"></script>
-	<script src="../js/js_refresh.js"></script>
+	<script src="../../../js/jquery-1.12.4.min.js"></script>
+	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
+	<script src="../../../js/jqm-datebox-1.4.5.core.min.js"></script>
+	<script src="../../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
+	<script src="../../../js/jqm-datebox.lang.utf8.js"></script>
+	<script src="../../../js/js_refresh.js"></script>
 	
-	<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="../css/jqm-datebox-1.4.5.min.css">
-	<link rel="stylesheet" href="../css/css_style.css">
+	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="../../../css/jqm-datebox-1.4.5.min.css">
+	<link rel="stylesheet" href="../../../css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
@@ -24,7 +24,7 @@
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>SIC Ultimate<br>
 			<center>
-				<img src="../public/images/Sicicon.ico">
+				<img src="../../../public/images/Sicicon.ico">
 			</center>
 			</h1>
 		</div>
@@ -106,6 +106,6 @@
 			</form>
 			
 	</div>
-	<script type="text/javascript" src="../js/js_tables.js"></script>
+	<script type="text/javascript" src="../../../js/js_tables.js"></script>
 </body>
 </html>

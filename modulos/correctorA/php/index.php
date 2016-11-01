@@ -19,7 +19,7 @@
 			<center>
 				<img src="../../../public/images/Sicicon.ico">
 			</center>
-			<h1>Corrector A</h1>
+			<h1>Consultor B</h1>
 		</div>
 		<?php 
 			include("menu.php");
