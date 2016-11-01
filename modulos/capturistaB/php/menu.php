@@ -23,9 +23,14 @@
 
 		<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
 			<h3><center>Seleccionar Area</center></h3>
-			<a href="electronica.php" data-role="button" id="electronica" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electronica</a>
-			<a href="electromecanicos.php" data-role="button" id="electromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electromecanicos</a>
-			<a href="valvulas.php" data-role="button" id="valvulas" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Valvulas</a>
+			<fieldset data-role="controlgroup">
+				<input name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked" type="radio">
+		        <label for="radio-choice-v-2a">Electronica</label>
+		        <input name="radio-choice-v-2" id="radio-choice-v-2b" value="off" type="radio">
+		        <label for="radio-choice-v-2b">Electromecanicos</label>
+		        <input name="radio-choice-v-2" id="radio-choice-v-2c" value="other" type="radio">
+		        <label for="radio-choice-v-2c">Valvulas</label>
+			</fieldset>
 		</div><br><hr><br>
 		<!--<a href="index.php" data-role="button" id="inicio" class="ui-btn ui-icon-home ui-btn-icon-left" data-ajax="false">Inicio</a>-->
 		<a href="../../../php/logout.php" id="" class="ui-btn ui-icon-power ui-btn-icon-left" data-ajax="false">Salir</a>
