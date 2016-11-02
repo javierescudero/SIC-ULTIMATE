@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	require_once("php/conexion.php");
-
 ?>
 <html lang="en">
 <head>
@@ -20,6 +19,27 @@
 	if(isset($_POST['login'])) {
 		$usuario = strtolower($_POST['user']);
 		$password = hash('md5', $_POST['password']);
+		$area = $_POST['area'];
+
+		if ($area == 'electronica') {
+			echo "<script>alert('DB electronica');</script>";
+			$con1 = mysqli_connect(SERVER, USER, PASSWORD, DB_ELECTRONICA);
+			if (!$con1) {
+				die("Conexion a DB_ELECTRONICA Fallida: " . mysqli_connect_error());
+			}
+		} elseif ($area == 'electromecanicos') {
+			echo "<script>alert('DB electromecanicos (cpi)');</script>";
+			$con2 = mysqli_connect(SERVER, USER, PASSWORD, DB_ELECTROMECANICOS);
+			if (!$con2) {
+				die("Conexion a DB_ELECTROMECANICOS Fallida: " . mysqli_connect_error());
+			}
+		} elseif ($area == 'valvulas') {
+			echo "<script>alert('DB valvulas (ignitor)');</script>";
+			$con3 = mysqli_connect(SERVER, USER, PASSWORD, DB_VALVULAS);
+			if (!$con3) {
+				die("Conexion a DB_VALVULAS Fallida: " . mysqli_connect_error());
+			}
+		}
 		if (!empty($usuario) && !empty($password)) {
 
 			$query = mysqli_query($con_user, "SELECT * FROM permissions WHERE Usuario = '".$usuario."' AND Password = '".$password."'");
@@ -40,42 +60,42 @@
 						case 'administrador':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('Administrador');</script>";
-							echo "<script>window.location.href='modulos/administrador/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/administrador/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('capturistaA');</script>";
-							echo "<script>window.location.href='modulos/capturistaA/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/capturistaA/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('capturistaB');</script>";
-							echo "<script>window.location.href='modulos/capturistaB/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/capturistaB/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaC':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('capturistaC');</script>";
-							echo "<script>window.location.href='modulos/capturistaC/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/capturistaC/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaD':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('capturistaD');</script>";
-							echo "<script>window.location.href='modulos/capturistaD/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/capturistaD/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'consultorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('consultorA');</script>";
-							echo "<script>window.location.href='modulos/consultorA/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/consultorA/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'consultorB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('consultorB');</script>";
-							echo "<script>window.location.href='modulos/consultorB/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/consultorB/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'correctorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('correctorA');</script>";
-							echo "<script>window.location.href='modulos/correctorA/php/index.php'</script>";
+							echo "<script>window.location.href='modulos/correctorA/php/index.php?area=".$_POST['area']."'</script>";
 							break;
 					} //Fin del switch
 				}
@@ -102,14 +122,15 @@
 			<div data-role="content" id="content_login">
 				<input type="text" id="user" name="user" placeholder="Usuario" required>
 				<input type="password" id="password" name="password" placeholder="Password" required>
-				<!--<div data-role="fieldcontain" id="combo_area">
+				<div data-role="fieldcontain" id="combo_area">
 					<center><label for="selection_area"><b>Area</b></label></center>
 					<select name="area" id="area">
 						<option value="electronica">Electronica</option>
 						<option value="electromecanicos">Electromecanicos</option>
 						<option value="valvulas">Valvulas</option>
 					</select>
-				</div>-->
+				</div>
+
 				<div id="divBtnsCampos">
 					<center>
 						<input type="submit" id="btnAceptar" name="login" data-icon="check" data-inline="true" data-transition="pop" value="Aceptar">
