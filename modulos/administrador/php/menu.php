@@ -6,7 +6,7 @@
 <body>
 
 <!-- Menu -->
-<form method="post" action="conexionDB.php" id="form_menu" data-ajax="false">
+<form method="post" action="index.php" id="form_menu" data-ajax="false">
 	<div id="menu" data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal">
 		<ul id="ul_menu" class="nav-search" data-role="listview" data-theme="b" data-divider-theme="a">
 			<li data-icon="false" ><a href="#" id="menu_principal">Menu Principal</a></li>
@@ -36,16 +36,9 @@
 			<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
 				<h3><center>Seleccionar Area</center></h3>
 				<fieldset data-role="controlgroup">
-					<!--<input name="radio-choice-v-1" id="radio-choice-v-2a" value="on" checked="checked" type="radio">
-			        <label for="radio-choice-v-2a">Electronica</label>
-			        <input name="radio-choice-v-2" id="radio-choice-v-2b" value="off" type="radio">
-			        <label for="radio-choice-v-2b">Electromecanicos</label>
-			        <input name="radio-choice-v-3" id="radio-choice-v-2c" value="other" type="radio">
-			        <label for="radio-choice-v-2c">Valvulas</label>-->
-			        <!--<a name="btnDBelectronica" data-role="button" id="btnElectronica" class="ui-btn ui-icon-gear ui-btn-icon-left">Electronica</a>-->
-			        <input type="submit" id="btnElectronica" name="btnElectronica" data-icon="gear" value="Electronica">
-			        <input type="submit" id="btnElectromecanicos" name="btnElectromecanicos" data-icon="gear" value="Electromecanica">
-			        <input type="submit" id="btnValvulas" name="btnValvulas" data-icon="gear" value="Valvulas">
+			        <a href="index.php?area=electronica" id="btnElectronica" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electronica</a>
+			        <a href="index.php?area=electromecanicos" id="btnElectromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electromecanica</a>
+			        <a href="index.php?area=valvulas" id="btnValvulas" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Valvulas</a>
 				</fieldset>
 			</div><br><hr><br>
 			<a href="../../../php/logout.php" id="" class="ui-btn ui-icon-power ui-btn-icon-left" data-ajax="false">Salir</a>

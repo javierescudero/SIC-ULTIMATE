@@ -1,7 +1,6 @@
 
 <?php
 	session_start();
-	//require_once("conexionDB.php");
 	require_once("../../../php/conexion.php");
 ?>
 <!DOCTYPE html>
@@ -120,7 +119,6 @@
 					echo "<script>alert('Algo anda mal :(');</script>";
 				}
 			}
-			
 		?>
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	</div>
