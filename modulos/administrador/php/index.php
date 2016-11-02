@@ -84,39 +84,39 @@
 		</div>
 		<?php 
 			include("menu.php");
-			$area = $_GET['area'];
-		?>
-
-		<?php
-			if ($area == "electronica") {
-				$query = mysqli_query($con1, "SELECT * FROM modelos WHERE Modelo = '11E79 101B1'");
-				$rows_modelos = mysqli_num_rows($query);
-				if ($rows_modelos != 0) {
-					while ($row = mysqli_fetch_assoc($query)) {
-						echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
+			
+			if (isset($_GET['area'])) {
+				$area = $_GET['area'];
+				if ($area == "electronica") {
+					$query = mysqli_query($con1, "SELECT * FROM modelos WHERE Modelo = '11E79 101B1'");
+					$rows_modelos = mysqli_num_rows($query);
+					if ($rows_modelos != 0) {
+						while ($row = mysqli_fetch_assoc($query)) {
+							echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
+						}
+					} else {
+						echo "<script>alert('Algo anda mal :(');</script>";
 					}
-				} else {
-					echo "<script>alert('Algo anda mal :(');</script>";
-				}
-			} elseif ($area == "electromecanicos") {
-				$query = mysqli_query($con2, "SELECT * FROM modelos WHERE ID = '7'");
-				$rows_modelos = mysqli_num_rows($query);
-				if ($rows_modelos != 0) {
-					while ($row = mysqli_fetch_assoc($query)) {
-						echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
+				} elseif ($area == "electromecanicos") {
+					$query = mysqli_query($con2, "SELECT * FROM modelos WHERE ID = '7'");
+					$rows_modelos = mysqli_num_rows($query);
+					if ($rows_modelos != 0) {
+						while ($row = mysqli_fetch_assoc($query)) {
+							echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
+						}
+					} else {
+						echo "<script>alert('Algo anda mal :(');</script>";
 					}
-				} else {
-					echo "<script>alert('Algo anda mal :(');</script>";
-				}
-			} elseif ($area == "valvulas") {
-				$query = mysqli_query($con3, "SELECT * FROM modelos WHERE Modelo = '07 68A415B3'");
-				$rows_modelos = mysqli_num_rows($query);
-				if ($rows_modelos != 0) {
-					while ($row = mysqli_fetch_assoc($query)) {
-						echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
+				} elseif ($area == "valvulas") {
+					$query = mysqli_query($con3, "SELECT * FROM modelos WHERE Modelo = '07 68A415B3'");
+					$rows_modelos = mysqli_num_rows($query);
+					if ($rows_modelos != 0) {
+						while ($row = mysqli_fetch_assoc($query)) {
+							echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
+						}
+					} else {
+						echo "<script>alert('Algo anda mal :(');</script>";
 					}
-				} else {
-					echo "<script>alert('Algo anda mal :(');</script>";
 				}
 			}
 		?>
