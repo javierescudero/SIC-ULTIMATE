@@ -1,5 +1,9 @@
 
+<?php
+	session_start();
+	//include("php/conexion.php");
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +14,65 @@
 	
 	<script src="../../../js/jquery-1.12.4.min.js"></script>
 	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
+	<script src="../../../js/highcharts/highcharts.js"></script>
+	<!--<script src="../../../js/highcharts/highcharts-3d.js"></script>-->
+	<script src="../../../js/highcharts/dark-unica.js"></script>
+	<script src="../../../js/highcharts/exporting.js"></script>
+	<script src="../../../js/highcharts/js_graficsAdmin.js"></script>
 	
 	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="../../../css/css_style.css">
+
+	<script type="text/javascript">
+		$(function () {
+		    Highcharts.chart('container', {
+		        title: {
+		            text: 'Monthly Average Temperature',
+		            x: -20 //center
+		        },
+		        subtitle: {
+		            text: 'Source: WorldClimate.com',
+		            x: -20
+		        },
+		        xAxis: {
+		            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+		                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Temperature (°C)'
+		            },
+		            plotLines: [{
+		                value: 0,
+		                width: 1,
+		                color: '#808080'
+		            }]
+		        },
+		        tooltip: {
+		            valueSuffix: '°C'
+		        },
+		        legend: {
+		            layout: 'vertical',
+		            align: 'right',
+		            verticalAlign: 'middle',
+		            borderWidth: 0
+		        },
+		        series: [{
+		            name: 'Tokyo',
+		            data: [9.2, 4.1, 11.7, 16.7, 20.4, 23.7, 27.4, 28.7, 25.5, 20.5, 15.1, 11.8]
+		        }, {
+		            name: 'New York',
+		            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+		        }, {
+		            name: 'Berlin',
+		            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+		        }, {
+		            name: 'London',
+		            data: [1.7, 2.0, 3.5, 6.3, 9.7, 13.0, 15.8, 14.4, 12.0, 8.1, 4.4, 2.6]
+		        }]
+		    });
+		});
+	</script>
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="page">
@@ -26,6 +86,7 @@
 		<?php 
 			include("menu.php");
 		?>
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	</div>
 </body>
 </html>

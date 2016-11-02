@@ -14,7 +14,7 @@
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="css/css_style.css">
+	<link rel="stylesheet" href="../../../css/css_style.css">
 </head>
 <?php
 	if(isset($_POST['login'])) {
@@ -26,55 +26,55 @@
 			$num_rows = mysqli_num_rows($query);
 
 			if ($num_rows != 0) {
-				echo "<script>alert('Entro a num_rows.');</script>";
+				//echo "<script>alert('Entro a num_rows.');</script>";
 				while ($row = mysqli_fetch_assoc($query)) {
-					echo "<script>alert('Entro al while.');</script>";
+					//echo "<script>alert('Entro al while.');</script>";
 					$dbusuario = strtolower($row['Usuario']);
 	                $dbpassword = $row['Password'];
 	                $dbcambpwd = $row['CambPwd'];
 	                $dbtipo = $row['tipo'];
 				}
 				if ($usuario == $dbusuario && $dbpassword == $password) {
-					echo "<script>alert('Entro a comparar user y password.');</script>";
+					//echo "<script>alert('Entro a comparar user y password.');</script>";
 					switch ($dbtipo) {
 						case 'administrador':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('Administrador');</script>";
+							//echo "<script>alert('Administrador');</script>";
 							echo "<script>window.location.href='modulos/administrador/php/index.php'</script>";
 							break;
 						case 'capturistaA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('capturistaA');</script>";
+							//echo "<script>alert('capturistaA');</script>";
 							echo "<script>window.location.href='modulos/capturistaA/php/index.php'</script>";
 							break;
 						case 'capturistaB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('capturistaB');</script>";
+							//echo "<script>alert('capturistaB');</script>";
 							echo "<script>window.location.href='modulos/capturistaB/php/index.php'</script>";
 							break;
 						case 'capturistaC':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('capturistaC');</script>";
+							//echo "<script>alert('capturistaC');</script>";
 							echo "<script>window.location.href='modulos/capturistaC/php/index.php'</script>";
 							break;
 						case 'capturistaD':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('capturistaD');</script>";
+							//echo "<script>alert('capturistaD');</script>";
 							echo "<script>window.location.href='modulos/capturistaD/php/index.php'</script>";
 							break;
 						case 'consultorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('consultorA');</script>";
+							//echo "<script>alert('consultorA');</script>";
 							echo "<script>window.location.href='modulos/consultorA/php/index.php'</script>";
 							break;
 						case 'consultorB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('consultorB');</script>";
+							//echo "<script>alert('consultorB');</script>";
 							echo "<script>window.location.href='modulos/consultorB/php/index.php'</script>";
 							break;
 						case 'correctorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>alert('correctorA');</script>";
+							//echo "<script>alert('correctorA');</script>";
 							echo "<script>window.location.href='modulos/correctorA/php/index.php'</script>";
 							break;
 					} //Fin del switch
