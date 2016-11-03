@@ -94,6 +94,10 @@
 					$areas .= "Valvulas,";
 				}
 
+				if ($area_electronica != 'on' && $area_electromecanicos != 'on' && $area_valvulas != 'on') {
+					echo "<script>alert('Usuario ya existe');</script>";
+				}
+
 				$query = "INSERT INTO permissions (Usuario, Password, cap_modfam, cap_Oper, cap_comp, cap_codes, cap_Registros, rep_desp, rep_graf, rep_contrib, rep_correc, Usr, Area, CambPwd) VALUES ('".$usuario."', '".$password."', '".$cambiar_password."', '".$cap_modelos."', '".$cap_operaciones."', '".$cap_componentes."', '".$cap_codigos."', '".$cap_registros."', '".$cap_usuarios."', '".$rep_desempeno."', '".$rep_tendencia."', '".$rep_contribuyentes."', '".$rep_correccion."', '".$areas."')";
 
 				if (mysqli_query($con_user, $query)) {
