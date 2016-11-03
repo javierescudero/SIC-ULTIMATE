@@ -22,56 +22,7 @@
 	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="../../../css/css_style.css">
 
-	<script type="text/javascript">
-		$(function () {
-		    Highcharts.chart('container', {
-		        title: {
-		            text: 'Monthly Average Temperature',
-		            x: -20 //center
-		        },
-		        subtitle: {
-		            text: 'Source: WorldClimate.com',
-		            x: -20
-		        },
-		        xAxis: {
-		            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-		                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-		        },
-		        yAxis: {
-		            title: {
-		                text: 'Temperature (°C)'
-		            },
-		            plotLines: [{
-		                value: 0,
-		                width: 1,
-		                color: '#808080'
-		            }]
-		        },
-		        tooltip: {
-		            valueSuffix: '°C'
-		        },
-		        legend: {
-		            layout: 'vertical',
-		            align: 'right',
-		            verticalAlign: 'middle',
-		            borderWidth: 0
-		        },
-		        series: [{
-		            name: 'Tokyo',
-		            data: [9.2, 4.1, 11.7, 16.7, 20.4, 23.7, 27.4, 28.7, 25.5, 20.5, 15.1, 11.8]
-		        }, {
-		            name: 'New York',
-		            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-		        }, {
-		            name: 'Berlin',
-		            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-		        }, {
-		            name: 'London',
-		            data: [1.7, 2.0, 3.5, 6.3, 9.7, 13.0, 15.8, 14.4, 12.0, 8.1, 4.4, 2.6]
-		        }]
-		    });
-		});
-	</script>
+	
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="page">
@@ -87,26 +38,183 @@
 			
 			if (isset($_GET['area'])) {
 				$area = $_GET['area'];
-				if ($area == "electronica") {
-					$query = mysqli_query($con1, "SELECT * FROM modelos WHERE Modelo = '11E79 101B1'");
-					$rows_modelos = mysqli_num_rows($query);
-					if ($rows_modelos != 0) {
-						while ($row = mysqli_fetch_assoc($query)) {
-							echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
-						}
-					} else {
-						echo "<script>alert('Algo anda mal :(');</script>";
-					}
-				} elseif ($area == "electromecanicos") {
-					$query = mysqli_query($con2, "SELECT * FROM modelos WHERE ID = '7'");
-					$rows_modelos = mysqli_num_rows($query);
-					if ($rows_modelos != 0) {
-						while ($row = mysqli_fetch_assoc($query)) {
-							echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
-						}
-					} else {
-						echo "<script>alert('Algo anda mal :(');</script>";
-					}
+				if ($area == "electronica") { ?>
+				<script type="text/javascript">
+					$(function () {
+					    Highcharts.chart('container', {
+					        title: {
+					            text: 'produccion L2',
+					            x: -20 //center
+					        },
+					        subtitle: {
+					            text: 'electronica 2016',
+					            x: -20
+					        },
+					        xAxis: {
+					            categories: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO']
+					        },
+					        yAxis: {
+					            title: {
+					                text: 'produccion'
+					            },
+					            plotLines: [{
+					                value: 0,
+					                width: 1,
+					                color: '#808080'
+					            }]
+					        },
+					        tooltip: {
+					            valueSuffix: 'pz'
+					        },
+					        legend: {
+					            layout: 'vertical',
+					            align: 'right',
+					            verticalAlign: 'middle',
+					            borderWidth: 0
+					        },
+					        //MES de Enero 50V51-290
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50V51-290' AND Fecha BETWEEN '2016-01-01' AND '2016-01-31'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaEne = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaEne = $sumaEne + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Febrero 50V51-290
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50V51-290' AND Fecha BETWEEN '2016-02-01' AND '2016-02-29'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaFeb = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaFeb = $sumaFeb + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Marzo 50V51-290
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50V51-290' AND Fecha BETWEEN '2016-03-01' AND '2016-03-31'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaMar = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaMar = $sumaMar + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Abril 50V51-290
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50V51-290' AND Fecha BETWEEN '2016-04-01' AND '2016-04-30'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaAbr = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaAbr = $sumaAbr + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Mayo 50V51-290
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50V51-290' AND Fecha BETWEEN '2016-05-01' AND '2016-05-31'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaMay = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaMay = $sumaMay + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        series: [{
+					            name: '50V51-290',
+					            data: [<?php echo "$sumaEne";?>, <?php echo "$sumaFeb";?>, <?php echo "$sumaMar";?>, <?php echo "$sumaAbr";?>, <?php echo "$sumaMay";?>]
+					        },
+					        //MES de Enero 50M58-242-01B1
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50M58-242-01B1' AND Fecha BETWEEN '2016-01-01' AND '2016-01-31'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaEne = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaEne = $sumaEne + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Febrero 50M58-242-01B1
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50M58-242-01B1' AND Fecha BETWEEN '2016-02-01' AND '2016-02-29'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaFeb = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaFeb = $sumaFeb + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Marzo 50M58-242-01B1
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50M58-242-01B1' AND Fecha BETWEEN '2016-03-01' AND '2016-03-31'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaMar = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaMar = $sumaMar + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Abril 50M58-242-01B1
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50M58-242-01B1' AND Fecha BETWEEN '2016-04-01' AND '2016-04-30'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaMar = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaMar = $sumaMar + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        //MES de Mayo 50M58-242-01B1
+					        <?php
+					        	$query = mysqli_query($con1, "SELECT Prod FROM datos WHERE Modelo = '50M58-242-01B1' AND Fecha BETWEEN '2016-05-01' AND '2016-05-31'");
+					        	$rows_modelos = mysqli_num_rows($query);
+					        	if ($rows_modelos != 0) {
+					        		$sumaMay = 0;
+									while ($row = mysqli_fetch_assoc($query)) {
+										$sumaMay = $sumaMay + $row['Prod'];
+									}
+								} else {
+									echo "<script>alert('Algo anda mal :(');</script>";
+								}
+					        ?>
+					        	{name: '50M58-242-01B1',
+					            data: [<?php echo "$sumaEne";?>, <?php echo "$sumaFeb";?>, <?php echo "$sumaMar";?>, <?php echo "$sumaAbr";?>, <?php echo "$sumaMay";?>]
+					        }]
+					    });
+					});
+				</script>
+				<?php 
+				} elseif ($area == "electromecanicos") { 
+					
 				} elseif ($area == "valvulas") {
 					$query = mysqli_query($con3, "SELECT * FROM modelos WHERE Modelo = '07 68A415B3'");
 					$rows_modelos = mysqli_num_rows($query);
