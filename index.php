@@ -22,19 +22,19 @@
 		$area = $_POST['area'];
 
 		if ($area == 'electronica') {
-			echo "<script>alert('DB electronica');</script>";
+			//echo "<script>alert('DB electronica');</script>";
 			$con1 = mysqli_connect(SERVER, USER, PASSWORD, DB_ELECTRONICA);
 			if (!$con1) {
 				die("Conexion a DB_ELECTRONICA Fallida: " . mysqli_connect_error());
 			}
 		} elseif ($area == 'electromecanicos') {
-			echo "<script>alert('DB electromecanicos (cpi)');</script>";
+			//echo "<script>alert('DB electromecanicos');</script>";
 			$con2 = mysqli_connect(SERVER, USER, PASSWORD, DB_ELECTROMECANICOS);
 			if (!$con2) {
 				die("Conexion a DB_ELECTROMECANICOS Fallida: " . mysqli_connect_error());
 			}
 		} elseif ($area == 'valvulas') {
-			echo "<script>alert('DB valvulas (ignitor)');</script>";
+			//echo "<script>alert('DB valvulas');</script>";
 			$con3 = mysqli_connect(SERVER, USER, PASSWORD, DB_VALVULAS);
 			if (!$con3) {
 				die("Conexion a DB_VALVULAS Fallida: " . mysqli_connect_error());
@@ -96,6 +96,10 @@
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
 							//echo "<script>alert('correctorA');</script>";
 							echo "<script>window.location.href='modulos/correctorA/php/index.php?area=".$_POST['area']."'</script>";
+							break;
+						case 'otro':
+							$_SESSION['session_nombre_usuario'] = $dbusuario;
+							echo "<script>alert('Este usuario no cuenta con un tipo de formulario. Contacte al administrador del sistema.');</script>";
 							break;
 					} //Fin del switch
 				}

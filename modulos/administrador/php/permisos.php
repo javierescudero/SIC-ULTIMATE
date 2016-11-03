@@ -85,14 +85,11 @@
 	          	</div><br>
 	          	<fieldset data-role="controlgroup">
 	          		<center>
+	          			<input type="submit" id="btnBuscar" name="btnBuscar" data-icon="search" data-inline="true" value="Buscar">
 	          			<input type="submit" id="btnAgregar" name="btnAgregar" data-icon="plus" data-inline="true" value="Agregar">
 	          			<input type="submit" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true" value="Modificar">
 	          			<input type="submit" id="btnBorrar" name="btnBorrar" data-icon="delete" data-inline="true" value="Borrar">
 	          			<input type="submit" id="btnCancelar" name="btnCancelar" data-icon="back" data-inline="true" value="Cancelar">
-	          			<!--<a href="" data-role="button" id="btnAgregar" name="btnAgregar" data-icon="plus" data-inline="true">Agregar</a>
-						<a href="" data-role="button" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true">Modificar</a>
-						<a href="" data-role="button" id="btnBorrar" name="btnBorrar" data-icon="delete" data-inline="true">Borrar</a>
-						<a href="" data-role="button" id="btnCancelar" name="btnCancelar" data-icon="back" data-inline="true">Cancelar</a>-->
 	          		</center>
 	          	</fieldset>
 			</form>

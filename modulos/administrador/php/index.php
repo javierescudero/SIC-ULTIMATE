@@ -14,7 +14,7 @@
 	<script src="../../../js/jquery-1.12.4.min.js"></script>
 	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
 	<script src="../../../js/highcharts/highcharts.js"></script>
-	<!--<script src="../../../js/highcharts/highcharts-3d.js"></script>-->
+	<script src="../../../js/highcharts/highcharts-3d.js"></script>
 	<script src="../../../js/highcharts/dark-unica.js"></script>
 	<script src="../../../js/highcharts/exporting.js"></script>
 	<script src="../../../js/highcharts/js_graficsAdmin.js"></script>
@@ -40,10 +40,11 @@
 				$area = $_GET['area'];
 				if ($area == "electronica") { ?>
 				<script type="text/javascript">
+				//column, bar, area, pie, areaspline, spline
 					$(function () {
 					    Highcharts.chart('container', {
 					        title: {
-					            text: 'produccion L2',
+					            text: 'produccion',
 					            x: -20 //center
 					        },
 					        subtitle: {
@@ -213,18 +214,393 @@
 					});
 				</script>
 				<?php 
-				} elseif ($area == "electromecanicos") { 
-					
-				} elseif ($area == "valvulas") {
-					$query = mysqli_query($con3, "SELECT * FROM modelos WHERE Modelo = '07 68A415B3'");
-					$rows_modelos = mysqli_num_rows($query);
-					if ($rows_modelos != 0) {
-						while ($row = mysqli_fetch_assoc($query)) {
-							echo "<div>".$row['ID']."<br>".$row['Modelo']."<br>".$row['Familia']."</div>";
-						}
-					} else {
-						echo "<script>alert('Algo anda mal :(');</script>";
-					}
+				} elseif ($area == "electromecanicos") { ?>
+					<script type="text/javascript">
+						$(function () {
+						    Highcharts.chart('container', {
+						    	chart: {
+									type: 'bar',
+									options3d: {
+										enabled: false,
+										alpha: 15,
+										beta: 15,
+										depth: 50
+									}
+								},
+								plotOptions: {
+									column: {
+										depth: 25,
+										dataLabels: {
+											enabled: true
+										}
+									}
+								},
+						        title: {
+						            text: 'produccion',
+						            x: -20 //center
+						        },
+						        subtitle: {
+						            text: 'electromecanicos 2016',
+						            x: -20
+						        },
+						        xAxis: {
+						            categories: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO']
+						        },
+						        yAxis: {
+						            title: {
+						                text: 'produccion'
+						            },
+						            plotLines: [{
+						                value: 0,
+						                width: 1,
+						                color: '#808080'
+						            }]
+						        },
+						        tooltip: {
+						            valueSuffix: 'pz'
+						        },
+						        legend: {
+						            layout: 'vertical',
+						            align: 'right',
+						            verticalAlign: 'middle',
+						            borderWidth: 0
+						        },
+						        //MES de Enero 08A05A101S1
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '08A05A101S1' AND Fecha BETWEEN '2016-01-01' AND '2016-01-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Ene = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Ene = $suma_Ene + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Febrero 08A05A101S1
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '08A05A101S1' AND Fecha BETWEEN '2016-02-01' AND '2016-02-29'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Feb = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Feb = $suma_Feb + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Marzo 08A05A101S1
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '08A05A101S1' AND Fecha BETWEEN '2016-03-01' AND '2016-03-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Mar = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Mar = $suma_Mar + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Abril 08A05A101S1
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '08A05A101S1' AND Fecha BETWEEN '2016-04-01' AND '2016-04-30'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Abr = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Abr = $suma_Abr + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Mayo 08A05A101S1
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '08A05A101S1' AND Fecha BETWEEN '2016-05-01' AND '2016-05-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_May = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_May = $suma_May + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+
+						        series: [{
+						            name: '08A05A101S1',
+						            data: [<?php echo "$suma_Ene";?>, <?php echo "$suma_Feb";?>, <?php echo "$suma_Mar";?>, <?php echo "$suma_Abr";?>, <?php echo "$suma_May";?>]
+						        },
+						        //MES de Enero 0024 260600
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '0024 260600' AND Fecha BETWEEN '2016-01-01' AND '2016-01-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Ene = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Ene = $suma_Ene + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Febrero 0024 260600
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '0024 260600' AND Fecha BETWEEN '2016-02-01' AND '2016-02-29'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Feb = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Feb = $suma_Feb + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Marzo 0024 260600
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '0024 260600' AND Fecha BETWEEN '2016-03-01' AND '2016-03-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Mar = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Mar = $suma_Mar + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Abril 0024 260600
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '0024 260600' AND Fecha BETWEEN '2016-04-01' AND '2016-04-30'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Abr = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Abr = $suma_Abr + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Mayo 0024 260600
+						        <?php
+						        	$query = mysqli_query($con2, "SELECT Prod FROM datos WHERE Modelo = '0024 260600' AND Fecha BETWEEN '2016-05-01' AND '2016-05-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_May = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_May = $suma_May + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        	{name: '0024 260600',
+						            data: [<?php echo "$suma_Ene";?>, <?php echo "$suma_Feb";?>, <?php echo "$suma_Mar";?>, <?php echo "$suma_Abr";?>, <?php echo "$suma_May";?>]
+						        }]
+						    });
+						});
+					</script>
+				<?php	
+				} elseif ($area == "valvulas") { ?>
+					<script type="text/javascript">
+						$(function () {
+						    Highcharts.chart('container', {
+						    	chart: {
+									type: 'column',
+									options3d: {
+										enabled: false,
+										alpha: 15,
+										beta: 15,
+										depth: 50
+									}
+								},
+								plotOptions: {
+									column: {
+										depth: 25,
+										dataLabels: {
+											enabled: true
+										}
+									}
+
+								},
+						        title: {
+						            text: 'produccion',
+						            x: -20 //center
+						        },
+						        subtitle: {
+						            text: 'valvulas 2016',
+						            x: -20
+						        },
+						        xAxis: {
+						            categories: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO']
+						        },
+						        yAxis: {
+						            title: {
+						                text: 'produccion'
+						            },
+						            plotLines: [{
+						                value: 0,
+						                width: 1,
+						                color: '#808080'
+						            }]
+						        },
+						        tooltip: {
+						            valueSuffix: 'pz'
+						        },
+						        legend: {
+						            layout: 'vertical',
+						            align: 'right',
+						            verticalAlign: 'middle',
+						            borderWidth: 0
+						        },
+						        //MES de Enero 25M05A-129P1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '25M05A-129P1' AND Fecha BETWEEN '2016-01-01' AND '2016-01-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Ene = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Ene = $suma_Ene + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Febrero 25M05A-129P1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '25M05A-129P1' AND Fecha BETWEEN '2016-02-01' AND '2016-02-29'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Feb = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Feb = $suma_Feb + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Marzo 25M05A-129P1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '25M05A-129P1' AND Fecha BETWEEN '2016-03-01' AND '2016-03-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Mar = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Mar = $suma_Mar + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Abril 25M05A-129P1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '25M05A-129P1' AND Fecha BETWEEN '2016-04-01' AND '2016-04-30'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Abr = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Abr = $suma_Abr + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Mayo 25M05A-129P1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '25M05A-129P1' AND Fecha BETWEEN '2016-05-01' AND '2016-05-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_May = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_May = $suma_May + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+
+						        series: [{
+						            name: '25M05A-129P1',
+						            data: [<?php echo "$suma_Ene";?>, <?php echo "$suma_Feb";?>, <?php echo "$suma_Mar";?>, <?php echo "$suma_Abr";?>, <?php echo "$suma_May";?>]
+						        },
+						        //MES de Enero 1-25M01A157B1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '1-25M01A157B1' AND Fecha BETWEEN '2016-01-01' AND '2016-01-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Ene = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Ene = $suma_Ene + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Febrero 1-25M01A157B1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '1-25M01A157B1' AND Fecha BETWEEN '2016-02-01' AND '2016-02-29'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Feb = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Feb = $suma_Feb + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Marzo 1-25M01A157B1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '1-25M01A157B1' AND Fecha BETWEEN '2016-03-01' AND '2016-03-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Mar = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Mar = $suma_Mar + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Abril 1-25M01A157B1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '1-25M01A157B1' AND Fecha BETWEEN '2016-04-01' AND '2016-04-30'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_Abr = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_Abr = $suma_Abr + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        //MES de Mayo 1-25M01A157B1
+						        <?php
+						        	$query = mysqli_query($con3, "SELECT Prod FROM datos WHERE Modelo = '1-25M01A157B1' AND Fecha BETWEEN '2016-05-01' AND '2016-05-31'");
+						        	$rows_modelos = mysqli_num_rows($query);
+						        	if ($rows_modelos != 0) {
+						        		$suma_May = 0;
+										while ($row = mysqli_fetch_assoc($query)) {
+											$suma_May = $suma_May + $row['Prod'];
+										}
+									} else {
+										echo "<script>alert('Algo anda mal :(');</script>";
+									}
+						        ?>
+						        	{name: '1-25M01A157B1',
+						            data: [<?php echo "$suma_Ene";?>, <?php echo "$suma_Feb";?>, <?php echo "$suma_Mar";?>, <?php echo "$suma_Abr";?>, <?php echo "$suma_May";?>]
+						        }]
+						    });
+						});
+					</script>
+				<?php
 				}
 			}
 		?>
