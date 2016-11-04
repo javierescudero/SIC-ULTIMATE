@@ -15,7 +15,8 @@
 		<div id="divMenuPrincipal">
 			<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
 				<h3><center>Captura</center></h3>
-				<a href="fam&mod.php" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left" data-transition="slide" data-ajax="false">Familias / Modelos</a>
+				<!--<?php //echo "<a href='fam&mod.php?area='".$_POST['area']."' id='fam_mod'  data-role='button' class='ui-btn ui-icon-bars ui-btn-icon-left' data-transition='slide' data-ajax='false'>PRUEBA</a>";?>-->
+				<a href="fam&mod.php?area=" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left" data-transition="slide" data-ajax="false">Familias / Modelos</a>
 				<a href="operaciones.php" id="operaciones" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left" data-transition="slide" data-ajax="false">Operaciones</a>
 				<a href="componentes.php" id="componentes" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left" data-transition="slide" data-ajax="false">Componentes</a>
 				<a href="codigos_de_falla.php" id="codigos_de_falla" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left" data-transition="slide" data-ajax="false">Codigos de Falla</a>
