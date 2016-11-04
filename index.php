@@ -21,25 +21,6 @@
 		$password = hash('md5', $_POST['password']);
 		$area = $_POST['area'];
 
-		if ($area == 'electronica') {
-			//echo "<script>alert('DB electronica');</script>";
-			$con1 = mysqli_connect(SERVER, USER, PASSWORD, DB_ELECTRONICA);
-			if (!$con1) {
-				die("Conexion a DB_ELECTRONICA Fallida: " . mysqli_connect_error());
-			}
-		} elseif ($area == 'electromecanicos') {
-			//echo "<script>alert('DB electromecanicos');</script>";
-			$con2 = mysqli_connect(SERVER, USER, PASSWORD, DB_ELECTROMECANICOS);
-			if (!$con2) {
-				die("Conexion a DB_ELECTROMECANICOS Fallida: " . mysqli_connect_error());
-			}
-		} elseif ($area == 'valvulas') {
-			//echo "<script>alert('DB valvulas');</script>";
-			$con3 = mysqli_connect(SERVER, USER, PASSWORD, DB_VALVULAS);
-			if (!$con3) {
-				die("Conexion a DB_VALVULAS Fallida: " . mysqli_connect_error());
-			}
-		}
 		if (!empty($usuario) && !empty($password)) {
 
 			$query = mysqli_query($con_user, "SELECT * FROM permissions WHERE Usuario = '".$usuario."' AND Password = '".$password."'");

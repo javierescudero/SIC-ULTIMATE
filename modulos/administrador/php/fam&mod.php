@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+	require_once("../../../php/conexion.php");
+	if (isset($_GET['area'])) {
+		$area = $_GET['area'];
+	}
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -37,7 +42,51 @@
 					<center><label for="divFamilia_FM" id="lblFamilia" data-theme="c"><b>Familias</b></label></center>
 					<div id="divFamilia_FM">
 						<ul data-role="listview" id="listFamilia">
-							<li data-icon="false"><a href="">11E79</a></li>
+							<?php
+								if ($area == 'electronica') {
+									$query = mysqli_query($con1, "SELECT * FROM familias");
+									$num_rows = mysqli_num_rows($query);
+
+									if ($num_rows != 0) {
+										while ($row = mysqli_fetch_assoc($query)) {
+											echo "<li data-icon='false' id=".$row['Familias']."><a href=''>".$row['Familias']."</a></li>";
+										}
+									} else {
+										echo "<script>alert('No se encontraron familias');</script>";
+									}
+								}
+							?>
+							<?php
+								if ($area == 'electromecanicos') {
+									$query = mysqli_query($con2, "SELECT * FROM familias");
+									$num_rows = mysqli_num_rows($query);
+
+									if ($num_rows != 0) {
+										while ($row = mysqli_fetch_assoc($query)) {
+											echo "<li data-icon='false' id=".$row['Familias']."><a href=''>".$row['Familias']."</a></li>";
+										}
+									} else {
+										echo "<script>alert('No se encontraron familias');</script>";
+									}
+								}
+							?>
+							<?php
+								if ($area == 'valvulas') {
+									$query = mysqli_query($con3, "SELECT * FROM familias");
+									$num_rows = mysqli_num_rows($query);
+
+									if ($num_rows != 0) {
+										while ($row = mysqli_fetch_assoc($query)) {
+											echo "<li class='items' data-icon='false' id=".$row['Familias']."><a href=''>".$row['Familias']."</a></li>";
+										}
+									} else {
+										echo "<script>alert('No se encontraron familias');</script>";
+									}
+							?>
+							<?php
+
+								}
+							?>
 						</ul>
 					</div>
 				</div>

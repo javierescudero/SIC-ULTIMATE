@@ -34,7 +34,7 @@
 			<h1>Administrador</h1>
 		</div>
 		<?php 
-			include("menu.php");
+			
 			
 			if (isset($_GET['area'])) {
 				$area = $_GET['area'];
@@ -603,6 +603,8 @@
 				<?php
 				}
 			}
+
+			include("menu.php");
 		?>
 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	</div>

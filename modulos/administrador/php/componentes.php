@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+	require_once("../../../php/conexion.php");
+	if (isset($_GET['area'])) {
+		$area = $_GET['area'];
+	}
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -35,16 +40,48 @@
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
 						<select name="modelo" id="modelo">
-							<option value="">50M61 843</option>
-							<option value="">F59-478100</option>
-							<option value="">50M61 843</option>
-							<option value="">0059 474000</option>
-							<option value="">0059 478300</option>
-							<option value="">1F83C-11NPB1</option>
-							<option value="">50M61 843</option>
-							<option value="">F59-478100</option>
-							<option value="">50M61 843</option>
-							<option value="">0059 474000</option>
+							<?php
+								if ($area == 'electronica') {
+									$query = mysqli_query($con1, "SELECT Comp FROM componentes");
+									$num_rows = mysqli_num_rows($query);
+
+									if ($num_rows != 0) {
+										while ($row = mysqli_fetch_assoc($query)) {
+											echo "<option value=".$row['Comp'].">".$row['Comp']."</option>";
+										}
+									} else {
+										echo "<script>alert('No se encontraron componentes');</script>";
+									}
+								}
+							?>
+							<?php
+								if ($area == 'electromecanicos') {
+									$query = mysqli_query($con2, "SELECT Comp FROM componentes");
+									$num_rows = mysqli_num_rows($query);
+
+									if ($num_rows != 0) {
+										while ($row = mysqli_fetch_assoc($query)) {
+											echo "<option value=".$row['Comp'].">".$row['Comp']."</option>";
+										}
+									} else {
+										echo "<script>alert('No se encontraron componentes');</script>";
+									}
+								}
+							?>
+							<?php
+								if ($area == 'valvulas') {
+									$query = mysqli_query($con3, "SELECT Comp FROM componentes");
+									$num_rows = mysqli_num_rows($query);
+
+									if ($num_rows != 0) {
+										while ($row = mysqli_fetch_assoc($query)) {
+											echo "<option value=".$row['Comp'].">".$row['Comp']."</option>";
+										}
+									} else {
+										echo "<script>alert('No se encontraron componentes');</script>";
+									}
+								}
+							?>
 						</select>
 					</div>
 				</center>
