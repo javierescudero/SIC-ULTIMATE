@@ -77,14 +77,11 @@
 
 									if ($num_rows != 0) {
 										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<li class='items' data-icon='false' id=".$row['Familias']."><a href=''>".$row['Familias']."</a></li>";
+											echo "<li class='items' data-icon='false'><a href='' value=".$row['Familias'].">".$row['Familias']."</a></li>";
 										}
 									} else {
 										echo "<script>alert('No se encontraron familias');</script>";
 									}
-							?>
-							<?php
-
 								}
 							?>
 						</ul>

@@ -53,13 +53,30 @@
 									} else {
 										echo "<script>alert('No se encontraron modelos');</script>";
 									}
+									?>
+									<script type="text/javascript">
+										$("select").change(function() {
+											var listaModelos = document.getElementById('modelo');
+											var textoSeleccionado = listaModelos.options[listaModelos.selectedIndex].text;
+											alert('Modelo = ' + textoSeleccionado);
+											//$("#tbody").refresh();
+											$("#tbody").remove();
+											<?php
+												$query = mysqli_query($con1, "SELECT distinct Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Familia = ''");
+												$num_rows = mysqli_num_rows($query);
+
+											?>
+											
+										});
+										//$("#divTabla_Op").remove();
+									</script>
+									<?php
 								}
 							?>
 							<?php
 								if ($area == 'electromecanicos') {
 									$query = mysqli_query($con2, "SELECT Modelo FROM modelos");
 									$num_rows = mysqli_num_rows($query);
-
 									if ($num_rows != 0) {
 										while ($row = mysqli_fetch_assoc($query)) {
 											echo "<option value=".$row['Modelo'].">".$row['Modelo']."</option>";
@@ -125,6 +142,7 @@
         							<label for="checkbox-h-6a">Usar en PPms?</label>
       							</fieldset>
       							<label for="grupo">Grupo</label>
+
       							<select name="modificaGrupo" id="modificaGrupo">
 									<option value="default">- - - - - - -</option>
 									<option value="final_test">Final Test</option>
@@ -189,14 +207,22 @@
 								<th width="120" align="left">Grupo</th>
 							</tr>
 						</thead>
-						<tbody>
-							<!--Primer Dato (Para el 2do hay que cambiar el id y el for)-->
-							<tr>
-								<td><span>Acalidad</span></td>
-								<td><span>Auditoria de Calidad</span></td>
-								<td><span>No</span></td>
-								<td><span>- - - - -</span></td>
-							</tr>
+							<?php
+								if ($num_rows != 0) {
+									while ($row = mysqli_fetch_assoc($query)) {
+										echo "<tbody>";
+										echo "<tr>";
+										echo "<td><span>".$row['Operacion']."</span></td>";
+										echo "<td><span>".$row['Descripcion']."</span></td>";
+										echo "<td><span>".$row['UsarPPms']."</span></td>";
+										echo "<td><span>".$row['Grupo']."</span></td>";
+										echo "</tr>";
+										echo "</tbody>";
+									}
+								} else {
+									echo "<script>alert('No se encontraron modelos');</script>";
+								}
+							?>
 				</div>
 			</center>
 			</form>
