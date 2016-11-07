@@ -19,8 +19,19 @@
 	<link rel="stylesheet" href="../../../css/css_style.css">
 </head>
 <body>
+	<?php
+		function cargaModelos($conn, $database) {
+			//echo "<script>alert('".$database."');</script>";
+			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+			$query = mysqli_query($con, "SELECT Modelo FROM modelos");
+			$num_rows = mysqli_num_rows($query);
+			while ($row = mysqli_fetch_assoc($query)) {
+				echo "<option value=".$row['Modelo'].">".$row['Modelo']."</option>";
+			}
+			mysqli_close($con);
+		}
+	?>
 	<div data-role="page" data-theme="b" id="">
-		<!--Header-->
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>SIC Ultimate<br>
@@ -43,61 +54,11 @@
 						<select name="modelo" id="modelo">
 							<?php
 								if ($area == 'electronica') {
-									$query = mysqli_query($con1, "SELECT Modelo FROM modelos");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<option value=".$row['Modelo'].">".$row['Modelo']."</option>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron modelos');</script>";
-									}
-									?>
-									<script type="text/javascript">
-										$("select").change(function() {
-											var listaModelos = document.getElementById('modelo');
-											var textoSeleccionado = listaModelos.options[listaModelos.selectedIndex].text;
-											alert('Modelo = ' + textoSeleccionado);
-											//$("#tbody").refresh();
-											$("#tbody").remove();
-											<?php
-												$query = mysqli_query($con1, "SELECT distinct Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Familia = ''");
-												$num_rows = mysqli_num_rows($query);
-
-											?>
-											
-										});
-										//$("#divTabla_Op").remove();
-									</script>
-									<?php
-								}
-							?>
-							<?php
-								if ($area == 'electromecanicos') {
-									$query = mysqli_query($con2, "SELECT Modelo FROM modelos");
-									$num_rows = mysqli_num_rows($query);
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<option value=".$row['Modelo'].">".$row['Modelo']."</option>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron modelos');</script>";
-									}
-								}
-							?>
-							<?php
-								if ($area == 'valvulas') {
-									$query = mysqli_query($con3, "SELECT Modelo FROM modelos");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<option value=".$row['Modelo'].">".$row['Modelo']."</option>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron modelos');</script>";
-									}
+									cargaModelos($con, 'electronica');
+								} elseif ($area == 'electromecanicos') {
+									cargaModelos($con, 'electromecanicos');
+								} elseif ($area == 'valvulas') {
+									cargaModelos($con, 'valvulas');
 								}
 							?>
 						</select>
@@ -207,22 +168,6 @@
 								<th width="120" align="left">Grupo</th>
 							</tr>
 						</thead>
-							<?php
-								if ($num_rows != 0) {
-									while ($row = mysqli_fetch_assoc($query)) {
-										echo "<tbody>";
-										echo "<tr>";
-										echo "<td><span>".$row['Operacion']."</span></td>";
-										echo "<td><span>".$row['Descripcion']."</span></td>";
-										echo "<td><span>".$row['UsarPPms']."</span></td>";
-										echo "<td><span>".$row['Grupo']."</span></td>";
-										echo "</tr>";
-										echo "</tbody>";
-									}
-								} else {
-									echo "<script>alert('No se encontraron modelos');</script>";
-								}
-							?>
 				</div>
 			</center>
 			</form>

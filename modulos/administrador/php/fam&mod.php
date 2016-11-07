@@ -20,6 +20,18 @@
 	<link rel="stylesheet" href="../../../css/css_style.css">
 </head>
 <body>
+	<?php
+		function cargaFamilias($conn, $database) {
+			//echo "<script>alert('".$database."');</script>";
+			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+			$query = mysqli_query($con, "SELECT DISTINCT Familias FROM familias");
+
+			while ($row = mysqli_fetch_assoc($query)) {
+				echo "<option value=".$row['Familias'].">".$row['Familias']."</option>";
+			}
+			mysqli_close($con);
+		}
+	?>
 	<div data-role="page" data-theme="b" id="divPage">
 		<!--Header-->
 		<div data-role="header" id="header">
@@ -41,50 +53,20 @@
 				<div class="ui-block-a">
 					<center><label for="divFamilia_FM" id="lblFamilia" data-theme="c"><b>Familias</b></label></center>
 					<div id="divFamilia_FM">
-						<ul data-role="listview" id="listFamilia">
+						
+						<select name="familias" id="familias">
+							<option>- - - Selecciona una familia - - -</option>
 							<?php
 								if ($area == 'electronica') {
-									$query = mysqli_query($con1, "SELECT * FROM familias");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<li data-icon='false' id=".$row['Familias']."><a href=''>".$row['Familias']."</a></li>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron familias');</script>";
-									}
+									cargaFamilias($con, 'electronica');
+								} elseif ($area == 'electromecanicos') {
+									cargaFamilias($con, 'electromecanicos');
+								} elseif ($area == 'valvulas') {
+									cargaFamilias($con, 'valvulas');
 								}
 							?>
-							<?php
-								if ($area == 'electromecanicos') {
-									$query = mysqli_query($con2, "SELECT * FROM familias");
-									$num_rows = mysqli_num_rows($query);
+						</select>
 
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<li data-icon='false' id=".$row['Familias']."><a href=''>".$row['Familias']."</a></li>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron familias');</script>";
-									}
-								}
-							?>
-							<?php
-								if ($area == 'valvulas') {
-									$query = mysqli_query($con3, "SELECT * FROM familias");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<li class='items' data-icon='false'><a href='' value=".$row['Familias'].">".$row['Familias']."</a></li>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron familias');</script>";
-									}
-								}
-							?>
-						</ul>
 					</div>
 				</div>
 				<div class="ui-block-b" id="divBtnsFamilias_FM">
@@ -121,9 +103,35 @@
 					<!-- Modelos -->
 					<center><label for="divModelos_FM" id="lblModelos" data-theme="c"><b>Modelos</b></label></center>
 					<div id="divModelos_FM">
-						<ul data-role="listview" id="listModelos">
-							<li data-icon="false"><a href="">11E79 101B1</a></li>
-						</ul>
+						<script type="text/javascript">
+							var flag = true;
+							$(function() {
+								$("select#familias").change(function() {
+									alert("Cambio");
+									var mod = $("select#modelos");
+									$.getJSON("get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										var options = "";
+										for (var i = 0; i < j.length; i++) {
+											options += '<option value="' + j[i].Modelo + '" >' + j[i].Modelo + '</option>\n';
+										}
+										$("select#modelos").html(options);
+
+										if (flag == true) {
+											mod.selectmenu("refresh", true);
+										}
+										flag == true;
+									});
+								});
+							});
+
+							$(document).ready(function(e) {
+								flag = false;	
+								$("select#familias").change();	
+							});
+						</script>
+						<select name="modelos" id="modelos">
+							<option>- - - Selecciona un modelo - - -</option>
+						</select>
 					</div>
 				</div>
 				<div class="ui-block-d" id="divBtnsModelos_FM">
@@ -259,24 +267,6 @@
 									<fieldset data-iconpos="left">
       									<input name="ppms" id="ppms" type="checkbox" >
         								<label for="ppms">Usar?</label>
-      								</fieldset>
-								</td>
-								<td>
-									<select name="grupoAgrega" id="grupoAgrega">
-										<option value="default">- - - - - - -</option>
-										<option value="final_test">Final Test</option>
-										<option value="qc_audit">QC Audit</option>
-										<option value="process">Process</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td><span id="spanOperacion">Acalidad</span></td>
-								<td><span id="spanDescripcion">Auditoria de Calidad</span></td>
-								<td>
-									<fieldset data-iconpos="left">
-      									<input name="ppms" id="ppms1" type="checkbox" >
-        								<label for="ppms1">Usar?</label>
       								</fieldset>
 								</td>
 								<td>
