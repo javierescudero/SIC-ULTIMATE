@@ -1,5 +1,5 @@
 <?php
-require_once("../../../php/conexion.php");
+require_once("conexion.php");
 
 if ($_REQUEST['ajax']) {
 
@@ -15,7 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos WHERE Familia = '".$familia."'");
+	$query = mysqli_query($con, "SELECT DISTINCT * FROM operaciones WHERE Familia = '".$familia."'");
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {
@@ -26,7 +26,6 @@ if ($_REQUEST['ajax']) {
 	} else {
 		echo "<script>alert('Ningun Modelo');</script>";
 	}
-
 	mysqli_close($con);
 }
 ?>

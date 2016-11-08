@@ -107,9 +107,9 @@
 							var flag = true;
 							$(function() {
 								$("select#familias").change(function() {
-									alert("Cambio");
+
 									var mod = $("select#modelos");
-									$.getJSON("get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+									$.getJSON("../../../php/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = "";
 										for (var i = 0; i < j.length; i++) {
 											options += '<option value="' + j[i].Modelo + '" >' + j[i].Modelo + '</option>\n';
@@ -118,6 +118,20 @@
 
 										if (flag == true) {
 											mod.selectmenu("refresh", true);
+										}
+										flag == true;
+									});
+
+									var op = $("table#tabla_FM");
+									$.getJSON("../../../php/get_operaciones.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										var tr = "";
+										for (var i = 0; i < j.length; i++) {
+											tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Operacion+ '</span></td><td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td><td><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+										}
+										$("tbody#content_operaciones").html(tr);
+
+										if (flag == true) {
+											op.selectmenu("refresh", true);
 										}
 										flag == true;
 									});
@@ -258,14 +272,14 @@
 								<th width="120" align="left">Grupo</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="content_operaciones">
 							<!--Primer Dato (Para el 2do hay que cambiar el id y el for)-->
 							<tr>
 								<td><span id="spanOperacion">Acalidad</span></td>
 								<td><span id="spanDescripcion">Auditoria de Calidad</span></td>
 								<td>
 									<fieldset data-iconpos="left">
-      									<input name="ppms" id="ppms" type="checkbox" >
+      									<input name="ppms" id="ppms" type="checkbox">
         								<label for="ppms">Usar?</label>
       								</fieldset>
 								</td>
