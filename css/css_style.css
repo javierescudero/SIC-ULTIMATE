@@ -41,11 +41,10 @@ tr:hover td {
 /*Estilo de index.html*/
 
 /*Estilo de fam&mod.html*/
-#divFamilia_FM, #divModelos_FM {
-	height: 445px;
+#divTabla_Operaciones {
+	height: 760px;
+	width: 600px;
 	overflow: auto;
-	border: 5px solid black;
-	border-style: inset;
 }
 
 #divTabla_FM {
@@ -57,11 +56,6 @@ tr:hover td {
 #divForm_FM {
 	width: 70%;
 	margin-left: 15%; 
-}
-
-#divModelos_FM, #lblModelos {
-	margin-left: 35%;
-	width: 100%;
 }
 
 #divBtnsModelos_FM { margin-left: 125px; }

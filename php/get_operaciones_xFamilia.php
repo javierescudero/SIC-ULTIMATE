@@ -15,7 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos WHERE Familia = '".$familia."' ORDER BY Modelo");
+	$query = mysqli_query($con, "SELECT DISTINCT Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Familia = '".$familia."' ORDER BY Operacion" );
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {
