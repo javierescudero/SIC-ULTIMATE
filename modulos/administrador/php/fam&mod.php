@@ -72,12 +72,12 @@
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
-												tr += '<tr><td><span id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Operacion + '</span></td>';
+												tr += '<tr><td><span id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
-													tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td><td>';
+													tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
 												} else {
-													tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td><td>';
+													tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
 												}
 
 												tr += '<td><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
