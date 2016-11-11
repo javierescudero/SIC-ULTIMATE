@@ -22,19 +22,16 @@
 <style type="text/css">
 	@media screen and (min-width: 480px) {
 	    #divColumnas {
-	        width: 140%;
-	        margin-left: -130px;
+	        width: 100%;
 	    }
 	}
-	@media screen and (max-width: 900px) {
-	    #divColA {
-			width: 15%;
+	@media screen and (max-width: 1800px) {
+	     #divColumnas {
+	        width: 135%;
+	     	margin-left: -15%;
 	    }
-	    #divColB {
-	    	width: 40%;
-	    }
-	    #divColC {
-	    	width: 70%;
+	    #btns_ajustar {
+	    	display: inline;
 	    }
 	}
 </style>
@@ -119,7 +116,7 @@
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
-												tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Operacion+ '</span></td>';
+												tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -165,6 +162,7 @@
 								<script type="text/javascript">
 									$(function() {
 										
+										//Agregar Familia
 										$("a#agregarFamilia").click(function(){
 											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
 											$.getJSON("../../../php/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
@@ -186,7 +184,7 @@
 								</script>
 
 								<!-- PopUp Agregar Familia-->
-								<div data-role="main" class="ui-content">
+								<div data-role="main" class="ui-content" id="btns_ajustar">
 			    					<a href="#popupAgregarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
 			    					<div data-role="popup" id="popupAgregarFamilia" class="ui-content">
 			      						<h3>Agregar Familia</h3>
@@ -201,10 +199,11 @@
 			  					<script type="text/javascript">
 									$(function() {
 										
+										//Eliminar Familia
 										$("a#eliminarFamilia").click(function(){
 											var valFamilia = document.getElementById('familias').value;
 											alert('valFamilia = ' +valFamilia);
-											/*$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
 												alert('valFamilia = ' +valFamilia);
 												var options = "";
 												for (var i = 0; i < j.length; i++) {
@@ -212,7 +211,10 @@
 												}
 												alert('Familia se elimino correctamente');
 												$("select#familias").html(options);
-											});*/
+
+												valFamilia = document.getElementById('familias').value = '';
+												$('#salir').click();
+											});
 										});
 
 										$(document).ready(function(e) {
@@ -222,7 +224,7 @@
 								</script>
 
 			  					<!-- PopUp Elimnar Familia-->
-			  					<div data-role="main" class="ui-content">
+			  					<div data-role="main" class="ui-content" id="btns_ajustar">
 			    					<a href="#popupEliminarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
 			    					<div data-role="popup" id="popupEliminarFamilia" class="ui-content">
 			      						<h3>Eliminar Familia</h3>
@@ -242,6 +244,7 @@
 							</select>
 
 							<center>
+
 								<script type="text/javascript">
 									$(function() {
 										
@@ -269,8 +272,9 @@
 										});
 									});
 								</script>
+
 								<!-- PopUp Agregar Modelo-->
-								<div data-role="main" class="ui-content">
+								<div data-role="main" class="ui-content" id="btns_ajustar">
 			    					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
 			    					<div data-role="popup" id="popupAgregarModelo" class="ui-content">
 			      						<h3>Agregar Modelo</h3>
@@ -283,7 +287,7 @@
 			  					</div>
 
 			  					<!-- PopUp Elimnar Modelo-->
-			  					<div data-role="main" class="ui-content">
+			  					<div data-role="main" class="ui-content" id="btns_ajustar">
 			    					<a href="#popupEliminarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
 			    					<div data-role="popup" id="popupEliminarModelo" class="ui-content">
 			      						<h3>Eliminar Modelo</h3>
@@ -301,6 +305,69 @@
 					<div class="ui-block-b" id="divColB">
 						<center>
 							<div id="div_btns_operaciones" >
+
+								<script type="text/javascript">
+									$(function() {
+										
+										//Agregar Operacion
+										$("a#confirmarAgregado").click(function(){
+											var valFamilia = document.getElementById('familias').value;
+											alert('Familia = ' + valFamilia);
+											var valModelo = document.getElementById('modelos').value;
+											alert('Modelo = ' + valModelo);
+											var valOperacion = document.getElementById('operacionAgrega').value;
+											alert('Operacion = ' + valOperacion);
+											var valDescripcion = document.getElementById('descripcionAgrega').value;
+											alert('Descripcion = ' + valDescripcion);
+											var valPPms = $("#checkbox-h-6a").prop("checked");
+											alert('PPms = ' + valPPms);
+											var valGrupo = document.getElementById('grupoAgrega').value;
+											alert('Grupo = ' + valGrupo);
+
+											var loadOp2 = $("table#tablaOperaciones");
+											$.getJSON("../../../php/add_Operacion.php", {ajax: true, familia: valFamilia, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
+												var tr = "";
+												for (var i = 0; i < j.length; i++) {
+													
+													tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+
+													if (j[i].UsarPPms == 1) {
+														tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+													} else {
+														tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+													}
+
+													tr += '<td><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+												}
+												$("tbody#content_operaciones").html(tr);
+
+												if (flag == true) {
+													loadOp2.selectmenu("refresh", true);
+												}
+												flag == true;
+
+												valModelo = document.getElementById('modelos').value = '';
+												valOperacion = document.getElementById('operacionAgrega').value = '';
+												valDescripcion = document.getElementById('descripcionAgrega').value = '';
+												
+												//$(".checkbox").attr("checked", false);
+												//$("input:checkbox").prop('checked', false);
+												//$(".checkbox").prop('checked', false);
+
+												valGrupo = document.getElementById('grupoAgrega').selected = 'default';
+
+												$("#cancelarAgregado").click();
+
+											});
+										});
+
+										$(document).ready(function(e) {
+											//$("select#familias").change();
+											$("select#modelos").change();
+										});
+									});
+								</script>
+
 								<!-- PopUp Agregar Operacion -->
 			  					<div data-role="main" class="ui-content" id="btnAgregarOpe_FM" data-inline="true">
 			    					<a href="#popupAgregarOperacion" id="btnAgregarOpe" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar Operacion</a>
@@ -311,16 +378,16 @@
 			      						<input type="text" id="descripcionAgrega">
 
 			      						<fieldset data-iconpos="right">
-			      							<input name="checkbox" id="checkbox-h-6a" type="checkbox">
+			      							<input name="checkbox" id="checkbox-h-6a" type="checkbox" class="checkbox">
 			        						<label for="checkbox-h-6a">Usar en PPms?</label>
 			      						</fieldset>
 
 			      						<label for="grupo">Grupo</label>
 			      						<select name="grupoAgrega" id="grupoAgrega">
 											<option value="default">- - - - - - -</option>
-											<option value="final_test">Final Test</option>
-											<option value="qc_audit">QC Audit</option>
-											<option value="process">Process</option>
+											<option value="Final_test">Final Test</option>
+											<option value="Qc_audit">QC Audit</option>
+											<option value="Process">Process</option>
 										</select>
 										<a id="confirmarAgregado" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 										<a id="cancelarAgregado" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>

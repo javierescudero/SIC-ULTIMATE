@@ -15,7 +15,9 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$q = mysqli_query($con, "DELETE FROM familias WHERE Familias = '".$valFamilia."'");
+	
+	$q = "DELETE FROM familias WHERE Familias = '".$valFamilia."'";
+	
 	if (mysqli_query($con, $q)) {
 		$query_load = mysqli_query($con, "SELECT DISTINCT Familias FROM familias ORDER BY Familias");
 		$num_rows = mysqli_num_rows($query_load);
@@ -28,7 +30,7 @@ if ($_REQUEST['ajax']) {
 			echo "<script>alert('No se encontraron familias');</script>";
 		}
 	} else {
-		echo "<script>alert('ERROR: Hubo un problema al insertar elemento.');</script>";
+		echo "Error: " . $q . "<br>" . mysqli_error($con);
 	}
 	mysqli_close($con);
 }
