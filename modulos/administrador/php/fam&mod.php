@@ -19,6 +19,25 @@
 	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
 	<link rel="stylesheet" href="../../../css/css_style.css">
 </head>
+<style type="text/css">
+	@media screen and (min-width: 480px) {
+	    #divColumnas {
+	        width: 140%;
+	        margin-left: -130px;
+	    }
+	}
+	@media screen and (max-width: 900px) {
+	    #divColA {
+			width: 15%;
+	    }
+	    #divColB {
+	    	width: 40%;
+	    }
+	    #divColC {
+	    	width: 70%;
+	    }
+	}
+</style>
 <body>
 	<?php
 		function cargaFamilias($conn, $database) {
@@ -43,8 +62,8 @@
 		?>
 		<div id="divForm_FM">
 			<form action="">
-				<div class="ui-grid-c">
-					<div class="ui-block-a">
+				<div class="ui-grid-c" id="divColumnas">
+					<div class="ui-block-a" id="divColA">
 						<div id="divListas">
 
 							<script type="text/javascript">
@@ -155,6 +174,8 @@
 												}
 												alert('Familia se agrego correctamente');
 												$("select#familias").html(options);
+												valFamilia = document.getElementById('pop_inputAgregaFamilia').value = '';
+												$('#cancelarAgregarFamilia').click();
 											});
 										});
 
@@ -233,6 +254,10 @@
 												}
 												alert('MODELO se agrego correctamente');
 												$("select#modelos").html(options);
+
+												valModelo = document.getElementById('pop_inputAgregaModelo_FM').value = '';
+												$('#cancelarAgregarModelo').click();
+
 											});
 										});
 
@@ -271,7 +296,7 @@
 						</div>
 					</div>
 
-					<div class="ui-block-b">
+					<div class="ui-block-b" id="divColB">
 						<center>
 							<div id="div_btns_operaciones" >
 								<!-- PopUp Agregar Operacion -->
@@ -357,7 +382,7 @@
 						</center>
 					</div>
 
-					<div class="ui-block-c">
+					<div class="ui-block-c" id="divColC">
 						<div id="divTabla_Operaciones">	
 							<table id="tablaOperaciones" cellpadding="0" cellspacing="0" border="0" class="hover">
 								<thead>
