@@ -15,7 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT * FROM familias WHERE Familias = '".$valFamilia."'");
+	$query = mysqli_query($con, "DELETE FROM ");
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {

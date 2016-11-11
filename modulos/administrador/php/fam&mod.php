@@ -55,7 +55,8 @@
 										var loadMod = $("select#modelos");
 										$.getJSON("../../../php/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var options = "";
-											for (var i = 0; i < j.length; i++) {												
+
+											for (var i = 0; i < j.length; i++) {				
 												options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
 											}
 											$("select#modelos").html(options);
@@ -144,11 +145,22 @@
 
 								<script type="text/javascript">
 									$(function() {
+										
+										$("a#agregarFamilia").click(function(){
+											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
+											$.getJSON("../../../php/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+												var options = "";
+												for (var i = 0; i < j.length; i++) {
+													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
+												}
+												alert('Familia se agrego correctamente');
+												$("select#familias").html(options);
+											});
+										});
 
-										/*$("a#agregarFamilia").click(function() {
-											var addFam = $("table#tablaOperaciones");
-										});*/
-
+										$(document).ready(function(e) {
+											$("select#familias").change();
+										});
 									});
 								</script>
 
@@ -164,6 +176,27 @@
 										</center>
 			    					</div>
 			  					</div>
+
+			  					<script type="text/javascript">
+									/*$(function() {
+										
+										$("a#eliminarFamilia").click(function(){
+											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
+											$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+												var options = "";
+												for (var i = 0; i < j.length; i++) {
+													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
+												}
+												alert('Familia se elimino correctamente');
+												$("select#familias").html(options);
+											});
+										});
+
+										$(document).ready(function(e) {
+											$("select#familias").change();
+										});
+									});*/
+								</script>
 
 			  					<!-- PopUp Elimnar Familia-->
 			  					<div data-role="main" class="ui-content">
@@ -186,6 +219,29 @@
 							</select>
 
 							<center>
+								<script type="text/javascript">
+									$(function() {
+										
+										$("a#agregarMod").click(function(){
+											var valModelo = document.getElementById('pop_inputAgregaModelo_FM').value;
+											var valFamilia = document.getElementById('familias').value;
+
+											$.getJSON("../../../php/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
+												var options = "";
+												for (var i = 0; i < j.length; i++) {
+													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+												}
+												alert('MODELO se agrego correctamente');
+												$("select#modelos").html(options);
+											});
+										});
+
+										$(document).ready(function(e) {
+											//$("select#familias").change();
+											$("select#modelos").change();
+										});
+									});
+								</script>
 								<!-- PopUp Agregar Modelo-->
 								<div data-role="main" class="ui-content">
 			    					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
