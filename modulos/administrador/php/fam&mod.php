@@ -199,24 +199,26 @@
 			  					</div>
 
 			  					<script type="text/javascript">
-									/*$(function() {
+									$(function() {
 										
 										$("a#eliminarFamilia").click(function(){
-											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
-											$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+											var valFamilia = document.getElementById('familias').value;
+											alert('valFamilia = ' +valFamilia);
+											/*$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+												alert('valFamilia = ' +valFamilia);
 												var options = "";
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
 												}
 												alert('Familia se elimino correctamente');
 												$("select#familias").html(options);
-											});
+											});*/
 										});
 
 										$(document).ready(function(e) {
 											$("select#familias").change();
 										});
-									});*/
+									});
 								</script>
 
 			  					<!-- PopUp Elimnar Familia-->

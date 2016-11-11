@@ -24,7 +24,6 @@ if ($_REQUEST['ajax']) {
 
 		$q = "INSERT INTO familias (Familias) VALUES ('".$valFamilia."')";
 		if (mysqli_query($con, $q)) {
-			//echo "<script>alert('Se agrego correctamente.');</script>";
 			
 			$query_load = mysqli_query($con, "SELECT DISTINCT Familias FROM familias ORDER BY Familias");
 			$num_rows = mysqli_num_rows($query_load);
