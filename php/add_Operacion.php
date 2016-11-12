@@ -27,7 +27,7 @@ if ($_REQUEST['ajax']) {
 		echo "<script>alert('OPERACION Ya existe en la base de datos para este modelo.\nPruebe con otra distinta.');</script>";
 	} else {
 
-		if ($valPPms == true) {
+		if ($valPPms == 'true') {
 			$usarPPms = 1;
 		} else {
 			$usarPPms = 0;
@@ -35,7 +35,6 @@ if ($_REQUEST['ajax']) {
 
 		$q = "INSERT INTO operaciones (Modelo, Descripcion, Familia, Operacion, UsarPPms, Grupo) VALUES ('".$valModelo."', '".$valDescripcion."', '".$valFamilia."', '".$valOperacion."', '".$usarPPms."', '".$valGrupo."')";
 		if (mysqli_query($con, $q)) {
-			//echo "<script>alert('Se agrego MODELO correctamente.');</script>";
 			
 			$query_load = mysqli_query($con, "SELECT DISTINCT Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Modelo = '".$valModelo."' ORDER BY Operacion");
 			$num_rows = mysqli_num_rows($query_load);

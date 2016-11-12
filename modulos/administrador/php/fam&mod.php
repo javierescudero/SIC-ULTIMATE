@@ -70,7 +70,7 @@
 										//Carga los modelos al seleccionar una familia.
 										var loadMod = $("select#modelos");
 										$.getJSON("../../../php/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-											var options = "";
+											var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 
 											for (var i = 0; i < j.length; i++) {				
 												options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -145,7 +145,7 @@
 
 							<center><label for="divFamilia_FM" id="lblFamilia" data-theme="c"><b>Familias</b></label></center>
 							<select name="familias" id="familias">
-								<option>- - - Selecciona una familia - - -</option>
+								<option>- - - Selecciona Una Familia - - -</option>
 								<?php
 									if ($area == 'electronica') {
 										cargaFamilias($con, 'electronica');
@@ -166,12 +166,13 @@
 										$("a#agregarFamilia").click(function(){
 											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
 											$.getJSON("../../../php/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
-												var options = "";
+												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
 												}
 												alert('Familia se agrego correctamente');
 												$("select#familias").html(options);
+												
 												valFamilia = document.getElementById('pop_inputAgregaFamilia').value = '';
 												$('#cancelarAgregarFamilia').click();
 											});
@@ -205,15 +206,16 @@
 											alert('valFamilia = ' +valFamilia);
 											$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
 												alert('valFamilia = ' +valFamilia);
-												var options = "";
+												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
 												}
+												
 												alert('Familia se elimino correctamente');
 												$("select#familias").html(options);
 
 												valFamilia = document.getElementById('familias').value = '';
-												$('#salir').click();
+												$('#cancelDel_Familia').click();
 											});
 										});
 
@@ -232,7 +234,7 @@
 			      							Esta familia contiene modelos.</p>
 			      						<center>
 											<a id="eliminarFamilia" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
-											<a id="salir" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+											<a id="cancelDel_Familia" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
 										</center>
 			    					</div>
 			  					</div><br><br><br><br>
@@ -253,7 +255,7 @@
 											var valFamilia = document.getElementById('familias').value;
 
 											$.getJSON("../../../php/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
-												var options = "";
+												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
 												}
@@ -286,6 +288,35 @@
 			    					</div>
 			  					</div>
 
+			  					<script type="text/javascript">
+									$(function() {
+										
+										$("a#eliminarModelo").click(function(){
+											var valModelo = document.getElementById('modelos').value;
+											alert('Modelo = ' + valModelo);
+											var valFamilia = document.getElementById('familias').value;
+											alert('Familia = ' + valFamilia);
+
+											$.getJSON("../../../php/del_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
+												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+												for (var i = 0; i < j.length; i++) {
+													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+												}
+												alert('MODELO se elimino correctamente');
+												$("select#modelos").html(options);
+
+												$('#cancelDel_Modelo').click();
+
+											});
+										});
+
+										$(document).ready(function(e) {
+											//$("select#familias").change();
+											$("select#modelos").change();
+										});
+									});
+								</script>
+
 			  					<!-- PopUp Elimnar Modelo-->
 			  					<div data-role="main" class="ui-content" id="btns_ajustar">
 			    					<a href="#popupEliminarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
@@ -294,7 +325,7 @@
 			      						<p>Estas seguro de eliminar este <b>Modelo</b>???</p>
 			      						<center>
 											<a id="eliminarModelo" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
-											<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+											<a id="cancelDel_Modelo" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
 										</center>
 			    					</div>
 			  					</div>
@@ -354,9 +385,9 @@
 												//$("input:checkbox").prop('checked', false);
 												//$(".checkbox").prop('checked', false);
 
-												valGrupo = document.getElementById('grupoAgrega').selected = 'default';
+												//valGrupo = document.getElementById('grupoAgrega').selected = 'default';
 
-												$("#cancelarAgregado").click();
+												$('#cancelarAgregado').click();
 
 											});
 										});
@@ -390,7 +421,7 @@
 											<option value="Process">Process</option>
 										</select>
 										<a id="confirmarAgregado" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
-										<a id="cancelarAgregado" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+										<a id="cancelarAgregado" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
 			    					</div>
 			  					</div>
 
@@ -401,8 +432,8 @@
 			      						<h3>Guardar Operacion</h3><hr>
 			      						<p>Confirmacion para guardar la <b>Operacion</b></p>
 			      						<center>
-											<a id="eliminarOperacion" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
-											<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+											<a id="saveOperacion" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+											<a id="cancelSave_Operacion" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
 										</center>
 			    					</div>
 			  					</div>
@@ -415,7 +446,7 @@
 			      						<p>Estas seguro de eliminar esta <b>Operacion</b>???</p>
 			      						<center>
 											<a id="eliminarOperacion" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
-											<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+											<a id="cancelDel_Operacion" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
 										</center>
 			    					</div>
 			  					</div>
@@ -443,7 +474,7 @@
 										</div>
 			      						<center>
 											<a id="copiarOperacion" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
-											<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+											<a id="cancelCopy_Operacion" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 										</center>
 			    					</div>
 			  					</div>
