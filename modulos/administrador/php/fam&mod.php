@@ -453,19 +453,14 @@
 										
 										var valOperacion;
 										$('tbody').click(function (e) {
-											//var link = $(this).closest('tr').find('a');
-											//e.preventDefault();
 											valOperacion = e.target.id;
-											//$(this).attr('contenteditable','true');
-											//alert('id = ' + id);
-											//location.href = link.attr('href');
 										});
 
 										//Eliminar Operacion
 										$("a#eliminarOperacion").click(function(){
 											alert('valOperacion = ' + valOperacion);
 											var valModelo = document.getElementById('modelos').value;
-											if (valModelo == '') {
+											if (valModelo == 'default') {
 												alert('Debes seleccionar algun modelo...');
 												return false;
 											}else {

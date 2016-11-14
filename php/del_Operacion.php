@@ -16,10 +16,10 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	
+
 	//$q_modelos = "DELETE FROM modelos WHERE Modelo = 'mod 001' AND Familia = '000'";
-	$query = "DELETE FROM operaciones WHERE Modelo = 'mod 002' AND Operacion = 'op aaaa'";
-	//$query = "DELETE FROM operaciones WHERE Modelo = '".$valModelo."' AND Operacion = '".$valOperacion."'";
+	//$query = "DELETE FROM operaciones WHERE Modelo = 'mod 002' AND Operacion = 'op aaaa'";
+	$query = "DELETE FROM operaciones WHERE Modelo = '".$valModelo."' AND Operacion = '".$valOperacion."'";
 	
 	if (mysqli_query($con, $query)) {
 
