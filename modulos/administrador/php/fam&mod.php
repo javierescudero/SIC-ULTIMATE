@@ -47,6 +47,14 @@
 			mysqli_close($con);
 		}
 	?>
+	<script type="text/javascript">
+		$(document).on('ready', principal);
+			function principal() {
+			  $('table').bind('mouseenter', function(e) {
+			    //$(this).attr('contenteditable','true');
+			  });
+		}
+	</script>
 	<div data-role="page" data-theme="b" id="divPage">
 		<!--Header-->
 		<div data-role="header" id="header">
@@ -250,6 +258,7 @@
 								<script type="text/javascript">
 									$(function() {
 										
+										//Agregar Modelo
 										$("a#agregarMod").click(function(){
 											var valModelo = document.getElementById('pop_inputAgregaModelo_FM').value;
 											var valFamilia = document.getElementById('familias').value;
@@ -291,6 +300,7 @@
 			  					<script type="text/javascript">
 									$(function() {
 										
+										//Eliminar Modelo
 										$("a#eliminarModelo").click(function(){
 											var valModelo = document.getElementById('modelos').value;
 											alert('Modelo = ' + valModelo);
@@ -438,6 +448,65 @@
 			    					</div>
 			  					</div>
 
+			  					<script type="text/javascript">
+									$(function() {
+										
+										var valOperacion;
+										$('tbody').click(function (e) {
+											//var link = $(this).closest('tr').find('a');
+											//e.preventDefault();
+											valOperacion = e.target.id;
+											//$(this).attr('contenteditable','true');
+											//alert('id = ' + id);
+											//location.href = link.attr('href');
+										});
+
+										//Eliminar Operacion
+										$("a#eliminarOperacion").click(function(){
+											alert('valOperacion = ' + valOperacion);
+											var valModelo = document.getElementById('modelos').value;
+											if (valModelo == '') {
+												alert('Debes seleccionar algun modelo...');
+												return false;
+											}else {
+												alert('Modelo = ' + valModelo);
+
+												var loadOp2 = $("table#tablaOperaciones");
+												$.getJSON("../../../php/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
+													var tr = "";
+													for (var i = 0; i < j.length; i++) {
+														
+														tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+
+														if (j[i].UsarPPms == 1) {
+															tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														} else {
+															tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														}
+
+														tr += '<td><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+													}
+													$("tbody#content_operaciones").html(tr);
+
+													if (flag == true) {
+														loadOp2.selectmenu("refresh", true);
+													}
+													flag == true;
+
+													$('#cancelDel_Operacion').click();
+
+												});
+											}
+
+										});
+
+										$(document).ready(function(e) {
+											//$("select#familias").change();
+											$("select#modelos").change();
+										});
+									});
+								</script>
+
 			  					<!-- PopUp Eliminar Operacion -->
 			  					<div data-role="main" class="ui-content" id="divElimarOp_FM" data-inline="true">
 			    					<a href="#popupEliminarOperacion" id="btnEliminarOpe" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar Operacion</a>
@@ -481,7 +550,6 @@
 							</div>
 						</center>
 					</div>
-
 					<div class="ui-block-c" id="divColC">
 						<div id="divTabla_Operaciones">	
 							<table id="tablaOperaciones" cellpadding="0" cellspacing="0" border="0" class="hover">
