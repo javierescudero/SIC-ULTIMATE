@@ -43,7 +43,7 @@
 	<div data-role="page" data-theme="b" id="page">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Administrador</h1>
+			<h1>Consultor A</h1>
 		</div>
 		<?php 
 			if (isset($_GET['area'])) {
@@ -614,7 +614,7 @@
 				}
 			}
 
-			include("../../php/menus/menu_administrador.php");
+			include("../../php/menus/menu_consultorA.php");
 		?>
 		<div id="container"></div>
 	</div>

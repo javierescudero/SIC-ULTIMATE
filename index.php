@@ -52,7 +52,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'capturistaB':
@@ -60,7 +60,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'capturistaC':
@@ -68,7 +68,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'capturistaD':
@@ -76,7 +76,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'consultorA':
@@ -84,7 +84,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/consultorA/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/consultorA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'consultorB':
@@ -92,7 +92,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/consultorB/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/consultorB/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'correctorA':
@@ -100,7 +100,7 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/correctorA/index.php?area=".$area."'</script>";
+								echo "<script>window.location.href='modulos/correctorA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
 							}
 							break;
 						case 'otro':
