@@ -1,7 +1,7 @@
 
 <?php
 	session_start();
-	require_once("../../../php/conexion.php");
+	require_once("../../php/conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,16 +11,16 @@
 	
 	<title>SIC Ultimate Admin vw1.0</title>
 	
-	<script src="../../../js/jquery-1.12.4.min.js"></script>
-	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
-	<script src="../../../js/highcharts/highcharts.js"></script>
-	<script src="../../../js/highcharts/highcharts-3d.js"></script>
-	<script src="../../../js/highcharts/dark-unica.js"></script>
-	<script src="../../../js/highcharts/exporting.js"></script>
-	<script src="../../../js/highcharts/js_graficsAdmin.js"></script>
+	<script src="../../js/jquery-1.12.4.min.js"></script>
+	<script src="../../js/jquery.mobile-1.4.5.js"></script>
+	<script src="../../js/highcharts/highcharts.js"></script>
+	<script src="../../js/highcharts/highcharts-3d.js"></script>
+	<script src="../../js/highcharts/dark-unica.js"></script>
+	<script src="../../js/highcharts/exporting.js"></script>
+	<script src="../../js/highcharts/js_graficsAdmin.js"></script>
 	
-	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="../../../css/css_style.css">
+	<link rel="stylesheet" href="../../css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="../../css/css_style.css">
 
 	
 </head>
@@ -604,9 +604,9 @@
 				}
 			}
 
-			include("menu.php");
+			include("../../php/menus/menu_administrador.php");
 		?>
-		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="container" style="width: 100%; height: 800px; margin: 0 auto"></div>
 	</div>
 </body>
 </html>

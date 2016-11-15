@@ -1,5 +1,5 @@
 <?php
-	require_once("../../../php/conexion.php");
+	require_once("../conexion.php");
 	if (isset($_GET['area'])) {
 		$area = $_GET['area'];
 	}
@@ -12,12 +12,12 @@
 	
 	<title>SIC Ultimate</title>
 
-	<script src="../../../js/jquery-1.12.4.min.js"></script>
-	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
-	<script src="../../../js/js_refresh.js"></script>
+	<script src="../../js/jquery-1.12.4.min.js"></script>
+	<script src="../../js/jquery.mobile-1.4.5.js"></script>
+	<script src="../../js/js_refresh.js"></script>
 	
-	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="../../../css/css_style.css">
+	<link rel="stylesheet" href="../../css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="../../css/css_style.css">
 </head>
 <style type="text/css">
 	@media screen and (min-width: 480px) {
@@ -63,7 +63,7 @@
 			</h1>
 		</div>
 		<?php
-			include("menu.php");
+			include("../menus/menu_administrador.php");
 		?>
 		<div id="divForm_FM">
 			<form action="">
@@ -77,7 +77,7 @@
 									$("select#familias").change(function() {
 										//Carga los modelos al seleccionar una familia.
 										var loadMod = $("select#modelos");
-										$.getJSON("../../../php/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										$.getJSON("../captura/familias_modelos/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 
 											for (var i = 0; i < j.length; i++) {				
@@ -93,7 +93,7 @@
 
 										//Carga las operaciones al seleccionar una familia.
 										var loadOp = $("table#tablaOperaciones");
-										$.getJSON("../../../php/get_operaciones_xFamilia.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										$.getJSON("../captura/familias_modelos/get_operaciones_xFamilia.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
@@ -120,7 +120,7 @@
 									$("select#modelos").change(function() {
 										//Carga las operaciones al seleccionar un modelo.
 										var loadOp2 = $("table#tablaOperaciones");
-										$.getJSON("../../../php/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										$.getJSON("../captura/familias_modelos/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
@@ -173,7 +173,7 @@
 										//Agregar Familia
 										$("a#agregarFamilia").click(function(){
 											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
-											$.getJSON("../../../php/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../captura/familias_modelos/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
@@ -212,7 +212,7 @@
 										$("a#eliminarFamilia").click(function(){
 											var valFamilia = document.getElementById('familias').value;
 											alert('valFamilia = ' +valFamilia);
-											$.getJSON("../../../php/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../captura/familias_modelos/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
 												alert('valFamilia = ' +valFamilia);
 												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
@@ -263,7 +263,7 @@
 											var valModelo = document.getElementById('pop_inputAgregaModelo_FM').value;
 											var valFamilia = document.getElementById('familias').value;
 
-											$.getJSON("../../../php/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../captura/familias_modelos/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -307,7 +307,7 @@
 											var valFamilia = document.getElementById('familias').value;
 											alert('Familia = ' + valFamilia);
 
-											$.getJSON("../../../php/del_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../captura/familias_modelos/del_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -366,7 +366,7 @@
 											alert('Grupo = ' + valGrupo);
 
 											var loadOp2 = $("table#tablaOperaciones");
-											$.getJSON("../../../php/add_Operacion.php", {ajax: true, familia: valFamilia, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../captura/familias_modelos/add_Operacion.php", {ajax: true, familia: valFamilia, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var tr = "";
 												for (var i = 0; i < j.length; i++) {
 													
@@ -467,7 +467,7 @@
 												alert('Modelo = ' + valModelo);
 
 												var loadOp2 = $("table#tablaOperaciones");
-												$.getJSON("../../../php/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
+												$.getJSON("../captura/familias_modelos/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
 													var tr = "";
 													for (var i = 0; i < j.length; i++) {
 														
@@ -566,7 +566,7 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="../../../js/js_tables.js"></script>
+	<script type="text/javascript" src="../../js/js_tables.js"></script>
 
 </body>
 </html>

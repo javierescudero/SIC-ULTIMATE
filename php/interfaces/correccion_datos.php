@@ -1,3 +1,9 @@
+<?php
+	require_once("../conexion.php");
+	if (isset($_GET['area'])) {
+		$area = $_GET['area'];
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

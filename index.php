@@ -13,7 +13,7 @@
 	<script src="js/jquery.mobile-1.4.5.js"></script>
 
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="../../../css/css_style.css">
+	<link rel="stylesheet" href="css/css_style.css">
 </head>
 <?php
 	if(isset($_POST['login'])) {
@@ -37,35 +37,35 @@
 					switch ($dbtipo) {
 						case 'administrador':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/administrador/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/administrador/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaA/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaB/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaC':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaC/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'capturistaD':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaD/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'consultorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/consultorA/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/consultorA/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'consultorB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/consultorB/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/consultorB/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'correctorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/correctorA/php/index.php?area=".$_POST['area']."'</script>";
+							echo "<script>window.location.href='modulos/correctorA/index.php?area=".$_POST['area']."'</script>";
 							break;
 						case 'otro':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
