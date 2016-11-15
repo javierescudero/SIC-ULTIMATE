@@ -32,40 +32,76 @@
 	                $dbpassword = $row['Password'];
 	                $dbcambpwd = $row['CambPwd'];
 	                $dbtipo = $row['tipo'];
+	                $dbarea = $row['Area'];
 				}
+				$accesAreas = strpos($dbarea, $area);
+				$_SESSION['areasPerm'] = $dbarea;
+
 				if ($usuario == $dbusuario && $dbpassword == $password) {
 					switch ($dbtipo) {
 						case 'administrador':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/administrador/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/administrador/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."'</script>";
+							}
 							break;
 						case 'capturistaA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'capturistaB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'capturistaC':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'capturistaD':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'consultorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/consultorA/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/consultorA/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'consultorB':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/consultorB/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/consultorB/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'correctorA':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
-							echo "<script>window.location.href='modulos/correctorA/index.php?area=".$_POST['area']."'</script>";
+							if ($accesAreas === false) {
+								echo "<script>alert('No tienes acceso a esta area');</script>";
+							} else {
+								echo "<script>window.location.href='modulos/correctorA/index.php?area=".$area."'</script>";
+							}
 							break;
 						case 'otro':
 							$_SESSION['session_nombre_usuario'] = $dbusuario;
@@ -99,9 +135,9 @@
 				<div data-role="fieldcontain" id="combo_area">
 					<center><label for="selection_area"><b>Area</b></label></center>
 					<select name="area" id="area">
-						<option value="electronica">Electronica</option>
-						<option value="electromecanicos">Electromecanicos</option>
-						<option value="valvulas">Valvulas</option>
+						<option value="Electronica">Electronica</option>
+						<option value="Electromecanicos">Electromecanicos</option>
+						<option value="Valvulas">Valvulas</option>
 					</select>
 				</div>
 

@@ -1,8 +1,14 @@
 <?php
+	//session_start();
 	require_once("../../php/conexion.php");
-	if (isset($_GET['area'])) {
+	if (isset($_SESSION['areasPerm'])) {
 		$area = $_GET['area'];
-	}
+		//echo "<script>alert('VALIDA en index');</script>";
+		$areasPerm = $_SESSION['areasPerm'];
+		$accesAreas = strpos($areasPerm, $area);
+	} /*else {
+		echo "<script>alert('NO VALIDA en index');</script>";
+	}*/
 ?>
 <!-- Menu -->
 <form method="post" action="index.php" id="form_menu" data-ajax="false">
@@ -35,12 +41,35 @@
 			<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">
 				<h3><center>Seleccionar Area</center></h3>
 				<fieldset data-role="controlgroup">
-			        <a href="index.php?area=electronica" id="btnElectronica" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electronica</a>
-			        <a href="index.php?area=electromecanicos" id="btnElectromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electromecanica</a>
-			        <a href="index.php?area=valvulas" id="btnValvulas" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Valvulas</a>
+					<?php
+						$accesElectronica = strpos($areasPerm, "Electronica");
+						if ($accesElectronica === false) {
+						} else { ?>
+							<a href="index.php?area=Electronica&areasPerm=<?php echo "$areasPerm"; ?>" id="btnElectronica" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electronica</a>
+						<?php
+						}
+					?>
+
+					<?php
+						$accesElectromecanicos = strpos($areasPerm, "Electromecanicos");
+						if ($accesElectromecanicos === false) {
+						} else { ?>
+							<a href="index.php?area=Electromecanicos&areasPerm=<?php echo "$areasPerm"; ?>" id="btnElectromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electromecanica</a>
+						<?php
+						}
+					?>
+
+					<?php
+						$accesValvulas = strpos($areasPerm, "Valvulas");
+						if ($accesValvulas === false) {
+						} else { ?>
+							<a href="index.php?area=Valvulas&areasPerm=<?php echo "$areasPerm"; ?>" id="btnValvulas" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Valvulas</a>
+						<?php
+						}
+					?>
 				</fieldset>
 			</div><br><hr><br>
-			<a href="../../../php/logout.php" id="" class="ui-btn ui-icon-power ui-btn-icon-left" data-ajax="false">Salir</a>
+			<a href="../../php/logout.php" id="" class="ui-btn ui-icon-power ui-btn-icon-left" data-ajax="false">Salir</a>
 		</div>
 	</div>
 </form>

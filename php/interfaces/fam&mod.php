@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once("../conexion.php");
 	if (isset($_GET['area'])) {
 		$area = $_GET['area'];

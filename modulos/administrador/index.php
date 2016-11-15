@@ -2,6 +2,7 @@
 <?php
 	session_start();
 	require_once("../../php/conexion.php");
+	$area = $_GET['area'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +25,28 @@
 
 	
 </head>
+<style type="text/css">
+	@media screen and (min-width: 480px) {
+	    #container {
+	        width: 100%;
+	        height: 700px;
+	        margin: 0 auto;
+	    }
+	}
+	@media screen and (max-width: 1800px) {
+	    #container {
+	        width: 100%;
+	        height: 550px;
+	        margin: 0 auto;
+	    }
+	}
+</style>
 <body>
 	<div data-role="page" data-theme="b" id="page">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<center>
-				<img src="../../../public/images/Sicicon.ico">
+				<img src="../../public/images/Sicicon.ico">
 			</center>
 			<h1>Administrador</h1>
 		</div>
@@ -38,7 +55,7 @@
 			
 			if (isset($_GET['area'])) {
 				$area = $_GET['area'];
-				if ($area == "electronica") { ?>
+				if ($area == "Electronica") { ?>
 				<script type="text/javascript">
 				//column, bar, area, pie, areaspline, spline
 					$(function () {
@@ -214,7 +231,7 @@
 					});
 				</script>
 				<?php 
-				} elseif ($area == "electromecanicos") { ?>
+				} elseif ($area == "Electromecanicos") { ?>
 					<script type="text/javascript">
 						$(function () {
 						    Highcharts.chart('container', {
@@ -407,7 +424,7 @@
 						});
 					</script>
 				<?php	
-				} elseif ($area == "valvulas") { ?>
+				} elseif ($area == "Valvulas") { ?>
 					<script type="text/javascript">
 						$(function () {
 						    Highcharts.chart('container', {
@@ -606,7 +623,7 @@
 
 			include("../../php/menus/menu_administrador.php");
 		?>
-		<div id="container" style="width: 100%; height: 800px; margin: 0 auto"></div>
+		<div id="container"></div>
 	</div>
 </body>
 </html>
