@@ -7,6 +7,7 @@
 			$area = $_GET['area'];
 			$areasPerm = $_SESSION['areasPerm'];
 			$accesAreas = strpos($areasPerm, $area);
+			$user = $_SESSION['session_nombre_usuario'];
 		}
 	}
 ?>
@@ -34,7 +35,7 @@
 					$accesElectronica = strpos($areasPerm, "Electronica");
 					if ($accesElectronica === false) {
 					} else { ?>
-						<a href="../../../sic-ultimate/modulos/capturistaA/index.php?area=Electronica&areasPerm=<?php echo "$areasPerm"; ?>" id="btnElectronica" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electronica</a>
+						<a href="../../../sic-ultimate/modulos/capturistaA/index.php?area=Electronica&areasPerm=<?php echo "$areasPerm"; ?>&user=<?php echo "$user"; ?>" id="btnElectronica" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electronica</a>
 					<?php
 					}
 				?>
@@ -43,7 +44,7 @@
 					$accesElectromecanicos = strpos($areasPerm, "Electromecanicos");
 					if ($accesElectromecanicos === false) {
 					} else { ?>
-						<a href="../../../sic-ultimate/modulos/capturistaA/index.php?area=Electromecanicos&areasPerm=<?php echo "$areasPerm"; ?>" id="btnElectromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electromecanica</a>
+						<a href="../../../sic-ultimate/modulos/capturistaA/index.php?area=Electromecanicos&areasPerm=<?php echo "$areasPerm"; ?>&user=<?php echo "$user"; ?>" id="btnElectromecanicos" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Electromecanica</a>
 					<?php
 					}
 				?>
@@ -52,7 +53,7 @@
 					$accesValvulas = strpos($areasPerm, "Valvulas");
 					if ($accesValvulas === false) {
 					} else { ?>
-						<a href="../../../sic-ultimate/modulos/capturistaA/index.php?area=Valvulas&areasPerm=<?php echo "$areasPerm"; ?>" id="btnValvulas" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Valvulas</a>
+						<a href="../../../sic-ultimate/modulos/capturistaA/index.php?area=Valvulas&areasPerm=<?php echo "$areasPerm"; ?>&user=<?php echo "$user"; ?>" id="btnValvulas" class="ui-btn ui-icon-gear ui-btn-icon-left" data-ajax="false">Valvulas</a>
 					<?php
 					}
 				?>

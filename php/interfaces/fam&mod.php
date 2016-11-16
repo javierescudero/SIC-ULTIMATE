@@ -15,9 +15,6 @@
 	
 	<title>SIC Ultimate</title>
 
-	<!-- NO Funciona -->
-	<script type="text/javascript" src="../../js/js_tables.js"></script>
-
 	<?php include("../../php/librerias.php"); ?>
 </head>
 <style type="text/css">
@@ -41,29 +38,48 @@
 		function cargaFamilias($conn, $database) {
 			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
 			$query = mysqli_query($con, "SELECT DISTINCT Familias FROM familias ORDER BY Familias");
+			$num_rows = mysqli_num_rows($query);
+			if ($num_rows != 0) {
+				while ($row = mysqli_fetch_assoc($query)) {
+					echo "<option value='".$row['Familias']."'>".$row['Familias']."</option>";
+				}
+			} else {
+				echo "Error: " . $query . "<br>" . mysqli_error($con);
+			}
+			mysqli_close($con);
+		}
 
-			while ($row = mysqli_fetch_assoc($query)) {
-				echo "<option value='".$row['Familias']."'>".$row['Familias']."</option>";
+		function cargaModelos($conn, $database) {
+			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+			$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos ORDER BY Modelo");
+			$num_rows = mysqli_num_rows($query);
+			if ($num_rows != 0) {
+				while ($row = mysqli_fetch_assoc($query)) {
+					echo "<option value='".$row['Modelo']."'>".$row['Modelo']."</option>";
+				}
+			} else {
+				echo "Error: " . $query . "<br>" . mysqli_error($con);
 			}
 			mysqli_close($con);
 		}
 	?>
 	<script type="text/javascript">
-		$(document).on('ready', principal);
+		/*$(document).on('ready', principal);
 			function principal() {
-			  $('table').bind('mouseenter', function(e) {
-			    //$(this).attr('contenteditable','true');
-			  });
-		}
+			  $('td').bind('mouseenter', function(e) {
+			  $(this).attr('contenteditable','true');
+			});
+		}*/
 	</script>
 	<div data-role="page" data-theme="b" id="divPage">
+		<script type="text/javascript" src="../../js/js_tables.js"></script>
 		<!--Header-->
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>SIC Ultimate<br>
-				<center>
+			<h1>Familias / Modelos<br>Families / Models
+				<!--<center>
 					<img src="../../public/images/Sicicon.ico">
-				</center>
+				</center>-->
 			</h1>
 		</div>
 		<?php
@@ -250,10 +266,13 @@
 												$("select#familias").html(options);
 
 												valFamilia = document.getElementById('familias').value = '';
-												$('#cancelDel_Familia').click();
+												
+												
 											});
+											$('#cancelDel_Familia').click();
 										});
 
+										//No actualiza
 										$(document).ready(function(e) {
 											$("select#familias").change();
 										});
@@ -299,6 +318,7 @@
 												$("select#modelos").html(options);
 
 												valModelo = document.getElementById('pop_inputAgregaModelo_FM').value = '';
+												
 												$('#cancelarAgregarModelo').click();
 
 											});
@@ -334,6 +354,8 @@
 											var valFamilia = document.getElementById('familias').value;
 											alert('Familia = ' + valFamilia);
 
+											var loadMod = $("select#modelos");
+
 											$.getJSON("../captura/familias_modelos/del_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
@@ -342,13 +364,19 @@
 												alert('MODELO se elimino correctamente');
 												$("select#modelos").html(options);
 
-												$('#cancelDel_Modelo').click();
-
+												if (flag == true) {
+													loadMod.selectmenu("refresh", true);
+												}
+												flag == true;
 											});
+
+
+											$('#cancelDel_Modelo').click();
 										});
 
+										//No esta actualizando al borrar modelos
 										$(document).ready(function(e) {
-											//$("select#familias").change();
+											$("select#familias").change();
 											$("select#modelos").change();
 										});
 									});
@@ -542,6 +570,45 @@
 			    					</div>
 			  					</div>
 
+			  					<script type="text/javascript">
+			  							//Copiar Operaciones
+										
+										$(document).ready(function(){
+											$("a#copiarOperacion").click(function() {
+												var modeloOrigen = document.getElementById('mod_origen').value;
+												var modeloDestino = document.getElementById('mod_destino').value;
+												var loadOp = $("table#tablaOperaciones");
+
+												alert('Origen = ' + modeloOrigen);
+												alert('Destino = ' + modeloDestino);
+
+												$.getJSON("../captura/familias_modelos/copy_operaciones.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
+													var tr = "";
+													for (var i = 0; i < j.length; i++) {
+														
+														tr += '<tr><td><span id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+
+														if (j[i].UsarPPms == 1) {
+															tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														} else {
+															tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														}
+
+														tr += '<td><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+													}
+													$("tbody#content_operaciones").html(tr);
+
+													if (flag == true) {
+														loadOp.selectmenu("refresh", true);
+													}
+													flag == true;
+													alert('Operaciones Copiadas');
+												});
+												
+												$("a#cancelCopy_Operacion").click();
+											});
+										});
+			  					</script>
 			  					<!-- PopUp Copiar Operacion-->
 								<div data-role="main" class="ui-content" id="divCopiarOp_FM" data-inline="true">
 			    					<a href="#popupCopiarOperacion" id="btnCopiaOp" data-rel="popup" class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline ui-corner">Copiar Operacion</a>
@@ -550,17 +617,31 @@
 										<div data-role="fieldcontain" id="">
 											<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
 											<select name="mod_origen" id="mod_origen">
-												<option value="">0016 496900</option>
-												<option value="">0059 419100</option>
-												<option value="">50C70 495</option>
+												<option value="default">- - - Selecciona Un Modelo - - -</option>
+												<?php
+													if ($area == 'Electronica') {
+														cargaModelos($con, 'Electronica');
+													} elseif ($area == 'Electromecanicos') {
+														cargaModelos($con, 'Electromecanicos');
+													} elseif ($area == 'Valvulas') {
+														cargaModelos($con, 'Valvulas');
+													}
+												?>
 											</select>
 										</div>
 										<div data-role="fieldcontain" id="">
 											<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
 											<select name="mod_destino" id="mod_destino">
-												<option value="">50M61 843</option>
-												<option value="">F59-478100</option>
-												<option value="">50A51 235B1</option>
+												<option value="default">- - - Selecciona Un Modelo - - -</option>
+												<?php
+													if ($area == 'Electronica') {
+														cargaModelos($con, 'Electronica');
+													} elseif ($area == 'Electromecanicos') {
+														cargaModelos($con, 'Electromecanicos');
+													} elseif ($area == 'Valvulas') {
+														cargaModelos($con, 'Valvulas');
+													}
+												?>
 											</select>
 										</div>
 			      						<center>

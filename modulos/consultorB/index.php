@@ -1,7 +1,7 @@
 <?php
-	//session_start();
 	require_once("../../php/conexion.php");
 	$area = $_GET['area'];
+	$user = $_GET['user'];
 
 ?>
 
@@ -35,7 +35,8 @@
 	<div data-role="page" data-theme="b" id="page">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Consultor B<br>
+			<!--<h1>Consultor B<br>-->
+			<h1>Bienvenido a: <?php echo "$area<br>";?> Usuario: <?php echo "$user";?><br>
 				<center>
 					<img src="../../public/images/Sicicon.ico">
 				</center>

@@ -21,10 +21,10 @@
 		<!--Header-->
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>SIC Ultimate<br>
-			<center>
-				<img src="../../public/images/Sicicon.ico">
-			</center>
+			<h1>Codigos De Falla<br>Fault Codes
+				<!--<center>
+					<img src="../../public/images/Sicicon.ico">
+				</center>-->
 			</h1>
 		</div>
 		<?php
