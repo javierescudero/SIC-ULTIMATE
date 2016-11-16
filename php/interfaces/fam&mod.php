@@ -64,12 +64,11 @@
 		}
 	?>
 	<script type="text/javascript">
-		/*$(document).on('ready', principal);
-			function principal() {
-			  $('td').bind('mouseenter', function(e) {
-			  $(this).attr('contenteditable','true');
-			});
-		}*/
+		function myFunction() {
+			$('span').bind('mouseenter', function(e) {
+		  		$(this).attr('contenteditable','true');
+		  	});
+		}
 	</script>
 	<div data-role="page" data-theme="b" id="divPage">
 		<script type="text/javascript" src="../../js/js_tables.js"></script>
@@ -140,7 +139,7 @@
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
-												tr += '<tr><td><span id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+												tr += '<tr><td><span onclick="myFunction()" id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span onclick="myFunction()" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
@@ -158,6 +157,10 @@
 											flag == true;
 										});
 
+										/*$('span').bind('mouseenter', function(e) {
+										  	$(this).attr('contenteditable','true');
+										});*/
+
 									});
 
 									$("select#modelos").change(function() {
@@ -167,7 +170,7 @@
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
-												tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+												tr += '<tr><td><span onclick="myFunction()" id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span onclick="myFunction()" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -184,6 +187,10 @@
 											}
 											flag == true;
 										});
+
+										/*$('span').bind('mouseenter', function(e) {
+										  	$(this).attr('contenteditable','true');
+										});*/
 									});
 
 								});
@@ -586,7 +593,7 @@
 													var tr = "";
 													for (var i = 0; i < j.length; i++) {
 														
-														tr += '<tr><td><span id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+														tr += '<tr><td><span onclick="myFunction()" id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span onclick="myFunction()" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 														if (j[i].UsarPPms == 1) {
 															tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
