@@ -6,12 +6,12 @@ if ($_REQUEST['ajax']) {
 	$familia = $_REQUEST['familia'];
 	$area = $_REQUEST['area'];
 
-	if ($area == "electronica") {
-		$database = "electronica";
-	} elseif ($area == "electromecanicos") {
-		$database = "electromecanicos";
-	} elseif ($area == "valvulas") {
-		$database = "valvulas";
+	if ($area == "Electronica") {
+		$database = "Electronica";
+	} elseif ($area == "Electromecanicos") {
+		$database = "Electromecanicos";
+	} elseif ($area == "Valvulas") {
+		$database = "Valvulas";
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);

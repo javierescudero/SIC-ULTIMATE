@@ -1,7 +1,8 @@
 <?php
-	session_start();
+	//session_start();
 	require_once("../../php/conexion.php");
 	$area = $_GET['area'];
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +35,11 @@
 	<div data-role="page" data-theme="b" id="page">
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
-			<h1>Consultor B</h1>
+			<h1>Consultor B<br>
+				<center>
+					<img src="../../public/images/Sicicon.ico">
+				</center>
+			</h1>
 		</div>
 		<?php 
 			if (isset($_GET['area'])) {

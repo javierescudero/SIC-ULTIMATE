@@ -1,7 +1,10 @@
 <?php
 	require_once("../conexion.php");
 	if (isset($_GET['area'])) {
-		$area = $_GET['area'];
+		if (isset($_GET['tipoUser'])) {
+			$area = $_GET['area'];
+			$tipoUser = $_GET['tipoUser'];
+		}
 	}
 ?>
 <html lang="en">
@@ -11,13 +14,7 @@
 
 	<title>SIC Ultimate</title>
 
-	
-	<script src="../../../js/jquery-1.12.4.min.js"></script>
-	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
-	<script src="../../../js/js_refresh.js"></script>
-	
-	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="../../../css/css_style.css">
+	<?php include("../../php/librerias.php"); ?>
 </head>
 <body>
 	<div data-role="page" data-theme="b" id="divPage">
@@ -26,12 +23,35 @@
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>SIC Ultimate<br>
 			<center>
-				<img src="../../../public/images/Sicicon.ico">
+				<img src="../../public/images/Sicicon.ico">
 			</center>
 			</h1>
 		</div>
 		<?php
-			include("menu.php");
+			if ($tipoUser == 'administrador') {
+				include("../menus/menu_administrador.php");
+			} 
+			elseif ($tipoUser == 'capturistaA') {
+				include("../menus/menu_capturistaA.php");
+			} 
+			elseif ($tipoUser == 'capturistaB') {
+				include("../menus/menu_capturistaB.php");
+			} 
+			elseif ($tipoUser == 'capturistaC') {
+				include("../menus/menu_capturistaC.php");
+			} 
+			elseif ($tipoUser == 'capturistaD') {
+				include("../menus/menu_capturistaD.php");
+			} 
+			elseif ($tipoUser == 'consultorA') {
+				include("../menus/menu_consultorA.php");
+			} 
+			elseif ($tipoUser == 'consultorB') {
+				include("../menus/menu_consultorB.php");
+			} 
+			elseif ($tipoUser == 'correctorA') {
+				include("../menus/menu_correctorA.php");
+			}
 		?>
 		<div id="divForm_CDF">
 			<form action="">

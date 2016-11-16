@@ -1,7 +1,10 @@
 <?php
 	require_once("../conexion.php");
 	if (isset($_GET['area'])) {
-		$area = $_GET['area'];
+		if (isset($_GET['tipoUser'])) {
+			$area = $_GET['area'];
+			$tipoUser = $_GET['tipoUser'];
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -12,16 +15,13 @@
 
 	<title>SIC Ultimate</title>
 
-	<script src="../../../js/jquery-1.12.4.min.js"></script>
-	<script src="../../../js/jquery.mobile-1.4.5.js"></script>
-	<script src="../../../js/jqm-datebox-1.4.5.core.min.js"></script>
+	<?php include("../../php/librerias.php"); ?>
+
 	<script src="../../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
 	<script src="../../../js/jqm-datebox.lang.utf8.js"></script>
-	<script src="../../../js/js_refresh.js"></script>
-	
-	<link rel="stylesheet" href="../../../css/jquery.mobile-1.4.5.css">
+	<script src="../../../js/jqm-datebox-1.4.5.core.min.js"></script>
+	<script src="../../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
 	<link rel="stylesheet" href="../../../css/jqm-datebox-1.4.5.min.css">
-	<link rel="stylesheet" href="../../../css/css_style.css">
 </head>
 <body>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
@@ -30,12 +30,35 @@
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>SIC Ultimate<br>
 			<center>
-				<img src="../../../public/images/Sicicon.ico">
+				<img src="../../public/images/Sicicon.ico">
 			</center>
 			</h1>
 		</div>
 		<?php
-			include("menu.php");
+			if ($tipoUser == 'administrador') {
+				include("../menus/menu_administrador.php");
+			} 
+			elseif ($tipoUser == 'capturistaA') {
+				include("../menus/menu_capturistaA.php");
+			} 
+			elseif ($tipoUser == 'capturistaB') {
+				include("../menus/menu_capturistaB.php");
+			} 
+			elseif ($tipoUser == 'capturistaC') {
+				include("../menus/menu_capturistaC.php");
+			} 
+			elseif ($tipoUser == 'capturistaD') {
+				include("../menus/menu_capturistaD.php");
+			} 
+			elseif ($tipoUser == 'consultorA') {
+				include("../menus/menu_consultorA.php");
+			} 
+			elseif ($tipoUser == 'consultorB') {
+				include("../menus/menu_consultorB.php");
+			} 
+			elseif ($tipoUser == 'correctorA') {
+				include("../menus/menu_correctorA.php");
+			}
 		?>
 
 		<!-- Formulario -->

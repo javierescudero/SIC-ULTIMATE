@@ -1,9 +1,13 @@
 <?php
+	session_start();
 	require_once("../../php/conexion.php");
 	if (isset($_SESSION['areasPerm'])) {
-		$area = $_GET['area'];
-		$areasPerm = $_SESSION['areasPerm'];
-		$accesAreas = strpos($areasPerm, $area);
+		if (isset($_SESSION['tipoUser'])) {
+			$tipoUser = $_SESSION['tipoUser'];
+			$area = $_GET['area'];
+			$areasPerm = $_SESSION['areasPerm'];
+			$accesAreas = strpos($areasPerm, $area);
+		}
 	}
 ?>
 
@@ -17,9 +21,9 @@
 
 		<div id="reportes" data-role="collapsible" data-collapsed-icon="bars" data-expanded-icon="carat-u">
 			<h3><center>Reportes</center></h3>
-			<a href="../../php/interfaces/desempeno.php?area=<?php echo "$area"; ?>" id="desempeno"  data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left" data-transition="slidedown" data-ajax="false">Desempeño del Producto</a>
-			<a href="../../php/interfaces/tendencia.php?area=<?php echo "$area"; ?>" id="tendencia" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left" data-transition="slidedown" data-ajax="false">Graficas de Tendencia</a>
-			<a href="../../php/interfaces/contribuyentes.php?area=<?php echo "$area"; ?>" id="contribuyentes" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left" data-transition="slidedown" data-ajax="false">Contribuyentes</a>
+			<a href="../../php/interfaces/desempeno.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="desempeno"  data-role="button" title="Desempeño del Producto" class="ui-btn ui-icon-star ui-btn-icon-left" data-transition="slidedown" data-ajax="false">Desempeño del Producto</a>
+			<a href="../../php/interfaces/tendencia.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="tendencia" data-role="button" title="Graficas de Tendencia" class="ui-btn ui-icon-clock ui-btn-icon-left" data-transition="slidedown" data-ajax="false">Graficas de Tendencia</a>
+			<a href="../../php/interfaces/contribuyentes.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="contribuyentes" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left" data-transition="slidedown" data-ajax="false">Contribuyentes</a>
 		</div><br><hr><br>
 
 		<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">

@@ -1,9 +1,13 @@
 <?php
+	session_start();
 	require_once("../../php/conexion.php");
 	if (isset($_SESSION['areasPerm'])) {
-		$area = $_GET['area'];
-		$areasPerm = $_SESSION['areasPerm'];
-		$accesAreas = strpos($areasPerm, $area);
+		if (isset($_SESSION['tipoUser'])) {
+			$tipoUser = $_SESSION['tipoUser'];
+			$area = $_GET['area'];
+			$areasPerm = $_SESSION['areasPerm'];
+			$accesAreas = strpos($areasPerm, $area);
+		}
 	}
 ?>
 
@@ -16,11 +20,11 @@
 	<div id="divMenuPrincipal">
 		<div id="captura" data-role="collapsible" data-collapsed-icon="edit" data-expanded-icon="carat-u">
 			<h3><center>Captura</center></h3>
-			<a href="../../php/interfaces/fam&mod.php?area=<?php echo "$area"; ?>" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left" data-transition="slide" data-ajax="false">Familias / Modelos</a>
-			<a href="../../php/interfaces/operaciones.php?area=<?php echo "$area"; ?>" id="operaciones" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left" data-transition="slide" data-ajax="false">Operaciones</a>
-			<a href="../../php/interfaces/componentes.php?area=<?php echo "$area"; ?>" id="componentes" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left" data-transition="slide" data-ajax="false">Componentes</a>
-			<a href="../../php/interfaces/codigos_de_falla.php?area=<?php echo "$area"; ?>" id="codigos_de_falla" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left" data-transition="slide" data-ajax="false">Codigos de Falla</a>
-			<a href="../../php/interfaces/registros.php?area=<?php echo "$area"; ?>" id="registros" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left" data-transition="slide" data-ajax="false">Registros</a>
+			<a href="../../php/interfaces/fam&mod.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="fam_mod"  data-role="button" class="ui-btn ui-icon-bars ui-btn-icon-left" data-transition="slide" data-ajax="false">Familias / Modelos</a>
+			<a href="../../php/interfaces/operaciones.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="operaciones" data-role="button" class="ui-btn ui-icon-grid ui-btn-icon-left" data-transition="slide" data-ajax="false">Operaciones</a>
+			<a href="../../php/interfaces/componentes.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="componentes" data-role="button" class="ui-btn ui-icon-gear ui-btn-icon-left" data-transition="slide" data-ajax="false">Componentes</a>
+			<a href="../../php/interfaces/codigos_de_falla.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="codigos_de_falla" data-role="button" class="ui-btn ui-icon-tag ui-btn-icon-left" data-transition="slide" data-ajax="false">Codigos de Falla</a>
+			<a href="../../php/interfaces/registros.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" id="registros" data-role="button" class="ui-btn ui-icon-bullets ui-btn-icon-left" data-transition="slide" data-ajax="false">Registros</a>
 		</div><br><hr><br>
 
 		<div id="area" data-role="collapsible" data-collapsed-icon="recycle" data-expanded-icon="carat-u">

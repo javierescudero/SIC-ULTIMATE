@@ -1,8 +1,10 @@
 <?php
-	session_start();
 	require_once("../conexion.php");
 	if (isset($_GET['area'])) {
-		$area = $_GET['area'];
+		if (isset($_GET['tipoUser'])) {
+			$area = $_GET['area'];
+			$tipoUser = $_GET['tipoUser'];
+		}
 	}
 ?>
 <html lang="en">
@@ -13,12 +15,10 @@
 	
 	<title>SIC Ultimate</title>
 
-	<script src="../../js/jquery-1.12.4.min.js"></script>
-	<script src="../../js/jquery.mobile-1.4.5.js"></script>
-	<script src="../../js/js_refresh.js"></script>
-	
-	<link rel="stylesheet" href="../../css/jquery.mobile-1.4.5.css">
-	<link rel="stylesheet" href="../../css/css_style.css">
+	<!-- NO Funciona -->
+	<script type="text/javascript" src="../../js/js_tables.js"></script>
+
+	<?php include("../../php/librerias.php"); ?>
 </head>
 <style type="text/css">
 	@media screen and (min-width: 480px) {
@@ -61,10 +61,36 @@
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
 			<h1>SIC Ultimate<br>
+				<center>
+					<img src="../../public/images/Sicicon.ico">
+				</center>
 			</h1>
 		</div>
 		<?php
-			include("../menus/menu_administrador.php");
+			if ($tipoUser == 'administrador') {
+				include("../menus/menu_administrador.php");
+			} 
+			elseif ($tipoUser == 'capturistaA') {
+				include("../menus/menu_capturistaA.php");
+			} 
+			elseif ($tipoUser == 'capturistaB') {
+				include("../menus/menu_capturistaB.php");
+			} 
+			elseif ($tipoUser == 'capturistaC') {
+				include("../menus/menu_capturistaC.php");
+			} 
+			elseif ($tipoUser == 'capturistaD') {
+				include("../menus/menu_capturistaD.php");
+			} 
+			elseif ($tipoUser == 'consultorA') {
+				include("../menus/menu_consultorA.php");
+			} 
+			elseif ($tipoUser == 'consultorB') {
+				include("../menus/menu_consultorB.php");
+			} 
+			elseif ($tipoUser == 'correctorA') {
+				include("../menus/menu_correctorA.php");
+			}
 		?>
 		<div id="divForm_FM">
 			<form action="">
@@ -154,14 +180,14 @@
 
 							<center><label for="divFamilia_FM" id="lblFamilia" data-theme="c"><b>Familias</b></label></center>
 							<select name="familias" id="familias">
-								<option>- - - Selecciona Una Familia - - -</option>
+								<option value="default">- - - Selecciona Una Familia - - -</option>
 								<?php
-									if ($area == 'electronica') {
-										cargaFamilias($con, 'electronica');
-									} elseif ($area == 'electromecanicos') {
-										cargaFamilias($con, 'electromecanicos');
-									} elseif ($area == 'valvulas') {
-										cargaFamilias($con, 'valvulas');
+									if ($area == 'Electronica') {
+										cargaFamilias($con, 'Electronica');
+									} elseif ($area == 'Electromecanicos') {
+										cargaFamilias($con, 'Electromecanicos');
+									} elseif ($area == 'Valvulas') {
+										cargaFamilias($con, 'Valvulas');
 									}
 								?>
 							</select>
@@ -567,7 +593,6 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="../../js/js_tables.js"></script>
 
 </body>
 </html>
