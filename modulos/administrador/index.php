@@ -25,7 +25,7 @@
 	@media screen and (max-width: 1800px) {
 	    #container {
 	        width: 100%;
-	        height: 550px;
+	        height: 500px;
 	        margin: 0 auto;
 	    }
 	}
