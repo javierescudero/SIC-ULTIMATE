@@ -74,11 +74,11 @@ tr:hover td {
 	margin-left: 15%;
 }
 
-#divContentModelo_Op { width: 15%; }
+#divContentModelo_Op { width: 25%; }
 
 #divTabla_Op {
-	width: 46%;
-	height: 400px;
+	width: 50%;
+	max-height: 590px;
 	overflow: auto;
 }
 

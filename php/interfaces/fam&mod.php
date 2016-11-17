@@ -32,6 +32,9 @@
 	    #btns_ajustar {
 	    	display: inline;
 	    }
+	    #divTabla_Operaciones {
+	    	max-height: 545px;
+	    }
 	}
 </style>
 
@@ -65,32 +68,7 @@
 			mysqli_close($con);
 		}
 	?>
-	<script type="text/javascript">
-		/*function myFunction() {
-			$('span').bind('mouseenter', function(e) {
-		  		$(this).attr('contenteditable','true');
-		  	});
-		}*/
-		/*$(document).ready(function() {
-			$(".renglon").click(function() {
-				var valores = "";
-				/*$(this).parents("tr").find("td").each(function() {
-					valores += $(this).html() + "\n";
-				});
-				alert(valores);
-			});
-		});*/
-		/*var valOperacion;
-		$('tbody').click(function (e) {
-			valOperacion = e.target.id;
-			//alert('valOperacion = ' + valOperacion);
-		});*/
 
-		function unClick() {
-			var click = $(this).attr('id');
-			alert(click);
-		}
-	</script>
 	<div data-role="page" data-theme="b" id="divPage">
 		<script type="text/javascript" src="../../js/js_tables.js"></script>
 		<!--Header-->
