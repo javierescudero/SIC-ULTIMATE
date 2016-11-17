@@ -24,7 +24,7 @@
 			$query = mysqli_query($con, "SELECT Modelo FROM modelos");
 			$num_rows = mysqli_num_rows($query);
 			while ($row = mysqli_fetch_assoc($query)) {
-				echo "<option value=".$row['Modelo'].">".$row['Modelo']."</option>";
+				echo "<option value='".$row['Modelo']."'>".$row['Modelo']."</option>";
 			}
 			mysqli_close($con);
 		}
@@ -73,20 +73,53 @@
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
 						<select name="modelo" id="modelo">
+							<option value="default">- - - Selecciona Un Modelo - - -</option>
 							<?php
-								if ($area == 'electronica') {
-									cargaModelos($con, 'electronica');
-								} elseif ($area == 'electromecanicos') {
-									cargaModelos($con, 'electromecanicos');
-								} elseif ($area == 'valvulas') {
-									cargaModelos($con, 'valvulas');
+								if ($area == 'Electronica') {
+									cargaModelos($con, 'Electronica');
+								} elseif ($area == 'Electromecanicos') {
+									cargaModelos($con, 'Electromecanicos');
+								} elseif ($area == 'Valvulas') {
+									cargaModelos($con, 'Valvulas');
 								}
 							?>
 						</select>
 					</div>
 				</center>
 				<center>
+
+					<script type="text/javascript">
+						var flag = true;
+						$(function() {
+							$("select#modelo").change(function() {
+								//Carga las operaciones al seleccionar un modelo.
+								var loadOp2 = $("table#tablaOperaciones");
+								$.getJSON("../getsJSON/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+									var tr = "";
+									for (var i = 0; i < j.length; i++) {
+										
+										tr += '<tr"><td><span id="'+j[i].Operacion+'" ><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+
+										if (j[i].UsarPPms == 1) {
+											tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+										} else {
+											tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+										}
+
+										tr += '<td><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+									}
+									$("tbody#content_operaciones").html(tr);
+								});
+
+								/*$('span').bind('mouseenter', function(e) {
+								  	$(this).attr('contenteditable','true');
+								});*/
+							});
+						});
+					</script>
+
 					<div id="divBtnsOperaciones_Op">
+
 						<!-- PopUp Agregar Operacion -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
@@ -176,11 +209,34 @@
 								</center>
     						</div>
   						</div>
+
+  						<!-- PopUp Editar Operacion-->
+    					<div data-role="popup" id="popupEditarOperacion" class="ui-content">
+      						<label for="operacion">Operacion</label>
+      						<input type="text" id="operacionAgrega">
+      						<label for="descripcion">Descripcion</label>
+      						<input type="text" id="descripcionAgrega">
+
+      						<fieldset data-iconpos="right">
+      							<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">
+        						<label for="checkbox-h-5a">Usar en PPms?</label>
+      						</fieldset>
+
+      						<label for="grupo">Grupo</label>
+      						<select name="grupoEdita" id="grupoEdita">
+								<option value="default">- - - - - - -</option>
+								<option value="Final_test">Final Test</option>
+								<option value="Qc_audit">QC Audit</option>
+								<option value="Process">Process</option>
+							</select>
+							<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
+							<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+    					</div>
 					</div>
 				</center>
 				<center>
 				<div id="divTabla_Op">
-						<table id="tabla_Op" cellpadding="0" cellspacing="0" border="0" class="display">
+						<table id="tablaOperaciones" cellpadding="0" cellspacing="0" border="0" class="display">
 						<thead>
 							<tr>
 								<th width="60" align="left">Operacion</th>
@@ -189,11 +245,12 @@
 								<th width="120" align="left">Grupo</th>
 							</tr>
 						</thead>
+						<tbody id="content_operaciones">
+						</tbody>
 				</div>
 			</center>
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="../../../js/js_tables.js"></script>
 </body>
 </html>

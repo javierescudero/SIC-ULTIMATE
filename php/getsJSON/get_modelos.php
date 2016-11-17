@@ -1,8 +1,9 @@
 <?php
-require_once("../../conexion.php");
+require_once("../conexion.php");
 
 if ($_REQUEST['ajax']) {
 
+	$familia = $_REQUEST['familia'];
 	$area = $_REQUEST['area'];
 
 	if ($area == "Electronica") {
@@ -14,7 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos ORDER BY Modelo");
+	$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos WHERE Familia = '".$familia."' ORDER BY Modelo");
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {

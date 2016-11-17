@@ -1,9 +1,8 @@
 <?php
-require_once("../../conexion.php");
+require_once("../conexion.php");
 
 if ($_REQUEST['ajax']) {
 
-	$modelo = $_REQUEST['modelo'];
 	$area = $_REQUEST['area'];
 
 	if ($area == "Electronica") {
@@ -15,7 +14,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT DISTINCT Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Modelo = '".$modelo."' ORDER BY Operacion");
+	$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos ORDER BY Modelo");
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {

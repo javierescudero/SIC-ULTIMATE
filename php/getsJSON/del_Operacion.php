@@ -1,5 +1,5 @@
 <?php
-require_once("../../conexion.php");
+require_once("../conexion.php");
 
 if ($_REQUEST['ajax']) {
 
@@ -17,8 +17,6 @@ if ($_REQUEST['ajax']) {
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
 
-	//$q_modelos = "DELETE FROM modelos WHERE Modelo = 'mod 001' AND Familia = '000'";
-	//$query = "DELETE FROM operaciones WHERE Modelo = 'mod 002' AND Operacion = 'op aaaa'";
 	$query = "DELETE FROM operaciones WHERE Modelo = '".$valModelo."' AND Operacion = '".$valOperacion."'";
 	
 	if (mysqli_query($con, $query)) {
@@ -31,7 +29,7 @@ if ($_REQUEST['ajax']) {
 			}
 			print(json_encode($rows));
 		} else {
-			echo "<script>alert('No se encontraron familias');</script>";
+			echo "<script>alert('No se encontraron operaciones');</script>";
 		}
 	} else {
 		echo "Error: " . $query . "<br>" . mysqli_error($con);

@@ -80,6 +80,16 @@
 				alert(valores);
 			});
 		});*/
+		/*var valOperacion;
+		$('tbody').click(function (e) {
+			valOperacion = e.target.id;
+			//alert('valOperacion = ' + valOperacion);
+		});*/
+
+		function unClick() {
+			var click = $(this).attr('id');
+			alert(click);
+		}
 	</script>
 	<div data-role="page" data-theme="b" id="divPage">
 		<script type="text/javascript" src="../../js/js_tables.js"></script>
@@ -130,7 +140,7 @@
 									$("select#familias").change(function() {
 										//Carga los modelos al seleccionar una familia.
 										var loadMod = $("select#modelos");
-										$.getJSON("../captura/familias_modelos/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										$.getJSON("../getsJSON/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 
 											for (var i = 0; i < j.length; i++) {				
@@ -146,11 +156,13 @@
 
 										//Carga las operaciones al seleccionar una familia.
 										var loadOp = $("table#tablaOperaciones");
-										$.getJSON("../captura/familias_modelos/get_operaciones_xFamilia.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										$.getJSON("../getsJSON/get_operaciones_xFamilia.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
+
+												tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
 												
-												tr += '<tr><td><span id="' + j[i].Operacion + '"><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+												tr += '<td><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
@@ -177,11 +189,13 @@
 									$("select#modelos").change(function() {
 										//Carga las operaciones al seleccionar un modelo.
 										var loadOp2 = $("table#tablaOperaciones");
-										$.getJSON("../captura/familias_modelos/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										$.getJSON("../getsJSON/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
+
+												tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
 												
-												tr += '<tr"><td><span id="'+j[i].Operacion+'" ><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+												tr += '<td><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -234,7 +248,7 @@
 										//Agregar Familia
 										$("a#agregarFamilia").click(function(){
 											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
-											$.getJSON("../captura/familias_modelos/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../getsJSON/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
@@ -273,7 +287,7 @@
 										$("a#eliminarFamilia").click(function(){
 											var valFamilia = document.getElementById('familias').value;
 											alert('valFamilia = ' +valFamilia);
-											$.getJSON("../captura/familias_modelos/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../getsJSON/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
 												alert('valFamilia = ' +valFamilia);
 												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
@@ -327,7 +341,7 @@
 											var valModelo = document.getElementById('pop_inputAgregaModelo_FM').value;
 											var valFamilia = document.getElementById('familias').value;
 
-											$.getJSON("../captura/familias_modelos/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../getsJSON/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -344,7 +358,7 @@
 											//Carga los modelos origen y destino al seleccionar una familia.
 											var loadModeloOrigen = $("select#mod_origen");
 											var loadModeloDestino = $("select#mod_destino");
-											$.getJSON("../captura/familias_modelos/get_copyModelos.php", {ajax: true, area: <?php echo "'$area'"; ?>}, function(j) {
+											$.getJSON("../getsJSON/get_copyModelos.php", {ajax: true, area: <?php echo "'$area'"; ?>}, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 
 												for (var i = 0; i < j.length; i++) {				
@@ -393,7 +407,7 @@
 
 											var loadMod = $("select#modelos");
 
-											$.getJSON("../captura/familias_modelos/del_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../getsJSON/del_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -460,11 +474,13 @@
 											alert('Grupo = ' + valGrupo);
 
 											var loadOp2 = $("table#tablaOperaciones");
-											$.getJSON("../captura/familias_modelos/add_Operacion.php", {ajax: true, familia: valFamilia, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
+											$.getJSON("../getsJSON/add_Operacion.php", {ajax: true, familia: valFamilia, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var tr = "";
 												for (var i = 0; i < j.length; i++) {
+
+													tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
 													
-													tr += '<tr><td><span id="'+j[i].Operacion+'" ><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+													tr += '<td><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 													if (j[i].UsarPPms == 1) {
 														tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -548,6 +564,7 @@
 										var valOperacion;
 										$('tbody').click(function (e) {
 											valOperacion = e.target.id;
+											//alert('valOperacion = ' + valOperacion);
 										});
 
 										//Eliminar Operacion
@@ -561,11 +578,13 @@
 												//alert('Modelo = ' + valModelo);
 
 												var loadOp2 = $("table#tablaOperaciones");
-												$.getJSON("../captura/familias_modelos/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
+												$.getJSON("../getsJSON/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
 													var tr = "";
 													for (var i = 0; i < j.length; i++) {
+
+														tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
 														
-														tr += '<tr><td><span id="'+j[i].Operacion+'" ><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+														tr += '<td><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 														if (j[i].UsarPPms == 1) {
 															tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -621,11 +640,13 @@
 												//alert('Origen = ' + modeloOrigen);
 												//alert('Destino = ' + modeloDestino);
 
-												$.getJSON("../captura/familias_modelos/copy_operaciones.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
+												$.getJSON("../getsJSON/copy_operaciones.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
 													var tr = "";
 													for (var i = 0; i < j.length; i++) {
 														
-														tr += '<tr class="renglon"><td><span id="' + j[i].Operacion + '"><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '</a></span></td><td><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+														tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+														
+														tr += '<td><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '</a></span></td><td><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 														if (j[i].UsarPPms == 1) {
 															tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
@@ -693,27 +714,26 @@
 
 			  					<!-- PopUp Editar Operacion-->
 		    					<div data-role="popup" id="popupEditarOperacion" class="ui-content">
-			      						<label for="operacion">Operacion</label>
-			      						<input type="text" id="operacionAgrega">
-			      						<label for="descripcion">Descripcion</label>
-			      						<input type="text" id="descripcionAgrega">
+		      						<label for="operacion">Operacion</label>
+		      						<input type="text" id="operacionAgrega">
+		      						<label for="descripcion">Descripcion</label>
+		      						<input type="text" id="descripcionAgrega">
 
-			      						<fieldset data-iconpos="right">
-			      							<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">
-			        						<label for="checkbox-h-5a">Usar en PPms?</label>
-			      						</fieldset>
+		      						<fieldset data-iconpos="right">
+		      							<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">
+		        						<label for="checkbox-h-5a">Usar en PPms?</label>
+		      						</fieldset>
 
-			      						<label for="grupo">Grupo</label>
-			      						<select name="grupoEdita" id="grupoEdita">
-											<option value="default">- - - - - - -</option>
-											<option value="Final_test">Final Test</option>
-											<option value="Qc_audit">QC Audit</option>
-											<option value="Process">Process</option>
-										</select>
-										<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
-										<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
-			    					</div>
-
+		      						<label for="grupo">Grupo</label>
+		      						<select name="grupoEdita" id="grupoEdita">
+										<option value="default">- - - - - - -</option>
+										<option value="Final_test">Final Test</option>
+										<option value="Qc_audit">QC Audit</option>
+										<option value="Process">Process</option>
+									</select>
+									<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
+									<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+		    					</div>
 							</div>
 						</center>
 					</div>
@@ -722,6 +742,7 @@
 							<table id="tablaOperaciones" cellpadding="0" cellspacing="0" border="0" class="hover">
 								<thead>
 									<tr>
+										<th width="100" align="left">Selec.</th>
 										<th width="100" align="left">Operacion</th>
 										<th width="330" align="left">Descripcion</th>
 										<th width="130" align="left">PPms</th>
@@ -733,7 +754,6 @@
 							</table>
 						</div>
 					</div>
-
 				</div><br><br>
 			</form>
 		</div>
