@@ -64,11 +64,20 @@
 		}
 	?>
 	<script type="text/javascript">
-		function myFunction() {
+		/*function myFunction() {
 			$('span').bind('mouseenter', function(e) {
 		  		$(this).attr('contenteditable','true');
 		  	});
-		}
+		}*/
+		$(document).ready(function() {
+			$(".renglon").click(function() {
+				var valores = "";
+				/*$(this).parents("tr").find("td").each(function() {
+					valores += $(this).html() + "\n";
+				});*/
+				alert(valores);
+			});
+		});
 	</script>
 	<div data-role="page" data-theme="b" id="divPage">
 		<script type="text/javascript" src="../../js/js_tables.js"></script>
@@ -139,7 +148,7 @@
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
-												tr += '<tr><td><span onclick="myFunction()" id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span onclick="myFunction()" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+												tr += '<tr><td><span id="' + j[i].Operacion + '"><a class="renglon">' + j[i].Operacion + '<a></span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
@@ -170,7 +179,7 @@
 											var tr = "";
 											for (var i = 0; i < j.length; i++) {
 												
-												tr += '<tr><td><span onclick="myFunction()" id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span onclick="myFunction()" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+												tr += '<tr"><td><span id="'+j[i].Operacion+'" ><a class="renglon">' +j[i].Operacion+ '</a></span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 												if (j[i].UsarPPms == 1) {
 													tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -593,7 +602,7 @@
 													var tr = "";
 													for (var i = 0; i < j.length; i++) {
 														
-														tr += '<tr><td><span onclick="myFunction()" id="' + j[i].Operacion + '">' + j[i].Operacion + '</span></td><td><span onclick="myFunction()" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+														tr += '<tr class="renglon"><td><span id="' + j[i].Operacion + '"><a class="renglon">' + j[i].Operacion + '</a></span></td><td><span id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 														if (j[i].UsarPPms == 1) {
 															tr += '<td><fieldset data-iconpos="left"><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
