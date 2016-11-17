@@ -256,7 +256,6 @@
 
 										});
 										alert('Operacion Eliminada');
-										$("tbody#content_operaciones").refresh(true);
 										$('#salir').click();
 									}
 
@@ -312,9 +311,9 @@
 										$("tbody#content_operaciones").html(tr);
 
 									});
-									alert('Operaciones Copiadas');
 									
-									$("a#salir").click();
+									alert('Operaciones Copiadas');
+									$("a#cancelCopy").click();
 								});
 							});
 	  					</script>
@@ -356,7 +355,7 @@
 								</div>
       							<center>
 									<a id="copiar" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
-									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+									<a id="cancelCopy" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 								</center>
     						</div>
   						</div>
