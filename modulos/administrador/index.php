@@ -10,7 +10,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
-	<title>SIC Ultimate Admin vw1.0</title>
+	<title>Administrador</title>
 	
 	<?php include("../../php/librerias.php"); ?>
 </head>

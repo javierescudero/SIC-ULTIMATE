@@ -17,6 +17,7 @@
 
 	<?php include("../../php/librerias.php"); ?>
 </head>
+
 <style type="text/css">
 	@media screen and (min-width: 480px) {
 	    #divColumnas {
@@ -25,7 +26,7 @@
 	}
 	@media screen and (max-width: 1800px) {
 	     #divColumnas {
-	        width: 135%;
+	        width: 140%;
 	     	margin-left: -15%;
 	    }
 	    #btns_ajustar {
@@ -33,6 +34,7 @@
 	    }
 	}
 </style>
+
 <body>
 	<?php
 		function cargaFamilias($conn, $database) {
@@ -338,6 +340,25 @@
 												$('#cancelarAgregarModelo').click();
 
 											});
+
+											//Carga los modelos origen y destino al seleccionar una familia.
+											var loadModeloOrigen = $("select#mod_origen");
+											var loadModeloDestino = $("select#mod_destino");
+											$.getJSON("../captura/familias_modelos/get_copyModelos.php", {ajax: true, area: <?php echo "'$area'"; ?>}, function(j) {
+												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+
+												for (var i = 0; i < j.length; i++) {				
+													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+												}
+												$("select#mod_origen").html(options);
+												$("select#mod_destino").html(options);
+
+												if (flag == true) {
+													loadModeloOrigen.selectmenu("refresh", true);
+													loadModeloDestino.selectmenu("refresh", true);
+												}
+												flag == true;
+											});
 										});
 
 										$(document).ready(function(e) {
@@ -394,6 +415,8 @@
 										$(document).ready(function(e) {
 											$("select#familias").change();
 											$("select#modelos").change();
+											$("select#mod_origen").change();
+											$("select#mod_destino").change();
 										});
 									});
 								</script>
@@ -441,7 +464,7 @@
 												var tr = "";
 												for (var i = 0; i < j.length; i++) {
 													
-													tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+													tr += '<tr><td><span id="'+j[i].Operacion+'" ><a class="renglon">' +j[i].Operacion+ '</a></span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 													if (j[i].UsarPPms == 1) {
 														tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -529,20 +552,20 @@
 
 										//Eliminar Operacion
 										$("a#eliminarOperacion").click(function(){
-											alert('valOperacion = ' + valOperacion);
+											//alert('valOperacion = ' + valOperacion);
 											var valModelo = document.getElementById('modelos').value;
 											if (valModelo == 'default') {
 												alert('Debes seleccionar algun modelo...');
 												return false;
 											}else {
-												alert('Modelo = ' + valModelo);
+												//alert('Modelo = ' + valModelo);
 
 												var loadOp2 = $("table#tablaOperaciones");
 												$.getJSON("../captura/familias_modelos/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
 													var tr = "";
 													for (var i = 0; i < j.length; i++) {
 														
-														tr += '<tr><td><span id="'+j[i].Operacion+'" >' +j[i].Operacion+ '</span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+														tr += '<tr><td><span id="'+j[i].Operacion+'" ><a class="renglon">' +j[i].Operacion+ '</a></span></td><td><span id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 														if (j[i].UsarPPms == 1) {
 															tr += '<td><fieldset data-iconpos="left"><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
@@ -595,8 +618,8 @@
 												var modeloDestino = document.getElementById('mod_destino').value;
 												var loadOp = $("table#tablaOperaciones");
 
-												alert('Origen = ' + modeloOrigen);
-												alert('Destino = ' + modeloDestino);
+												//alert('Origen = ' + modeloOrigen);
+												//alert('Destino = ' + modeloDestino);
 
 												$.getJSON("../captura/familias_modelos/copy_operaciones.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
 													var tr = "";

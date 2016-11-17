@@ -2,7 +2,6 @@
 	require_once("../../php/conexion.php");
 	$area = $_GET['area'];
 	$user = $_GET['user'];
-
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +10,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
-	<title>SIC Ultimate Admin vw1.0</title>
+	<title>Consultor B</title>
 	
 	<?php include("../../php/librerias.php"); ?>
 </head>
@@ -26,7 +25,7 @@
 	@media screen and (max-width: 1800px) {
 	    #container {
 	        width: 100%;
-	        height: 550px;
+	        height: 500px;
 	        margin: 0 auto;
 	    }
 	}
