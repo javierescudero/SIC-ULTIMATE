@@ -16,7 +16,26 @@
 
 	<?php include("../../php/librerias.php"); ?>
 </head>
+<style type="text/css">
+	@media screen and (max-width: 1800px) {
+		#divContentModelo_Comp, #divContentComponentes {
+			width: 50%;
+		}
+	}
+</style>
 <body>
+	<?php
+		function cargaModelos($conn, $database) {
+			//echo "<script>alert('".$database."');</script>";
+			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+			$query = mysqli_query($con, "SELECT Modelo FROM modelos ORDER BY Modelo");
+			$num_rows = mysqli_num_rows($query);
+			while ($row = mysqli_fetch_assoc($query)) {
+				echo "<option value='".$row['Modelo']."'>".$row['Modelo']."</option>";
+			}
+			mysqli_close($con);
+		}
+	?>
 	<div data-role="page" data-theme="b" id="divPage">
 		<!--Header-->
 		<div data-role="header" id="header">
@@ -55,67 +74,68 @@
 		?>
 		<div id="divFormComp">
 			<form action="">
+
+				<script type="text/javascript">
+					var flag = true;
+					$(function() {
+						$("select#modelos").change(function() {
+
+							//Carga los componentes al seleccionar un modelo.
+							var loadComp = $("select#componentes");
+							$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+								var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+
+								for (var i = 0; i < j.length; i++) {				
+									options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+								}
+
+								$("select#componentes").html(options);
+								if (flag == true) {
+									loadComp.selectmenu("refresh", true);
+								}
+								flag == true;
+
+							});
+
+						});
+
+					});
+					$(document).ready(function(e) {
+						flag = false;	
+						$("select#modelos").change();
+					});
+
+				</script>
+
 				<center>
 					<div data-role="fieldcontain" id="divContentModelo_Comp">
 						<center>
-							<label for="modelo"><b>Modelo</b></label>
+							<label for="modelos"><b>Modelo</b></label>
 						</center>
-						<select name="modelo" id="modelo">
+						<select name="modelos" id="modelos">
 							<?php
-								if ($area == 'electronica') {
-									$query = mysqli_query($con1, "SELECT Comp FROM componentes");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<option value=".$row['Comp'].">".$row['Comp']."</option>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron componentes');</script>";
-									}
-								}
-							?>
-							<?php
-								if ($area == 'electromecanicos') {
-									$query = mysqli_query($con2, "SELECT Comp FROM componentes");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<option value=".$row['Comp'].">".$row['Comp']."</option>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron componentes');</script>";
-									}
-								}
-							?>
-							<?php
-								if ($area == 'valvulas') {
-									$query = mysqli_query($con3, "SELECT Comp FROM componentes");
-									$num_rows = mysqli_num_rows($query);
-
-									if ($num_rows != 0) {
-										while ($row = mysqli_fetch_assoc($query)) {
-											echo "<option value=".$row['Comp'].">".$row['Comp']."</option>";
-										}
-									} else {
-										echo "<script>alert('No se encontraron componentes');</script>";
-									}
+								if ($area == 'Electronica') {
+									cargaModelos($con, 'Electronica');
+								} elseif ($area == 'Electromecanicos') {
+									cargaModelos($con, 'Electromecanicos');
+								} elseif ($area == 'Valvulas') {
+									cargaModelos($con, 'Valvulas');
 								}
 							?>
 						</select>
 					</div>
 				</center>
 
-				<!--Listview de los componentes-->
+				<!--Componentes-->
 				<center>
-					<center><label for="componente" data-theme="c"><b>Componente</b></label></center>
-					<div id="divLvwComponentes_Comp">
-						<ul data-role="listview">
-							<li data-icon="false"><a href="">C1</a></li>
-							<li data-icon="false"><a href="">C2</a></li>
-							<li data-icon="false"><a href="">C3</a></li>
-						</ul>
+					<div data-role="fieldcontain" id="divContentComponentes">
+						<center>
+							<label for="componentes"><b>Componentes</b></label>
+						</center>
+						<select name="componentes" id="componentes">
+							<option>- - - Selecciona Un Componente - - -</option>
+
+						</select>
 					</div>
 				</center>
 				

@@ -74,7 +74,7 @@ tr:hover td {
 	margin-left: 15%;
 }
 
-#divContentModelo_Op { width: 25%; }
+#divContentModelo_Op, #divContentComponentes { width: 25%; }
 
 #divTabla_Op {
 	width: 50%;
@@ -86,6 +86,10 @@ tr:hover td {
 #divFormComp {
 	width: 70%;
 	margin-left: 15%;
+}
+
+#componentes {
+	width: 10%;
 }
 
 #divContentModelo_Comp { width: 25%; }

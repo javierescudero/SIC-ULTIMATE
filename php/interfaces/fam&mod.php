@@ -70,7 +70,6 @@
 	?>
 
 	<div data-role="page" data-theme="b" id="divPage">
-		<script type="text/javascript" src="../../js/js_tables.js"></script>
 		<!--Header-->
 		<div data-role="header" id="header">
 			<a href="#menu" data-icon="bars" data-iconpos="notext"></a>
@@ -158,10 +157,6 @@
 											flag == true;
 										});
 
-										/*$('span').bind('mouseenter', function(e) {
-										  	$(this).attr('contenteditable','true');
-										});*/
-
 									});
 
 									$("select#modelos").change(function() {
@@ -195,7 +190,7 @@
 										  	$(this).attr('contenteditable','true');
 										});*/
 									});
-
+									
 								});
 
 								$(document).ready(function(e) {
