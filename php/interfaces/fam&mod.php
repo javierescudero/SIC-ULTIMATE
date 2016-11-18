@@ -186,9 +186,6 @@
 											flag == true;
 										});
 
-										/*$('span').bind('mouseenter', function(e) {
-										  	$(this).attr('contenteditable','true');
-										});*/
 									});
 									
 								});

@@ -15,6 +15,7 @@
 	<title>SIC Ultimate</title>
 
 	<?php include("../../php/librerias.php"); ?>
+
 </head>
 <style type="text/css">
 	@media screen and (max-width: 1800px) {
@@ -75,44 +76,12 @@
 		<div id="divFormComp">
 			<form action="">
 
-				<script type="text/javascript">
-					var flag = true;
-					$(function() {
-						$("select#modelos").change(function() {
-
-							//Carga los componentes al seleccionar un modelo.
-							var loadComp = $("select#componentes");
-							$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-								var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
-
-								for (var i = 0; i < j.length; i++) {				
-									options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
-								}
-
-								$("select#componentes").html(options);
-								if (flag == true) {
-									loadComp.selectmenu("refresh", true);
-								}
-								flag == true;
-
-							});
-
-						});
-
-					});
-					$(document).ready(function(e) {
-						flag = false;	
-						$("select#modelos").change();
-					});
-
-				</script>
-
 				<center>
 					<div data-role="fieldcontain" id="divContentModelo_Comp">
 						<center>
 							<label for="modelos"><b>Modelo</b></label>
 						</center>
-						<select name="modelos" id="modelos">
+						<select name="lista_modelos" id="lista_modelos">
 							<?php
 								if ($area == 'Electronica') {
 									cargaModelos($con, 'Electronica');
@@ -129,19 +98,41 @@
 				<!--Componentes-->
 				<center>
 					<div data-role="fieldcontain" id="divContentComponentes">
-						<center>
-							<label for="componentes"><b>Componentes</b></label>
-						</center>
-						<select name="componentes" id="componentes">
-							<option>- - - Selecciona Un Componente - - -</option>
 
-						</select>
+						<script type="text/javascript">
+							$(function() {
+								$("select#lista_modelos").change(function() {
+
+									//Carga las operaciones al seleccionar un modelo.
+									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+										var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+										for (var i = 0; i < j.length; i++) {
+											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+										}
+										$("select#sel_componentes").html(options);
+									});
+								});
+
+								$(document).ready(function(e) {
+									$("select#lista_modelos").change();
+									$("select#sel_componentes").change();
+								});
+							});
+						</script>
+
+						<center>
+							<label for="sel_componentes"><b>Componentes</b></label>
+							<select name="sel_componentes" id="sel_componentes">
+								<option>- - - Selecciona Un Componente - - -</option>
+							</select>
+						</center>
 					</div>
 				</center>
 				
 				<!-- Botones -->
 				<center>
 					<div id="divBtnsComponentes_Comp">
+
 						<!-- PopUp Agregar Componente -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
@@ -225,8 +216,10 @@
 								</div>
     						</div>
   						</div>
+
 					</div>
 				</center>
+
 			</form>
 		</div>
 	</div>

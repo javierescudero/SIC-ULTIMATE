@@ -88,10 +88,6 @@ tr:hover td {
 	margin-left: 15%;
 }
 
-#componentes {
-	width: 10%;
-}
-
 #divContentModelo_Comp { width: 25%; }
 
 #divLvwComponentes_Comp {
@@ -105,7 +101,7 @@ tr:hover td {
 /*Estilo de codigos_de_falla.html*/
 #divTabla_CDF {
 	width: 60%;
-	height: 400px;
+	height: 600px;
 	overflow: auto;
 }
 
@@ -114,7 +110,7 @@ tr:hover td {
 	margin-left: 15%;
 }
 
-#divContentModelo_CDF { width: 15%; }
+#divContentModelo_CDF { width: 25%; }
 
 /*Estilo de registros.html*/
 #divForm_Reg {

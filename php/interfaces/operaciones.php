@@ -101,11 +101,10 @@
 				<center>
 
 					<script type="text/javascript">
-						var flag = true;
 						$(function() {
 							$("select#modelo").change(function() {
+
 								//Carga las operaciones al seleccionar un modelo.
-								var loadOp2 = $("table#tablaOperaciones");
 								$.getJSON("../getsJSON/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 									var tr = "";
 									for (var i = 0; i < j.length; i++) {
@@ -124,10 +123,6 @@
 									}
 									$("tbody#content_operaciones").html(tr);
 								});
-
-								/*$('span').bind('mouseenter', function(e) {
-								  	$(this).attr('contenteditable','true');
-								});*/
 							});
 						});
 					</script>
@@ -258,7 +253,6 @@
 										alert('Operacion Eliminada');
 										$('#salir').click();
 									}
-
 								});
 
 								$(document).ready(function(e) {
