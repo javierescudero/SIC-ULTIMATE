@@ -272,7 +272,7 @@
 									</select>
 								</div>
       							<center>
-									<a id="copiarComponentes" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
+									<a id="copiarComponentesCDD" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
 									<a id="salirCopyComponentes" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 								</center>
     						</div>

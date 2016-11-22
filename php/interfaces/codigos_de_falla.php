@@ -294,6 +294,36 @@
 							<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
 						</div>
 
+						<script type="text/javascript">
+  							//Copiar Operaciones
+							$(document).ready(function(){
+								$("a#copiarCodigos").click(function() {
+									var modeloOrigen = document.getElementById('mod_origen').value;
+									var modeloDestino = document.getElementById('mod_destino').value;
+
+									$.getJSON("../getsJSON/copy_codigos.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
+										var tr = "";
+										for (var i = 0; i < j.length; i++) {
+											
+											tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+								
+											tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+
+											tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+
+											tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+										}
+
+										$("tbody#tabla_CDF").html(tr);
+
+									});
+									alert('Codigos Copiados');
+									
+									$("a#cancelCopyCodigos").click();
+								});
+							});
+	  					</script>
+
   						<!-- PopUp Copiar Codigos-->
 						<div data-role="main" class="ui-content">
     						<a href="#popupCopiar" id="btnCopia" data-rel="popup" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-corner">Copiar</a>
@@ -302,22 +332,34 @@
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
 									<select name="mod_origen" id="mod_origen">
-										<option value="">0016 496900</option>
-										<option value="">0059 419100</option>
-										<option value="">50C70 495</option>
+										<?php
+											if ($area == 'Electronica') {
+												cargaModelos($con, 'Electronica');
+											} elseif ($area == 'Electromecanicos') {
+												cargaModelos($con, 'Electromecanicos');
+											} elseif ($area == 'Valvulas') {
+												cargaModelos($con, 'Valvulas');
+											}
+										?>
 									</select>
 								</div>
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
 									<select name="mod_destino" id="mod_destino">
-										<option value="">50M61 843</option>
-										<option value="">F59-478100</option>
-										<option value="">50A51 235B1</option>
+										<?php
+											if ($area == 'Electronica') {
+												cargaModelos($con, 'Electronica');
+											} elseif ($area == 'Electromecanicos') {
+												cargaModelos($con, 'Electromecanicos');
+											} elseif ($area == 'Valvulas') {
+												cargaModelos($con, 'Valvulas');
+											}
+										?>
 									</select>
 								</div>
       							<center>
-									<a id="copiar" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
-									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+									<a id="copiarCodigos" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
+									<a id="cancelCopyCodigos" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 								</center>
     						</div>
   						</div>
