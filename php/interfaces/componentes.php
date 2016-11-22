@@ -29,7 +29,7 @@
 		function cargaModelos($conn, $database) {
 			//echo "<script>alert('".$database."');</script>";
 			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-			$query = mysqli_query($con, "SELECT Modelo FROM modelos ORDER BY Modelo");
+			$query = mysqli_query($con, "SELECT DISTINCT Modelo FROM modelos ORDER BY Modelo");
 			$num_rows = mysqli_num_rows($query);
 			while ($row = mysqli_fetch_assoc($query)) {
 				echo "<option value='".$row['Modelo']."'>".$row['Modelo']."</option>";
@@ -103,9 +103,9 @@
 							$(function() {
 								$("select#lista_modelos").change(function() {
 
-									//Carga las operaciones al seleccionar un modelo.
+									//Carga los componentes al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
 										for (var i = 0; i < j.length; i++) {
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 										}
@@ -133,6 +133,32 @@
 				<center>
 					<div id="divBtnsComponentes_Comp">
 
+						<script type="text/javascript">
+							$(function() {
+								
+								//Agregar Componente
+								$("a#agregarComponenteConfirmacion").click(function(){
+									var valComponente = document.getElementById('agregarComponente').value;
+									var valModelo = document.getElementById('lista_modelos').value;
+									$.getJSON("../getsJSON/add_componentes.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
+										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+										for (var i = 0; i < j.length; i++) {
+											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+										}
+										alert('Componente se agrego correctamente');
+										$("select#sel_componentes").html(options);
+										
+										valFamilia = document.getElementById('agregarComponente').value = '';
+										$('#cancelarAddComponentes').click();
+									});
+								});
+
+								$(document).ready(function(e) {
+									$("select#sel_componentes").change();
+								});
+							});
+						</script>
+
 						<!-- PopUp Agregar Componente -->
   						<div data-role="main" class="ui-content">
     						<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
@@ -140,9 +166,37 @@
       							<h3>Agregar Componente</h3><hr>
       							<input type="text" id="agregarComponente">
 								<a id="agregarComponenteConfirmacion" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
-								<a id="cancelar" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+								<a id="cancelarAddComponentes" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
     						</div>
   						</div>
+
+  						<script type="text/javascript">
+							$(function() {
+								
+								//Eliminar Componente
+								$("a#eliminarComponente").click(function(){
+									var valComponente = document.getElementById('sel_componentes').value;
+									var valModelo = document.getElementById('lista_modelos').value;
+
+									$.getJSON("../getsJSON/del_componente.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
+										alert('Componente = ' + valComponente);
+										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+										for (var i = 0; i < j.length; i++) {
+											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+										}
+										
+										alert('Componente se elimino correctamente');
+										$("select#sel_componentes").html(options);
+										
+									});
+									$('#cancelDelComponente').click();
+								});
+
+								$(document).ready(function(e) {
+									$("select#sel_componentes").change();
+								});
+							});
+						</script>
 
   						<!-- PopUp Eliminar Componente -->
   						<div data-role="main" class="ui-content">
@@ -151,11 +205,38 @@
       							<h3>Eliminar Componente</h3><hr>
       							<p>Estas seguro de eliminar este <b>Componente</b>???</p>
       							<center>
-									<a id="eliminar" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
-									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
+									<a id="eliminarComponente" href="#" data-role="button" data-icon="check" data-inline="true">Si</a>
+									<a id="cancelDelComponente" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">No</a>
 								</center>
     						</div>
   						</div>
+
+  						<script type="text/javascript">
+  							
+  							//Copiar Componentes
+							$(document).ready(function(){
+								$("a#copiarComponentes").click(function() {
+									var modeloOrigen = document.getElementById('mod_origen').value;
+									var modeloDestino = document.getElementById('mod_destino').value;
+
+									//alert('Origen = ' + modeloOrigen);
+									//alert('Destino = ' + modeloDestino);
+
+									$.getJSON("../getsJSON/copy_componentes.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
+										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+										for (var i = 0; i < j.length; i++) {
+											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+
+											}
+
+											$("select#sel_componentes").html(options);
+										});
+									
+									alert('Componentes Copiados');
+									$("a#salirCopyComponentes").click();
+								});
+							});
+	  					</script>
 
   						<!-- PopUp Copiar Componente-->
 						<div data-role="main" class="ui-content">
@@ -165,22 +246,34 @@
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
 									<select name="mod_origen" id="mod_origen">
-										<option value="">0016 496900</option>
-										<option value="">0059 419100</option>
-										<option value="">50C70 495</option>
+										<?php
+											if ($area == 'Electronica') {
+												cargaModelos($con, 'Electronica');
+											} elseif ($area == 'Electromecanicos') {
+												cargaModelos($con, 'Electromecanicos');
+											} elseif ($area == 'Valvulas') {
+												cargaModelos($con, 'Valvulas');
+											}
+										?>
 									</select>
 								</div>
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
 									<select name="mod_destino" id="mod_destino">
-										<option value="">50M61 843</option>
-										<option value="">F59-478100</option>
-										<option value="">50A51 235B1</option>
+										<?php
+											if ($area == 'Electronica') {
+												cargaModelos($con, 'Electronica');
+											} elseif ($area == 'Electromecanicos') {
+												cargaModelos($con, 'Electromecanicos');
+											} elseif ($area == 'Valvulas') {
+												cargaModelos($con, 'Valvulas');
+											}
+										?>
 									</select>
 								</div>
       							<center>
-									<a id="copiar" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
-									<a id="salir" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
+									<a id="copiarComponentes" href="#" data-role="button" data-icon="edit" data-inline="true">Copiar</a>
+									<a id="salirCopyComponentes" href="#" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
 								</center>
     						</div>
   						</div>
