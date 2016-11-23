@@ -3,7 +3,7 @@ require_once("../conexion.php");
 
 if ($_REQUEST['ajax']) {
 
-	$modelo = $_REQUEST['modelo'];
+	$familia = $_REQUEST['familia'];
 	$area = $_REQUEST['area'];
 
 	if ($area == "Electronica") {
@@ -15,7 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT DISTINCT Comp FROM componentes WHERE Modelo = '".$modelo."' ORDER BY Comp");
+	$query = mysqli_query($con, "SELECT DISTINCT Operacion FROM operaciones WHERE Familia = '".$familia."' ORDER BY Operacion");
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {
@@ -24,7 +24,7 @@ if ($_REQUEST['ajax']) {
 		}
 		print(json_encode($rows));
 	} else {
-		echo "<script>alert('Ningun COMPONENTE');</script>";
+		echo "<script>alert('Ninguna Operacion Encontrada');</script>";
 	}
 	mysqli_close($con);
 }

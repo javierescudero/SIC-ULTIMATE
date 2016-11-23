@@ -28,6 +28,11 @@
 		#divContentModelo_CDF {
 			width: 35%;
 		}
+
+		.ui-page-theme-f {
+		    font-weight: bold;
+		    background-color: green;
+		}
 	}
 </style>
 <body>

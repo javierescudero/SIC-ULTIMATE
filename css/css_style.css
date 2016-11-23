@@ -114,27 +114,24 @@ tr:hover td {
 
 /*Estilo de registros.html*/
 #divForm_Reg {
+	width: 100%;
+	text-align: center;
+}
+
+#divTabla_Reg {
+	width: 100%;
+	max-height: 500px;
+	overflow: auto;
+}
+
+.ui-grid-b {
 	width: 50%;
 	margin-left: 25%;
 }
 
-#divTabla_Reg {
-	width: 60%;
-	height: 400px;
-	overflow: auto;
+#tabla_Reg {
+	width: 50%;
 }
-
-#divCodigo_Reg, #divComponente_Reg { width: 50%; }
-
-#divCantidad_Reg { width: 33%; }
-
-#colCodigo_Reg, #colComponente_Reg, #colCantidad_Reg { width: 33%; }
-
-#divPzRechazadas_Reg, #divEmpleado_Reg, #divProduccion_Reg { width: 30%; }
-
-#divFecha, #divNumLinea_Reg { width: 40%; }
-
-#divFamilia_Reg, #divModelo_Reg, #divOperacion_Reg { width: 70%; }
 
 /*Estilo de desempeno.html*/
 #divForm_Des {
