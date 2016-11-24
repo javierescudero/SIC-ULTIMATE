@@ -100,6 +100,7 @@
 						<div class="ui-field-contain" id="divFecha" title="Fecha">
             				<input name="fecha" id="fecha" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
           				</div>
+
           				<div style="display:none">
             				<input name="langpicker" type="text" data-role="datebox" data-datebox-close-callback="changeLang" data-datebox-custom-data="langs" data-datebox-custom-head="Language" data-datebox-popup-position="window" data-datebox-override-custom-set="Choose" data-datebox-mode="customflip" id="langpicker" />
           				</div>
@@ -195,7 +196,7 @@
 
 									//Carga los codigos al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_codigos_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- Codigos -</option>\n';
+										var options = '<option value="default">- - - Codigos - - -</option>\n';
 
 										for (var i = 0; i < j.length; i++) {				
 											options += '<option value="'+ j[i].Codigo +'">'+ j[i].Codigo +'</option> \n';
@@ -205,7 +206,7 @@
 
 									//Carga los componentes al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- Componentes -</option>\n';
+										var options = '<option value="default">- - - Componentes - - -</option>\n';
 
 										for (var i = 0; i < j.length; i++) {				
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
@@ -216,6 +217,51 @@
 								});
 							});
           				</script>
+
+          				<script type="text/javascript">
+							/*$(function() {
+								
+								//Agregar Codigos
+								$("a#agregarCodigoConfirmacion").click(function(){
+									var valCodigo = document.getElementById('agregarCodigo').value;
+									alert('valCodigo = ' + valCodigo);
+									var valregistrarComo = document.getElementById('registrarComo').value;
+									alert('valregistrarComo = ' + valregistrarComo);
+									var valDescripcion = document.getElementById('agregarDescripcion').value;
+									alert('valDescripcion = ' + valDescripcion);
+									var valModelo = document.getElementById('selectModelo_CD').value;
+									alert('valModelo = ' + valModelo);
+
+									$.getJSON("../getsJSON/add_Codigos.php", {ajax: true, modelo: valModelo, codigo: valCodigo, registrarAs: valregistrarComo, descripcion: valDescripcion,  area: <?php echo "'$area'"; ?> }, function(j) {
+										var tr = "";
+										for (var i = 0; i < j.length; i++) {
+
+											tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+								
+											tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+
+											tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+
+											tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+
+										}
+										$("tbody#content_codigos").html(tr);
+
+										valCodigo = document.getElementById('agregarCodigo').value = '';
+										valregistrarComo = document.getElementById('registrarComo').value = '';
+										valDescripcion = document.getElementById('agregarDescripcion').value = '';
+
+										$('#cancelarAdd').click();
+
+									});
+								});
+
+								$(document).ready(function(e) {
+									//$("select#familias").change();
+									$("select#modelos").change();
+								});
+							});*/
+						</script>
 
           				<!-- MODELOS -->
           				<label for="familia"><b>Modelos</b></label>
@@ -254,9 +300,62 @@
           			<a href="" id="btnAgregaComponente" data-role="button" data-inline="true" onclick="window.open('componentes.php');">Agregar Componentes</a>
           			<a href="" id="btnAgregaCodigo" data-role="button" data-inline="true" onclick="window.open('codigos_de_falla.php');">Agregar Codigos De Falla</a>
 				</center><br>-->
+
+				<script type="text/javascript">
+					$(document).ready(function() {
+						//Agregar Operacion
+						$("a#agregarRegistro").click(function(){
+							alert('Click Guardar');
+
+							var valCodigo = document.getElementById('codigos').value;
+							var valComponente = document.getElementById('componentes').value;
+							var valCantidad = document.getElementById('cantidad').value;
+							
+							alert('Componente = ' + valComponente);
+							
+							var tr = "";
+
+							tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id=""></fieldset></td>';
+									
+							tr += '<td><select name="'+valCodigo+'" id="'+valCodigo+'"><option value="'+valCodigo+'">'+valCodigo+'</option></select></td>';
+									
+							tr += '<td><select name="'+valComponente+'" id="'+valComponente+'"><option value="'+valComponente+'">'+valComponente+'</option></select></td>';
+
+							tr += '<td><input name="cantidad" id="cantidad" type="number" min="0" max="99999" size="5" value='+valCantidad+'></td>';
+
+							$("tbody#content_registros").html(tr);
+
+						});
+						
+
+						$(document).ready(function(e) {
+							//$("select#familias").change();
+							$("select#codigos").change();
+							$("select#componentes").change();
+						});
+					});
+				</script>
+
+				<!-- PopUp Agregar Registros -->
+				<div data-role="main" class="ui-content">
+					<div data-role="popup" id="popupAgregar" class="ui-content">
+						<label for="codigos">Codigos</label>
+						<select name="codigos" id="codigos">
+							<option value="default">- - - Codigos - - -</option>
+						</select>
+						<label for="componentes">Componentes</label>
+						<select name="componentes" id="componentes">
+							<option value="default">- - - Componentes - - -</option>
+						</select>
+						<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad">
+						<a id="agregarRegistro" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
+						<a id="cancelarAdd" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+					</div>
+				</div>
 				<center>
 					<a href="" data-role="button" id="guardar" data-icon="check" data-inline="true">Guardar</a>
 					<a href="" data-role="button" id="limpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+					<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
 					<a href="" data-role="button" id="eliminar" data-icon="delete" data-inline="true">Eliminar</a>
 				</center><br>
 				
@@ -272,21 +371,7 @@
 								<th width="130" align="left">Cantidad</th>
 							</tr>
 						</thead>
-						<tbody>
-							<!--Primer Dato (Para el 2do hay que cambiar el id y el for)-->
-							<tr>
-								<td>
-									<select name="codigos" id="codigos">
-										<option value="default">- Codigos - </option>
-									</select>
-								</td>
-								<td>
-									<select name="componentes" id="componentes">
-										<option value="default">- Componentes -</option>
-									</select>
-								</td>
-								<td><span><input name="cantidad" id="cantidad" type="number" min="0" max="99999" size="5"></span></td>
-							</tr>
+						<tbody id="content_registros">
 						</tbody>
 					</table>
 				</div>

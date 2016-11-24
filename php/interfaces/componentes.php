@@ -82,6 +82,7 @@
 							<label for="modelos"><b>Modelo</b></label>
 						</center>
 						<select name="lista_modelos" id="lista_modelos">
+							<option value="default">- - - Selecciona Un Modelo - - -</option>
 							<?php
 								if ($area == 'Electronica') {
 									cargaModelos($con, 'Electronica');
@@ -123,7 +124,7 @@
 						<center>
 							<label for="sel_componentes"><b>Componentes</b></label>
 							<select name="sel_componentes" id="sel_componentes">
-								<option>- - - Selecciona Un Componente - - -</option>
+								<option value="default">- - - Selecciona Un Componente - - -</option>
 							</select>
 						</center>
 					</div>

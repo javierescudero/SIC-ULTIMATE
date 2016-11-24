@@ -109,7 +109,7 @@
 									var tr = "";
 									for (var i = 0; i < j.length; i++) {
 
-										tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+										tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>';
 										
 										tr += '<td><span id="'+j[i].Operacion+'" ><a class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
@@ -131,57 +131,56 @@
 
 						<script type="text/javascript">
 							$(document).ready(function() {
-									
-									//Agregar Operacion
-									$("a#agregarOperacionConfirmacion").click(function(){
-										alert('Click Guardar');
-										var valModelo = document.getElementById('modelo').value;
-										alert('Modelo = ' + valModelo);
+								//Agregar Operacion
+								$("a#agregarOperacionConfirmacion").click(function(){
+									alert('Click Guardar');
+									var valModelo = document.getElementById('modelo').value;
+									alert('Modelo = ' + valModelo);
 
-										var valOperacion = document.getElementById('agregarOperacion').value;
-										alert('Operacion = ' + valOperacion);
+									var valOperacion = document.getElementById('agregarOperacion').value;
+									alert('Operacion = ' + valOperacion);
 
-										var valDescripcion = document.getElementById('agregarDescripcion').value;
-										alert('Descripcion = ' + valDescripcion);
+									var valDescripcion = document.getElementById('agregarDescripcion').value;
+									alert('Descripcion = ' + valDescripcion);
 
-										var valPPms = $("#checkbox-h-6c").prop("checked");
-										alert('PPms = ' + valPPms);
+									var valPPms = $("#checkbox-h-6c").prop("checked");
+									alert('PPms = ' + valPPms);
 
-										var valGrupo = document.getElementById('agregarGrupo').value;
-										alert('Grupo = ' + valGrupo);
+									var valGrupo = document.getElementById('agregarGrupo').value;
+									alert('Grupo = ' + valGrupo);
 
-										var loadOp2 = $("table#tablaOperaciones");
-										$.getJSON("../getsJSON/add_Operacion_op.php", {ajax: true, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
-											var tr = "";
-											for (var i = 0; i < j.length; i++) {
+									var loadOp2 = $("table#tablaOperaciones");
+									$.getJSON("../getsJSON/add_Operacion_op.php", {ajax: true, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
+										var tr = "";
+										for (var i = 0; i < j.length; i++) {
 
-												tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-												
-												tr += '<td><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+											tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+											
+											tr += '<td><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
-												if (j[i].UsarPPms == 1) {
-													tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
-												} else {
-													tr += '<td><fieldset data-iconpos="left"  ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
-												}
-
-												tr += '<td><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+											if (j[i].UsarPPms == 1) {
+												tr += '<td><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+											} else {
+												tr += '<td><fieldset data-iconpos="left"  ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 											}
-											$("tbody#content_operaciones").html(tr);
 
-											//$(".checkbox").attr("checked", false);
-											//$("input:checkbox").prop('checked', false);
-											//$(".checkbox").prop('checked', false);
+											tr += '<td><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+										}
+										$("tbody#content_operaciones").html(tr);
 
-											//valGrupo = document.getElementById('grupoAgrega').selected = 'default';
+										//$(".checkbox").attr("checked", false);
+										//$("input:checkbox").prop('checked', false);
+										//$(".checkbox").prop('checked', false);
+
+										//valGrupo = document.getElementById('grupoAgrega').selected = 'default';
 
 
-										});
-										valOperacion = document.getElementById('agregarOperacion').value = '';
-										valDescripcion = document.getElementById('agregarDescripcion').value = '';
-
-										$('#cancelar').click();
 									});
+									valOperacion = document.getElementById('agregarOperacion').value = '';
+									valDescripcion = document.getElementById('agregarDescripcion').value = '';
+
+									$('#cancelar').click();
+								});
 							});
 						</script>
 
