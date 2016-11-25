@@ -211,57 +211,12 @@
 										for (var i = 0; i < j.length; i++) {				
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 										}
-										$("select#componentes").html(options);
+										$("select#select_comp").html(options);
 									});
 
 								});
 							});
           				</script>
-
-          				<script type="text/javascript">
-							/*$(function() {
-								
-								//Agregar Codigos
-								$("a#agregarCodigoConfirmacion").click(function(){
-									var valCodigo = document.getElementById('agregarCodigo').value;
-									alert('valCodigo = ' + valCodigo);
-									var valregistrarComo = document.getElementById('registrarComo').value;
-									alert('valregistrarComo = ' + valregistrarComo);
-									var valDescripcion = document.getElementById('agregarDescripcion').value;
-									alert('valDescripcion = ' + valDescripcion);
-									var valModelo = document.getElementById('selectModelo_CD').value;
-									alert('valModelo = ' + valModelo);
-
-									$.getJSON("../getsJSON/add_Codigos.php", {ajax: true, modelo: valModelo, codigo: valCodigo, registrarAs: valregistrarComo, descripcion: valDescripcion,  area: <?php echo "'$area'"; ?> }, function(j) {
-										var tr = "";
-										for (var i = 0; i < j.length; i++) {
-
-											tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-								
-											tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
-
-											tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
-
-											tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
-
-										}
-										$("tbody#content_codigos").html(tr);
-
-										valCodigo = document.getElementById('agregarCodigo').value = '';
-										valregistrarComo = document.getElementById('registrarComo').value = '';
-										valDescripcion = document.getElementById('agregarDescripcion').value = '';
-
-										$('#cancelarAdd').click();
-
-									});
-								});
-
-								$(document).ready(function(e) {
-									//$("select#familias").change();
-									$("select#modelos").change();
-								});
-							});*/
-						</script>
 
           				<!-- MODELOS -->
           				<label for="familia"><b>Modelos</b></label>
@@ -305,33 +260,23 @@
 					$(document).ready(function() {
 						//Agregar Operacion
 						$("a#agregarRegistro").click(function(){
-							alert('Click Guardar');
 
 							var valCodigo = document.getElementById('codigos').value;
-							var valComponente = document.getElementById('componentes').value;
+							var valComponente = document.getElementById('select_comp').value;
 							var valCantidad = document.getElementById('cantidad').value;
-							
-							alert('Componente = ' + valComponente);
 							
 							var tr = "";
 
-							tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id=""></fieldset></td>';
+							tr += '<tr id="tr_data"><td><fieldset data-iconpos="left"><input type="checkbox" id=""></fieldset></td>';
 									
-							tr += '<td><select name="'+valCodigo+'" id="'+valCodigo+'"><option value="'+valCodigo+'">'+valCodigo+'</option></select></td>';
+							tr += '<td><select name="'+valCodigo+'" id="'+valCodigo+'" class="select_table"><option value="'+valCodigo+'">'+valCodigo+'</option></select></td>';
 									
-							tr += '<td><select name="'+valComponente+'" id="'+valComponente+'"><option value="'+valComponente+'">'+valComponente+'</option></select></td>';
+							tr += '<td><select name="'+valComponente+'" id="'+valComponente+'" class="select_table"><option value="'+valComponente+'">'+valComponente+'</option></select></td>';
 
 							tr += '<td><input name="cantidad" id="cantidad" type="number" min="0" max="99999" size="5" value='+valCantidad+'></td>';
 
 							$("tbody#content_registros").html(tr);
 
-						});
-						
-
-						$(document).ready(function(e) {
-							//$("select#familias").change();
-							$("select#codigos").change();
-							$("select#componentes").change();
 						});
 					});
 				</script>
@@ -339,19 +284,36 @@
 				<!-- PopUp Agregar Registros -->
 				<div data-role="main" class="ui-content">
 					<div data-role="popup" id="popupAgregar" class="ui-content">
+
 						<label for="codigos">Codigos</label>
 						<select name="codigos" id="codigos">
 							<option value="default">- - - Codigos - - -</option>
 						</select>
-						<label for="componentes">Componentes</label>
-						<select name="componentes" id="componentes">
+
+						<label for="select_comp">Componentes</label>
+						<select name="select_comp" id="select_comp">
 							<option value="default">- - - Componentes - - -</option>
+							<option value="123">- - - 123 - - -</option>
 						</select>
-						<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad">
+
+						<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" min="0">
+
 						<a id="agregarRegistro" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 						<a id="cancelarAdd" href="#" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
 					</div>
 				</div>
+
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('#limpiar').click(function(){
+							$('#tr_data').remove();
+							document.getElementById('empleado').value='';
+							document.getElementById('produccion').value='';
+							document.getElementById('piezas').value='';
+							document.getElementById('fecha').value='';
+						});
+					});
+				</script>
 				<center>
 					<a href="" data-role="button" id="guardar" data-icon="check" data-inline="true">Guardar</a>
 					<a href="" data-role="button" id="limpiar" data-icon="refresh" data-inline="true">Limpiar</a>

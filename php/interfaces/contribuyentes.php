@@ -15,15 +15,50 @@
 
 	<title>SIC Ultimate</title>
 
-	<?php include("../../php/librerias.php"); ?>
+	<script src="../../js/jquery-1.12.4.min.js"></script>
+	<script src="../../js/jquery.mobile-1.4.5.js"></script>
+	<script src="../../js/js_refresh.js"></script>
+	
+	<link rel="stylesheet" href="../../css/jquery.mobile-1.4.5.css">
+	<link rel="stylesheet" href="../../css/css_style.css">
 
-	<script src="../../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
-	<script src="../../../js/jqm-datebox.lang.utf8.js"></script>
-	<script src="../../../js/jqm-datebox-1.4.5.core.min.js"></script>
-	<script src="../../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
-	<link rel="stylesheet" href="../../../css/jqm-datebox-1.4.5.min.css">
+	<script src="../../js/jqm-datebox-1.4.5.core.min.js"></script>
+	<script src="../../js/jqm-datebox.lang.utf8.js"></script>
+	<script src="../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
+	<link rel="stylesheet" href="../../css/jqm-datebox-1.4.5.min.css">
 </head>
+<style type="text/css">
+	@media screen and (min-width: 480px) {
+
+	}
+	@media screen and (max-width: 1800px) {
+		#divCodigos_contr, #divComponentes_contr { width: 60%; }
+	}
+</style>
 <body>
+	<?php
+		function cargaFamilias($conn, $database) {
+			//echo "<script>alert('".$database."');</script>";
+			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+			$query = mysqli_query($con, "SELECT Familias FROM familias ORDER BY Familias");
+			$num_rows = mysqli_num_rows($query);
+			while ($row = mysqli_fetch_assoc($query)) {
+				echo "<option value='".$row['Familias']."'>".$row['Familias']."</option>";
+			}
+			mysqli_close($con);
+		}
+
+		function cargaModelos($conn, $database) {
+			//echo "<script>alert('".$database."');</script>";
+			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+			$query = mysqli_query($con, "SELECT Modelo FROM modelos ORDER BY Modelo");
+			$num_rows = mysqli_num_rows($query);
+			while ($row = mysqli_fetch_assoc($query)) {
+				echo "<option value='".$row['Modelo']."'>".$row['Modelo']."</option>";
+			}
+			mysqli_close($con);
+		}
+	?>
 	<div data-role="page" data-theme="b" class="ui-responsive-panel">
 		<!--Header-->
 		<div data-role="header" id="header">
@@ -65,80 +100,162 @@
 		<div id="divForm_Cont">
 			<form action="">
 				<center>
+
 					<div class="ui-grid-a">
-					<div class="ui-block-a">
-						<label for="fecha"><b>Fecha Inicial</b></label>
-						<div class="ui-field-contain" id="divFecha" title="Fecha Inicial">
-            				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
-          				</div>
-          				<div id="selectFamilia_Cont">
-          					<label for="familia"><b>Familia</b></label>
-          					<select name="familia" id="familia">
-								<option value="">--- Todas ---</option>
-								<option value="">11E79</option>
-								<option value="">36F</option>
-								<option value="">48C21</option>
-								<option value="">ATHENA</option>
-							</select>
-          				</div><br>
-          				<label for="mostrar"><b>Mostrar top codigos</b></label>
-          				<div class="ui-field-contain" id="divCodigos_Tend">
-          					<input type="number" id="codigos">
-          				</div>
+
+						<div class="ui-block-a">
+
+							<div class="ui-grid-a" id="sectA_contr">
+
+								<div class="ui-block-a">
+
+									<label for="fecha"><b>Fecha Inicial</b></label>
+									<div class="ui-field-contain" id="divFecha" title="Fecha Inicial">
+			            				<input name="fechaInicial" id="fechaInicial" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+			          				</div>
+
+			          				<div id="selectFamilia_Cont">
+
+			          					<label for="familias"><b>Familias</b></label>
+			          					<select name="familias" id="familias">
+			          						<option value="default">- - - Todas - - -</option>
+											<?php
+												if ($area == 'Electronica') {
+													cargaFamilias($con, 'Electronica');
+												} elseif ($area == 'Electromecanicos') {
+													cargaFamilias($con, 'Electromecanicos');
+												} elseif ($area == 'Valvulas') {
+													cargaFamilias($con, 'Valvulas');
+												}
+											?>
+										</select>
+
+			          				</div><br>
+
+			          				<label for="mostrar"><b>Mostrar top codigos</b></label>
+			          				<div class="ui-field-contain" id="divCodigos_contr">
+			          					<input type="number" id="codigos" min="0">
+			          				</div>
+
+								</div>
+
+								<div class="ui-block-b">
+
+									<label for="fecha"><b>Fecha Final</b></label>
+									<div class="ui-field-contain" id="divFecha" title="Fecha Final">
+			            				<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+			          				</div>
+
+			          				<div id="selectModelo_Cont">
+
+			          					<label for="modelos"><b>Modelos</b></label>
+			          					<select name="modelos" id="modelos">
+											<option value="default">- - - Todos - - -</option>
+											<?php
+												if ($area == 'Electronica') {
+													cargaModelos($con, 'Electronica');
+												} elseif ($area == 'Electromecanicos') {
+													cargaModelos($con, 'Electromecanicos');
+												} elseif ($area == 'Valvulas') {
+													cargaModelos($con, 'Valvulas');
+												}
+											?>
+
+											<script type="text/javascript">
+					          					$(function() {
+													$('select#familias').change(function(){
+
+														//CARGA MODELOS AL SELECIONAR FAMILIA
+														$.getJSON("../getsJSON/get_modelos_repo.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+															var options = '<option value="default">- - - Todos - - -</option>\n';
+
+															for (var i = 0; i < j.length; i++) {				
+																options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+															}
+															$("select#modelos").html(options);
+														});
+													});
+					          					});	
+					          				</script>
+
+										</select>
+
+			          				</div><br>
+
+			          				<label for="cantidad"><b>Componentes</b></label>
+			          				<div class="ui-field-contain" id="divComponentes_contr" data-role"inline">
+			          					<input type="number" id="cantComponentes_Tend" min="0">
+			          				</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="ui-block-b" id="secB_contr">
+
+							<fieldset data-role="controlgroup" id="fieldSetBtns_Cont">
+
+								<center>
+
+									<script type="text/javascript">
+										$(document).ready(function(){
+											$('#btnLimpiar').click(function(){
+												$('#tr_data').remove();
+												document.getElementById('fechaInicial').value='';
+												document.getElementById('fechaFinal').value='';
+												document.getElementById('codigos').value='';
+												document.getElementById('cantComponentes_Tend').value='';
+												document.getElementById('ppms').value='';
+												document.getElementById('rty').value='';
+											});
+										});
+									</script>
+
+									<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
+									<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+
+								</center>
+
+							</fieldset><br><br>
+
+							<div id="divTablaCont">
+
+								<center>
+
+									<table id="tabla_Cont" cellpadding="0" cellspacing="0" border="0" class="display">
+										<thead>
+											<tr>
+												<th width="110">Selec</th>
+												<th width="500">Operacion</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id="tr_data">
+												<td id="colSeleccion_Cont"><fieldset data-iconpos="right" id="fieldSeleccion">
+														<label for="seleccion">Sel.</label>
+														<input id="seleccion" name="seleccion" type="checkbox">
+						      						</fieldset></td>
+												<td id="colOperacion"><span>Acalidad</span></td>
+											</tr>
+										</tbody>
+									</table>
+
+								</center>
+
+							</div>
+
+						</div>
+
 					</div>
-					<div class="ui-block-b">
-						<label for="fecha"><b>Fecha Final</b></label>
-						<div class="ui-field-contain" id="divFecha" title="Fecha Final">
-            				<input name="fechaFinal" id="fechaFinal" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
-          				</div>
-          				<div id="selectModelo_Cont">
-          					<label for="modelo"><b>Modelo</b></label>
-          					<select name="modelo" id="modelo">
-								<option value="">--- Todos ---</option>
-								<option value="">11E79 101B1</option>
-								<option value="">11E79 301B1</option>
-								<option value="">11E79 400B1</option>
-								<option value="">11E79-901</option>
-							</select>
-          				</div><br>
-          				<label for="cantidad"><b>Componentes</b></label>
-          				<div class="ui-field-contain" id="divComponentes_Tend" data-role"inline">
-          					<input type="number" id="cantComponentes_Tend" min="0">
-          				</div>
-					</div>
-				</div>
+
 				</center>
-				
-			<fieldset data-role="controlgroup" id="fieldSetBtns_Cont">
-				<center>
-					<a href="" data-role="button" id="btnCalcular" data-icon="check" data-inline="true">Calcular</a>
-					<a href="" data-role="button" id="btnLimpiar" data-icon="refresh" data-inline="true">Limpiar</a>
-				</center>
-			</fieldset><br><br><br>
-			<div id="divTablaCont">
-				<center>
-				<table id="tabla_Cont" cellpadding="0" cellspacing="0" border="0" class="display">
-				<thead>
-					<tr>
-						<th width="110">Selec</th>
-						<th width="500">Operacion</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td id="colSeleccion_Cont"><fieldset data-iconpos="right" id="fieldSeleccion">
-								<label for="seleccion">Sel.</label>
-								<input id="seleccion" name="seleccion" type="checkbox">
-      						</fieldset></td>
-						<td id="colOperacion"><span>Acalidad</span></td>
-					</tr>
-				</tbody>
-			</table>
-			</center>
-			</div>
+
 			</form>
+
 		</div>
+
 	</div>
-	<script type="text/javascript" src="../../../js/js_tables.js"></script>
 </body>
 </html>

@@ -9,9 +9,7 @@
 #menu_principal { background-color: #111; }
 
 /*Estilo de celdas*/
-span {
-	text-align: center;
-}
+span { text-align: center; }
 
 #divMenuPrincipal { width: 100%; }
 
@@ -129,54 +127,54 @@ tr:hover td {
 	margin-left: 25%;
 }
 
-#tabla_Reg {
-	width: 50%;
-}
+#tabla_Reg { width: 50%; }
 
 /*Estilo de desempeno.html*/
-#divForm_Des {
-	width: 50%;
-	margin-left: 25%;
+#divForm_Des { width: 100%; }
+
+#sectA {
+	width: 20%;
+	margin-left: 15%;
+}
+
+#sectB {
+	width: 80%;
+	margin-left: -15%;
 }
 
 #divTabla_Des {
-	width: 80%;
+	width: 100%;
 	height: 400px;
 	overflow: auto;
 }
 
-#selectFamilia_Des, #selectModelo_Des { width: 40%; }
-
-#fieldSetGrpBtns_Des { margin-left: -70px; }
+#selectFamilia_Des, #selectModelo_Des { width: 100%; }
 
 /*Estilo de tendencia.html*/
-#divForm_Tend {
-	width: 80%;
-	margin-left: 20%;
+#divForm_Tend { width: 100%; }
+
+#subsectA_tend {
+	width: 50%;
+	margin-left: 15%;
 }
+
+#sectB_tend { margin-left: -10%; }
 
 #divTabla_Tend {
-	width: 80%;
-	height: 15px;
+	width: 100%;
+	max-height: 500px;
 	overflow: auto;
-	margin-left: 20%;
 }
 
-#selectFamilia_Tend, #selectModelo_Tend { width: 40%; }
+#selectFamilia_Tend, #selectModelo_Tend { width: 100%; }
 
 #fieldSetBtns_Tend { margin-left: 440px; }
 
-#divFlipDatos_Tend {
-	margin-left: 625px;
-}
+#divFlipDatos_Tend { margin-left: 625px; }
 
-#tablaTendencia {
-	width: 100%;
-}
+#tablaTendencia { width: 100%; }
 
-#colSeleccion_Tend {
-	width: 10%;
-}
+#colSeleccion_Tend { width: 10%; }
 
 /*Ajuste del flip*/
 .containing-element .ui-slider-switch { 
@@ -184,60 +182,49 @@ tr:hover td {
 	margin-left: -140px;
 }
 
-#lblMostrar_Tend {
-	margin-left: -130px;
-}
+#lblMostrar_Tend { margin-left: -130px; }
 
-#cantComponentes_Tend {
-	width: 100%;
-}
+#cantComponentes_Tend { width: 100%; }
 
-#divCodigos_Tend, #divComponentes_Tend {
-	width: 15%;
-}
+#divCodigos_Tend, #divComponentes_Tend { width: 15%; }
 
 /*Estilo de contribuyentes.html*/
-#divForm_Cont {
-	width: 80%;
-	margin-left: 10%;
-}
+#divForm_Cont { width: 100%; }
 
-#tabla_Cont {
-	width: 80%;
-}
+#tabla_Cont { width: 100%; }
 
-#selectModelo_Cont, #selectFamilia_Cont {
+#sectA_contr { width: 50%; }
+
+#sectB_contr { margin-left: -70%; }
+
+#tabla_Cont { width: 80%; }
+
+#selectModelo_Cont, #selectFamilia_Cont { width: 100%; }
+
+#divCodigos_contr, #divComponentes_contr { width: 40%; }
+
+#colSeleccion_Cont { width: 10%; }
+
+/*Estilo de correccion_de_datos.html*/
+#divForm_CDD { width: 100%; }
+
+#subsecsectA_CD { 
+	margin-left: -25%;
 	width: 40%;
 }
 
-#colSeleccion_Cont {
-	width: 10%;
-}
+#sectB_CD { margin-left: -15%; }
 
-/*Estilo de correccion_de_datos.html*/
-#divForm_CDD {
-	width: 80%;
-	margin-left: 15%;
-}
-
-#tabla_CDD {
-	width: 100%;
-}
+#tabla_CDD { width: 100%; }
 
 #divTabla_CDD {
-	width: 100%;
-	height: 100px;
+	width: 120%;
+	max-height: 500px;
 	overflow: auto;
 }
 
-#divSelectLinea_CDD {
-	width: 15%;
-}
-
 #divCodigos_CDD, #divOperaciones_CDD, #divModelo_CDD, #divFechaFinal_CDD, 
-#divComponente_CDD, #divFamilia_CDD, #divFechaInicial_CDD {
-	width: 40%;
-}
+#divComponente_CDD, #divFamilia_CDD, #divFechaInicial_CDD, #divSelectLinea_CDD { width: 100%; }
 
 /*Estilo de permisos.html*/
 #divForm_Perm {
