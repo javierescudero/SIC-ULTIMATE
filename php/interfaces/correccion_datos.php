@@ -176,14 +176,14 @@
 													$("select#modelos").html(options);
 												});
 
-												//Carga los modelos al seleccionar una familia.
+												//Carga las operaciones al seleccionar una familia.
 												$.getJSON("../getsJSON/get_operaciones_repo.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 													var options = '<option value="default">- - - Todos - - -</option>\n';
 
 													for (var i = 0; i < j.length; i++) {				
 														options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
 													}
-													$("select#modelos").html(options);
+													$("select#operaciones").html(options);
 												});
 
 											});
@@ -210,6 +210,49 @@
 											?>
 										</select>
 			          				</div>
+
+			          				<script type="text/javascript">
+										$(function() {
+											$("select#modelos").change(function() {
+
+												//Carga las operaciones al seleccionar un modelo.
+												$.getJSON("../getsJSON/get_operaciones_repo_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+													var options = '<option value="default">- - - Todos - - -</option>\n';
+
+													for (var i = 0; i < j.length; i++) {				
+														options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
+													}
+													$("select#operaciones").html(options);
+												});
+
+												//Carga los codigos al seleccionar un modelo.
+												$.getJSON("../getsJSON/get_codigos_repo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+													var options = '<option value="default">- - - Todos - - -</option>\n';
+
+													for (var i = 0; i < j.length; i++) {				
+														options += '<option value="'+ j[i].Codigo +'">'+ j[i].Codigo +'</option> \n';
+													}
+													$("select#codigos").html(options);
+												});
+
+												//Carga los componentes al seleccionar una modelo.
+												$.getJSON("../getsJSON/get_componentes_repo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+													var options = '<option value="default">- - - Todos - - -</option>\n';
+
+													for (var i = 0; i < j.length; i++) {				
+														options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+													}
+													$("select#componentes").html(options);
+												});
+
+											});
+											
+										});
+
+										$(document).ready(function(e) {
+											$("select#modelos").change();
+										});
+									</script>
 
 			          				<label for="modelos"><b>Modelos</b></label>
 			          				<div class="ui-field-contain" id="divModelo_CDD">

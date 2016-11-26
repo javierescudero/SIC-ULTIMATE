@@ -1,5 +1,6 @@
 <?php
 require_once("../conexion.php");
+header('Content-Type: text/html; charset=utf-8');
 
 if ($_REQUEST['ajax']) {
 
@@ -15,7 +16,9 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT Codigo FROM codigos WHERE Modelo = '".$modelo."' ORDER BY Codigo");
+	$query = mysqli_query($con, "SELECT Codigo FROM codigos WHERE Modelo = '' OR Modelo = '".$modelo."' ORDER BY Codigo LIMIT 348");
+	//print_r($query);
+	
 	//$query = mysqli_query($con, "SELECT Codigo FROM codigos WHERE Modelo is NULL ORDER BY Codigo");
 	//$query = mysqli_query($con, "SELECT * FROM codigos WHERE (Modelo is NULL OR Modelo = '' AND Modelo = '".$modelo."') ORDER BY Codigo");
 	//$query = mysqli_query($con, "SELECT * FROM codigos WHERE Modelo is NULL AND Modelo = '".$modelo."' ORDER BY Codigo");
@@ -27,6 +30,7 @@ if ($_REQUEST['ajax']) {
 	if ($num_rows != 0) {
 		while ($row = mysqli_fetch_assoc($query)) {
 			$rows[] = $row;
+			//print_r($row);
 		}
 		print(json_encode($rows));
 	} else {

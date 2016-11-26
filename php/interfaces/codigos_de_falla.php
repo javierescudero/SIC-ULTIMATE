@@ -1,5 +1,6 @@
 <?php
 	require_once("../conexion.php");
+	header('Content-Type: text/html; charset=utf-8');
 	if (isset($_GET['area'])) {
 		if (isset($_GET['tipoUser'])) {
 			$area = $_GET['area'];

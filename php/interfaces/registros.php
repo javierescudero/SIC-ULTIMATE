@@ -1,5 +1,7 @@
 <?php
 	require_once("../conexion.php");
+	mb_internal_encoding('UTF-8');
+	mb_http_output('UTF-8');
 	if (isset($_GET['area'])) {
 		if (isset($_GET['tipoUser'])) {
 			$area = $_GET['area'];
@@ -191,6 +193,7 @@
 										for (var i = 0; i < j.length; i++) {				
 											options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
 										}
+
 										$("select#operaciones").html(options);
 									});
 
@@ -202,6 +205,7 @@
 											options += '<option value="'+ j[i].Codigo +'">'+ j[i].Codigo +'</option> \n';
 										}
 										$("select#codigos").html(options);
+										$(".select_table_cod").html(options);
 									});
 
 									//Carga los componentes al seleccionar un modelo.
@@ -212,6 +216,7 @@
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 										}
 										$("select#select_comp").html(options);
+										$(".select_table_comp").html(options);
 									});
 
 								});
@@ -269,13 +274,17 @@
 
 							tr += '<tr id="tr_data"><td><fieldset data-iconpos="left"><input type="checkbox" id=""></fieldset></td>';
 									
-							tr += '<td><select name="'+valCodigo+'" id="'+valCodigo+'" class="select_table"><option value="'+valCodigo+'">'+valCodigo+'</option></select></td>';
+							tr += '<td><select name="'+valCodigo+'" id="'+valCodigo+'" class="select_table_cod"><option value="'+valCodigo+'">'+valCodigo+'</option></select></td>';
 									
-							tr += '<td><select name="'+valComponente+'" id="'+valComponente+'" class="select_table"><option value="'+valComponente+'">'+valComponente+'</option></select></td>';
+							tr += '<td><select name="'+valComponente+'" id="'+valComponente+'" class="select_table_comp"><option value="'+valComponente+'">'+valComponente+'</option></select></td>';
 
-							tr += '<td><input name="cantidad" id="cantidad" type="number" min="0" max="99999" size="5" value='+valCantidad+'></td>';
+							tr += '<td><input name="cantidad" id="'+valCantidad+'" type="number" min="0" max="99999" size="5" value='+valCantidad+'></td>';
 
 							$("tbody#content_registros").html(tr);
+
+							document.getElementById('cantidad').value='';
+
+							$("a#cancelarAdd").click();
 
 						});
 					});
