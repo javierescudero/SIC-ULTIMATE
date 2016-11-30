@@ -29,7 +29,8 @@ if ($_REQUEST['ajax']) {
 			}
 			print(json_encode($rows));
 		} else {
-			echo "<script>alert('No se encontraron operaciones');</script>";
+			$rows[] = '';
+			print(json_encode($rows));
 		}
 	} else {
 		echo "Error: " . $query . "<br>" . mysqli_error($con);

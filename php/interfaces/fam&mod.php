@@ -33,7 +33,7 @@
 	    	display: inline;
 	    }
 	    #divTabla_Operaciones {
-	    	max-height: 545px;
+	    	max-height: 600px;
 	    }
 	}
 </style>
@@ -119,53 +119,45 @@
 										$.getJSON("../getsJSON/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 
-											for (var i = 0; i < j.length; i++) {				
-												options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+											if (j.length != null) {
+												if (j[0] == '') {
+													//alert('Este modelo no contiene operaciones');
+												} else {
+													for (var i = 0; i < j.length; i++) {				
+														options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+													}
+												}
 											}
+
 											$("select#modelos").html(options);
 										});
 
 										//Carga las operaciones al seleccionar una familia.
 										$.getJSON("../getsJSON/get_operaciones_xFamilia.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var tr = "";
-											var popup = "";
-											for (var i = 0; i < j.length; i++) {
 
-												tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-												
-												tr += '<td id="' + j[i].Operacion + '"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td id="' + j[i].Descripcion + '"><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
-
-												if (j[i].UsarPPms == 1) {
-													tr += '<td id="' + j[i].UsarPPms + '"><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+											if (j.length != null) {
+												if (j[0] == '') {
+													//alert('Este modelo no contiene operaciones');
 												} else {
-													tr += '<td id="' + j[i].UsarPPms + '"><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+													for (var i = 0; i < j.length; i++) {
+
+														tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+														
+														tr += '<td id="' + j[i].Operacion + '"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td id="' + j[i].Descripcion + '"><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+
+														if (j[i].UsarPPms == 1) {
+															tr += '<td id="' + j[i].UsarPPms + '"><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														} else {
+															tr += '<td id="' + j[i].UsarPPms + '"><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														}
+
+														tr += '<td id="' + j[i].Grupo + '"><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+													}
 												}
-
-												tr += '<td id="' + j[i].Grupo + '"><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
-
-												popup += '<div data-role="popup" id="popupEditarOperacion" class="ui-content">';
-												popup += '	<label for="operacion">Operacion</label>';
-												popup += '	<input type="text" id="operacionAgrega">';
-												popup += '	<label for="descripcion">Descripcion</label>';
-												popup += '	<input type="text" id="descripcionAgrega">';
-												popup += '	<fieldset data-iconpos="right">';
-												popup += '		<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">';
-												popup += '		<label for="checkbox-h-5a">Usar en PPms?</label>';
-												popup += '	</fieldset>';
-												popup += '	<label for="grupo">Grupo</label>';
-												popup += '	<select name="grupoEdita" id="grupoEdita">';
-												popup += '		<option value="default">- - - - - - -</option>';
-												popup += '		<option value="Final_test">Final Test</option>';
-												popup += '		<option value="Qc_audit">QC Audit</option>';
-												popup += '		<option value="Process">Process</option>';
-												popup += '	</select>';
-												popup += '	<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>';
-												popup += '	<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>';
-												popup += '</div>';
 											}
 
 											$("tbody#content_operaciones").html(tr);
-											$("#divForm_FM").html(popup);
 										});
 
 									});
@@ -175,44 +167,30 @@
 										//Carga las operaciones al seleccionar un modelo.
 										$.getJSON("../getsJSON/get_operaciones_xModelo.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 											var tr = "";
-											for (var i = 0; i < j.length; i++) {
 
-												tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-												
-												tr += '<td id="'+j[i].Operacion+'"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
-
-												if (j[i].UsarPPms == 1) {
-													tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+											if (j.length != null) {
+												if (j[0] == '') {
+													//alert('Este modelo no contiene operaciones');
 												} else {
-													tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+													for (var i = 0; i < j.length; i++) {
+
+														tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+														
+														tr += '<td id="'+j[i].Operacion+'"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+
+														if (j[i].UsarPPms == 1) {
+															tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														} else {
+															tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														}
+
+														tr += '<td id="'+j[i].Grupo+'"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+
+													}
 												}
-
-												tr += '<td id="'+j[i].Grupo+'"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
-
-												popup += '<div data-role="popup" id="popupEditarOperacion" class="ui-content">';
-												popup += '	<label for="operacion">Operacion</label>';
-												popup += '	<input type="text" id="operacionAgrega">';
-												popup += '	<label for="descripcion">Descripcion</label>';
-												popup += '	<input type="text" id="descripcionAgrega">';
-												popup += '	<fieldset data-iconpos="right">';
-												popup += '		<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">';
-												popup += '		<label for="checkbox-h-5a">Usar en PPms?</label>';
-												popup += '	</fieldset>';
-												popup += '	<label for="grupo">Grupo</label>';
-												popup += '	<select name="grupoEdita" id="grupoEdita">';
-												popup += '		<option value="default">- - - - - - -</option>';
-												popup += '		<option value="Final_test">Final Test</option>';
-												popup += '		<option value="Qc_audit">QC Audit</option>';
-												popup += '		<option value="Process">Process</option>';
-												popup += '	</select>';
-												popup += '	<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>';
-												popup += '	<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>';
-												popup += '</div>';
-
 											}
 
 											$("tbody#content_operaciones").html(tr);
-											$("#divForm_FM").html(popup);
 
 										});
 
@@ -221,11 +199,11 @@
 								});
 
 								$(document).ready(function(e) {
-									flag = false;	
 									$("select#familias").change();
 								});
 							</script>
 
+							<!-- CARGA FAMILIAS -->
 							<center><label for="divFamilia_FM" id="lblFamilia" data-theme="c"><b>Familias</b></label></center>
 							<select name="familias" id="familias">
 								<option value="default">- - - Selecciona Una Familia - - -</option>
@@ -248,17 +226,22 @@
 										//Agregar Familia
 										$("a#agregarFamilia").click(function(){
 											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
-											$.getJSON("../getsJSON/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
-												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
-												for (var i = 0; i < j.length; i++) {
-													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
-												}
-												alert('Familia se agrego correctamente');
-												$("select#familias").html(options);
-												
-												valFamilia = document.getElementById('pop_inputAgregaFamilia').value = '';
-												$('#cancelarAgregarFamilia').click();
-											});
+
+											if (valFamilia == '') {
+												alert('Ingresar Familia');
+											} else {
+												$.getJSON("../getsJSON/add_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
+													var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
+													for (var i = 0; i < j.length; i++) {
+														options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
+													}
+													alert('Familia se agrego correctamente');
+													$("select#familias").html(options);
+													
+													valFamilia = document.getElementById('pop_inputAgregaFamilia').value = '';
+													$('#cancelarAgregarFamilia').click();
+												});
+											}
 										});
 
 										$(document).ready(function(e) {
@@ -285,10 +268,10 @@
 										
 										//Eliminar Familia
 										$("a#eliminarFamilia").click(function(){
+
 											var valFamilia = document.getElementById('familias').value;
-											alert('valFamilia = ' +valFamilia);
 											$.getJSON("../getsJSON/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
-												alert('valFamilia = ' +valFamilia);
+												
 												var options = '<option value="default">- - - Selecciona Una Familia - - -</option>\n';
 												for (var i = 0; i < j.length; i++) {
 													options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
@@ -299,9 +282,9 @@
 
 												valFamilia = document.getElementById('familias').value = '';
 												
-												
 											});
 											$('#cancelDel_Familia').click();
+
 										});
 
 										//No actualiza
@@ -337,16 +320,28 @@
 									$(function() {
 										
 										//Agregar Modelo
-										$("a#agregarMod").click(function(){
+										$("a#agregarMod").click(function() {
 											var valModelo = document.getElementById('pop_inputAgregaModelo_FM').value;
 											var valFamilia = document.getElementById('familias').value;
 
+											if (valFamilia == 'default') {
+												alert('Selecciona Una Familia');
+											}
+
 											$.getJSON("../getsJSON/add_Modelo.php", {ajax: true, familia: valFamilia, modelo: valModelo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
-												for (var i = 0; i < j.length; i++) {
-													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+
+												if (j.length != null) {
+													if (j[0] == 'default_familia') {
+														alert('Debes Seleccionar Una Familia');
+													} else {
+														for (var i = 0; i < j.length; i++) {
+															options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+														}
+														alert('MODELO se agrego correctamente');
+													}
 												}
-												alert('MODELO se agrego correctamente');
+
 												$("select#modelos").html(options);
 
 												valModelo = document.getElementById('pop_inputAgregaModelo_FM').value = '';
@@ -382,7 +377,7 @@
 			    					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
 			    					<div data-role="popup" id="popupAgregarModelo" class="ui-content">
 			      						<h3>Agregar Modelo</h3>
-			      						<input type="text" id="pop_inputAgregaModelo_FM" placeholder="Modelo...">
+			      						<input type="text" id="pop_inputAgregaModelo_FM" placeholder="Modelo..." required>
 			      						<center>
 											<a id="agregarMod" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 											<a id="cancelarAgregarModelo" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
@@ -437,6 +432,7 @@
 										</center>
 			    					</div>
 			  					</div>
+
 							</center>
 						</div>
 					</div>
@@ -451,58 +447,37 @@
 										//Agregar Operacion
 										$("a#confirmarAgregado").click(function(){
 											var valFamilia = document.getElementById('familias').value;
-											alert('Familia = ' + valFamilia);
 											var valModelo = document.getElementById('modelos').value;
-											alert('Modelo = ' + valModelo);
 											var valOperacion = document.getElementById('operacionAgrega').value;
-											alert('Operacion = ' + valOperacion);
 											var valDescripcion = document.getElementById('descripcionAgrega').value;
-											alert('Descripcion = ' + valDescripcion);
 											var valPPms = $("#checkbox-h-6a").prop("checked");
-											alert('PPms = ' + valPPms);
 											var valGrupo = document.getElementById('grupoAgrega').value;
-											alert('Grupo = ' + valGrupo);
 
 											$.getJSON("../getsJSON/add_Operacion.php", {ajax: true, familia: valFamilia, modelo: valModelo, operacion: valOperacion, descripcion: valDescripcion, ppms: valPPms, grupo: valGrupo, area: <?php echo "'$area'"; ?> }, function(j) {
 												var tr = "";
-												var popup = "";
-												for (var i = 0; i < j.length; i++) {
 
-													tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-													
-													tr += '<td id="'+j[i].Operacion+'"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
-
-													if (j[i].UsarPPms == 1) {
-														tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+												if (j.length != null) {
+													if (j[0] == 'modelo_default') {
+														alert('Debes selecionar un modelo!!!');
 													} else {
-														tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left"  ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														for (var i = 0; i < j.length; i++) {
+
+															tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+															
+															tr += '<td id="'+j[i].Operacion+'"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+
+															if (j[i].UsarPPms == 1) {
+																tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+															} else {
+																tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left"  ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+															}
+
+															tr += '<td id="'+j[i].Grupo+'"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+														}
 													}
-
-													tr += '<td id="'+j[i].Grupo+'"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
-
-													popup += '<div data-role="popup" id="popupEditarOperacion" class="ui-content">';
-													popup += '	<label for="operacion">Operacion</label>';
-													popup += '	<input type="text" id="operacionAgrega">';
-													popup += '	<label for="descripcion">Descripcion</label>';
-													popup += '	<input type="text" id="descripcionAgrega">';
-													popup += '	<fieldset data-iconpos="right">';
-													popup += '		<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">';
-													popup += '		<label for="checkbox-h-5a">Usar en PPms?</label>';
-													popup += '	</fieldset>';
-													popup += '	<label for="grupo">Grupo</label>';
-													popup += '	<select name="grupoEdita" id="grupoEdita">';
-													popup += '		<option value="default">- - - - - - -</option>';
-													popup += '		<option value="Final_test">Final Test</option>';
-													popup += '		<option value="Qc_audit">QC Audit</option>';
-													popup += '		<option value="Process">Process</option>';
-													popup += '	</select>';
-													popup += '	<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>';
-													popup += '	<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>';
-													popup += '</div>';
 												}
-
+ 
 												$("tbody#content_operaciones").html(tr);
-												$("#divForm_FM").html(popup);
 
 												valModelo = document.getElementById('modelos').value = '';
 												valOperacion = document.getElementById('operacionAgrega').value = '';
@@ -576,55 +551,39 @@
 
 										//Eliminar Operacion
 										$("a#eliminarOperacion").click(function(){
-											//alert('valOperacion = ' + valOperacion);
 											var valModelo = document.getElementById('modelos').value;
 											if (valModelo == 'default') {
 												alert('Debes seleccionar algun modelo...');
 												return false;
 											}else {
-												//alert('Modelo = ' + valModelo);
 
 												var loadOp2 = $("table#tablaOperaciones");
 												$.getJSON("../getsJSON/del_Operacion.php", {ajax: true, modelo: valModelo, operacion: valOperacion, area: <?php echo "'$area'"; ?> }, function(j) {
 													var tr = "";
-													var popup = "";
-													for (var i = 0; i < j.length; i++) {
 
-														tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-														
-														tr += '<td id="'+j[i].Operacion+'"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#?operacion="'+ j[i].Operacion +'"" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+													if (j.length != null) {
+														if (j[0] = '') {
 
-														if (j[i].UsarPPms == 1) {
-															tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 														} else {
-															tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+															for (var i = 0; i < j.length; i++) {
+
+																tr += '<tr><td id="'+j[i].Operacion+'"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+																
+																tr += '<td id="'+j[i].Operacion+'"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#?operacion="'+ j[i].Operacion +'"" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
+
+																if (j[i].UsarPPms == 1) {
+																	tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+																} else {
+																	tr += '<td id="'+j[i].UsarPPms+'"><fieldset data-iconpos="left" ><input name="'+j[i].UsarPPms+'" id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+																}
+
+																tr += '<td id="'+j[i].Grupo+'"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
+
+															}
 														}
-
-														tr += '<td id="'+j[i].Grupo+'"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
-
-														popup += '<div data-role="popup" id="popupEditarOperacion" class="ui-content">';
-														popup += '	<label for="operacion">Operacion</label>';
-														popup += '	<input type="text" id="operacionAgrega">';
-														popup += '	<label for="descripcion">Descripcion</label>';
-														popup += '	<input type="text" id="descripcionAgrega">';
-														popup += '	<fieldset data-iconpos="right">';
-														popup += '		<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">';
-														popup += '		<label for="checkbox-h-5a">Usar en PPms?</label>';
-														popup += '	</fieldset>';
-														popup += '	<label for="grupo">Grupo</label>';
-														popup += '	<select name="grupoEdita" id="grupoEdita">';
-														popup += '		<option value="default">- - - - - - -</option>';
-														popup += '		<option value="Final_test">Final Test</option>';
-														popup += '		<option value="Qc_audit">QC Audit</option>';
-														popup += '		<option value="Process">Process</option>';
-														popup += '	</select>';
-														popup += '	<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>';
-														popup += '	<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>';
-														popup += '</div>';
 													}
 
 													$("tbody#content_operaciones").html(tr);
-													$("#divForm_FM").html(popup);
 
 													$('#cancelDel_Operacion').click();
 
@@ -681,29 +640,9 @@
 
 														tr += '<td id="' + j[i].Grupo + '"><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
 
-														popup += '<div data-role="popup" id="popupEditarOperacion" class="ui-content">';
-														popup += '	<label for="operacion">Operacion</label>';
-														popup += '	<input type="text" id="operacionAgrega">';
-														popup += '	<label for="descripcion">Descripcion</label>';
-														popup += '	<input type="text" id="descripcionAgrega">';
-														popup += '	<fieldset data-iconpos="right">';
-														popup += '		<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">';
-														popup += '		<label for="checkbox-h-5a">Usar en PPms?</label>';
-														popup += '	</fieldset>';
-														popup += '	<label for="grupo">Grupo</label>';
-														popup += '	<select name="grupoEdita" id="grupoEdita">';
-														popup += '		<option value="default">- - - - - - -</option>';
-														popup += '		<option value="Final_test">Final Test</option>';
-														popup += '		<option value="Qc_audit">QC Audit</option>';
-														popup += '		<option value="Process">Process</option>';
-														popup += '	</select>';
-														popup += '	<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>';
-														popup += '	<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>';
-														popup += '</div>';
-
 													}
+													
 													$("tbody#content_operaciones").html(tr);
-													$("#divForm_FM").html(popup);
 
 													alert('Operaciones Copiadas');
 												});
@@ -756,27 +695,25 @@
 			  					</div>
 
 			  					<!-- PopUp Editar Operacion-->
-		    					<div data-role="popup" id="popupEditarOperacion" class="ui-content">
-		      						<label for="operacion">Operacion</label>
-		      						<input type="text" id="operacionAgrega">
-		      						<label for="descripcion">Descripcion</label>
-		      						<input type="text" id="descripcionAgrega">
-
-		      						<fieldset data-iconpos="right">
-		      							<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">
-		        						<label for="checkbox-h-5a">Usar en PPms?</label>
-		      						</fieldset>
-
-		      						<label for="grupo">Grupo</label>
-		      						<select name="grupoEdita" id="grupoEdita">
+			  					<div data-role="popup" id="popupEditarOperacion" class="ui-content">
+									<!-- <label for="operacion">Operacion</label>
+									<input type="text" id="operacionAgrega">
+									<label for="descripcion">Descripcion</label>
+									<input type="text" id="descripcionAgrega">
+									<fieldset data-iconpos="right">
+										<input name="checkbox" id="checkbox-h-5a" type="checkbox" class="checkbox">
+										<label for="checkbox-h-5a">Usar en PPms?</label>
+									</fieldset>
+									<label for="grupo">Grupo</label>
+									<select name="grupoEdita" id="grupoEdita">
 										<option value="default">- - - - - - -</option>
 										<option value="Final_test">Final Test</option>
 										<option value="Qc_audit">QC Audit</option>
 										<option value="Process">Process</option>
 									</select>
 									<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
-									<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
-		    					</div>
+									<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a> -->
+								</div>
 
 							</div>
 						</center>

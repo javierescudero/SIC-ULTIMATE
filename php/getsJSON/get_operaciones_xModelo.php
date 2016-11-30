@@ -24,7 +24,9 @@ if ($_REQUEST['ajax']) {
 		}
 		print(json_encode($rows));
 	} else {
-		echo "<script>alert('Ninguna Operacion Encontrada');</script>";
+		$rows[] = '';
+		print(json_encode($rows));
+		//echo "<script>alert('Ninguna Operacion Encontrada');</script>";
 	}
 	mysqli_close($con);
 }

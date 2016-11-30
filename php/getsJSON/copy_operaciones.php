@@ -19,7 +19,7 @@ if ($_REQUEST['ajax']) {
 
 	$q = "INSERT INTO operaciones (SELECT 0,'".$mod_destino."', Descripcion, Familia, Operacion, UsarPPms, Grupo FROM operaciones WHERE Modelo = '".$mod_origen."')";
 	if (mysqli_query($con, $q)) {
-		$query_load = mysqli_query($con, "SELECT DISTINCT Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Modelo = '".$mod_destino."' ORDER BY Operacion");
+		$query_load = mysqli_query($con, "SELECT DISTINCT Operacion, Descripcion, UsarPPms, Grupo FROM operaciones WHERE Modelo = '".$mod_origen."' ORDER BY Operacion");
 		$num_rows = mysqli_num_rows($query_load);
 		if ($num_rows != 0) {
 			while ($row = mysqli_fetch_assoc($query_load)) {

@@ -42,6 +42,7 @@ if ($_REQUEST['ajax']) {
 			echo "<script>alert('ERROR: Hubo un problema al insertar elemento.');</script>";
 		}
 	}
+
 	mysqli_close($con);
 }
 ?>
