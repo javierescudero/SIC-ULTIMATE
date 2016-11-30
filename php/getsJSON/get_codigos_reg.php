@@ -16,7 +16,8 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT Codigo FROM codigos WHERE Modelo = '' OR Modelo = '".$modelo."' ORDER BY Codigo LIMIT 348");
+
+	$query = mysqli_query($con, "SELECT DISTINCT Codigo FROM codigos WHERE Modelo = '".$modelo."' ORDER BY Codigo");
 	//print_r($query);
 	
 	//$query = mysqli_query($con, "SELECT Codigo FROM codigos WHERE Modelo is NULL ORDER BY Codigo");
@@ -30,12 +31,13 @@ if ($_REQUEST['ajax']) {
 	if ($num_rows != 0) {
 		while ($row = mysqli_fetch_assoc($query)) {
 			$rows[] = $row;
-			//print_r($row);
 		}
 		print(json_encode($rows));
 	} else {
-		echo "<script>alert('Ningun Codigo');</script>";
+		$rows[] = '';
+		print(json_encode($rows));
 	}
+
 	mysqli_close($con);
 }
 ?>

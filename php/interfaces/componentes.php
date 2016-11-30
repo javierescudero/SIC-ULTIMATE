@@ -107,17 +107,18 @@
 									//Carga los componentes al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
-										for (var i = 0; i < j.length; i++) {
-											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+										if (j[0] == '') {
+
+										} else {
+											for (var i = 0; i < j.length; i++) {
+												options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+											}
 										}
+										
 										$("select#sel_componentes").html(options);
 									});
 								});
 
-								$(document).ready(function(e) {
-									$("select#lista_modelos").change();
-									$("select#sel_componentes").change();
-								});
 							});
 						</script>
 
@@ -154,9 +155,6 @@
 									});
 								});
 
-								$(document).ready(function(e) {
-									$("select#sel_componentes").change();
-								});
 							});
 						</script>
 
@@ -179,23 +177,25 @@
 									var valComponente = document.getElementById('sel_componentes').value;
 									var valModelo = document.getElementById('lista_modelos').value;
 
-									$.getJSON("../getsJSON/del_componente.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
-										alert('Componente = ' + valComponente);
-										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
-										for (var i = 0; i < j.length; i++) {
-											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
-										}
-										
-										alert('Componente se elimino correctamente');
-										$("select#sel_componentes").html(options);
-										
-									});
+									if (valComponente == 'default') {
+										alert('Selecciona Un Componente');
+									} else {
+										$.getJSON("../getsJSON/del_componente.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
+											alert('Componente = ' + valComponente);
+											var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+											for (var i = 0; i < j.length; i++) {
+												options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+											}
+											
+											alert('Componente se elimino correctamente');
+											$("select#sel_componentes").html(options);
+											
+										});
+									}
+
 									$('#cancelDelComponente').click();
 								});
 
-								$(document).ready(function(e) {
-									$("select#sel_componentes").change();
-								});
 							});
 						</script>
 
@@ -216,12 +216,9 @@
   							
   							//Copiar Componentes
 							$(document).ready(function(){
-								$("a#copiarComponentes").click(function() {
+								$("a#copiarComponentesCDD").click(function() { 
 									var modeloOrigen = document.getElementById('mod_origen').value;
 									var modeloDestino = document.getElementById('mod_destino').value;
-
-									//alert('Origen = ' + modeloOrigen);
-									//alert('Destino = ' + modeloDestino);
 
 									$.getJSON("../getsJSON/copy_componentes.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
@@ -237,6 +234,7 @@
 									$("a#salirCopyComponentes").click();
 								});
 							});
+
 	  					</script>
 
   						<!-- PopUp Copiar Componente-->

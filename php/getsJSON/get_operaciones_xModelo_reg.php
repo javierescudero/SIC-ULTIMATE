@@ -15,6 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+
 	$query = mysqli_query($con, "SELECT DISTINCT Operacion FROM operaciones WHERE Modelo = '".$modelo."' ORDER BY Operacion");
 	$num_rows = mysqli_num_rows($query);
 
@@ -24,8 +25,10 @@ if ($_REQUEST['ajax']) {
 		}
 		print(json_encode($rows));
 	} else {
-		echo "<script>alert('Ninguna Operacion Encontrada');</script>";
+		$rows[] = '';
+		print(json_encode($rows));
 	}
+
 	mysqli_close($con);
 }
 ?>

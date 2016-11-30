@@ -122,7 +122,7 @@
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
 						<select name="modelo" id="selectModelo_CD">
-							<option>- - - Selecciona Un Modelo - - -</option>
+							<option value="default">- - - Selecciona Un Modelo - - -</option>
 							<?php
 								if ($area == 'Electronica') {
 									cargaModelos($con, 'Electronica');
@@ -145,42 +145,40 @@
 								//Agregar Codigos
 								$("a#agregarCodigoConfirmacion").click(function(){
 									var valCodigo = document.getElementById('agregarCodigo').value;
-									alert('valCodigo = ' + valCodigo);
 									var valregistrarComo = document.getElementById('registrarComo').value;
-									alert('valregistrarComo = ' + valregistrarComo);
 									var valDescripcion = document.getElementById('agregarDescripcion').value;
-									alert('valDescripcion = ' + valDescripcion);
 									var valModelo = document.getElementById('selectModelo_CD').value;
-									alert('valModelo = ' + valModelo);
 
-									$.getJSON("../getsJSON/add_Codigos.php", {ajax: true, modelo: valModelo, codigo: valCodigo, registrarAs: valregistrarComo, descripcion: valDescripcion,  area: <?php echo "'$area'"; ?> }, function(j) {
-										var tr = "";
-										for (var i = 0; i < j.length; i++) {
+									if (valModelo == 'default') {
+										alert('Debes seleccionar un modelo');
+									} else {
+										$.getJSON("../getsJSON/add_Codigos.php", {ajax: true, modelo: valModelo, codigo: valCodigo, registrarAs: valregistrarComo, descripcion: valDescripcion,  area: <?php echo "'$area'"; ?> }, function(j) {
+											var tr = "";
+											for (var i = 0; i < j.length; i++) {
 
-											tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-								
-											tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+												tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+									
+												tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
-											tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+												tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
 
-											tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+												tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
 
-										}
-										$("tbody#content_codigos").html(tr);
+											}
+											$("tbody#content_codigos").html(tr);
 
-										valCodigo = document.getElementById('agregarCodigo').value = '';
-										valregistrarComo = document.getElementById('registrarComo').value = '';
-										valDescripcion = document.getElementById('agregarDescripcion').value = '';
+											valCodigo = document.getElementById('agregarCodigo').value = '';
+											valregistrarComo = document.getElementById('registrarComo').value = '';
+											valDescripcion = document.getElementById('agregarDescripcion').value = '';
 
-										$('#cancelarAdd').click();
+											$('#cancelarAdd').click();
 
-									});
+										});
+										
+									}
+
 								});
 
-								$(document).ready(function(e) {
-									//$("select#familias").change();
-									$("select#modelos").change();
-								});
 							});
 						</script>
 
@@ -209,7 +207,6 @@
 
 								//Eliminar Codigo
 								$("a#eliminarCodigo").click(function(){
-									//alert('valOperacion = ' + valOperacion);
 									var valModelo = document.getElementById('selectModelo_CD').value;
 									if (valModelo == 'default') {
 										alert('Debes seleccionar algun modelo...');
@@ -217,19 +214,22 @@
 									}else {
 										$.getJSON("../getsJSON/del_codigo.php", {ajax: true, modelo: valModelo, codigo: valCodigo, area: <?php echo "'$area'"; ?> }, function(j) {
 											var tr = "";
-											for (var i = 0; i < j.length; i++) {
+											if (j[0] == '') {
+											} else {
+												for (var i = 0; i < j.length; i++) {
 
-												tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-								
-												tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+													tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+									
+													tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
-												tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+													tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
 
-												tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+													tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
 
+												}
 											}
-											$("tbody#content_codigos").html(tr);
 
+											$("tbody#content_codigos").html(tr);
 
 										});
 										alert('Codigo Eliminado');
@@ -267,7 +267,6 @@
 									}
 								?>
 							</select>
-
 
 							<label for="registrarAs">Registrar Como</label>
 							<select name="registrarAs" id="registrarAs">
@@ -405,26 +404,30 @@
 				</center>
 
 				<script type="text/javascript">
-					var flag = true;
+
 					$("select#selectModelo_CD").change(function() {
 						//Carga las operaciones al seleccionar un modelo.
 						$.getJSON("../getsJSON/get_codigos.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 							var tr = "";
-							for (var i = 0; i < j.length; i++) {
+							if (j[0] == '') {
+							} else {
+								for (var i = 0; i < j.length; i++) {
 
-								tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-								
-								tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+									tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+									
+									tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
-								tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+									tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
 
-								tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+									tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
 
+								}
 							}
 							
 							$("tbody#content_codigos").html(tr);
 						});
 					});
+
 				</script>
 
 				<center>

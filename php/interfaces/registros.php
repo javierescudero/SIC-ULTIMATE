@@ -136,16 +136,20 @@
 					<div class="ui-block-b">
 
           				<script type="text/javascript">
+
       						//Carga los modelos al seleccionar una familia.
-							var loadMod = $("select#modelos");
 							$(function() {
 								$("select#familias").change(function() {
+									
 									//Carga los modelos al seleccionar una familia.
 									$.getJSON("../getsJSON/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+										if (j[0] == '') {
 
-										for (var i = 0; i < j.length; i++) {				
-											options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+										} else {
+											for (var i = 0; i < j.length; i++) {				
+												options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
+											}
 										}
 										$("select#modelos").html(options);
 									});
@@ -153,9 +157,12 @@
 									//Carga las operaciones al seleccionar una familia.
 									$.getJSON("../getsJSON/get_operaciones_xFamilia_reg.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Selecciona Una Operacion - - -</option>\n';
+										if (j[0] == '') {
 
-										for (var i = 0; i < j.length; i++) {				
-											options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
+										} else {
+											for (var i = 0; i < j.length; i++) {				
+												options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
+											}
 										}
 										$("select#operaciones").html(options);
 									});
@@ -185,13 +192,16 @@
       						//Carga las operaciones al seleccionar modelo
 							$(function() {
 								$("select#modelos").change(function() {
-
-									//Carga los modelos al seleccionar una familia.
+									
+									//Carga las operaciones al seleccionar modelo
 									$.getJSON("../getsJSON/get_operaciones_xModelo_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Selecciona Una Operacion - - -</option>\n';
+										if (j[0] == '') {
 
-										for (var i = 0; i < j.length; i++) {				
-											options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
+										} else {
+											for (var i = 0; i < j.length; i++) {				
+												options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
+											}
 										}
 
 										$("select#operaciones").html(options);
@@ -200,23 +210,28 @@
 									//Carga los codigos al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_codigos_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Codigos - - -</option>\n';
+										if (j[0] == '') {
 
-										for (var i = 0; i < j.length; i++) {				
-											options += '<option value="'+ j[i].Codigo +'">'+ j[i].Codigo +'</option> \n';
+										} else {
+											for (var i = 0; i < j.length; i++) {				
+												options += '<option value="'+ j[i].Codigo +'">'+ j[i].Codigo +'</option> \n';
+											}
 										}
 										$("select#codigos").html(options);
-										$(".select_table_cod").html(options);
 									});
+
 
 									//Carga los componentes al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="default">- - - Componentes - - -</option>\n';
+										if (j[0] == '') {
 
-										for (var i = 0; i < j.length; i++) {				
-											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+										} else {
+											for (var i = 0; i < j.length; i++) {				
+												options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+											}
 										}
 										$("select#select_comp").html(options);
-										$(".select_table_comp").html(options);
 									});
 
 								});

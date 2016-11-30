@@ -15,7 +15,7 @@ if ($_REQUEST['ajax']) {
 	}
 
 	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-	$query = mysqli_query($con, "SELECT DISTINCT * FROM codigos WHERE Modelo = '".$modelo."' ORDER BY Codigo");
+	$query = mysqli_query($con, "SELECT DISTINCT * FROM codigos WHERE Modelo = '".$modelo."' ORDER BY Codigo LIMIT 16");
 	$num_rows = mysqli_num_rows($query);
 
 	if ($num_rows != 0) {
@@ -24,7 +24,8 @@ if ($_REQUEST['ajax']) {
 		}
 		print(json_encode($rows));
 	} else {
-		echo "<script>alert('Ningun Codigo');</script>";
+		$rows[] = '';
+		print(json_encode($rows));
 	}
 	mysqli_close($con);
 }
