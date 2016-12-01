@@ -127,10 +127,11 @@
 
 	<div data-role="page" data-theme="b" id="page">
 		<div data-role="header" id="header">
-			<h1>L o g i n<br> 
+			<h1>L o g i n
+				<!--<br> 
 				<center>
 					<img src="public/images/Sicicon.ico">
-				</center>
+				</center>-->
 			</h1>
 		</div>
 		<form method="post" action="" data-ajax="false">
