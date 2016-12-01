@@ -29,35 +29,12 @@
 			</h1>
 		</div>
 		<?php
-			if ($tipoUser == 'administrador') {
-				include("../menus/menu_administrador.php");
-			} 
-			elseif ($tipoUser == 'capturistaA') {
-				include("../menus/menu_capturistaA.php");
-			} 
-			elseif ($tipoUser == 'capturistaB') {
-				include("../menus/menu_capturistaB.php");
-			} 
-			elseif ($tipoUser == 'capturistaC') {
-				include("../menus/menu_capturistaC.php");
-			} 
-			elseif ($tipoUser == 'capturistaD') {
-				include("../menus/menu_capturistaD.php");
-			} 
-			elseif ($tipoUser == 'consultorA') {
-				include("../menus/menu_consultorA.php");
-			} 
-			elseif ($tipoUser == 'consultorB') {
-				include("../menus/menu_consultorB.php");
-			} 
-			elseif ($tipoUser == 'correctorA') {
-				include("../menus/menu_correctorA.php");
-			}
+			 include("../menus/menu_administrador.php");
 		?>
 
 		<!-- Formulario -->
 		<div id="divForm_Perm">
-			<form method="post" action="config_permisos.php" data-ajax="false">
+			<form method="post" action="../getsJSON/config_permisos.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" data-ajax="false">
 				<div class="ui-field-contain" id="divUserPassword">
 	            	<input name="usuario" id="usuario" type="text" placeholder="Usuario"/>
 	            	<input name="password" id="password" type="password" placeholder="Password"/>

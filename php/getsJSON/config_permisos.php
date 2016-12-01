@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	require_once("../conexion.php");
+	$area = $_GET['area'];
+	$tipoUser = $_GET['tipoUser'];
 	$array = array();
 
 	if (isset($_POST['btnAgregar'])) {
@@ -164,7 +166,7 @@
 		} else {
 			echo "<script>alert('Usuario o Password vacios');</script>";
 		}
-		echo "<script>window.location.href='permisos.php'</script>";
+		echo "<script>window.location.href='../interfaces/permisos.php?area=$area&tipoUser=$tipoUser'</script>";
 
 	} elseif (isset($_POST['btnModificar'])) {
 		$usuario = strtolower($_POST['usuario']);
@@ -206,7 +208,7 @@
 				return false;
 			}
 
-		echo "<script>window.location.href='permisos.php'</script>";
+		echo "<script>window.location.href='../interfaces/permisos.php?area=$area&tipoUser=$tipoUser'</script>";
 	} elseif (isset($_POST['btnBorrar'])) {
 		$usuario = strtolower($_POST['usuario']);
 		$query = mysqli_query($con_user, "SELECT * FROM permissions WHERE Usuario = '".$usuario."'");
@@ -222,10 +224,10 @@
 		} else {
 			echo "<script>alert('Usuario no existe');</script>";
 		}
-		echo "<script>window.location.href='permisos.php'</script>";
+		echo "<script>window.location.href='../interfaces/permisos.php?area=$area&tipoUser=$tipoUser'</script>";
 	} elseif (isset($_POST['btnCancelar'])) {
-		echo "<script>window.location.href='permisos.php'</script>";
+		echo "<script>window.location.href='../interfaces/permisos.php?area=$area&tipoUser=$tipoUser'</script>";
 	} elseif (isset($_POST['btnBuscar'])) {
-		echo "<script>window.location.href='permisos.php'</script>";
+		echo "<script>window.location.href='../interfaces/permisos.php?area=$area&tipoUser=$tipoUser'</script>";
 	}
 ?>
