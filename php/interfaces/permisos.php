@@ -34,7 +34,7 @@
 
 		<!-- Formulario -->
 		<div id="divForm_Perm">
-			<form method="post" action="../getsJSON/config_permisos.php?area=<?php echo "$area"; ?>&tipoUser=<?php echo "$tipoUser"; ?>" data-ajax="false">
+			<form>
 				<div class="ui-field-contain" id="divUserPassword">
 	            	<input name="usuario" id="usuario" type="text" placeholder="Usuario"/>
 	            	<input name="password" id="password" type="password" placeholder="Password"/>
@@ -89,11 +89,83 @@
 	          	</div><br>
 	          	<fieldset data-role="controlgroup">
 	          		<center>
-	          			<input type="submit" id="btnBuscar" name="btnBuscar" data-icon="search" data-inline="true" value="Buscar">
-	          			<input type="submit" id="btnAgregar" name="btnAgregar" data-icon="plus" data-inline="true" value="Agregar">
-	          			<input type="submit" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true" value="Modificar">
-	          			<input type="submit" id="btnBorrar" name="btnBorrar" data-icon="delete" data-inline="true" value="Borrar">
-	          			<input type="submit" id="btnCancelar" name="btnCancelar" data-icon="back" data-inline="true" value="Cancelar">
+	          			
+	          			<script type="text/javascript">
+	          				$(document).ready(function() {
+
+		          				$('#btnAgregar').click(function() {
+		          					var usuario = document.getElementById('usuario').value;
+		          					var password = document.getElementById('password').value;
+		          					var camb_password = document.getElementById('flip-1').value; //si o no
+		          					
+		          					var checkModelos = document.getElementById('checkModelos').checked; //true or false
+		          					var checkOperaciones = document.getElementById('checkOperaciones').checked;
+		          					var checkComponentes = document.getElementById('checkComponentes').checked;
+		          					var checkCodigos = document.getElementById('checkCodigos').checked;
+		          					var checkRegistros = document.getElementById('checkRegistros').checked;
+		          					var checkUsuarios = document.getElementById('checkUsuarios').checked;
+
+		          					var checkDesempeno = document.getElementById('checkDesempeno').checked;
+		          					var checkTendencia = document.getElementById('checkTendencia').checked;
+		          					var checkContribuyentes = document.getElementById('checkContribuyentes').checked;
+		          					var checkCorreccion = document.getElementById('checkCorreccion').checked;
+
+		          					var checkElectronica = document.getElementById('checkElectronica').checked;
+		          					var checkElectromecanicos = document.getElementById('checkElectromecanicos').checked;
+		          					var checkValvulas = document.getElementById('checkValvulas').checked;
+
+		          					if (usuario == '' || password == '') {
+		          						alert('Ingresar usuario y password');
+		          					} else if (!checkElectronica && !checkElectromecanicos && !checkValvulas) {
+		          						alert('Selecciona al menos un area');
+		          					} else {
+			          					$.getJSON("../getsJSON/add_user.php", {ajax: true, usuario: usuario, password: password, cambiar: camb_password, modelos: checkModelos, operaciones: checkOperaciones, componentes: checkComponentes, codigos: checkCodigos, registros: checkRegistros, usuarios: checkUsuarios, desempeno: checkDesempeno, tendencia: checkTendencia, contribuyentes: checkContribuyentes, correccion: checkCorreccion, electronica: checkElectronica, electromecanicos: checkElectromecanicos, valvulas: checkValvulas}, function(j) {
+
+			          						if (j[0] == 'existe') {
+			          							alert('Usuario Existe');
+			          							document.getElementById('usuario').value = '';
+			          							document.getElementById('password').value = '';
+			          						} else if (j[0] == 'otro') {
+			          							alert('Este usuario no cuenta con algun perfil.\nContacte al administrador del sistema.');
+			          						} else if (j[0] == 'exito'){
+			          							alert('Se agrego usuario correctamente');
+			          						}
+										});
+		          					}
+
+
+		          				});
+
+	          				});
+	          			</script>
+	          			<input type="button" id="btnAgregar" name="btnAgregar" data-icon="plus" data-inline="true" value="Agregar">
+
+	          			<script type="text/javascript">
+	          				$(document).ready(function() {
+		          				$('#btnModificar').click(function() {
+		          					alert('Boton modificar');
+		          				});
+	          				});
+	          			</script>
+	          			<input type="button" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true" value="Modificar">
+
+	          			<script type="text/javascript">
+	          				$(document).ready(function() {
+		          				$('#btnBorrar').click(function() {
+		          					alert('Boton borrar');
+		          				});
+	          				});
+	          			</script>
+	          			<input type="button" id="btnBorrar" name="btnBorrar" data-icon="delete" data-inline="true" value="Borrar">
+
+	          			<script type="text/javascript">
+	          				$(document).ready(function() {
+		          				$('#btnCancelar').click(function() {
+		          					alert('Boton cancelar');
+		          				});
+	          				});
+	          			</script>
+	          			<input type="button" id="btnCancelar" name="btnCancelar" data-icon="back" data-inline="true" value="Cancelar">
 	          		</center>
 	          	</fieldset>
 			</form>
