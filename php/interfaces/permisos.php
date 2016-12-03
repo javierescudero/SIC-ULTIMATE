@@ -125,6 +125,7 @@
 			          							alert('Usuario Existe');
 			          							document.getElementById('usuario').value = '';
 			          							document.getElementById('password').value = '';
+			          							document.getElementById('checkModelos').checked = 'false';
 			          						} else if (j[0] == 'otro') {
 			          							alert('Este usuario no cuenta con algun perfil.\nContacte al administrador del sistema.');
 			          						} else if (j[0] == 'exito'){
