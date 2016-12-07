@@ -35,6 +35,25 @@
 		<!-- Formulario -->
 		<div id="divForm_Perm">
 			<form>
+
+				<script type="text/javascript">
+					$(document).ready(function() {
+          				$('#usuario').blur(function() {
+          					var usuario = document.getElementById('usuario').value;
+          					$.getJSON("../getsJSON/carga_permisos.php", {ajax: true, usuario: usuario}, function(j) {
+          						if (usuario == '' || password == '') {
+	          						alert('Ingresar usuario y password');
+	          					} else {
+									for (var i = 0; i < j.length; i++) {				
+										alert('Usuario = ' + j[i].Usuario);
+									}
+								}
+							});
+							//alert('Salio del foco');
+						});
+      				});
+				</script>
+
 				<div class="ui-field-contain" id="divUserPassword">
 	            	<input name="usuario" id="usuario" type="text" placeholder="Usuario"/>
 	            	<input name="password" id="password" type="password" placeholder="Password"/>
@@ -139,6 +158,7 @@
 
 	          				});
 	          			</script>
+
 	          			<input type="button" id="btnAgregar" name="btnAgregar" data-icon="plus" data-inline="true" value="Agregar">
 
 	          			<script type="text/javascript">
@@ -148,15 +168,44 @@
 		          				});
 	          				});
 	          			</script>
+
 	          			<input type="button" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true" value="Modificar">
 
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
+
 		          				$('#btnBorrar').click(function() {
-		          					alert('Boton borrar');
+		          					var usuario = document.getElementById('usuario').value;
+		          					var password = document.getElementById('password').value;
+
+		          					if (usuario == '' || password == '') {
+		          						alert('Ingresar usuario y password');
+		          					} else {
+			          					$.getJSON("../getsJSON/del_user.php", {ajax: true, usuario: usuario, password: password}, function(j) {
+
+			          						if (j[0] == 'eliminado') {
+			          							alert('El usuario se elimino');
+			          							document.getElementById('usuario').value = '';
+			          							document.getElementById('password').value = '';
+			          						} else if (j[0] == 'error') {
+			          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');
+			          							document.getElementById('usuario').value = '';
+			          							document.getElementById('password').value = '';
+			          						} else if (j[0] == 'noencontrado'){
+			          							alert('El usuario no se encuentra en la base de datos');
+			          							document.getElementById('usuario').value = '';
+			          							document.getElementById('password').value = '';
+			          						}
+
+										});
+		          					}
+
+
 		          				});
+
 	          				});
 	          			</script>
+
 	          			<input type="button" id="btnBorrar" name="btnBorrar" data-icon="delete" data-inline="true" value="Borrar">
 
 	          			<script type="text/javascript">
@@ -166,6 +215,7 @@
 		          				});
 	          				});
 	          			</script>
+
 	          			<input type="button" id="btnCancelar" name="btnCancelar" data-icon="back" data-inline="true" value="Cancelar">
 	          		</center>
 	          	</fieldset>
