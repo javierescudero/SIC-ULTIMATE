@@ -18,6 +18,27 @@
 	<?php include("../../php/librerias.php"); ?>
 </head>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	var btn1="";
+	var btn2="";
+	$("#popupEditarOperacion").bind({
+		popupafteropen: function(event, ui) {
+			$(event.currentTarget).find('#operacionAgrega').val(btn1);
+			$(event.currentTarget).find('#descripcionAgrega').val(btn2);
+			console.log(event);
+		}
+	});
+
+	$("#content_operaciones").on("click", "td:nth-of-type(2)", function() {
+		btn1=$(this).children('span').children('a').attr('id');
+		btn2=$(this).siblings('.descripcion').children('span').children('a').attr('id');
+		console.log(btn1);
+		window.alert(btn1);
+	});
+})
+</script>
+
 <style type="text/css">
 	@media screen and (min-width: 480px) {
 	    #divColumnas {
