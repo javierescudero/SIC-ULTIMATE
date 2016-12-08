@@ -36,24 +36,6 @@
 		<div id="divForm_Perm">
 			<form>
 
-				<script type="text/javascript">
-					$(document).ready(function() {
-          				$('#usuario').blur(function() {
-          					var usuario = document.getElementById('usuario').value;
-          					$.getJSON("../getsJSON/carga_permisos.php", {ajax: true, usuario: usuario}, function(j) {
-          						if (usuario == '' || password == '') {
-	          						alert('Ingresar usuario y password');
-	          					} else {
-									for (var i = 0; i < j.length; i++) {				
-										alert('Usuario = ' + j[i].Usuario);
-									}
-								}
-							});
-							//alert('Salio del foco');
-						});
-      				});
-				</script>
-
 				<div class="ui-field-contain" id="divUserPassword">
 	            	<input name="usuario" id="usuario" type="text" placeholder="Usuario"/>
 	            	<input name="password" id="password" type="password" placeholder="Password"/>
@@ -108,7 +90,6 @@
 	          	</div><br>
 	          	<fieldset data-role="controlgroup">
 	          		<center>
-	          			
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
 
@@ -149,6 +130,22 @@
 			          							alert('Este usuario no cuenta con algun perfil.\nContacte al administrador del sistema.');
 			          						} else if (j[0] == 'exito'){
 			          							alert('Se agrego usuario correctamente');
+			          							document.getElementById('usuario').value = '';
+			          							document.getElementById('password').value = '';
+			          							document.getElementById('checkModelos').checked = false;
+					          					document.getElementById('checkOperaciones').checked;
+					          					document.getElementById('checkComponentes').checked;
+					          					document.getElementById('checkCodigos').checked;
+					          					document.getElementById('checkRegistros').checked;
+					          					document.getElementById('checkUsuarios').checked;
+					          					document.getElementById('checkDesempeno').checked;
+					          					document.getElementById('checkTendencia').checked;
+					          					document.getElementById('checkContribuyentes').checked;
+					          					document.getElementById('checkCorreccion').checked;
+
+					          					document.getElementById('checkElectronica').checked = false;
+					          					document.getElementById('checkElectromecanicos').checked = false;
+					          					document.getElementById('checkValvulas').checked = false;
 			          						}
 										});
 		          					}
@@ -160,16 +157,6 @@
 	          			</script>
 
 	          			<input type="button" id="btnAgregar" name="btnAgregar" data-icon="plus" data-inline="true" value="Agregar">
-
-	          			<script type="text/javascript">
-	          				$(document).ready(function() {
-		          				$('#btnModificar').click(function() {
-		          					alert('Boton modificar');
-		          				});
-	          				});
-	          			</script>
-
-	          			<input type="button" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true" value="Modificar">
 
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
@@ -207,6 +194,26 @@
 	          			</script>
 
 	          			<input type="button" id="btnBorrar" name="btnBorrar" data-icon="delete" data-inline="true" value="Borrar">
+
+	          			<script type="text/javascript">
+	          				$(document).ready(function() {
+		          				$('#btnBuscar').click(function() {
+		          					alert('Boton buscar');
+		          				});
+	          				});
+	          			</script>
+	          			
+	          			<input type="button" id="btnBuscar" name="btnBuscar" data-icon="search" data-inline="true" value="Buscar">
+
+	          			<script type="text/javascript">
+	          				$(document).ready(function() {
+		          				$('#btnModificar').click(function() {
+		          					alert('Boton modificar');
+		          				});
+	          				});
+	          			</script>
+	          			
+	          			<input type="button" id="btnModificar" name="btnModificar" data-icon="edit" data-inline="true" value="Modificar">
 
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
