@@ -232,7 +232,7 @@
 											$("tbody#content_codigos").html(tr);
 
 										});
-										alert('Codigo Eliminado');
+
 										$('#salirDel').click();
 									}
 								});
@@ -321,8 +321,10 @@
 
 										$("tbody#tabla_CDF").html(tr);
 
+										$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
+										$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
+
 									});
-									alert('Codigos Copiados');
 									
 									$("a#cancelCopyCodigos").click();
 								});

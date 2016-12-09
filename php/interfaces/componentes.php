@@ -181,17 +181,17 @@
 										alert('Selecciona Un Componente');
 									} else {
 										$.getJSON("../getsJSON/del_componente.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
-											alert('Componente = ' + valComponente);
 											var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
 											for (var i = 0; i < j.length; i++) {
 												options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 											}
 											
-											alert('Componente se elimino correctamente');
 											$("select#sel_componentes").html(options);
 											
 										});
 									}
+
+									$('#sel_componentes').val('default').attr('selected', true).selectmenu("refresh");
 
 									$('#cancelDelComponente').click();
 								});
@@ -228,9 +228,11 @@
 											}
 
 											$("select#sel_componentes").html(options);
+
+											$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
+											$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
 										});
 									
-									alert('Componentes Copiados');
 									$("a#salirCopyComponentes").click();
 								});
 							});

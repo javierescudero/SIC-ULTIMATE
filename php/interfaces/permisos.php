@@ -183,6 +183,22 @@
 				          							alert('El usuario se elimino');
 				          							document.getElementById('usuario').value = '';
 				          							document.getElementById('password').value = '';
+				          							
+				          							$('#checkModelos').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+
+						          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+
+						          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
 
 				          						} else if (j[0] == 'error') {
 				          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');

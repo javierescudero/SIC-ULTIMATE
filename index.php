@@ -50,7 +50,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/administrador/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/administrador/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'capturistaA':
@@ -58,7 +62,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/capturistaA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'capturistaB':
@@ -66,7 +74,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/capturistaB/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'capturistaC':
@@ -74,7 +86,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/capturistaC/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'capturistaD':
@@ -82,7 +98,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/capturistaD/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'consultorA':
@@ -90,7 +110,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/consultorA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/consultorA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'consultorB':
@@ -98,7 +122,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/consultorB/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/consultorB/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'correctorA':
@@ -106,7 +134,11 @@
 							if ($accesAreas === false) {
 								echo "<script>alert('No tienes acceso a esta area');</script>";
 							} else {
-								echo "<script>window.location.href='modulos/correctorA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								if ($dbcambpwd == 1) {
+									echo "<script>window.location.href='indexchg.php'</script>";
+								} else {
+									echo "<script>window.location.href='modulos/correctorA/index.php?area=".$area."&areasPerm=".$_SESSION['areasPerm']."&tipoUser=".$_SESSION['tipoUser']."&user=".$_SESSION['session_nombre_usuario']."'</script>";
+								}
 							}
 							break;
 						case 'otro':
@@ -134,10 +166,11 @@
 				</center>-->
 			</h1>
 		</div>
-		<form method="post" action="" data-ajax="false">
+		<form method="post" action="" data-ajax="false" id="form">
 			<div data-role="content" id="content_login">
 				<input type="text" id="user" name="user" placeholder="Usuario" required>
 				<input type="password" id="password" name="password" placeholder="Password" required>
+
 				<div data-role="fieldcontain" id="combo_area">
 					<center><label for="selection_area"><b>Area</b></label></center>
 					<select name="area" id="area">
@@ -154,6 +187,7 @@
 					</center>
 				</div>
 			</div>
+
 		</form>
 	</div>
 </body>

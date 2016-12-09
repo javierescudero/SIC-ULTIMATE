@@ -18,50 +18,6 @@
 	<?php include("../../php/librerias.php"); ?>
 </head>
 
-<script type="text/javascript">
-$(document).ready(function() {
-	var btn1="";
-	var btn2="";
-	var btn3="";
-	var btn4="";
-	$("#popupEditarOperacion").bind({
-		popupafteropen: function(event, ui) {
-			$(event.currentTarget).find('#operacionAgrega').val(btn1);
-			$(event.currentTarget).find('#descripcionAgrega').val(btn2);
-			$(event.currentTarget).find('#checkbox-h-5a').val(btn3);
-			
-			/*if (btn3) {
-				alert('if');
-				$(event.currentTarget).find('.check').attr('checked', true);
-			} else {
-				alert('else');
-				$(event.currentTarget).find('.check').attr('checked', false);
-			}*/
-
-			//alert(btn3);
-			
-			//$(event.currentTarget).find('#grupoAgrega').selected(btn4);
-			console.log(event);
-		}
-	});
-
-	$("#content_operaciones").on("click", "td:nth-of-type(2)", function() {
-		btn1=$(this).children('span').children('a').attr('id');
-		btn2=$(this).siblings('.descripcion').children('span').attr('id');
-
-		btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').is("checked");
-
-		btn4=$(this).siblings('.selectGrupo').children('select').children('option').prop('value');
-
-		console.log(btn1);
-		console.log(btn2);
-		console.log(btn3);
-		console.log(btn4);
-		//window.alert(btn1);
-	});
-})
-</script>
-
 <style type="text/css">
 	@media screen and (min-width: 480px) {
 	    #divColumnas {
@@ -156,7 +112,6 @@ $(document).ready(function() {
 						<div id="divListas">
 
 							<script type="text/javascript">
-								var flag = true;
 								$(function() {
 									$("select#familias").change(function() {
 										//Carga los modelos al seleccionar una familia.
@@ -164,12 +119,13 @@ $(document).ready(function() {
 											var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
 
 											if (j[0] == '') {
+												$('#modelos').val('default').attr('selected', true).selectmenu("refresh");
 											} else {
-												for (var i = 0; i < j.length; i++) {				
+												for (var i = 0; i < j.length; i++) {		
 													options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
 												}
 											}
-
+											
 											$("select#modelos").html(options);
 										});
 
@@ -256,7 +212,7 @@ $(document).ready(function() {
 									$(function() {
 										
 										//Agregar Familia
-										$("a#agregarFamilia").click(function(){
+										$("#agregarFamilia").click(function(){
 											var valFamilia = document.getElementById('pop_inputAgregaFamilia').value;
 
 											if (valFamilia == '') {
@@ -267,10 +223,13 @@ $(document).ready(function() {
 													for (var i = 0; i < j.length; i++) {
 														options += '<option value="'+ j[i].Familias +'">'+ j[i].Familias +'</option> \n';
 													}
+													
 													alert('Familia se agrego correctamente');
+													
 													$("select#familias").html(options);
 													
-													valFamilia = document.getElementById('pop_inputAgregaFamilia').value = '';
+													document.getElementById('pop_inputAgregaFamilia').value = '';
+													
 													$('#cancelarAgregarFamilia').click();
 												});
 											}
@@ -296,7 +255,7 @@ $(document).ready(function() {
 									$(function() {
 										
 										//Eliminar Familia
-										$("a#eliminarFamilia").click(function(){
+										$("#eliminarFamilia").click(function(){
 
 											var valFamilia = document.getElementById('familias').value;
 											$.getJSON("../getsJSON/del_Familia.php", {ajax: true, familia: valFamilia, area: <?php echo "'$area'"; ?> }, function(j) {
@@ -309,6 +268,8 @@ $(document).ready(function() {
 												alert('Familia se elimino correctamente');
 
 												$("select#familias").html(options);
+
+												$('#familias').val('default').attr('selected', true).selectmenu("refresh");
 
 											});
 											$('#cancelDel_Familia').click();
@@ -344,7 +305,7 @@ $(document).ready(function() {
 									$(function() {
 										
 										//Agregar Modelo
-										$("a#agregarMod").click(function() {
+										$("#agregarMod").click(function() {
 											var valModelo = document.getElementById('pop_inputAgregaModelo_FM').value;
 											var valFamilia = document.getElementById('familias').value;
 
@@ -368,7 +329,9 @@ $(document).ready(function() {
 
 												$("select#modelos").html(options);
 
-												valModelo = document.getElementById('pop_inputAgregaModelo_FM').value = '';
+												document.getElementById('pop_inputAgregaModelo_FM').value = '';
+
+												$('#modelos').val('default').attr('selected', true).selectmenu("refresh");
 												
 												$('#cancelarAgregarModelo').click();
 
@@ -395,7 +358,7 @@ $(document).ready(function() {
 			    					<a href="#popupAgregarModelo" id="btnAgregarMod" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
 			    					<div data-role="popup" id="popupAgregarModelo" class="ui-content">
 			      						<h3>Agregar Modelo</h3>
-			      						<input type="text" id="pop_inputAgregaModelo_FM" placeholder="Modelo..." required>
+			      						<input type="text" id="pop_inputAgregaModelo_FM" placeholder="Modelo...">
 			      						<center>
 											<a id="agregarMod" href="#" data-role="button" data-icon="check" data-inline="true">Agregar</a>
 											<a id="cancelarAgregarModelo" href="" data-role="button" data-rel="back" data-icon="back" data-inline="true">Cancelar</a>
@@ -420,6 +383,8 @@ $(document).ready(function() {
 												alert('MODELO se elimino correctamente');
 
 												$("select#modelos").html(options);
+
+												$('#modelos').val('default').attr('selected', true).selectmenu("refresh");
 
 											});
 
@@ -454,7 +419,7 @@ $(document).ready(function() {
 									$(function() {
 										
 										//Agregar Operacion
-										$("a#confirmarAgregado").click(function(){
+										$("#confirmarAgregado").click(function(){
 											var valFamilia = document.getElementById('familias').value;
 											var valModelo = document.getElementById('modelos').value;
 											var valOperacion = document.getElementById('operacionAgrega').value;
@@ -488,9 +453,11 @@ $(document).ready(function() {
 	 
 													$("tbody#content_operaciones").html(tr);
 
-													valModelo = document.getElementById('modelos').value = '';
-													valOperacion = document.getElementById('operacionAgrega').value = '';
-													valDescripcion = document.getElementById('descripcionAgrega').value = '';
+													document.getElementById('modelos').value = '';
+													document.getElementById('operacionAgrega').value = '';
+													document.getElementById('descripcionAgrega').value = '';
+													$('#checkbox-h-6a').attr('checked', false).checkboxradio('refresh');
+													$('#grupoAgrega').val('default').attr('selected', true).selectmenu("refresh");
 
 													$('#cancelarAgregado').click();
 
@@ -616,12 +583,9 @@ $(document).ready(function() {
 			  							
 			  							//Copiar Operaciones
 										$(document).ready(function(){
-											$("a#copiarOperacion").click(function() {
+											$("#copiarOperacion").click(function() {
 												var modeloOrigen = document.getElementById('mod_origen').value;
 												var modeloDestino = document.getElementById('mod_destino').value;
-
-												//alert('Origen = ' + modeloOrigen);
-												//alert('Destino = ' + modeloDestino);
 
 												$.getJSON("../getsJSON/copy_operaciones.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
 													var tr = "";
@@ -644,10 +608,13 @@ $(document).ready(function() {
 													
 													$("tbody#content_operaciones").html(tr);
 
-													alert('Operaciones Copiadas');
+													$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
+													$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
+
 												});
 												
-												$("a#cancelCopy_Operacion").click();
+												$("#cancelCopy_Operacion").click();
+
 											});
 										});
 			  					</script>
@@ -697,9 +664,9 @@ $(document).ready(function() {
 			  					<!-- PopUp Editar Operacion-->
 			  					<div data-role="popup" id="popupEditarOperacion" class="ui-content">
 									<label for="operacion">Operacion</label>
-									<input type="text" id="operacionAgrega">
+									<input type="text" id="operacionEdita">
 									<label for="descripcion">Descripcion</label>
-									<input type="text" id="descripcionAgrega">
+									<input type="text" id="descripcionEdita">
 									<fieldset data-iconpos="right">
 										<input class="check" id="checkbox-h-5a" type="checkbox">
 										<label for="checkbox-h-5a">Usar en PPms?</label>
@@ -739,6 +706,86 @@ $(document).ready(function() {
 			</form>
 		</div>
 	</div>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			var btn1="";
+			var btn2="";
+			var btn3="";
+			var btn4="";
+			$("#popupEditarOperacion").bind({
+				popupafteropen: function(event, ui) {
+					$(event.currentTarget).find('#operacionEdita').val(btn1);
+					$(event.currentTarget).find('#descripcionEdita').val(btn2);
+					
+					//$(event.currentTarget).find('#checkbox-h-5a').is(':checked');
+					
+					if (btn3) {
+						alert('if');
+						$(event.currentTarget).find('#checkbox-h-5a').attr('checked', true).checkboxradio('refresh');
+					} else {
+						alert('else');
+						$(event.currentTarget).find('#checkbox-h-5a').attr('checked', false).checkboxradio('refresh');
+					}
 
+					//alert(btn3);
+					
+					//$(event.currentTarget).find('#grupoAgrega').selected(btn4);
+					console.log(event.currentTarget);
+				}
+			});
+
+			$("#content_operaciones").on("click", "td:nth-of-type(2)", function() {
+				btn1=$(this).children('span').children('a').attr('id');
+				btn2=$(this).siblings('.descripcion').children('span').attr('id');
+
+				btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').is(':checked');
+
+				/*if ($('.checkPPms').is(':checked')) {
+					alert('Seleccionado');
+					btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').attr('checked', true).checkboxradio('refresh');
+				} else {
+					alert('NO Seleccionado');
+					btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').attr('checked', false).checkboxradio('refresh');
+				}*/
+
+
+				btn4=$(this).siblings('.selectGrupo').children('select').children('option').prop('value');
+
+				console.log(btn1);
+				console.log(btn2);
+				console.log(btn3);
+				console.log(btn4);
+				//window.alert(btn1);
+			});
+
+			$('#popupAgregarFamilia').bind({
+				popupafterclose: function(event, ui) {
+					document.getElementById('pop_inputAgregaFamilia').value = '';
+				}
+			});
+
+			$('#popupAgregarModelo').bind({
+				popupafterclose: function(event, ui) {
+					document.getElementById('pop_inputAgregaModelo_FM').value = '';
+				}
+			});
+
+			$('#popupCopiarOperacion').bind({
+				popupafterclose: function(event, ui) {
+					$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
+					$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
+				}
+			});
+
+			$('#popupAgregarOperacion').bind({
+				popupafterclose: function(event, ui) {
+					document.getElementById('operacionAgrega').value = '';
+					document.getElementById('descripcionAgrega').value = '';
+					$('#checkbox-h-6a').attr('checked', false).checkboxradio('refresh');
+					$('#grupoAgrega').val('default').attr('selected', true).selectmenu("refresh");
+				}
+			});
+		});
+	</script>
 </body>
 </html>

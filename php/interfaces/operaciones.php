@@ -169,16 +169,11 @@
 										}
 										$("tbody#content_operaciones").html(tr);
 
-										//$(".checkbox").attr("checked", false);
-										//$("input:checkbox").prop('checked', false);
-										//$(".checkbox").prop('checked', false);
-
-										//valGrupo = document.getElementById('grupoAgrega').selected = 'default';
-
-
 									});
-									valOperacion = document.getElementById('agregarOperacion').value = '';
-									valDescripcion = document.getElementById('agregarDescripcion').value = '';
+									document.getElementById('agregarOperacion').value = '';
+									document.getElementById('agregarDescripcion').value = '';
+									$('#checkbox-h-6c').attr('checked', false).checkboxradio('refresh');
+									$('#agregarGrupo').val('default').attr('selected', true).selectmenu("refresh");
 
 									$('#cancelar').click();
 								});
@@ -306,11 +301,14 @@
 
 											tr += '<td><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
 										}
+										
 										$("tbody#content_operaciones").html(tr);
 
+										$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
+										$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
+
 									});
-									
-									alert('Operaciones Copiadas');
+
 									$("a#cancelCopy").click();
 								});
 							});
