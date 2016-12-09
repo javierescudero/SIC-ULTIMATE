@@ -45,6 +45,7 @@
 	                	<option value="si">Si</option>
 	        		</select>
 	          	</div><br>
+
 	          	<div class="ui-grid-b">
 	          		<div class="ui-block-a">
 	          			<label for="captura"><b>Captura</b></label><hr>
@@ -63,6 +64,7 @@
 		   					<label for="checkUsuarios">Usuarios</label>
 	    				</fieldset>
 	          		</div>
+
 	          		<div class="ui-block-b">
 	          			<label for="reportes"><b>Reportes</b></label><hr>
 	          			<fieldset data-role="controlgroup">
@@ -76,6 +78,7 @@
 		   					<label for="checkCorreccion">Correciòn de Datos</label>
 	    				</fieldset>
 	          		</div>
+
 	          		<div class="ui-block-c">
 	          			<label for="area"><b>Area</b></label><hr>
 	          			<fieldset data-role="controlgroup">
@@ -87,7 +90,9 @@
 		   					<label for="checkValvulas">Valvulas</label>
 	    				</fieldset>
 	          		</div>
+
 	          	</div><br>
+
 	          	<fieldset data-role="controlgroup">
 	          		<center>
 	          			<script type="text/javascript">
@@ -122,35 +127,36 @@
 			          					$.getJSON("../getsJSON/add_user.php", {ajax: true, usuario: usuario, password: password, cambiar: camb_password, modelos: checkModelos, operaciones: checkOperaciones, componentes: checkComponentes, codigos: checkCodigos, registros: checkRegistros, usuarios: checkUsuarios, desempeno: checkDesempeno, tendencia: checkTendencia, contribuyentes: checkContribuyentes, correccion: checkCorreccion, electronica: checkElectronica, electromecanicos: checkElectromecanicos, valvulas: checkValvulas}, function(j) {
 
 			          						if (j[0] == 'existe') {
-			          							alert('Usuario Existe');
+			          							alert('El usuario ya existe');
 			          							document.getElementById('usuario').value = '';
 			          							document.getElementById('password').value = '';
-			          							document.getElementById('checkModelos').checked = 'false';
 			          						} else if (j[0] == 'otro') {
 			          							alert('Este usuario no cuenta con algun perfil.\nContacte al administrador del sistema.');
 			          						} else if (j[0] == 'exito'){
 			          							alert('Se agrego usuario correctamente');
 			          							document.getElementById('usuario').value = '';
 			          							document.getElementById('password').value = '';
-			          							document.getElementById('checkModelos').checked = false;
-					          					document.getElementById('checkOperaciones').checked;
-					          					document.getElementById('checkComponentes').checked;
-					          					document.getElementById('checkCodigos').checked;
-					          					document.getElementById('checkRegistros').checked;
-					          					document.getElementById('checkUsuarios').checked;
-					          					document.getElementById('checkDesempeno').checked;
-					          					document.getElementById('checkTendencia').checked;
-					          					document.getElementById('checkContribuyentes').checked;
-					          					document.getElementById('checkCorreccion').checked;
 
-					          					document.getElementById('checkElectronica').checked = false;
-					          					document.getElementById('checkElectromecanicos').checked = false;
-					          					document.getElementById('checkValvulas').checked = false;
+			          							$('#flip-1').val('off').slider("refresh");
+
+					          					$('#checkModelos').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+
+					          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+
+					          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
 			          						}
 										});
 		          					}
-
-
 		          				});
 
 	          				});
@@ -162,31 +168,38 @@
 	          				$(document).ready(function() {
 
 		          				$('#btnBorrar').click(function() {
-		          					var usuario = document.getElementById('usuario').value;
-		          					var password = document.getElementById('password').value;
+		          					var confirmEliminacion = confirm('Quieres eliminar a este usuario???');
 
-		          					if (usuario == '' || password == '') {
-		          						alert('Ingresar usuario y password');
-		          					} else {
-			          					$.getJSON("../getsJSON/del_user.php", {ajax: true, usuario: usuario, password: password}, function(j) {
+          							if (confirmEliminacion) {
+			          					var usuario = document.getElementById('usuario').value;
 
-			          						if (j[0] == 'eliminado') {
-			          							alert('El usuario se elimino');
-			          							document.getElementById('usuario').value = '';
-			          							document.getElementById('password').value = '';
-			          						} else if (j[0] == 'error') {
-			          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');
-			          							document.getElementById('usuario').value = '';
-			          							document.getElementById('password').value = '';
-			          						} else if (j[0] == 'noencontrado'){
-			          							alert('El usuario no se encuentra en la base de datos');
-			          							document.getElementById('usuario').value = '';
-			          							document.getElementById('password').value = '';
-			          						}
+			          					if (usuario == '') {
+			          						alert('Ingresar usuario');
+			          					} else {
 
-										});
-		          					}
+				          					$.getJSON("../getsJSON/del_user.php", {ajax: true, usuario: usuario}, function(j) {
 
+				          						if (j[0] == 'eliminado') {
+				          							alert('El usuario se elimino');
+				          							document.getElementById('usuario').value = '';
+				          							document.getElementById('password').value = '';
+
+				          						} else if (j[0] == 'error') {
+				          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');
+				          							document.getElementById('usuario').value = '';
+				          							document.getElementById('password').value = '';
+				          						} else if (j[0] == 'noencontrado'){
+				          							alert('El usuario no existe');
+				          							document.getElementById('usuario').value = '';
+				          							document.getElementById('password').value = '';
+				          						}
+
+											});
+			          					}
+          								
+          							} else {
+
+          							}
 
 		          				});
 
@@ -198,7 +211,77 @@
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
 		          				$('#btnBuscar').click(function() {
-		          					alert('Boton buscar');
+		          					var usuario = document.getElementById('usuario').value;
+		          					if (usuario == '') {
+		          						alert('Ingresar usuario');
+		          					} else {
+			          					$.getJSON("../getsJSON/carga_permisos.php", {ajax: true, usuario: usuario}, function(j) {
+
+			          						if (j[0] == 'error') {
+			          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');
+			          							document.getElementById('usuario').value = '';
+			          						} else if (j[0] == 'noencontrado'){
+			          							alert('El usuario no existe');
+			          							document.getElementById('usuario').value = '';
+			          							document.getElementById('password').value = '';
+
+			          						} else {
+			          							for (var i = 0; i < j.length; i++) {
+			          								document.getElementById('password').value = j[i].Password;
+
+			          								if (j[i].cap_modfam == 1) { $('#checkModelos').attr('checked', true).checkboxradio('refresh'); }
+			          								else { $('#checkModelos').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].cap_Oper == 1) { $('#checkOperaciones').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkOperaciones').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].cap_comp == 1) { $('#checkComponentes').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkComponentes').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].cap_codes == 1) { $('#checkCodigos').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkCodigos').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].cap_Registros == 1) { $('#checkRegistros').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkRegistros').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].rep_desp == 1) { $('#checkDesempeno').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkDesempeno').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].rep_graf == 1) { $('#checkTendencia').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkTendencia').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].rep_contrib == 1) { $('#checkContribuyentes').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkContribuyentes').attr('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].rep_correc == 1) { $('#checkCorreccion').attr('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkCorreccion').attr('checked', false).checkboxradio('refresh'); }
+
+			          								var areas = j[i].Area;
+			          								var spAreas = areas.split(" ");
+
+			          								if (spAreas[0] == 'Electronica,') {
+			          									$('#checkElectronica').attr('checked', true).checkboxradio('refresh');
+			          								} else {
+			          									$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
+			          								}
+
+			          								if (spAreas[0] == 'Electromecanicos,' || spAreas[1] == 'Electromecanicos,') {
+			          									$('#checkElectromecanicos').attr('checked', true).checkboxradio('refresh');
+			          								} else {
+			          									$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
+			          								}
+
+			          								if (spAreas[0] == 'Valvulas,' || spAreas[1] == 'Valvulas,' || spAreas[1] == 'Valvulas,') {
+			          									$('#checkValvulas').attr('checked', true).checkboxradio('refresh');
+			          								} else {
+			          									$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
+			          								}
+
+												}
+			          						}
+
+										});
+		          					}
 		          				});
 	          				});
 	          			</script>
@@ -208,7 +291,74 @@
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
 		          				$('#btnModificar').click(function() {
-		          					alert('Boton modificar');
+		          					var confirmSet = confirm('Quieres editar a este usuario???');
+
+          							if (confirmSet) {
+          								var usuario = document.getElementById('usuario').value;
+			          					var password = document.getElementById('password').value;
+			          					
+			          					var checkModelos = document.getElementById('checkModelos').checked; //true or false
+			          					var checkOperaciones = document.getElementById('checkOperaciones').checked;
+			          					var checkComponentes = document.getElementById('checkComponentes').checked;
+			          					var checkCodigos = document.getElementById('checkCodigos').checked;
+			          					var checkRegistros = document.getElementById('checkRegistros').checked;
+			          					var checkUsuarios = document.getElementById('checkUsuarios').checked;
+
+			          					var checkDesempeno = document.getElementById('checkDesempeno').checked;
+			          					var checkTendencia = document.getElementById('checkTendencia').checked;
+			          					var checkContribuyentes = document.getElementById('checkContribuyentes').checked;
+			          					var checkCorreccion = document.getElementById('checkCorreccion').checked;
+
+			          					var checkElectronica = document.getElementById('checkElectronica').checked;
+			          					var checkElectromecanicos = document.getElementById('checkElectromecanicos').checked;
+			          					var checkValvulas = document.getElementById('checkValvulas').checked;
+
+			          					if (usuario == '') {
+			          						alert('Ingresar usuario');
+			          					} else {
+
+				          					$.getJSON("../getsJSON/set_user.php", {ajax: true, usuario: usuario, password: password, modelos: checkModelos, operaciones: checkOperaciones, componentes: checkComponentes, codigos: checkCodigos, registros: checkRegistros, usuarios: checkUsuarios, desempeno: checkDesempeno, tendencia: checkTendencia, contribuyentes: checkContribuyentes, correccion: checkCorreccion, electronica: checkElectronica, electromecanicos: checkElectromecanicos, valvulas: checkValvulas}, function(j) {
+
+				          						if (j[0] == 'actualizado') {
+				          							alert('El usuario se actualizo');
+				          							document.getElementById('usuario').value = '';
+				          							document.getElementById('password').value = '';
+
+				          							$('#flip-1').val('off').slider("refresh");
+
+						          					$('#checkModelos').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+
+						          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+
+						          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
+				          							
+				          						} else if (j[0] == 'error') {
+				          							alert('ERROR !!!\nOcurrio un error al intentar actualizar los pripvilegios del usuario.');
+				          							document.getElementById('usuario').value = '';
+				          							document.getElementById('password').value = '';
+				          						} else if (j[0] == 'noencontrado'){
+				          							alert('El usuario no existe');
+				          							document.getElementById('usuario').value = '';
+				          							document.getElementById('password').value = '';
+				          						}
+
+											});
+			          					}
+          								
+          							} else {
+
+          							}
+
 		          				});
 	          				});
 	          			</script>
@@ -218,7 +368,27 @@
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
 		          				$('#btnCancelar').click(function() {
-		          					alert('Boton cancelar');
+		          					document.getElementById('usuario').value = '';
+          							document.getElementById('password').value = '';
+
+          							$('#flip-1').val('off').slider("refresh");
+
+		          					$('#checkModelos').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+
+		          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+
+		          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
 		          				});
 	          				});
 	          			</script>

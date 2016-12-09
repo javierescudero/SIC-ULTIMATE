@@ -70,13 +70,14 @@
 			else { $cor = 1; }
 			array_push($array, $cor);
 
-			if ($electronica) { $areas .= "Electronica,"; }
+			if ($electronica == 'true') { $areas .= "Electronica, "; }
 
-			if ($electromecanicos) { $areas .= "Electromecanicos,"; }
 
-			if ($valvulas) { $areas .= "Valvulas,"; }
+			if ($electromecanicos == 'true') { $areas .= "Electromecanicos, "; }
 
-			if ($cambiar == 'false') { $cam = 0; } 
+			if ($valvulas == 'true') { $areas .= "Valvulas,"; }
+
+			if ($cambiar == 'no') { $cam = 0; }
 			else { $cam = 1; }
 
 			$tipo_usuario = implode("", $array);
@@ -98,10 +99,11 @@
 				$rows[] = 'otro';
 				print(json_encode($rows));
 			} else {
-				$query = "INSERT INTO permissions (Usuario, Password, cap_modfam, cap_Oper, cap_comp, cap_codes, cap_Registros, rep_desp, rep_graf, rep_contrib, rep_correc, Usr, Area, CambPwd, tipo) VALUES ('".$usuario."', '".$password."', '".$modelos."', '".$operaciones."', '".$componentes."', '".$codigos."', '".$registros."', '".$desempeno."', '".$tendencia."', '".$contribuyentes."', '".$correccion."', '".$usuarios."', '".$areas."', '".$cambiar."', '".$tipo."')";
+				$query = "INSERT INTO permissions (Usuario, Password, cap_modfam, cap_Oper, cap_comp, cap_codes, cap_Registros, rep_desp, rep_graf, rep_contrib, rep_correc, Usr, Area, CambPwd, tipo) VALUES ('".$usuario."', '".$password."', '".$mod."', '".$ope."', '".$com."', '".$cod."', '".$reg."', '".$des."', '".$ten."', '".$con."', '".$cor."', '".$usu."', '".$areas."', '".$cam."', '".$tipo."')";
 				if (mysqli_query($con_user, $query)) {
 					$rows[] = 'exito';
 					print(json_encode($rows));
+					//print_r($query);
 				} else {
 					$rows[] = 'error';
 					print(json_encode($rows));

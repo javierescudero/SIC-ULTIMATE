@@ -320,7 +320,7 @@ $(document).ready(function() {
 
 			  					<!-- PopUp Elimnar Familia-->
 			  					<div data-role="main" class="ui-content" id="btns_ajustar">
-			    					<a href="#popupEliminarFamilia" id="btnAgregarFam" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
+			    					<a href="#popupEliminarFamilia" id="btnEliminarFam" data-rel="popup" class="ui-btn ui-icon-minus ui-btn-icon-left ui-btn-inline ui-corner">Eliminar</a>
 			    					<div data-role="popup" id="popupEliminarFamilia" class="ui-content">
 			      						<h3>Eliminar Familia</h3>
 			      						<p>Estas seguro de eliminar esta <b>Familia</b>???<br>
