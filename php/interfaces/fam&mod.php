@@ -142,9 +142,9 @@
 													tr += '<td id="' + j[i].Operacion + '" class="btnOperacion"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td id="' + j[i].Descripcion + '" class="descripcion"><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 													if (j[i].UsarPPms == 1) {
-														tr += '<td id="' + j[i].UsarPPms + '" clase="checkPPms"><fieldset data-iconpos="left" ><input id="' + j[i].UsarPPms + '" type="checkbox" checked ><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left" ><input id="' + j[i].UsarPPms + '" type="checkbox" checked ><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
 													} else {
-														tr += '<td id="' + j[i].UsarPPms + '" clase="checkPPms"><fieldset data-iconpos="left" ><input id="' + j[i].UsarPPms + '" type="checkbox" ><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left" ><input id="' + j[i].UsarPPms + '" type="checkbox" ><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
 													}
 
 													tr += '<td id="' + j[i].Grupo + '" class="selectGrupo"><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
@@ -171,9 +171,9 @@
 													tr += '<td id="'+j[i].Operacion+'" class="btnOperacion"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'" class="descripcion"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 													if (j[i].UsarPPms == 1) {
-														tr += '<td id="'+j[i].UsarPPms+'" clase="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														tr += '<td id="'+j[i].UsarPPms+'" class="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 													} else {
-														tr += '<td id="'+j[i].UsarPPms+'" clase="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+														tr += '<td id="'+j[i].UsarPPms+'" class="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 													}
 
 													tr += '<td id="'+j[i].Grupo+'" class="selectGrupo"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
@@ -442,9 +442,9 @@
 															tr += '<td id="'+j[i].Operacion+'" class="btnOperacion"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'" class="descripcion"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 															if (j[i].UsarPPms == 1) {
-																tr += '<td id="'+j[i].UsarPPms+'" clase="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+																tr += '<td id="'+j[i].UsarPPms+'" class="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 															} else {
-																tr += '<td id="'+j[i].UsarPPms+'" clase="checkPPms"><fieldset data-iconpos="left"  ><input id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+																tr += '<td id="'+j[i].UsarPPms+'" class="checkPPms"><fieldset data-iconpos="left"  ><input id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 															}
 
 															tr += '<td id="'+j[i].Grupo+'" class="selectGrupo"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
@@ -539,9 +539,9 @@
 															tr += '<td id="'+j[i].Operacion+'" class="btnOperacion"><span id="'+j[i].Operacion+'" ><a id="'+j[i].Operacion+'" class="ui-btn" href="#?operacion="'+ j[i].Operacion +'"" data-rel="popup">' +j[i].Operacion+ '</a></span></td><td id="'+j[i].Descripcion+'" class="descripcion"><span class="ui-btn" id="'+j[i].Descripcion+'" >' +j[i].Descripcion+ '</span></td>';
 
 															if (j[i].UsarPPms == 1) {
-																tr += '<td id="'+j[i].UsarPPms+'" clase="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+																tr += '<td id="'+j[i].UsarPPms+'" class="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox" checked><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 															} else {
-																tr += '<td id="'+j[i].UsarPPms+'" clase="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
+																tr += '<td id="'+j[i].UsarPPms+'" class="checkPPms"><fieldset data-iconpos="left" ><input id="'+j[i].UsarPPms+'" type="checkbox"><label for="'+j[i].UsarPPms+'">Usar?</label></fieldset></td>';
 															}
 
 															tr += '<td id="'+j[i].Grupo+'" class="selectGrupo"><select name="'+j[i].Grupo+'" id="'+j[i].Grupo+'" ><option value="default" >- - - - - - -</option><option value="'+j[i].Grupo+'" selected>' +j[i].Grupo+ '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
@@ -597,9 +597,9 @@
 														tr += '<td id="'+j[i].Operacion+'" class="btnOperacion"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '</a></span></td><td id="' + j[i].Descripcion + '" class="descripcion"><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
 														if (j[i].UsarPPms == 1) {
-															tr += '<td id="' + j[i].UsarPPms + '" clase="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+															tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
 														} else {
-															tr += '<td id="' + j[i].UsarPPms + '" clase="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+															tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
 														}
 
 														tr += '<td id="' + j[i].Grupo + '" class="selectGrupo"><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
@@ -712,25 +712,34 @@
 			var btn2="";
 			var btn3="";
 			var btn4="";
+			var btn5="";
 			$("#popupEditarOperacion").bind({
 				popupafteropen: function(event, ui) {
 					$(event.currentTarget).find('#operacionEdita').val(btn1);
 					$(event.currentTarget).find('#descripcionEdita').val(btn2);
 					
-					//$(event.currentTarget).find('#checkbox-h-5a').is(':checked');
-					
 					if (btn3) {
-						alert('if');
 						$(event.currentTarget).find('#checkbox-h-5a').attr('checked', true).checkboxradio('refresh');
 					} else {
-						alert('else');
 						$(event.currentTarget).find('#checkbox-h-5a').attr('checked', false).checkboxradio('refresh');
 					}
-
-					//alert(btn3);
 					
-					//$(event.currentTarget).find('#grupoAgrega').selected(btn4);
-					console.log(event.currentTarget);
+					if (btn4 == 'process') {
+						algo = $(event.currentTarget).find('#grupoEdita option[value = 	"process"]').attr('selected', true);
+					} else if (btn4 == 'final_test') {
+						algo = $(event.currentTarget).find('#grupoEdita option[value = 	"final_test"]').attr('selected', true);
+					} else if (btn4 == 'qc_audit') {
+						algo = $(event.currentTarget).find('#grupoEdita option[value = 	"qc_audit"]').attr('selected', true);
+					} else {
+						algo = $(event.currentTarget).find('#grupoEdita option[value = 	"default"]').attr('selected', true);
+					}
+
+					$('#grupoEdita').selectmenu('refresh', true);
+
+					//$(event.currentTarget).find('#grupoEdita').val('process').attr('selected', true).selectmenu('refresh');
+					//$('.selectGrupo').val(btn4).attr('selected', true).selectmenu("refresh");
+					//console.log(algo);
+					console.log(btn4);
 				}
 			});
 
@@ -740,44 +749,32 @@
 
 				btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').is(':checked');
 
-				/*if ($('.checkPPms').is(':checked')) {
-					alert('Seleccionado');
-					btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').attr('checked', true).checkboxradio('refresh');
-				} else {
-					alert('NO Seleccionado');
-					btn3=$(this).siblings('.checkPPms').children('fieldset').children('input').attr('checked', false).checkboxradio('refresh');
-				}*/
+				btn4=$(this).siblings('.selectGrupo').children('select').prop('value');
 
+				//console.log(btn4);
 
-				btn4=$(this).siblings('.selectGrupo').children('select').children('option').prop('value');
-
-				console.log(btn1);
-				console.log(btn2);
-				console.log(btn3);
-				console.log(btn4);
-				//window.alert(btn1);
 			});
 
-			$('#popupAgregarFamilia').bind({
+			$('#popupAgregarFamilia').on({
 				popupafterclose: function(event, ui) {
 					document.getElementById('pop_inputAgregaFamilia').value = '';
 				}
 			});
 
-			$('#popupAgregarModelo').bind({
+			$('#popupAgregarModelo').on({
 				popupafterclose: function(event, ui) {
 					document.getElementById('pop_inputAgregaModelo_FM').value = '';
 				}
 			});
 
-			$('#popupCopiarOperacion').bind({
+			$('#popupCopiarOperacion').on({
 				popupafterclose: function(event, ui) {
 					$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
 					$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
 				}
 			});
 
-			$('#popupAgregarOperacion').bind({
+			$('#popupAgregarOperacion').on({
 				popupafterclose: function(event, ui) {
 					document.getElementById('operacionAgrega').value = '';
 					document.getElementById('descripcionAgrega').value = '';
