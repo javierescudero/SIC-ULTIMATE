@@ -4,7 +4,6 @@
 
 	if ($_REQUEST['ajax']) {
 		$usuario = strtolower($_REQUEST['usuario']);
-		//$password = hash('md5', $_REQUEST['password']);
 
 		$query = mysqli_query($con_user, "SELECT * FROM permissions WHERE Usuario = '".$usuario."'");
 		$num_rows = mysqli_num_rows($query);
@@ -17,5 +16,7 @@
 			$rows[] = 'noencontrado';
 			print(json_encode($rows));
 		}
+
+		mysqli_close($con_user);
 	}
 ?>

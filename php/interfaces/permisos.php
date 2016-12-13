@@ -95,6 +95,7 @@
 
 	          	<fieldset data-role="controlgroup">
 	          		<center>
+	          			
 	          			<script type="text/javascript">
 	          				$(document).ready(function() {
 
@@ -130,6 +131,24 @@
 			          							alert('El usuario ya existe');
 			          							document.getElementById('usuario').value = '';
 			          							document.getElementById('password').value = '';
+
+			          							$('#flip-1').val('off').slider("refresh");
+
+					          					$('#checkModelos').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkOperaciones').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkComponentes').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkCodigos').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkRegistros').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkUsuarios').prop('checked', false).checkboxradio('refresh');
+
+					          					$('#checkDesempeno').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkTendencia').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkContribuyentes').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkCorreccion').prop('checked', false).checkboxradio('refresh');
+
+					          					$('#checkElectronica').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkElectromecanicos').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkValvulas').prop('checked', false).checkboxradio('refresh');
 			          						} else if (j[0] == 'otro') {
 			          							alert('Este usuario no cuenta con algun perfil.\nContacte al administrador del sistema.');
 			          						} else if (j[0] == 'exito'){
@@ -139,21 +158,21 @@
 
 			          							$('#flip-1').val('off').slider("refresh");
 
-					          					$('#checkModelos').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkModelos').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkOperaciones').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkComponentes').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkCodigos').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkRegistros').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkUsuarios').prop('checked', false).checkboxradio('refresh');
 
-					          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkDesempeno').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkTendencia').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkContribuyentes').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkCorreccion').prop('checked', false).checkboxradio('refresh');
 
-					          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
-					          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
+					          					$('#checkElectronica').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkElectromecanicos').prop('checked', false).checkboxradio('refresh');
+					          					$('#checkValvulas').prop('checked', false).checkboxradio('refresh');
 			          						}
 										});
 		          					}
@@ -184,21 +203,21 @@
 				          							document.getElementById('usuario').value = '';
 				          							document.getElementById('password').value = '';
 				          							
-				          							$('#checkModelos').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+				          							$('#checkModelos').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkOperaciones').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkComponentes').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkCodigos').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkRegistros').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkUsuarios').prop('checked', false).checkboxradio('refresh');
 
-						          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkDesempeno').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkTendencia').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkContribuyentes').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkCorreccion').prop('checked', false).checkboxradio('refresh');
 
-						          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkElectronica').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkElectromecanicos').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkValvulas').prop('checked', false).checkboxradio('refresh');
 
 				          						} else if (j[0] == 'error') {
 				          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');
@@ -234,66 +253,82 @@
 			          					$.getJSON("../getsJSON/carga_permisos.php", {ajax: true, usuario: usuario}, function(j) {
 
 			          						if (j[0] == 'error') {
+
 			          							alert('ERROR !!!\nOcurrio un error al intentar eliminar al usuario.');
 			          							document.getElementById('usuario').value = '';
+
 			          						} else if (j[0] == 'noencontrado'){
+
 			          							alert('El usuario no existe');
 			          							document.getElementById('usuario').value = '';
 			          							document.getElementById('password').value = '';
 
 			          						} else {
+
 			          							for (var i = 0; i < j.length; i++) {
 			          								document.getElementById('password').value = j[i].Password;
 
-			          								if (j[i].cap_modfam == 1) { $('#checkModelos').attr('checked', true).checkboxradio('refresh'); }
-			          								else { $('#checkModelos').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].CambPwd == 1) { $('#flip-1').val('si').prop('selected', true).slider("refresh"); }
+			          								else { $('#flip-1').val('no').prop('selected', true).slider("refresh"); }
 
-			          								if (j[i].cap_Oper == 1) { $('#checkOperaciones').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkOperaciones').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].cap_modfam == 1) { $('#checkModelos').prop('checked', true).checkboxradio('refresh'); }
+			          								else { $('#checkModelos').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].cap_comp == 1) { $('#checkComponentes').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkComponentes').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].cap_Oper == 1) { $('#checkOperaciones').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkOperaciones').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].cap_codes == 1) { $('#checkCodigos').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkCodigos').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].cap_comp == 1) { $('#checkComponentes').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkComponentes').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].cap_Registros == 1) { $('#checkRegistros').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkRegistros').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].cap_codes == 1) { $('#checkCodigos').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkCodigos').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].rep_desp == 1) { $('#checkDesempeno').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkDesempeno').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].cap_Registros == 1) { $('#checkRegistros').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkRegistros').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].rep_graf == 1) { $('#checkTendencia').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkTendencia').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].Usr == 1) { $('#checkUsuarios').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkUsuarios').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].rep_contrib == 1) { $('#checkContribuyentes').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkContribuyentes').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].rep_desp == 1) { $('#checkDesempeno').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkDesempeno').prop('checked', false).checkboxradio('refresh'); }
 
-			          								if (j[i].rep_correc == 1) { $('#checkCorreccion').attr('checked', true).checkboxradio('refresh'); } 
-			          								else { $('#checkCorreccion').attr('checked', false).checkboxradio('refresh'); }
+			          								if (j[i].rep_graf == 1) { $('#checkTendencia').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkTendencia').prop('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].rep_contrib == 1) { $('#checkContribuyentes').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkContribuyentes').prop('checked', false).checkboxradio('refresh'); }
+
+			          								if (j[i].rep_correc == 1) { $('#checkCorreccion').prop('checked', true).checkboxradio('refresh'); } 
+			          								else { $('#checkCorreccion').prop('checked', false).checkboxradio('refresh'); }
 
 			          								var areas = j[i].Area;
 			          								var spAreas = areas.split(" ");
 
-			          								if (spAreas[0] == 'Electronica,') {
-			          									$('#checkElectronica').attr('checked', true).checkboxradio('refresh');
-			          								} else {
-			          									$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
-			          								}
+			          								var str = j[i].Area;
+													var posElectronica = str.search("Electronica"); 
+													var posElectromecanicos = str.search("Electromecanicos"); 
+													var posValvulas = str.search("Valvulas"); 
 
-			          								if (spAreas[0] == 'Electromecanicos,' || spAreas[1] == 'Electromecanicos,') {
-			          									$('#checkElectromecanicos').attr('checked', true).checkboxradio('refresh');
-			          								} else {
-			          									$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
-			          								}
+													if (posElectronica > -1) {
+														$('#checkElectronica').prop('checked', true).checkboxradio('refresh');
+													} else {
+														$('#checkElectronica').prop('checked', false).checkboxradio('refresh');
+													}
 
-			          								if (spAreas[0] == 'Valvulas,' || spAreas[1] == 'Valvulas,' || spAreas[1] == 'Valvulas,') {
-			          									$('#checkValvulas').attr('checked', true).checkboxradio('refresh');
-			          								} else {
-			          									$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
-			          								}
+													if (posElectromecanicos > -1 ) {
+														$('#checkElectromecanicos').prop('checked', true).checkboxradio('refresh');
+													} else {
+														$('#checkElectromecanicos').prop('checked', false).checkboxradio('refresh');
+													}
+
+													if (posValvulas > -1 ) {
+														$('#checkValvulas').prop('checked', true).checkboxradio('refresh');
+													} else {
+														$('#checkValvulas').prop('checked', false).checkboxradio('refresh');
+													} 
 
 												}
+
 			          						}
 
 										});
@@ -312,6 +347,8 @@
           							if (confirmSet) {
           								var usuario = document.getElementById('usuario').value;
 			          					var password = document.getElementById('password').value;
+			          					
+			          					var flipCambiar = $('#flip-1').val();
 			          					
 			          					var checkModelos = document.getElementById('checkModelos').checked; //true or false
 			          					var checkOperaciones = document.getElementById('checkOperaciones').checked;
@@ -333,7 +370,7 @@
 			          						alert('Ingresar usuario');
 			          					} else {
 
-				          					$.getJSON("../getsJSON/set_user.php", {ajax: true, usuario: usuario, password: password, modelos: checkModelos, operaciones: checkOperaciones, componentes: checkComponentes, codigos: checkCodigos, registros: checkRegistros, usuarios: checkUsuarios, desempeno: checkDesempeno, tendencia: checkTendencia, contribuyentes: checkContribuyentes, correccion: checkCorreccion, electronica: checkElectronica, electromecanicos: checkElectromecanicos, valvulas: checkValvulas}, function(j) {
+				          					$.getJSON("../getsJSON/set_user.php", {ajax: true, usuario: usuario, password: password, modelos: checkModelos, operaciones: checkOperaciones, componentes: checkComponentes, codigos: checkCodigos, registros: checkRegistros, usuarios: checkUsuarios, desempeno: checkDesempeno, tendencia: checkTendencia, contribuyentes: checkContribuyentes, correccion: checkCorreccion, electronica: checkElectronica, electromecanicos: checkElectromecanicos, valvulas: checkValvulas, cambiarPassword: flipCambiar}, function(j) {
 
 				          						if (j[0] == 'actualizado') {
 				          							alert('El usuario se actualizo');
@@ -342,21 +379,21 @@
 
 				          							$('#flip-1').val('off').slider("refresh");
 
-						          					$('#checkModelos').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkModelos').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkOperaciones').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkComponentes').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkCodigos').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkRegistros').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkUsuarios').prop('checked', false).checkboxradio('refresh');
 
-						          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkDesempeno').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkTendencia').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkContribuyentes').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkCorreccion').prop('checked', false).checkboxradio('refresh');
 
-						          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
-						          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
+						          					$('#checkElectronica').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkElectromecanicos').prop('checked', false).checkboxradio('refresh');
+						          					$('#checkValvulas').prop('checked', false).checkboxradio('refresh');
 				          							
 				          						} else if (j[0] == 'error') {
 				          							alert('ERROR !!!\nOcurrio un error al intentar actualizar los pripvilegios del usuario.');
@@ -389,22 +426,22 @@
 
           							$('#flip-1').val('off').slider("refresh");
 
-		          					$('#checkModelos').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkOperaciones').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkComponentes').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkCodigos').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkRegistros').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkUsuarios').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkModelos').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkOperaciones').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkOperaciones').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkComponentes').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkCodigos').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkRegistros').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkUsuarios').prop('checked', false).checkboxradio('refresh');
 
-		          					$('#checkDesempeno').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkTendencia').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkContribuyentes').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkCorreccion').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkDesempeno').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkTendencia').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkContribuyentes').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkCorreccion').prop('checked', false).checkboxradio('refresh');
 
-		          					$('#checkElectronica').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkElectromecanicos').attr('checked', false).checkboxradio('refresh');
-		          					$('#checkValvulas').attr('checked', false).checkboxradio('refresh');
+		          					$('#checkElectronica').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkElectromecanicos').prop('checked', false).checkboxradio('refresh');
+		          					$('#checkValvulas').prop('checked', false).checkboxradio('refresh');
 		          				});
 	          				});
 	          			</script>

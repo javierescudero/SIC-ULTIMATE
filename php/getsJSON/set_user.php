@@ -5,6 +5,7 @@
 	if ($_REQUEST['ajax']) {
 		$usuario = strtolower($_REQUEST['usuario']);
 		$password = hash('md5', $_REQUEST['password']);
+		$cambiarPassword = $_REQUEST['cambiarPassword'];
 		$modelos = $_REQUEST['modelos'];
 		$operaciones = $_REQUEST['operaciones'];
 		$componentes = $_REQUEST['componentes'];
@@ -21,8 +22,10 @@
 
 		$array = array();
 
-		$areas = "";
+		if ($cambiarPassword == 'no') { $cambiar = 0; }
+		else { $cambiar = 1; }
 
+		$areas = "";
 
 		if ($modelos == 'false') { $mod = 0; } 
 		else { $mod= 1; }
@@ -66,7 +69,6 @@
 
 		if ($electronica == 'true') { $areas .= "Electronica, "; }
 
-
 		if ($electromecanicos == 'true') { $areas .= "Electromecanicos, "; }
 
 		if ($valvulas == 'true') { $areas .= "Valvulas,"; }
@@ -85,14 +87,14 @@
 
 		$query = mysqli_query($con_user, "SELECT * FROM permissions WHERE Usuario = '".$usuario."'");
 		$num_rows = mysqli_num_rows($query);
+		
 		if ($num_rows != 0) {
 
-			$query_update = " UPDATE permissions SET cap_modfam = '".$mod."', cap_Oper = '".$ope."', cap_comp = '".$com."', cap_codes = '".$cod."', cap_Registros = '".$reg."', rep_desp = '".$des."', rep_graf = '".$ten."', rep_contrib = '".$con."', rep_correc = '".$cor."', Area = '".$areas."', tipo = '".$tipo."' WHERE Usuario = '".$usuario."' ";
+			$query_update = " UPDATE permissions SET cap_modfam = '".$mod."', cap_Oper = '".$ope."', cap_comp = '".$com."', cap_codes = '".$cod."', cap_Registros = '".$reg."', rep_desp = '".$des."', rep_graf = '".$ten."', rep_contrib = '".$con."', rep_correc = '".$cor."', Usr = '".$usu."', Area = '".$areas."', CambPwd = '".$cambiar."', tipo = '".$tipo."' WHERE Usuario = '".$usuario."' ";
 
 			if (mysqli_query($con_user, $query_update)) {
 				$rows[] = 'actualizado';
 				print(json_encode($rows));
-				//print_r($query);
 			} else {
 				$rows[] = 'error';
 				print(json_encode($rows));
@@ -102,5 +104,7 @@
 			$rows[] = 'noencontrado';
 			print(json_encode($rows));
 		}
+
+		mysqli_close($con_user);
 	}
 ?>
