@@ -24,7 +24,7 @@
 
 		$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
 
-		$query_update = " UPDATE operaciones SET Operacion = '".$operacion."', Descripcion = '".$descripcion."', UsarPPms = '".$ppms."', Grupo = '".$grupo."' WHERE Modelo = '".$modelo."' AND Familia = '".$familia."' ";
+		$query_update = " UPDATE operaciones SET Operacion = '".$operacion."', Descripcion = '".$descripcion."', UsarPPms = '".$ppms."', Grupo = '".$grupo."' WHERE Modelo = '".$modelo."' AND Familia = '".$familia."' AND Operacion = '".$operacion."' ";
 
 		if (mysqli_query($con, $query_update)) {
 
