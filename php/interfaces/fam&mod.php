@@ -581,7 +581,6 @@
 
 												$.getJSON("../getsJSON/copy_operaciones.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
 													var tr = "";
-													var popup = "";
 													for (var i = 0; i < j.length; i++) {
 														
 														tr += '<tr><td id="'+j[i].Operacion+'" class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
@@ -674,27 +673,29 @@
 													alert('No se encontraron Operaciones');
 												} else if (j[0] == 'error') {
 													alert('ERROR!!!\nAl intentar actualizar');
-												}
+												} else {
 
-												for (var i = 0; i < j.length; i++) {
-													
-													tr += '<tr><td id="'+j[i].Operacion+'" class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-													
-													tr += '<td id="'+j[i].Operacion+'" class="btnOperacion"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '</a></span></td><td id="' + j[i].Descripcion + '" class="descripcion"><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
+													for (var i = 0; i < j.length; i++) {
+														
+														tr += '<tr><td id="'+j[i].Operacion+'" class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
+														
+														tr += '<td id="'+j[i].Operacion+'" class="btnOperacion"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '</a></span></td><td id="' + j[i].Descripcion + '" class="descripcion"><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
 
-													if (j[i].UsarPPms == 1) {
-														tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox" checked disabled><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
-													} else {
-														tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox" disabled><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														if (j[i].UsarPPms == 1) {
+															tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox" checked disabled><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														} else {
+															tr += '<td id="' + j[i].UsarPPms + '" class="checkPPms"><fieldset data-iconpos="left"><input id="' + j[i].UsarPPms + '" type="checkbox" disabled><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
+														}
+
+														tr += '<td class="selectGrupo"><select disabled><option value="Default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="Final Test">Final Test</option><option value="QC Audit">QC Audit</option><option value="Process">Process</option></select></td></tr>';
+
 													}
 
-													tr += '<td class="selectGrupo"><select disabled><option value="Default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="Final Test">Final Test</option><option value="QC Audit">QC Audit</option><option value="Process">Process</option></select></td></tr>';
+													$('#checkbox-h-5a').checkboxradio('refresh', true);
+													
+													$("tbody#content_operaciones").html(tr);
 
 												}
-
-												$('#checkbox-h-5a').checkboxradio('refresh', true);
-												
-												$("tbody#content_operaciones").html(tr);
 
 											});
 			  							});
@@ -754,7 +755,6 @@
 			var btn2="";
 			var btn3="";
 			var btn4="";
-			var btn5="";
 
 			$("#popupEditarOperacion").on({
 				popupafteropen: function(event, ui) {

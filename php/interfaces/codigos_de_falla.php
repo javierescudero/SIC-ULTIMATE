@@ -1,6 +1,5 @@
 <?php
 	require_once("../conexion.php");
-	header('Content-Type: text/html; charset=utf-8');
 	if (isset($_GET['area'])) {
 		if (isset($_GET['tipoUser'])) {
 			$area = $_GET['area'];
@@ -47,36 +46,6 @@
 			}
 			mysqli_close($con);
 		}
-
-		function cargaCodigos($conn, $database) {
-			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-			$query = mysqli_query($con, "SELECT DISTINCT Codigo FROM codigos ORDER BY Codigo");
-			$num_rows = mysqli_num_rows($query);
-			while ($row = mysqli_fetch_assoc($query)) {
-				echo "<option value='".$row['Codigo']."'>".$row['Codigo']."</option>";
-			}
-			mysqli_close($con);
-		}
-
-		function cargaRegistrarAs($conn, $database) {
-			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-			$query = mysqli_query($con, "SELECT DISTINCT RegistrarAs FROM codigos ORDER BY RegistrarAs");
-			$num_rows = mysqli_num_rows($query);
-			while ($row = mysqli_fetch_assoc($query)) {
-				echo "<option value='".$row['RegistrarAs']."'>".$row['RegistrarAs']."</option>";
-			}
-			mysqli_close($con);
-		}
-
-		function cargaDescripcion($conn, $database) {
-			$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
-			$query = mysqli_query($con, "SELECT DISTINCT Descripcion FROM codigos ORDER BY Descripcion");
-			$num_rows = mysqli_num_rows($query);
-			while ($row = mysqli_fetch_assoc($query)) {
-				echo "<option value='".$row['Descripcion']."'>".$row['Descripcion']."</option>";
-			}
-			mysqli_close($con);
-		}
 	?>
 	<div data-role="page" data-theme="b" id="divPage">
 		<!--Header-->
@@ -115,14 +84,15 @@
 			}
 		?>
 		<div id="divForm_CDF">
+
 			<form action="">
 				<center>
 					<div data-role="fieldcontain" id="divContentModelo_CDF">
 						<center>
 							<label for="modelo"><b>Modelo</b></label>
 						</center>
-						<select name="modelo" id="selectModelo_CD">
-							<option value="default">- - - Selecciona Un Modelo - - -</option>
+						<select id="selectModelo_CD">
+							<option value="Default">- - - Selecciona Un Modelo - - -</option>
 							<?php
 								if ($area == 'Electronica') {
 									cargaModelos($con, 'Electronica');
@@ -140,38 +110,81 @@
 					<div id="divBotonesCodigos">
 
 						<script type="text/javascript">
+
+							$("select#selectModelo_CD").change(function() {
+
+								//Carga los codigos al seleccionar un modelo.
+								$.getJSON("../getsJSON/get_codigos.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+									var tr = "";
+									if (j[0] == '') {
+									} else {
+										for (var i = 0; i < j.length; i++) {
+											tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+											
+											tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+
+											tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+
+											tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+
+										}
+									}
+									
+									$("tbody#content_codigos").html(tr);
+								});
+							});
+
+						</script>
+
+						<script type="text/javascript">
 							$(function() {
 								
 								//Agregar Codigos
-								$("a#agregarCodigoConfirmacion").click(function(){
+								$("#agregarCodigoConfirmacion").click(function(){
+
 									var valCodigo = document.getElementById('agregarCodigo').value;
 									var valregistrarComo = document.getElementById('registrarComo').value;
 									var valDescripcion = document.getElementById('agregarDescripcion').value;
 									var valModelo = document.getElementById('selectModelo_CD').value;
 
-									if (valModelo == 'default') {
+									if (valModelo == 'Default') {
 										alert('Debes seleccionar un modelo');
 									} else {
+
 										$.getJSON("../getsJSON/add_Codigos.php", {ajax: true, modelo: valModelo, codigo: valCodigo, registrarAs: valregistrarComo, descripcion: valDescripcion,  area: <?php echo "'$area'"; ?> }, function(j) {
+
 											var tr = "";
-											for (var i = 0; i < j.length; i++) {
 
-												tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-									
-												tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+											if (j[0] == 'noencontrada') {
+												alert('No se encontro familia');
+											} else if (j[0] == 'noencontrado') {
+												alert('No se encontro modelo');
+											} else if (j[0] == 'existe') {
+												alert('Operacion ya existe');
+											} else if (j[0] == 'error') {
+												alert('ERROR!!!\nAl agregar codigo');
+											}  else {
 
-												tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+												for (var i = 0; i < j.length; i++) {
 
-												tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+													tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+										
+													tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
+													tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+
+													tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+
+												}
+												$("#content_codigos").html(tr);
+
+												valCodigo = document.getElementById('agregarCodigo').value = '';
+												valregistrarComo = document.getElementById('registrarComo').value = '';
+												valDescripcion = document.getElementById('agregarDescripcion').value = '';
+
+												$('#cancelarAdd').click();
 											}
-											$("tbody#content_codigos").html(tr);
 
-											valCodigo = document.getElementById('agregarCodigo').value = '';
-											valregistrarComo = document.getElementById('registrarComo').value = '';
-											valDescripcion = document.getElementById('agregarDescripcion').value = '';
-
-											$('#cancelarAdd').click();
 
 										});
 										
@@ -201,14 +214,14 @@
 							$(function() {
 								
 								var valCodigo;
-								$('tbody#content_codigos').click(function (e) {
+								$('#content_codigos').click(function (e) {
 									valCodigo = e.target.id;
 								});
 
 								//Eliminar Codigo
-								$("a#eliminarCodigo").click(function(){
+								$("#eliminarCodigo").click(function(){
 									var valModelo = document.getElementById('selectModelo_CD').value;
-									if (valModelo == 'default') {
+									if (valModelo == 'Default') {
 										alert('Debes seleccionar algun modelo...');
 										return false;
 									}else {
@@ -218,18 +231,18 @@
 											} else {
 												for (var i = 0; i < j.length; i++) {
 
-													tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+													tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
 									
-													tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+													tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
-													tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+													tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
 
-													tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+													tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
 
 												}
 											}
 
-											$("tbody#content_codigos").html(tr);
+											$("#content_codigos").html(tr);
 
 										});
 
@@ -252,53 +265,6 @@
     						</div>
   						</div>
 
-  						<!-- PopUp Editar Codigos-->
-						<div data-role="popup" id="popupEditarCodigo" class="ui-content">
-							<label for="codigo">Codigo</label>
-							<select name="codigo" id="codigo">
-								<option value="default">- - - - - - -</option>
-								<?php
-									if ($area == 'Electronica') {
-										cargaCodigos($con, 'Electronica');
-									} elseif ($area == 'Electromecanicos') {
-										cargaCodigos($con, 'Electromecanicos');
-									} elseif ($area == 'Valvulas') {
-										cargaCodigos($con, 'Valvulas');
-									}
-								?>
-							</select>
-
-							<label for="registrarAs">Registrar Como</label>
-							<select name="registrarAs" id="registrarAs">
-								<option value="default">- - - - - - -</option>
-								<?php
-									if ($area == 'Electronica') {
-										cargaRegistrarAs($con, 'Electronica');
-									} elseif ($area == 'Electromecanicos') {
-										cargaRegistrarAs($con, 'Electromecanicos');
-									} elseif ($area == 'Valvulas') {
-										cargaRegistrarAs($con, 'Valvulas');
-									}
-								?>
-							</select>
-
-							<label for="descripcion">Descripcion</label>
-							<select name="descripcion" id="descripcion">
-								<option value="default">- - - - - - -</option>
-								<?php
-									if ($area == 'Electronica') {
-										cargaDescripcion($con, 'Electronica');
-									} elseif ($area == 'Electromecanicos') {
-										cargaDescripcion($con, 'Electromecanicos');
-									} elseif ($area == 'Valvulas') {
-										cargaDescripcion($con, 'Valvulas');
-									}
-								?>
-							</select>
-							<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
-							<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
-						</div>
-
 						<script type="text/javascript">
   							//Copiar Operaciones
 							$(document).ready(function(){
@@ -310,19 +276,19 @@
 										var tr = "";
 										for (var i = 0; i < j.length; i++) {
 											
-											tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+											tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
 								
-											tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+											tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
-											tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+											tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
 
-											tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+											tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
 										}
 
 										$("tbody#tabla_CDF").html(tr);
 
-										$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
-										$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
+										$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
+										$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
 
 									});
 									
@@ -339,6 +305,7 @@
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
 									<select name="mod_origen" id="mod_origen">
+										<option value="Default">- - - Selecciona Un Modelo - - -</option>
 										<?php
 											if ($area == 'Electronica') {
 												cargaModelos($con, 'Electronica');
@@ -353,6 +320,7 @@
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
 									<select name="mod_destino" id="mod_destino">
+										<option value="Default">- - - Selecciona Un Modelo - - -</option>
 										<?php
 											if ($area == 'Electronica') {
 												cargaModelos($con, 'Electronica');
@@ -402,35 +370,66 @@
 								</div>
     						</div>
   						</div>
+
+  						<script type="text/javascript">
+	  						$(document).ready(function() {
+	  							$('#guardarCambios').click(function() {
+
+	  								var modelo = document.getElementById('selectModelo_CD').value;
+	  								var codigo = document.getElementById('editarOperacion').value;
+	  								var registrarAs = document.getElementById('editarRegistrarComo').value;
+	  								var descripcion = document.getElementById('editarDescripcion').value;
+
+	  								/*alert('Modelo: ' + modelo + '\nCodigo: ' + codigo + '\nRegistrarAs: ' + registrarAs + '\nDescripcion: ' + descripcion);*/
+
+	  								$.getJSON("../getsJSON/set_codigos.php", {ajax: true, modelo: modelo, codigo: codigo, registrarAs: registrarAs, descripcion: descripcion, area: <?php echo "'$area'"; ?>}, function(j) {
+										
+										var tr = "";
+
+										if (j[0] == 'default') {
+											alert('No se encontraron Codigos');
+										} else if (j[0] == 'error') {
+											alert('ERROR!!!\nAl intentar actualizar');
+										} else {
+
+											for (var i = 0; i < j.length; i++) {
+												
+												tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+											
+												tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+
+												tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+
+												tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+
+											}
+											
+											$("#content_codigos").html(tr);
+											
+										}
+
+									});
+	  							});
+	  						});
+	  					</script>
+
+  						<!-- PopUp Editar Codigos-->
+						<div data-role="popup" id="popupEditarCodigo" class="ui-content">
+							<label for="codigo">Codigo</label>
+							<input type="text" id="editarOperacion" disabled>
+
+							<label for="registrarAs">Registrar Como</label>
+							<input type="text" id="editarRegistrarComo">
+
+							<label for="descripcion">Descripcion</label>
+							<input type="text" id="editarDescripcion">
+
+							<a id="guardarCambios" href="#" data-role="button" data-icon="check" data-inline="true">Guardar</a>
+							<a id="cancelarEdicion" href="" data-role="button" data-icon="delete" data-rel="back" data-inline="true">Cancelar</a>
+						</div>
+
 					</div>
 				</center>
-
-				<script type="text/javascript">
-
-					$("select#selectModelo_CD").change(function() {
-						//Carga las operaciones al seleccionar un modelo.
-						$.getJSON("../getsJSON/get_codigos.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-							var tr = "";
-							if (j[0] == '') {
-							} else {
-								for (var i = 0; i < j.length; i++) {
-
-									tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-									
-									tr += '<td><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
-
-									tr += '<td><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
-
-									tr += '<td><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
-
-								}
-							}
-							
-							$("tbody#content_codigos").html(tr);
-						});
-					});
-
-				</script>
 
 				<center>
 					<div id="divTabla_CDF">
@@ -449,9 +448,51 @@
 							</tbody>
 						</table>
 					</div>
-			</center>
+				</center>
+
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var btn1="";
+			var btn2="";
+			var btn3="";
+
+			$("#popupEditarCodigo").on({
+				popupafteropen: function(event, ui) {
+					$(event.currentTarget).find('#editarOperacion').val(btn1);
+					$(event.currentTarget).find('#editarRegistrarComo').val(btn2);
+					$(event.currentTarget).find('#editarDescripcion').val(btn3);
+				}
+			});
+
+			$("#content_codigos").on("click", "td:nth-of-type(2)", function() {
+				
+				btn1 = $(this).children('span').children('a').attr('id');
+
+				btn2 = $(this).siblings('.registrarAs').children('span').attr('id');
+
+				btn3 = $(this).siblings('.descripcion').children('span').attr('id');
+
+			});
+
+			$('#popupAgregar').on({
+				popupafterclose: function(event, ui) {
+					document.getElementById('agregarCodigo').value = '';
+					document.getElementById('registrarComo').value = '';
+					document.getElementById('agregarDescripcion').value = '';
+				}
+			});
+
+			$('#popupCopiar').on({
+				popupafterclose: function(event, ui) {
+					$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
+					$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
+				}
+			});
+		});
+	</script>
 </body>
 </html>
