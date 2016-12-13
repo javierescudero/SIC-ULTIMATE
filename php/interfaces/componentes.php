@@ -82,7 +82,7 @@
 							<label for="modelos"><b>Modelo</b></label>
 						</center>
 						<select name="lista_modelos" id="lista_modelos">
-							<option value="default">- - - Selecciona Un Modelo - - -</option>
+							<option value="Default">- - - Selecciona Un Modelo - - -</option>
 							<?php
 								if ($area == 'Electronica') {
 									cargaModelos($con, 'Electronica');
@@ -106,7 +106,7 @@
 
 									//Carga los componentes al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Un Componente - - -</option>\n';
 										if (j[0] == '') {
 
 										} else {
@@ -125,7 +125,7 @@
 						<center>
 							<label for="sel_componentes"><b>Componentes</b></label>
 							<select name="sel_componentes" id="sel_componentes">
-								<option value="default">- - - Selecciona Un Componente - - -</option>
+								<option value="Default">- - - Selecciona Un Componente - - -</option>
 							</select>
 						</center>
 					</div>
@@ -139,11 +139,11 @@
 							$(function() {
 								
 								//Agregar Componente
-								$("a#agregarComponenteConfirmacion").click(function(){
+								$("#agregarComponenteConfirmacion").click(function(){
 									var valComponente = document.getElementById('agregarComponente').value;
 									var valModelo = document.getElementById('lista_modelos').value;
 									$.getJSON("../getsJSON/add_componentes.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
-										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Un Componente - - -</option>\n';
 										for (var i = 0; i < j.length; i++) {
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 										}
@@ -173,25 +173,25 @@
 							$(function() {
 								
 								//Eliminar Componente
-								$("a#eliminarComponente").click(function(){
+								$("#eliminarComponente").click(function(){
 									var valComponente = document.getElementById('sel_componentes').value;
 									var valModelo = document.getElementById('lista_modelos').value;
 
-									if (valComponente == 'default') {
+									if (valComponente == 'Default') {
 										alert('Selecciona Un Componente');
 									} else {
 										$.getJSON("../getsJSON/del_componente.php", {ajax: true, modelo: valModelo, componente: valComponente, area: <?php echo "'$area'"; ?> }, function(j) {
-											var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+											var options = '<option value="Default">- - - Selecciona Un Componente - - -</option>\n';
 											for (var i = 0; i < j.length; i++) {
 												options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 											}
 											
-											$("select#sel_componentes").html(options);
+											$("#sel_componentes").html(options);
 											
 										});
 									}
 
-									$('#sel_componentes').val('default').attr('selected', true).selectmenu("refresh");
+									$('#sel_componentes').val('Default').attr('selected', true).selectmenu("refresh");
 
 									$('#cancelDelComponente').click();
 								});
@@ -216,24 +216,24 @@
   							
   							//Copiar Componentes
 							$(document).ready(function(){
-								$("a#copiarComponentesCDD").click(function() { 
+								$("#copiarComponentesCDD").click(function() { 
 									var modeloOrigen = document.getElementById('mod_origen').value;
 									var modeloDestino = document.getElementById('mod_destino').value;
 
 									$.getJSON("../getsJSON/copy_componentes.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Selecciona Un Componente - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Un Componente - - -</option>\n';
 										for (var i = 0; i < j.length; i++) {
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 
 											}
 
-											$("select#sel_componentes").html(options);
+											$("#sel_componentes").html(options);
 
-											$('#mod_origen').val('default').attr('selected', true).selectmenu("refresh");
-											$('#mod_destino').val('default').attr('selected', true).selectmenu("refresh");
+											$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
+											$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
 										});
 									
-									$("a#salirCopyComponentes").click();
+									$("#salirCopyComponentes").click();
 								});
 							});
 
@@ -247,6 +247,7 @@
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_origen"><b>Modelo Origen</b></label></center>
 									<select name="mod_origen" id="mod_origen">
+										<option value="Default">- - - Selecciona Un Modelo - - -</option>
 										<?php
 											if ($area == 'Electronica') {
 												cargaModelos($con, 'Electronica');
@@ -261,6 +262,7 @@
 								<div data-role="fieldcontain" id="">
 									<center><label for="mod_destino"><b>Modelo Destino</b></label></center>
 									<select name="mod_destino" id="mod_destino">
+										<option value="Default">- - - Selecciona Un Modelo - - -</option>
 										<?php
 											if ($area == 'Electronica') {
 												cargaModelos($con, 'Electronica');
@@ -317,5 +319,15 @@
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#popupCopiar').on({
+				popupafterclose: function(event, ui) {
+					$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
+					$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
+				}
+			});
+		});
+	</script>
 </body>
 </html>
