@@ -274,25 +274,34 @@
 
 									$.getJSON("../getsJSON/copy_codigos.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
 										var tr = "";
-										for (var i = 0; i < j.length; i++) {
-											
-											tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
-								
-											tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
 
-											tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+										if (j[0] == 'error') {
+											alert('ERROR!!!\nProblema al copiar codigos');
+										} else if (j[0] == 'noencontrados'){
+											alert('No se encontraron codigos');
+										} else {
 
-											tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+											for (var i = 0; i < j.length; i++) {
+												
+												tr += '<tr><td class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Codigo+'"><label></label></fieldset></td>';
+									
+												tr += '<td class="codigo"><span id="'+j[i].Codigo+'" ><a id="'+j[i].Codigo+'" class="ui-btn" href="#popupEditarCodigo" data-rel="popup">' +j[i].Codigo+ '</a></span></td>';
+
+												tr += '<td class="registrarAs"><span id="'+j[i].RegistrarAs+'" ><a id="'+j[i].RegistrarAs+'" class="ui-btn" data-rel="popup">' +j[i].RegistrarAs+ '</a></span></td>';
+
+												tr += '<td class="descripcion"><span id="'+j[i].Descripcion+'" ><a id="'+j[i].Descripcion+'" class="ui-btn" data-rel="popup">' +j[i].Descripcion+ '</a></span></td></tr>';
+											}
+
+											$("#content_codigos").html(tr);
+
+											$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
+											$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
+
+											$("#cancelCopyCodigos").click();
 										}
-
-										$("tbody#tabla_CDF").html(tr);
-
-										$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
-										$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
 
 									});
 									
-									$("a#cancelCopyCodigos").click();
 								});
 							});
 	  					</script>
@@ -406,6 +415,7 @@
 											
 											$("#content_codigos").html(tr);
 											
+											$("#cancelarEdicion").click();
 										}
 
 									});
@@ -443,8 +453,6 @@
 								</tr>
 							</thead>
 							<tbody id="content_codigos">
-								<tr>
-								</tr>
 							</tbody>
 						</table>
 					</div>

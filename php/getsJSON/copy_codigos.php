@@ -19,19 +19,22 @@ if ($_REQUEST['ajax']) {
 
 	$q = "INSERT INTO codigos (SELECT 0, Codigo, RegistrarAs, Descripcion, '".$mod_destino."' FROM codigos WHERE Modelo = '".$mod_origen."')";
 	if (mysqli_query($con, $q)) {
-		$query_load = mysqli_query($con, "SELECT DISTINCT Codigo, RegistrarAs, Descripcion FROM codigos ORDER BY Codigo");
+
+		$query_load = mysqli_query($con, "SELECT DISTINCT * FROM codigos WHERE Modelo = '".$mod_origen."' ORDER BY Codigo");
 		$num_rows = mysqli_num_rows($query_load);
+		
 		if ($num_rows != 0) {
 			while ($row = mysqli_fetch_assoc($query_load)) {
 				$rows[] = $row;
 			}
 			print(json_encode($rows));
 		} else {
-			echo "<script>alert('No se encontraron CODIGOS');</script>";
+			$rows[] = 'noencontrados';
+			print(json_encode($rows));
 		}
 	} else {
-		echo "Error: " . $q . "<br>" . mysqli_error($con);
-		echo "<script>alert('ERROR: Hubo un problema al copiar elementos.');</script>";
+		$rows[] = 'error';
+		print(json_encode($rows));
 	}
 
 	mysqli_close($con);
