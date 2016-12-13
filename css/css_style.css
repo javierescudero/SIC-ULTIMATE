@@ -41,7 +41,7 @@ tr:hover td {
 /*Estilo de fam&mod.html*/
 #divTabla_Operaciones {
 	height: 760px;
-	width: 600px;
+	width: 700px;
 	overflow: auto;
 }
 
@@ -68,15 +68,14 @@ tr:hover td {
 
 /*Estilo de operaciones.html*/
 #divForm_Op {
-	width: 70%;
-	margin-left: 15%;
+	width: 100%;
 }
 
-#divContentModelo_Op, #divContentComponentes { width: 25%; }
+#divContentModelo_Op { width: 25%; }
 
 #divTabla_Op {
-	width: 50%;
-	max-height: 590px;
+	width: 100%;
+	max-height: 800px;
 	overflow: auto;
 }
 
