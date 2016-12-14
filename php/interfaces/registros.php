@@ -117,7 +117,8 @@
           				
           				<label for="linea"><b>Linea</b></label>
           				<div class="ui-field-contain" id="divNumLinea_Reg">
-          					<select name="linea" id="Linea">
+          					<select name="linea" id="linea">
+								<option value="Default">- - - Selecciona Un Turno - - -</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
@@ -139,11 +140,11 @@
 
       						//Carga los modelos al seleccionar una familia.
 							$(function() {
-								$("select#familias").change(function() {
+								$("#familias").change(function() {
 									
 									//Carga los modelos al seleccionar una familia.
 									$.getJSON("../getsJSON/get_modelos.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Un Modelo - - -</option>\n';
 										if (j[0] == '') {
 
 										} else {
@@ -151,12 +152,12 @@
 												options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
 											}
 										}
-										$("select#modelos").html(options);
+										$("#modelosReg").html(options);
 									});
 
 									//Carga las operaciones al seleccionar una familia.
 									$.getJSON("../getsJSON/get_operaciones_xFamilia_reg.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Selecciona Una Operacion - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Una Operacion - - -</option>\n';
 										if (j[0] == '') {
 
 										} else {
@@ -164,7 +165,7 @@
 												options += '<option value="'+ j[i].Operacion +'">'+ j[i].Operacion +'</option> \n';
 											}
 										}
-										$("select#operaciones").html(options);
+										$("#operacionesReg").html(options);
 									});
 
 								});
@@ -175,7 +176,7 @@
           				<label for="familia"><b>Familia</b></label>
 						<div class="ui-field-contain" id="divFamilia_Reg" title="Familias">
             				<select name="familias" id="familias">
-            					<option value="default">- - - Selecciona Una Familia - - -</option>
+            					<option value="Default">- - - Selecciona Una Familia - - -</option>
 								<?php
 									if ($area == 'Electronica') {
 										cargaFamilias($con, 'Electronica');
@@ -191,11 +192,11 @@
           				<script type="text/javascript">
       						//Carga las operaciones al seleccionar modelo
 							$(function() {
-								$("select#modelos").change(function() {
+								$("#modelosReg").change(function() {
 									
 									//Carga las operaciones al seleccionar modelo
 									$.getJSON("../getsJSON/get_operaciones_xModelo_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Selecciona Una Operacion - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Una Operacion - - -</option>\n';
 										if (j[0] == '') {
 
 										} else {
@@ -204,12 +205,12 @@
 											}
 										}
 
-										$("select#operaciones").html(options);
+										$("#operacionesReg").html(options);
 									});
 
 									//Carga los codigos al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_codigos_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Codigos - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Un Codigo - - -</option>\n';
 										if (j[0] == '') {
 
 										} else {
@@ -217,13 +218,13 @@
 												options += '<option value="'+ j[i].Codigo +'">'+ j[i].Codigo +'</option> \n';
 											}
 										}
-										$("select#codigos").html(options);
+										$("#codigos").html(options);
 									});
 
 
 									//Carga los componentes al seleccionar un modelo.
 									$.getJSON("../getsJSON/get_componentes.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-										var options = '<option value="default">- - - Componentes - - -</option>\n';
+										var options = '<option value="Default">- - - Selecciona Un Componente - - -</option>\n';
 										if (j[0] == '') {
 
 										} else {
@@ -231,7 +232,7 @@
 												options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
 											}
 										}
-										$("select#select_comp").html(options);
+										$("#select_comp").html(options);
 									});
 
 								});
@@ -241,16 +242,16 @@
           				<!-- MODELOS -->
           				<label for="familia"><b>Modelos</b></label>
 						<div class="ui-field-contain" id="divModelo_Reg" title="Modelos">
-            				<select name="modelos" id="modelos">
-            					<option value="default">- - - Selecciona Un Modelo - - -</option>
+            				<select id="modelosReg">
+            					<option value="Default">- - - Selecciona Un Modelo - - -</option>
 							</select>
           				</div>
 
           				<!-- OPERACIONES -->
           				<label for="operacion"><b>Operacion</b></label>
           				<div class="ui-field-contain" id="divOperacion_Reg" title="Operaciones">
-            				<select name="operaciones" id="operaciones">
-            					<option value="default">- - - Selecciona Una Operacion - - -</option>
+            				<select id="operacionesReg">
+            					<option value="Default">- - - Selecciona Una Operacion - - -</option>
 							</select>
           				</div>
 					</div>
@@ -270,11 +271,6 @@
 	      				</div>
 					</div>
 				</div>
-				<!--<center>
-					<a href="" id="btnAgregaModelo" data-role="button" data-inline="true" onclick="window.open('fam&mod.php');">Agregar Modelos / Familia</a>
-          			<a href="" id="btnAgregaComponente" data-role="button" data-inline="true" onclick="window.open('componentes.php');">Agregar Componentes</a>
-          			<a href="" id="btnAgregaCodigo" data-role="button" data-inline="true" onclick="window.open('codigos_de_falla.php');">Agregar Codigos De Falla</a>
-				</center><br>-->
 
 				<script type="text/javascript">
 					$(document).ready(function() {
@@ -299,7 +295,7 @@
 
 							document.getElementById('cantidad').value='';
 
-							$("a#cancelarAdd").click();
+							$("#cancelarAdd").click();
 
 						});
 					});
@@ -311,13 +307,12 @@
 
 						<label for="codigos">Codigos</label>
 						<select name="codigos" id="codigos">
-							<option value="default">- - - Codigos - - -</option>
+							<option value="Default">- - - Codigos - - -</option>
 						</select>
 
 						<label for="select_comp">Componentes</label>
 						<select name="select_comp" id="select_comp">
-							<option value="default">- - - Componentes - - -</option>
-							<option value="123">- - - 123 - - -</option>
+							<option value="Default">- - - Componentes - - -</option>
 						</select>
 
 						<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" min="0">
@@ -327,22 +322,39 @@
 					</div>
 				</div>
 
-				<script type="text/javascript">
-					$(document).ready(function(){
-						$('#limpiar').click(function(){
-							$('#tr_data').remove();
-							document.getElementById('empleado').value='';
-							document.getElementById('produccion').value='';
-							document.getElementById('piezas').value='';
-							document.getElementById('fecha').value='';
-						});
-					});
-				</script>
+				
+
 				<center>
 					<a href="" data-role="button" id="guardar" data-icon="check" data-inline="true">Guardar</a>
-					<a href="" data-role="button" id="limpiar" data-icon="refresh" data-inline="true">Limpiar</a>
+
 					<a href="#popupAgregar" id="btnAgregar" data-rel="popup" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-inline ui-corner">Agregar</a>
+
 					<a href="" data-role="button" id="eliminar" data-icon="delete" data-inline="true">Eliminar</a>
+
+					<script type="text/javascript">
+						$(document).ready(function(){
+
+							$('#limpiar').click(function(){
+
+								$('#tr_data').remove();
+
+								document.getElementById('empleado').value='';
+								document.getElementById('produccion').value='';
+								document.getElementById('piezas').value='';
+								document.getElementById('fecha').value='';
+
+								$('#turno').val('off').slider("refresh");
+								$('#linea').val('Default').prop('selected', true).selectmenu("refresh");
+								$('#familias').val('Default').prop('selected', true).selectmenu("refresh");
+								$('#modelosReg').val('Default').prop('selected', true).selectmenu("refresh");
+								$('#operacionesReg').val('Default').prop('selected', true).selectmenu("refresh");
+
+							});
+						});
+					</script>
+
+					<input type="button" id="limpiar" name="limpiar" data-icon="refresh" data-inline="true" value="Limpiar">
+					
 				</center><br>
 				
 				<!-- Tabla -->
