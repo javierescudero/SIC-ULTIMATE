@@ -12,12 +12,15 @@
 		$empleado = $_REQUEST['empleado'];
 		$produccion = $_REQUEST['produccion'];
 		$piezas = $_REQUEST['piezas'];
-		$codigo = $_REQUEST['codigo'];
-		$componente = $_REQUEST['componente'];
-		$cantidad = $_REQUEST['cantidad'];
+		$codigo = $_REQUEST['cod'];
+		$componente = $_REQUEST['comp'];
+		$cantidad = $_REQUEST['cant'];
 		$area = $_REQUEST['area'];
 
-		if ($area == "Electronica") {
+		print_r($codigo);
+		echo "<script>alert($codigo);</script>";
+
+	/*	if ($area == "Electronica") {
 			$database = "Electronica";
 		} elseif ($area == "Electromecanicos") {
 			$database = "Electromecanicos";
@@ -37,6 +40,6 @@
 		print(json_encode($rows));
 	}
 
-	mysqli_close($con_user);
+	mysqli_close($con_user);*/
 	}
 ?>

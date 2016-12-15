@@ -209,7 +209,7 @@
 									});
 
 									//Carga los codigos al seleccionar un modelo.
-									$.getJSON("../getsJSON/get_codigos_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
+									/*$.getJSON("../getsJSON/get_codigos_reg.php", {ajax: true, modelo: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
 										var options = '<option value="Default">- - - Selecciona Un Codigo - - -</option>\n';
 										if (j[0] == '') {
 
@@ -237,7 +237,7 @@
 
 										$(".selectComponente").html(options);
 										
-									});
+									});*/
 
 								});
 							});
@@ -290,17 +290,80 @@
 								var empleado = document.getElementById('empleado').value;
 								var produccion = document.getElementById('produccion').value;
 								var piezas = document.getElementById('piezas').value;
-								var codigo = document.getElementById('select_codigos1').value;
-								var componente = document.getElementById('select_comp1').value;
-								var cantidad = document.getElementById('cantidad1').value;
 
-								alert('Fecha: '+ fecha +'\nTurno: '+ turno +'\nLinea: '+ linea +'\nFamilia: '+ familia +'\nModelo: '+ modelo +'\nOperacion: '+ operacion +'\nEmpleado: '+ empleado +'\nProduccion: '+ produccion +'\nPiezas: ' + piezas);
+								//var codigo = document.getElementById('select_codigos1').value;
+								//var componente = document.getElementById('select_comp1').value;
+								//var cantidad = document.getElementById('cantidad1').value;
+
+								var cod = new Array();
+								var comp = new Array();
+								var cant = new Array();
+
+								$('#tabla_Reg tr').each(function(){
+								    
+								    $(this).find('.tdCodigos').each(function(){
+								        //do your stuff, you can use $(this) to get current cell
+								        codigo = $(this).children('select').prop('value');
+								        cod.push(codigo);
+								        console.log(cod);
+								        //alert(algo);
+								    });
+
+								    $(this).find('.tdComponentes').each(function(){
+								        //do your stuff, you can use $(this) to get current cell
+								        componente = $(this).children('select').prop('value');
+								        comp.push(componente);
+								        console.log(comp);
+								        //alert(algo);
+								    });
+
+								    $(this).find('.tdCantidad').each(function(){
+								        //do your stuff, you can use $(this) to get current cell
+								        cantidad = $(this).children('input').prop('value');
+								        cant.push(cantidad);
+								        console.log(cant);
+								        //alert(algo);
+								    });
+								});
+
+								/*var table = document.getElementById("tabla_Reg");
+								for (var i = 1, row; row = table.rows[i]; i++) {
+								   //iterate through rows
+								   //rows would be accessed using the "row" variable assigned in the for loop
+								   
+								   row.children('tdCodigos');
+								   
+								   console.log(row);
+								   for (var j = 0, col; col = row.cells[j]; j++) {
+										//iterate through columns
+										//columns would be accessed using the "col" variable assigned in the for loop
+										//console.log(col);
+								   }  
+								}*/
+
+								/*alert('Fecha: '+ fecha +'\nTurno: '+ turno +'\nLinea: '+ linea +'\nFamilia: '+ familia +'\nModelo: '+ modelo +'\nOperacion: '+ operacion +'\nEmpleado: '+ empleado +'\nProduccion: '+ produccion +'\nPiezas: ' + piezas);*/
+
+								/*$('#tabla_Reg > tbody  > tr').each(function() {
+						            //var codigo = $('td:eq(0) ', this).value();
+						            //var componente = $('td:eq(1) ', this).va();
+						            var cantidad = $('td:eq(2) ', this).text();
+
+						            console.log(cantidad);
+						            console.log(cantidad);
+
+						            //alert(cantidad);
+						            /*ajaxArray.push({
+						                From: from,
+						                Type: type,
+						                Amount: amount
+						            //});
+						        });*/
 
 								if (fecha==''||linea=='Default'||familia=='Default'||modelo=='Default'||operacion=='Default'||empleado==''||produccion==''||piezas=='') {
 									alert('Debes llenar todos los campos');
 								} else {
 
-									$.getJSON("../getsJSON/set_registros.php", {ajax: true, fecha: fecha, turno: turno, linea: linea, familia: familia, modelo: modelo, operacion: operacion, empleado: empleado, produccion: produccion, piezas: piezas, codigo: codigo, componente: componente, cantidad: cantidad, area: <?php echo "'$area'"; ?>}, function(j) {
+									$.getJSON("../getsJSON/set_registros.php", {ajax: true, fecha: fecha, turno: turno, linea: linea, familia: familia, modelo: modelo, operacion: operacion, empleado: empleado, produccion: produccion, piezas: piezas, codigo: cod, componente: comp, cantidad: cant, area: <?php echo "'$area'"; ?>}, function(j) {
 										if (j[0] == 'exito') {
 											alert('Se ingresaron los datos correctamente.');
 										} else if (j[0] == 'error') {
@@ -405,6 +468,7 @@
 							<tbody id="content_registros">
 							</tbody>
 						</table>
+						<pre id="result"></pre>
 					</div>
 				</center>
 
