@@ -100,11 +100,11 @@
 						
 						<label for="fecha"><b>Fecha</b></label>
 						<div class="ui-field-contain" id="divFecha" title="Fecha">
-            				<input name="fecha" id="fecha" type="text" data-role="datebox" data-options='{"mode":"calbox"}'/>
+            				<input name="fecha" id="fecha" type="text" data-role="datebox" data-options='{"mode":"calbox"}'>
           				</div>
 
           				<div style="display:none">
-            				<input name="langpicker" type="text" data-role="datebox" data-datebox-close-callback="changeLang" data-datebox-custom-data="langs" data-datebox-custom-head="Language" data-datebox-popup-position="window" data-datebox-override-custom-set="Choose" data-datebox-mode="customflip" id="langpicker" />
+            				<input name="langpicker" type="text" data-role="datebox" data-datebox-close-callback="changeLang" data-datebox-custom-data="langs" data-datebox-custom-head="Language" data-datebox-popup-position="window" data-datebox-override-custom-set="Choose" data-datebox-mode="customflip" id="langpicker">
           				</div>
           				
           				<label for="turno"><b>Turno</b></label>

@@ -925,7 +925,7 @@ jQuery.extend(jQuery.mobile.datebox.prototype.options.lang, {
 			"m",
 			"d"
 		],
-		"dateFormat": "%-m/%-d/%Y",
+		"dateFormat": "%Y/%-m/%-d",
 		"useArabicIndic": false,
 		"isRTL": false,
 		"calStartDay": 0,
