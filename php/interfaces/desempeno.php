@@ -27,6 +27,11 @@
 	<script src="../../js/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
 	<link rel="stylesheet" href="../../css/jqm-datebox-1.4.5.min.css">
 
+	<script src="../../js/highcharts/highcharts.js"></script>
+	<script src="../../js/highcharts/highcharts-3d.js"></script>
+	<script src="../../js/highcharts/dark-unica.js"></script>
+	<script src="../../js/highcharts/exporting.js"></script>
+
 </head>
 <style type="text/css">
 	@media screen and (min-width: 480px) {
@@ -111,7 +116,7 @@
 			          				<div id="selectFamilia_Des">
 			          					<label for="familias"><b>Familia</b></label>
 			          					<select name="familias" id="familias">
-											<option value="default">- - - Todas - - -</option>
+											<option value="Default">- - - Todas - - -</option>
 											<?php
 												if ($area == 'Electronica') {
 													cargaFamilias($con, 'Electronica');
@@ -138,7 +143,7 @@
 
 													//CARGA MODELOS AL SELECIONAR FAMILIA
 													$.getJSON("../getsJSON/get_modelos_repo.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-														var options = '<option value="default">- - - Selecciona Un Modelo - - -</option>\n';
+														var options = '<option value="Default">- - - Selecciona Un Modelo - - -</option>\n';
 
 														for (var i = 0; i < j.length; i++) {				
 															options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -146,32 +151,13 @@
 														$("select#modelos").html(options);
 													});
 
-													//CARGA OPERACIONES AL SELECCIONAR FAMILIA
-													$.getJSON("../getsJSON/get_operaciones_xFamilia_desem.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-														var tr = "";
-														for (var i = 0; i < j.length; i++) {
-
-															tr += '<tr><td><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'"><label></label></fieldset></td>'
-															
-															tr += '<td><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td><span class="ui-btn" id="' + j[i].Descripcion + '">' + j[i].Descripcion + '</span></td>';
-
-															if (j[i].UsarPPms == 1) {
-																tr += '<td><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox" checked><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
-															} else {
-																tr += '<td><fieldset data-iconpos="left" ><input name="' + j[i].UsarPPms + '" id="' + j[i].UsarPPms + '" type="checkbox"><label for="' + j[i].UsarPPms + '">Usar?</label></fieldset></td>';
-															}
-
-															tr += '<td><select name="' + j[i].Grupo + '" id="' + j[i].Grupo + '" ><option value="default" >- - - - - - -</option><option value="' + j[i].Grupo + '" selected>' + j[i].Grupo + '</option><option value="final_test">Final Test</option><option value="qc_audit">QC Audit</option><option value="process">Process</option></select></td></tr>';
-														}
-														$("tbody#content_operaciones").html(tr);
-													});
 												});
 				          					});	
 				          				</script>
 
 				          				<label for="modelos"><b>Modelo</b></label>
 				          				<select name="modelos" id="modelos">
-											<option value="default">- - - Todos - - -</option>
+											<option value="Default">- - - Todos - - -</option>
 										</select>
 				          			</div><br>
 								</div>
@@ -184,13 +170,87 @@
 									<script type="text/javascript">
 										$(document).ready(function(){
 											$('#btnLimpiar').click(function(){
-												$('#tr_data').remove();
+												$('#content_data tr').remove();
 												document.getElementById('fechaInicial').value='';
 												document.getElementById('fechaFinal').value='';
 												document.getElementById('producidas').value='';
 												document.getElementById('rechazadas').value='';
 												document.getElementById('ppms').value='';
 												document.getElementById('rty').value='';
+												$('#familias').val('Default').attr('selected', true).selectmenu("refresh");
+												$('#modelos').val('Default').attr('selected', true).selectmenu("refresh");
+											});
+
+											$('#btnCalcular').click(function() {
+												var fechainicial = document.getElementById('fechaInicial').value;
+												var fechafinal = document.getElementById('fechaFinal').value;
+												var familia = document.getElementById('familias').value;
+												var modelo = document.getElementById('modelos').value;
+												//alert('F. Inicial: ' +fechainicial+ '\nF. Final: ' +fechafinal+ '\nFamilia: ' +familia+ '\nModelo: ' +modelo);
+												if (familia=='Default'||modelo=='Default'||fechainicial==''||fechafinal=='') {
+													alert('Debes llenar todos los campos');
+												} else {
+
+													$.getJSON("../getsJSON/calc_desempeno.php", {ajax: true, fechainicial: fechainicial, fechafinal: fechafinal, familia: familia, modelo: modelo, area: <?php echo "'$area'"; ?>}, function(j) {
+														var tr = '';
+														
+														var pzProducidas = 0;
+														for (var i = 0; i < j.length; i++) {
+
+															var produccion;
+															var rechazos;
+															var pRechazos;
+															var ppms;
+															var fty;
+															
+															var prodPPMS;
+
+															if (j[i].prod == null) { produccion = 0; }
+															else { produccion = j[i].prod; }
+
+															if (j[i].rech == null) { rechazos = 0; }
+															else { rechazos = j[i].rech; }
+
+															pRechazos = (rechazos/produccion)*100;
+															
+															if (isNaN(pRechazos)) { pRechazos = 0; }
+															else { pRechazos = pRechazos.toFixed(2); }
+
+															ppms = (rechazos/produccion)*1000000;
+
+															if (isNaN(ppms)) { ppms = 0; }
+															else { ppms = ppms.toFixed(); }
+
+															fty = 100 - (rechazos/produccion)*100;
+
+															if (isNaN(fty)) { fty = 0; }
+															else { fty = fty.toFixed(2); }
+
+															if (j[i].usarppms == 1) {
+
+																if (j[i].prod == null) { pzProducidas = parseInt(pzProducidas + 0); }
+																else { pzProducidas = parseInt(pzProducidas + j[i].prod); }
+
+																alert(pzProducidas);
+
+															} else {}
+
+															tr += '<tr><td><span>'+j[i].operacion+'-'+j[i].descripcion+'</span></td>';
+															tr += '<td><span>'+produccion+'</span></td>';
+															tr += '<td><span>'+rechazos+'</span></td>';
+															tr += '<td><span>'+pRechazos+'%</span></td>';
+															tr += '<td><span>'+ppms+'</span></td>';
+															tr += '<td><span>'+fty+'%</span></td></tr>';
+
+															$('#producidas').val(pzProducidas);
+															
+														}
+
+														$("#content_data").html(tr);
+													});
+
+												}
+
 											});
 										});
 									</script>
@@ -236,12 +296,11 @@
 												</tr>
 											</thead>
 											<tbody id="content_data">
-												<tr id="tr_data">
-												</tr>
 											</tbody>
 										</table>
 									</div>
 								</center><br>
+
 							</div>
 						</div>
 					</div>

@@ -46,7 +46,7 @@
 				$area = $_GET['area'];
 				if ($area == "Electronica") { ?>
 					<script type="text/javascript">
-					//column, bar, area, pie, areaspline, spline
+						//column, bar, area, pie, areaspline, spline
 						$(function () {
 						    Highcharts.chart('container', {
 						        title: {

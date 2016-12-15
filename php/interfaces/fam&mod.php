@@ -143,7 +143,7 @@
 											} else {
 												for (var i = 0; i < j.length; i++) {
 
-													tr += '<tr><td id="'+j[i].Operacion+'" class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'" ><label></label></fieldset></td>'
+													tr += '<tr><td id="'+j[i].Operacion+'" class="checkSelec"><fieldset data-iconpos="left"><input type="checkbox" id="'+j[i].Operacion+'" ><label for="' + j[i].Operacion + '"></label></fieldset></td>';
 													
 													tr += '<td id="' + j[i].Operacion + '" class="btnOperacion"><span id="' + j[i].Operacion + '"><a id="'+j[i].Operacion+'" class="ui-btn" href="#popupEditarOperacion" data-rel="popup">' + j[i].Operacion + '<a></span></td><td id="' + j[i].Descripcion + '" class="descripcion"><span class="ui-btn" id="' + j[i].Descripcion + '" >' + j[i].Descripcion + '</span></td>';
 
