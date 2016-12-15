@@ -12,15 +12,20 @@
 		$empleado = $_REQUEST['empleado'];
 		$produccion = $_REQUEST['produccion'];
 		$piezas = $_REQUEST['piezas'];
-		$codigo = $_REQUEST['cod'];
-		$componente = $_REQUEST['comp'];
-		$cantidad = $_REQUEST['cant'];
+		$codigo = $_REQUEST['codigo'];
+		$componente = $_REQUEST['componente'];
+		$cantidad = $_REQUEST['cantidad'];
 		$area = $_REQUEST['area'];
 
-		print_r($codigo);
-		echo "<script>alert($codigo);</script>";
+		/*if ($codigo[1] == 'cod 555') {
+			print(json_encode('exito'));
+		} else {
+			print(json_encode('error'));
+		}*/
 
-	/*	if ($area == "Electronica") {
+		
+
+		if ($area == "Electronica") {
 			$database = "Electronica";
 		} elseif ($area == "Electromecanicos") {
 			$database = "Electromecanicos";
@@ -28,18 +33,31 @@
 			$database = "Valvulas";
 		}
 
-	$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
+		$con = mysqli_connect(SERVER, USER, PASSWORD, $database);
 
-	$q = "INSERT INTO datos (Fecha, Tno, Linea, Empleado, Modelo, Op, Cant, Cod, Comp, Prod, Familia, PieRech) VALUES ('".$fecha."', '".$turno."', '".$linea."', '".$empleado."', '".$modelo."', '".$operacion."', '".$cantidad."', '".$codigo."', '".$componente."', '".$produccion."', '".$familia."', '".$piezas."')";
-	if (mysqli_query($con, $q)) {
-		$rows[] = 'exito';
-		print(json_encode($rows));
+		$respuesta = false;
 
-	} else {
-		$rows[] = 'error';
-		print(json_encode($rows));
-	}
+		for ($i=0; $i < count($codigo); $i++) { 
+			//print(json_encode('exito'));
+			$q = "INSERT INTO datos (Fecha, Tno, Linea, Empleado, Modelo, Op, Cant, Cod, Comp, Prod, Familia, PieRech) VALUES ('".$fecha."', '".$turno."', '".$linea."', '".$empleado."', '".$modelo."', '".$operacion."', '".$cantidad[$i]."', '".$codigo[$i]."', '".$componente[$i]."', '".$produccion."', '".$familia."', '".$piezas."')";
+			if (mysqli_query($con, $q)) {
+				$respuesta = true;
+			} else {
+				$respuesta = false;
+			}
+		}
 
-	mysqli_close($con_user);*/
+		if ($respuesta) {
+			$rows[] = 'exito';
+			print(json_encode($rows));
+
+		} else {
+			$rows[] = 'error';
+			print(json_encode($rows));
+		}
+
+		
+
+		mysqli_close($con_user);
 	}
 ?>

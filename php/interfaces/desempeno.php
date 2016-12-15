@@ -218,9 +218,9 @@
 									<input name="rty" id="rty" type="text" disabled>
 								</div>
 
-								<div class="ui-block-c">
+								<!--<div class="ui-block-c">
 									<a href="" data-role="button" id="btnExcel" data-icon="grid" data-inline="true">Excel</a>
-								</div>
+								</div>-->
 
 								<center>
 									<div id="divTabla_Des">
@@ -235,15 +235,8 @@
 													<th width="100" align="left">FTY</th>
 												</tr>
 											</thead>
-											<tbody>
-												<!--Primer Dato (Para el 2do hay que cambiar el id y el for)-->
+											<tbody id="content_data">
 												<tr id="tr_data">
-													<td><span>Acalidad</span></td>
-													<td><span>0</span></td>
-													<td><span>0</span></td>
-													<td><span>0%</span></td>
-													<td><span>0</span></td>
-													<td><span>100%</span></td>
 												</tr>
 											</tbody>
 										</table>

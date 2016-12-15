@@ -348,7 +348,7 @@
     						</div>
   						</div>
 
-  						<!-- PopUp Importar Codigos-->
+  						<!-- PopUp Importar Codigos
 						<div data-role="main" class="ui-content">
     						<a href="#popupImportar" id="btnImporta" data-rel="popup" class="ui-btn ui-icon-action ui-btn-icon-left ui-btn-inline ui-corner">Importar</a>
     						<div data-role="popup" id="popupImportar" class="ui-content">
@@ -378,7 +378,7 @@
 									</div>
 								</div>
     						</div>
-  						</div>
+  						</div>-->
 
   						<script type="text/javascript">
 	  						$(document).ready(function() {
