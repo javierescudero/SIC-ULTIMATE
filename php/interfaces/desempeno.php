@@ -195,24 +195,29 @@
 														var tr = '';
 														
 														var pzProducidas = 0;
+														var pzRechazdas = 0;
+														var totalppms = 0;
+														var produccion;
+														var rechazos;
+														var pRechazos;
+														var ppms;
+														var fty;
+														var auxfty = 0;
+														var auxrty = 1;
 														for (var i = 0; i < j.length; i++) {
-
-															var produccion;
-															var rechazos;
-															var pRechazos;
-															var ppms;
-															var fty;
 															
-															var prodPPMS;
-
+															//Produccion
 															if (j[i].prod == null) { produccion = 0; }
 															else { produccion = j[i].prod; }
 
+															//Rechazos
 															if (j[i].rech == null) { rechazos = 0; }
 															else { rechazos = j[i].rech; }
 
+															//% Rechazos
 															pRechazos = (rechazos/produccion)*100;
 															
+															//PPMs
 															if (isNaN(pRechazos)) { pRechazos = 0; }
 															else { pRechazos = pRechazos.toFixed(2); }
 
@@ -221,18 +226,40 @@
 															if (isNaN(ppms)) { ppms = 0; }
 															else { ppms = ppms.toFixed(); }
 
+															//FTY
 															fty = 100 - (rechazos/produccion)*100;
 
-															if (isNaN(fty)) { fty = 0; }
-															else { fty = fty.toFixed(2); }
+															if (isNaN(fty)) { 
+																fty = 100;
+															}
+															else { 
+																fty = fty;
+															}
 
+															//Piezas Producidas Totales
 															if (j[i].usarppms == 1) {
 
 																if (j[i].prod == null) { pzProducidas = parseInt(pzProducidas + 0); }
-																else { pzProducidas = parseInt(pzProducidas + j[i].prod); }
+																else { pzProducidas = parseInt(pzProducidas + parseInt(j[i].prod)); }
 
-																alert(pzProducidas);
+															} else {}
 
+															//Piezas Rechazadas Totales
+															if (j[i].usarppms == 1) {
+
+																if (j[i].prod == null) { pzRechazdas = parseInt(pzRechazdas + 0); }
+																else { pzRechazdas = parseInt(pzRechazdas + parseInt(j[i].rech)); }
+
+															} else {}
+
+															//PPMs Total
+															totalppms = (pzRechazdas/pzProducidas)*1000000;
+
+															//RTY Total
+															if (j[i].usarppms == 1) {
+																auxfty = parseFloat(fty)/100;
+																auxrty = parseFloat(auxrty)*parseFloat(auxfty);
+																rty = parseFloat(auxrty.toFixed(4))*100;
 															} else {}
 
 															tr += '<tr><td><span>'+j[i].operacion+'-'+j[i].descripcion+'</span></td>';
@@ -240,9 +267,12 @@
 															tr += '<td><span>'+rechazos+'</span></td>';
 															tr += '<td><span>'+pRechazos+'%</span></td>';
 															tr += '<td><span>'+ppms+'</span></td>';
-															tr += '<td><span>'+fty+'%</span></td></tr>';
+															tr += '<td><span>'+fty.toFixed(2)+'%</span></td></tr>';
 
 															$('#producidas').val(pzProducidas);
+															$('#rechazadas').val(pzRechazdas);
+															$('#ppms').val(totalppms.toFixed());
+															$('#rty').val(rty + '%');
 															
 														}
 
