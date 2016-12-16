@@ -665,7 +665,7 @@
 			  								var usarppms = $('#checkbox-h-5a').is(':checked');
 			  								var grupo = document.getElementById('grupoEdita').value;
 
-			  								alert('Familia: ' + familia + '\nModelo: ' + modelo + '\nOperacion: ' + operacion + '\nDescripcion: ' + descripcion + '\nUsarPPms: ' + usarppms + '\nGrupo: ' + grupo);
+			  								/*alert('Familia: ' + familia + '\nModelo: ' + modelo + '\nOperacion: ' + operacion + '\nDescripcion: ' + descripcion + '\nUsarPPms: ' + usarppms + '\nGrupo: ' + grupo);*/
 
 			  								$.getJSON("../getsJSON/set_operaciones.php", {ajax: true, familia: familia, modelo: modelo, operacion: operacion, descripcion: descripcion, usarppms: usarppms, grupo: grupo, area: <?php echo "'$area'"; ?>}, function(j) {
 												

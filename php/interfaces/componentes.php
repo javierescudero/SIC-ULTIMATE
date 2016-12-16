@@ -193,6 +193,8 @@
 
 									$('#sel_componentes').val('Default').attr('selected', true).selectmenu("refresh");
 
+									alert('Componente eliminado');
+
 									$('#cancelDelComponente').click();
 								});
 
@@ -221,17 +223,21 @@
 									var modeloDestino = document.getElementById('mod_destino').value;
 
 									$.getJSON("../getsJSON/copy_componentes.php", {ajax: true, origen: modeloOrigen, destino: modeloDestino, area: <?php echo "'$area'"; ?>}, function(j) {
+										
 										var options = '<option value="Default">- - - Selecciona Un Componente - - -</option>\n';
+										
 										for (var i = 0; i < j.length; i++) {
 											options += '<option value="'+ j[i].Comp +'">'+ j[i].Comp +'</option> \n';
+										}
 
-											}
+										$("#sel_componentes").html(options);
 
-											$("#sel_componentes").html(options);
+										alert('Componentes copiados');
 
-											$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
-											$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
-										});
+										$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
+										$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
+
+									});
 									
 									$("#salirCopyComponentes").click();
 								});

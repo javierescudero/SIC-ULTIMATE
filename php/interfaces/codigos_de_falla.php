@@ -182,6 +182,8 @@
 												valregistrarComo = document.getElementById('registrarComo').value = '';
 												valDescripcion = document.getElementById('agregarDescripcion').value = '';
 
+												alert('codigo agregado');
+
 												$('#cancelarAdd').click();
 											}
 
@@ -244,6 +246,8 @@
 
 											$("#content_codigos").html(tr);
 
+											alert('Codigo eliminado');
+
 										});
 
 										$('#salirDel').click();
@@ -266,7 +270,7 @@
   						</div>
 
 						<script type="text/javascript">
-  							//Copiar Operaciones
+  							//Copiar codigos
 							$(document).ready(function(){
 								$("a#copiarCodigos").click(function() {
 									var modeloOrigen = document.getElementById('mod_origen').value;
@@ -296,6 +300,8 @@
 
 											$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
 											$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
+
+											alert('Codigos copiados');
 
 											$("#cancelCopyCodigos").click();
 										}

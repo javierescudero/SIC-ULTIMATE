@@ -175,6 +175,8 @@
 									$('#checkbox-h-6c').attr('checked', false).checkboxradio('refresh');
 									$('#agregarGrupo').val('Default').attr('selected', true).selectmenu("refresh");
 
+									alert('Se agrego Operacion correctamente');
+
 									$('#cancelar').click();
 								});
 							});
@@ -303,6 +305,8 @@
 										$('#mod_origen').val('Default').attr('selected', true).selectmenu("refresh");
 										$('#mod_destino').val('Default').attr('selected', true).selectmenu("refresh");
 
+										alert('Operaciones Copiadas');
+
 									});
 
 									$("a#cancelCopy").click();
@@ -395,6 +399,8 @@
 										
 										$("tbody#content_operaciones").html(tr);
 
+										alert('Operacion editada correctamente');
+
 										$('#cancelarEdicion').click();
 
 									});
@@ -482,11 +488,6 @@
 
 					$(event.currentTarget).find('#grupoEdita').val(btn4).selectmenu('refresh', true);
 					$(event.currentTarget).find('#checkbox-h-5a').checkboxradio('refresh', true);
-
-					console.log(btn1);
-					console.log(btn2);
-					console.log(btn3);
-					console.log(btn4);
 				}
 			});
 

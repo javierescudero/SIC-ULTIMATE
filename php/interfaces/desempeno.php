@@ -143,7 +143,7 @@
 
 													//CARGA MODELOS AL SELECIONAR FAMILIA
 													$.getJSON("../getsJSON/get_modelos_repo.php", {ajax: true, familia: $(this).val(), area: <?php echo "'$area'"; ?>}, function(j) {
-														var options = '<option value="Default">- - - Selecciona Un Modelo - - -</option>\n';
+														var options = '<option value="Default">- - - Todos - - -</option>\n';
 
 														for (var i = 0; i < j.length; i++) {				
 															options += '<option value="'+ j[i].Modelo +'">'+ j[i].Modelo +'</option> \n';
@@ -187,7 +187,7 @@
 												var familia = document.getElementById('familias').value;
 												var modelo = document.getElementById('modelos').value;
 												//alert('F. Inicial: ' +fechainicial+ '\nF. Final: ' +fechafinal+ '\nFamilia: ' +familia+ '\nModelo: ' +modelo);
-												if (familia=='Default'||modelo=='Default'||fechainicial==''||fechafinal=='') {
+												if (fechainicial==''||fechafinal=='') {
 													alert('Debes llenar todos los campos');
 												} else {
 
